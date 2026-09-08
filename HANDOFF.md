@@ -99,6 +99,12 @@ same fix is also reported back so it can be made in the source.
 
 ## Current content state
 
-Three finished scenario cases (English + Thai), levels 1, 3 and 5 of 5, are in
-the live bundle and awaiting sign-off. The remaining 42 cases are still being
-written and will arrive as replacement bundles.
+45 cases are in the live bundle. Each case runs four steps: 1 multiple choice
+(what you do before the patient arrives), 2 the three questions you would ask on
+the call, 3 why those three — then **Next step** locks those answers and reveals
+what the call actually found, followed by 4, upload the image you would have on
+the screen when the patient walks in, with a box to explain why that image and
+what it changes about the session.
+
+Three of the 45 are written out in full for review in the separate sample-cases
+document; the rest follow the same four-step shape.
