@@ -4,22 +4,23 @@ Staff training tool for Bangkok Physiotherapy Center. Physios work through real
 patient-enquiry scenarios: what reception received, how they'd handle it
 pre-arrival, what three questions they'd ask on the call, and why.
 
-**Live:** https://bpcphysio.github.io/bpcpatientjourney/
+**Live:** https://bpcpatientjourney.netlify.app
 
 ## What's in here
 
 | File | Purpose |
 | --- | --- |
 | `index.html` | The entire application. Self-contained — all HTML, CSS, JS, case data and fonts are inlined. No build step, no dependencies, no network calls. |
+| `netlify.toml` | Netlify config. Publish directory `.`, no build command. |
 
 That's it. This is a single-file static site.
 
 ## Deploying
 
-### GitHub Pages (connected to this repo)
-Settings → Pages → Build and deployment → Source: **Deploy from a branch**,
-Branch: `main`, folder `/ (root)`. Every push to `main` redeploys automatically
-within a minute or two — no tokens, no build step, no config file needed.
+### Netlify (connected to this repo)
+1. Netlify → Add new project → Import from Git → pick this repo.
+2. Build command: leave empty. Publish directory: `.`
+3. Deploy. Every push to `main` redeploys automatically.
 
 ### Anywhere else
 Serve the folder. Or just open `index.html` in a browser — it works offline.
