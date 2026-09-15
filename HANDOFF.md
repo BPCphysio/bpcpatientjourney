@@ -1,85 +1,11 @@
-# Handoff — put this site on GitHub and reconnect Netlify
+# Maintenance notes
 
-Paste this whole file to Claude Code (or follow it yourself). Everything needed
-is in this folder; nothing has to be built or compiled.
+The GitHub migration described in earlier versions of this file is done: the
+site lives at [github.com/BPCphysio/bpcpatientjourney](https://github.com/BPCphysio/bpcpatientjourney)
+and deploys via GitHub Pages (`main` branch, root folder) — no Netlify, no
+tokens, no build step.
 
-## Context
-
-- The site is **one self-contained file**: `index.html` (~600 KB). All CSS, JS,
-  fonts and scenario data are inlined. No npm, no bundler, no framework install,
-  no API keys, no environment variables.
-- It is currently live at **bpcpatientjourney.netlify.app**, last deployed by
-  **Netlify Drop** (manual drag-and-drop). That's the problem being solved: drop
-  deploys can't be updated from a repo.
-- Goal: create a new GitHub repository, push these files, and point the existing
-  Netlify project at that repo so future updates are `git push` instead of a
-  manual drop.
-- Note: the Netlify team is currently on operational credits, so **production
-  deploys are paused** until the plan is upgraded or the billing cycle resets.
-  Do the GitHub side now; the Netlify link will deploy once deploys resume.
-
-## Files to commit
-
-```
-index.html      the whole application — do not modify
-netlify.toml    Netlify config (publish ".", no build command)
-README.md       what the project is and how to update it
-.gitignore
-```
-
-## Step 1 — create the repo and push
-
-```bash
-cd path/to/this/folder
-
-git init
-git add .
-git commit -m "Initial commit: BPC patient journey scenario trainer"
-git branch -M main
-
-# Requires GitHub CLI (`brew install gh`, then `gh auth login`)
-gh repo create bpcpatientjourney --public --source=. --remote=origin --push
-```
-
-No GitHub CLI? Create an empty repo named `bpcpatientjourney` at
-github.com/new (no README, no .gitignore, no licence), then:
-
-```bash
-git remote add origin https://github.com/<username>/bpcpatientjourney.git
-git push -u origin main
-```
-
-`index.html` is ~600 KB — well under every GitHub limit. No Git LFS needed.
-
-## Step 2 — connect Netlify to the repo
-
-In the Netlify dashboard, in the existing **bpcpatientjourney** project:
-
-1. **Project configuration → Build & deploy → Continuous deployment**
-2. **Link repository** → GitHub → authorise → pick `bpcpatientjourney`
-3. Settings:
-   - Branch to deploy: `main`
-   - Build command: **leave empty**
-   - Publish directory: `.`
-4. Save.
-
-The `netlify.toml` in the repo already declares these, so Netlify should read
-them automatically — confirm rather than retype.
-
-Linking a repo replaces the Drop deploy source. The domain
-`bpcpatientjourney.netlify.app` stays the same and the currently published site
-keeps serving until a new deploy succeeds.
-
-## Step 3 — verify
-
-After the first repo deploy:
-
-- Load `https://bpcpatientjourney.netlify.app` and check the trainer renders and
-  a case can be worked through end to end.
-- Confirm the deploy log shows "No build command" and publishes 1 file.
-- Confirm a trivial push (edit README) triggers an automatic redeploy.
-
-## How updates work from here
+## How updates work
 
 `index.html` is **generated output**, not source. New scenario cases and UI
 changes are authored in the design tool that produced it and re-bundled into a
@@ -92,10 +18,40 @@ git commit -m "Update scenario cases"
 git push
 ```
 
-Netlify redeploys on push. Claude Code should **not** rewrite, reformat,
-prettify, minify or refactor `index.html` — it is bundled output and any edit
-will be lost on the next bundle. Small one-off text corrections are fine if the
-same fix is also reported back so it can be made in the source.
+GitHub Pages redeploys on push, usually within a minute or two. Claude Code
+should **not** rewrite, reformat, prettify, minify or refactor `index.html` —
+it is bundled output and any edit will be lost on the next bundle. Small
+one-off text corrections are fine if the same fix is also reported back so it
+can be made in the source.
+
+A design-tool export bundles `index.html` alongside its own copies of
+`README.md`, `netlify.toml` and `.gitignore` — those are stale (still
+Netlify-flavored) and should **not** overwrite the versions in this repo; only
+`index.html` gets replaced wholesale.
+
+## What changed in this build (Sept 2026)
+
+1. **Staff passcode is now `12345678`** (was `BPC12345678`).
+2. **The marking view is now folders, not one long list.** One card per person;
+   click a person to read only their answers; "← All people" goes back.
+3. **People are grouped by the nickname they type**, matched case- and
+   spacing-insensitively. Nobody is pre-registered — the first time a person
+   types a name that becomes their folder, and typing it again returns them to
+   it. Names used on a device are offered as one-tap chips.
+4. **Dashboard on the marking home screen** — four headline figures (people,
+   answers in, still to mark, cases covered) and a "where the team is weakest"
+   list ranking cases by how often the pre-arrival multiple choice was answered
+   wrong. Each person card now shows a marked/unmarked progress bar.
+5. **Thai mode fixed.** The four step prompts were hard-baked in English and
+   stayed English when Thai was selected — they now follow the language, as does
+   every label, button and note. Case prose (title, brief, reveal, model answer,
+   the multiple-choice options) is still English for the 45 current cases: the
+   Thai translation table is keyed to the retired case ids, so it no longer
+   matches. In Thai mode each case now says so honestly instead of silently
+   showing English. Translating the 45 cases is a separate batch of work.
+
+Nothing about deployment changes: the rebuilt `index.html` in this folder is the
+whole site.
 
 ## Current content state
 
