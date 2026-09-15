@@ -1,0 +1,16 @@
+# Netlify config for bpcpatientjourney
+# Static site: no build step. Everything is inside index.html.
+
+[build]
+  publish = "."
+  command = ""
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
