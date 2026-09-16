@@ -18,7 +18,8 @@ or keep updating the file in this repo.
 
 The Apps Script keeps its data in the Drive folder **BPC Trainer Responses**:
 one `.json` per submitted answer, plus a spreadsheet of the same name with a
-`Sheet1` log and a **People** tab.
+`Sheet1` log (one row per answer; column H `Scenario ID` is what the
+progress lookup reads, filled in automatically) and a **People** tab.
 
 Changing the script: edit `Code.gs`, save, then **Deploy → Manage
 deployments → pencil → Version: New version → Deploy**. Saving alone does not
