@@ -17,9 +17,12 @@ or keep updating the file in this repo.
 | Apps Script "Patient Journey" | Google Drive of contact@bpcphysio.com | Stores answers, the staff passcode, the People roster |
 
 The Apps Script keeps its data in the Drive folder **BPC Trainer Responses**:
-one `.json` per submitted answer, plus a spreadsheet of the same name with a
-`Sheet1` log (one row per answer; column H `Scenario ID` is what the
-progress lookup reads, filled in automatically) and a **People** tab.
+one `.json` per submitted answer, an `index.json` the script maintains (every
+answer in light form, without image/audio data — what the marking view and
+the progress lookup read, one file instead of one per answer; rebuilt
+automatically if it is ever missing), plus a spreadsheet of the same name
+with a `Sheet1` log and a **People** tab. The marking view fetches an
+answer's image/audio only when its card is opened.
 
 Changing the script: edit `Code.gs`, save, then **Deploy → Manage
 deployments → pencil → Version: New version → Deploy**. Saving alone does not
