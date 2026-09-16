@@ -1,57 +1,60 @@
 # Maintenance notes
 
-The GitHub migration described in earlier versions of this file is done: the
-site lives at [github.com/BPCphysio/bpcpatientjourney](https://github.com/BPCphysio/bpcpatientjourney)
-and deploys via GitHub Pages (`main` branch, root folder) — no Netlify, no
-tokens, no build step.
+The site lives at [github.com/BPCphysio/bpcpatientjourney](https://github.com/BPCphysio/bpcpatientjourney)
+and deploys via GitHub Pages (`main` branch, root folder) — no tokens, no
+build step. Live: https://bpcphysio.github.io/bpcpatientjourney/
 
-## How updates work
+**This repo is the source of truth for `index.html`.** The bug fixes below
+were made directly in the bundle here. If a new bundle is ever exported from
+the design tool, it will not contain them — either re-apply them there first
+or keep updating the file in this repo.
 
-`index.html` is **generated output**, not source. New scenario cases and UI
-changes are authored in the design tool that produced it and re-bundled into a
-fresh single file. To publish:
+## The two halves
 
-```bash
-# replace index.html with the newly bundled file, then
-git add index.html
-git commit -m "Update scenario cases"
-git push
-```
+| Piece | Where | Purpose |
+| --- | --- | --- |
+| `index.html` | this repo → GitHub Pages | The whole trainer UI and the 45 cases |
+| Apps Script "Patient Journey" | Google Drive of contact@bpcphysio.com | Stores answers, the staff passcode, the People roster |
 
-GitHub Pages redeploys on push, usually within a minute or two. Claude Code
-should **not** rewrite, reformat, prettify, minify or refactor `index.html` —
-it is bundled output and any edit will be lost on the next bundle. Small
-one-off text corrections are fine if the same fix is also reported back so it
-can be made in the source.
+The Apps Script keeps its data in the Drive folder **BPC Trainer Responses**:
+one `.json` per submitted answer, plus a spreadsheet of the same name with a
+`Sheet1` log and a **People** tab.
 
-A design-tool export bundles `index.html` alongside its own copies of
-`README.md`, `netlify.toml` and `.gitignore` — those are stale (still
-Netlify-flavored) and should **not** overwrite the versions in this repo; only
-`index.html` gets replaced wholesale.
+Changing the script: edit `Code.gs`, save, then **Deploy → Manage
+deployments → pencil → Version: New version → Deploy**. Saving alone does not
+change the live `/exec` URL.
 
-## What changed in this build (Sept 2026)
+## Staff passcode
 
-1. **Staff passcode is now `12345678`** (was `BPC12345678`).
-2. **The marking view is now folders, not one long list.** One card per person;
-   click a person to read only their answers; "← All people" goes back.
-3. **People are grouped by the nickname they type**, matched case- and
-   spacing-insensitively. Nobody is pre-registered — the first time a person
-   types a name that becomes their folder, and typing it again returns them to
-   it. Names used on a device are offered as one-tap chips.
-4. **Dashboard on the marking home screen** — four headline figures (people,
-   answers in, still to mark, cases covered) and a "where the team is weakest"
-   list ranking cases by how often the pre-arrival multiple choice was answered
-   wrong. Each person card now shows a marked/unmarked progress bar.
-5. **Thai mode fixed.** The four step prompts were hard-baked in English and
-   stayed English when Thai was selected — they now follow the language, as does
-   every label, button and note. Case prose (title, brief, reveal, model answer,
-   the multiple-choice options) is still English for the 45 current cases: the
-   Thai translation table is keyed to the retired case ids, so it no longer
-   matches. In Thai mode each case now says so honestly instead of silently
-   showing English. Translating the 45 cases is a separate batch of work.
+`var ADMIN_KEY` at the top of `Code.gs` (currently `12345678`). The passcode
+is checked by the script, not by `index.html`.
 
-Nothing about deployment changes: the rebuilt `index.html` in this folder is the
-whole site.
+## People roster (Thai / English names are one person)
+
+The **People** tab in the spreadsheet has one row per physio:
+
+| Name | Thai name | Other spellings (comma-separated) |
+| --- | --- | --- |
+| Moo | หมู | Mu, Mhoo |
+
+Any of those spellings typed on the start screen resolves to the row's
+`Name`, for progress and for the marking-view folders. The tab is created
+automatically the first time the script needs it, pre-filled with every name
+that has answered so far — the clinic only fills in the Thai/English pairs.
+The start screen shows the roster as tap-to-pick chips (Thai names in Thai
+mode), so typing is the fallback, not the norm.
+
+## How progress works
+
+Progress follows the **person**, not the browser. When someone presses
+*Start my six cases* the trainer asks the script which cases that name has
+already answered, and continues from there: one answered → *Case 2 of 6*,
+two → *Case 3 of 6*, and so on, on any device. Answers in progress but not
+yet submitted are still only on the device they were written on.
+
+Submissions carry one id per attempt, and the script treats a resend of the
+same id as already received — a phone that drops the connection mid-submit
+no longer produces a duplicate record.
 
 ## Current content state
 
@@ -62,5 +65,6 @@ what the call actually found, followed by 4, upload the image you would have on
 the screen when the patient walks in, with a box to explain why that image and
 what it changes about the session.
 
-Three of the 45 are written out in full for review in the separate sample-cases
-document; the rest follow the same four-step shape.
+The four step prompts, labels and buttons follow the chosen language. Case
+prose (title, brief, reveal, model answer, options) is still English for the
+45 current cases; translating them is a separate batch of work.
