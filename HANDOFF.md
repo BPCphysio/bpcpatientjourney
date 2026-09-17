@@ -60,6 +60,14 @@ Submissions carry one id per attempt, and the script treats a resend of the
 same id as already received — a phone that drops the connection mid-submit
 no longer produces a duplicate record.
 
+If a send fails, the app first asks the script whether the answer landed
+anyway (`?exists=<id>`), and if not, keeps it in an **outbox** on the phone
+and moves the person on to the next case. The outbox sends itself: a few
+seconds after the app opens, once a minute while it is open, when the phone
+comes back online, and after each successful send. The start screen shows
+"N answers waiting to send" until it is empty. Voice recordings are stored
+at 32 kbps (about 0.25 MB per minute), images at 1100 px JPEG.
+
 ## Current content state
 
 45 cases are in the live bundle. Each case runs four steps: 1 multiple choice
