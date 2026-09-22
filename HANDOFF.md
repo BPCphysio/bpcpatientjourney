@@ -4,10 +4,14 @@ The site lives at [github.com/BPCphysio/bpcpatientjourney](https://github.com/BP
 and deploys via GitHub Pages (`main` branch, root folder) — no tokens, no
 build step. Live: https://bpcphysio.github.io/bpcpatientjourney/
 
-**This repo is the source of truth for `index.html`.** The bug fixes below
-were made directly in the bundle here. If a new bundle is ever exported from
-the design tool, it will not contain them — either re-apply them there first
-or keep updating the file in this repo.
+**This repo is the source of truth for `index.html`.** The fixes described
+below live only in the bundle here. A fresh export from the design tool
+(the folder with `index.html`, `HANDOFF.md`, `NAME-ALIASES.md`, …) does
+**not** contain them — never upload it to GitHub as-is. Hand the export to
+Claude Code and it merges the new content (cases, Thai, UI) with the fixes;
+`C:\tmp\bundle_js\merge.py` in the last session is the script that did it
+for build TH-45. The grey footer line prints the design tool's build stamp
+(`build TH-45`) so you can see which content build is live.
 
 ## The two halves
 
