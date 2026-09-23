@@ -170,28 +170,27 @@ block was the one she was reading at 04:08 when she misread the case title
 feeds the "cases covered" figure. Gone: the `perCase`/`weak` computation, the
 `weak`/`hasWeak`/`mkWeakest` exposures and the template block.
 
-## B8. The answer key must be read — OUTSTANDING
+## B8. Record how long the answer key was open — OUTSTANDING
 
-The reveal is the learning moment, and นิมิต was not sure anyone was reading
-it: *"นักกายภาพทุกคนที่ทำข้อสอบ ต้องอ่านเฉลย ทุกข้อ (ฉันไม่แน่ใจว่า… เขาอ่านกันไหม
-เพราะมันเป็น turning point ของการทำข้อสอบที่จะทำให้เรียนรู้และตาสว่าง)"*
+**Do not add a confirmation tick or block Submit.** A "I have read this
+answer" checkbox that gated Submit was built and then removed the same day at
+the clinic's request — nothing is enforced. Submit is always enabled.
 
-Taker side:
+What remains is passive and invisible to the physio:
 
-- `doReveal` stamps `revealedAt`.
-- Under the model answer, a checkbox **"I have read this answer"** /
-  **"อ่านเฉลยนี้แล้ว"** bound to `readOk`.
-- Submit is disabled while `revealed && !readOk`, and the note beside it
-  reads "Read the answer above, then tick the box to send." /
-  "อ่านเฉลยด้านบนก่อน แล้วติ๊กช่องเพื่อส่งคำตอบ".
-- `revealedAt` and `readOk` live in state **and in the saved session**, and
-  reset on every new case (`begin`, `next`/`advance`, `moreCases`).
-- The submitted record carries `readOk` and `readMs` (now − `revealedAt`).
+- `doReveal` stamps `revealedAt` in state, and it is carried in the saved
+  session so a resume keeps it. It resets on every new case (`begin`,
+  `advance`, `moreCases`).
+- The submitted record carries `readMs` = now − `revealedAt`, or `null` if
+  the reveal was never opened.
+- The marking card shows a tag: `Answer key open · 1:12` / `เปิดเฉลย · 1:12`,
+  or `Answer key time not recorded` / `ไม่มีข้อมูลเวลาอ่านเฉลย` for records
+  made before this existed.
 
-Marking side: a tag on each card reading `Read the answer · 1:12` or
-`Did not confirm reading the answer`. New `MK` keys: `readFor(s)`, `readNot`;
-`UI` keys: `readIt`, `readFirst`. Records from before this change have no
-`readOk`, so they show the second form — that is correct, not a bug.
+This answers นิมิต's worry — *"ฉันไม่แน่ใจว่า… เขาอ่านกันไหม"* — by letting her
+see it, without putting a hurdle in front of the physios.
+
+New `MK` keys: `readFor(s)`, `readNot`.
 
 ## B9. Drag and drop an image — OUTSTANDING
 
