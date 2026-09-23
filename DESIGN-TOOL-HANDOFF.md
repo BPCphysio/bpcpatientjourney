@@ -60,9 +60,13 @@ page under load.
 
 ---
 
-# Part B — new work, from the clinic's meeting with the Senior PT
+# Part B — from the clinic's meeting with the Senior PT
 
-## B1. Thai example answers are missing on the site
+B1, B2 and B3 were delivered in build TH-49 and verified. They are kept
+here only so they are not lost by a later export. **B5 and B6 are the
+outstanding work.**
+
+## B1. Thai example answers — DONE in TH-49
 
 The Thai case files carry Thai `title`, `brief`, `model` and `reveal` for all
 45 cases — but **zero** per-question `key` entries and **zero** `q5key`.
@@ -80,7 +84,7 @@ Add, for all 45 cases in `th-cases-1.js`, `th-cases-2.js`, `th-cases-3.js`:
 Clinic Thai in the existing style — not a word-for-word translation of the
 English.
 
-## B2. Four cases per physio instead of six
+## B2. Four cases per physio — DONE in TH-49
 
 Do **not** simply trim `BUCKETS`. Trimming to the first four caps difficulty
 at 4, and the Senior PT's specific complaint (02:00) is that he has never yet
@@ -99,7 +103,7 @@ These eight copy strings still say six and must change in both languages:
 `startBody`, `begin`, `ready`, `doneTitle` in the English `UI`, and the same
 four in the Thai `UI`.
 
-## B3. Scores by person on the marking dashboard
+## B3. Scores by person — DONE in TH-49
 
 Built live on 23 Sept — bake it into source so the next export keeps it. The
 Senior PT asked for this twice (03:37 and 04:21): he wants **names, not
@@ -124,6 +128,35 @@ averaged into the note.
 per-question verdict label. These strings are `noMarksYet`, `byPerson`,
 `scoreOf`, `markedOf`. A duplicate key in that object literal is silently
 overwritten rather than flagged — it cost an afternoon once already.
+
+## B5. The marking card must show the scenario — OUTSTANDING
+
+An opened marking card listed the physio's answers, the model answers and the
+verdicts — but never the case itself, so a senior was judging replies without
+seeing the chart the physio had read. The Senior PT raised it as "the
+scenarios are not there in marking mode".
+
+An opened card now starts with two blocks, above the questions, both taken
+from the language-resolved case (`this.view(rawSc)`) so they follow the
+toggle:
+
+- **"The chart they were given"** / **"ชาร์ตที่เขาได้รับ"** — the case `brief`.
+- **"What the call surfaced"** / **"สิ่งที่ได้จากการโทร"** — the case `reveal`,
+  slightly dimmer. Needed because question 4 is answered after the reveal.
+
+New `MK` keys: `theCase`, `theCall`. Row fields: `brief`, `hasBrief`,
+`reveal`, `hasReveal`, `mkTheCase`, `mkTheCall`. Both use `white-space:
+pre-wrap` — the charts rely on their line breaks.
+
+## B6. Stop shipping the Netlify files — OUTSTANDING
+
+Every export still contains `netlify.toml` and a `README.md` whose **Live**
+link points at `bpcpatientjourney.netlify.app`. The site has been on GitHub
+Pages since 8 Sept; neither file is in the repo and both are discarded on
+every merge, but they keep making the clinic think Netlify is still involved.
+Please drop `netlify.toml` from the export, and either drop `README.md` or
+point it at https://bpcphysio.github.io/bpcpatientjourney/ with the Netlify
+section removed.
 
 ## B4. Heads-up only — no work yet
 
