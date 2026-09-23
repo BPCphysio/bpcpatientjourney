@@ -1,126 +1,149 @@
-# For Claude Design — fold these live fixes into `BPC Scenario Trainer.dc.html`
+# For Claude Design — work for the next export
 
 Paste this whole file into the Claude Design chat.
 
-The live site (github.com/BPCphysio/bpcpatientjourney, deployed by GitHub
-Pages) is build **TH-45** plus a set of fixes that were made directly in the
-compiled `index.html` by Claude Code. Every export from here overwrites them,
-so please make them part of the source. Nothing below changes the cases, the
-Thai, the marking-view layout or the dashboard — keep all of that exactly as
-it is, and keep the `NAME_ALIASES` table.
+The live site is github.com/BPCphysio/bpcpatientjourney, deployed by GitHub
+Pages. It is currently your **build TH-46** plus small corrections made in the
+compiled `index.html` by Claude Code. Every export overwrites that file, so
+anything in Part B has to become part of your source or it is lost.
 
-The backend (Google Apps Script "Patient Journey", same `ENDPOINT` URL as
-today) already supports everything below. Its contract:
+Do not change the 45 cases, the Thai translations, the marking-view layout,
+the dashboard or the `NAME_ALIASES` table beyond what is asked below.
+
+## The backend contract
+
+Google Apps Script "Patient Journey", same `ENDPOINT` URL as today. It already
+supports all of this — no backend work is needed from you.
 
 | Request | Returns |
 | --- | --- |
 | `GET ?roster=1` | `{ok, people:[{name, th, aliases:[]}]}` — the clinic's People sheet |
-| `GET ?who=<name>` | `{ok, done:[scenarioId…]}` — cases this person has already answered (any spelling; the script resolves aliases) |
+| `GET ?who=<name>` | `{ok, done:[scenarioId…]}` — cases this person has answered (any spelling; the script resolves aliases) |
 | `GET ?exists=<responseId>` | `{ok, exists:true/false}` |
-| `GET ?key=<passcode>` | `{ok, responses:[…]}` — **light** records: no image/audio data, each has `media:[answerKeys]` and `person` (resolved name) |
-| `GET ?key=<passcode>&id=<responseId>` | `{ok, response}` — one full record with image/audio |
+| `GET ?key=<passcode>` | `{ok, responses:[…]}` — **light** records: no image/audio, each has `media:[answerKeys]` and `person` (resolved name) |
+| `GET ?key=<passcode>&id=<responseId>` | `{ok, response}` — one full record |
+| `GET ?key=<passcode>&id=<responseId>&k=<answerKey>` | `{ok, key, value}` — **one** image or recording on its own |
 | `POST {response}` | `{ok, id}`; a resend of the same `id` returns `{ok, duplicate:true}` and stores nothing |
-| `POST {action:'mark'|'delete', key, id, marks}` | unchanged |
+| `POST {action:'mark'\|'delete', key, id, marks}` | unchanged |
 
-## 1. Progress follows the person, not the device
+---
 
-Today the six-case set and its position live only in the browser's
-localStorage. Someone who did case 1 on the phone and comes back on another
-device, or presses *Start my six cases* instead of *Carry on*, starts at
-"Case 1 of 6" again.
+# Part A — already in your TH-46 source. Keep it, don't rebuild it.
 
-Wanted behaviour:
+These six were checked and confirmed present in your last export. Listed only
+so they are not dropped by accident:
 
-- `begin` first checks the stored session; if its `taker` resolves to the same
-  person as the typed name, it **resumes** it instead of starting fresh.
-- Otherwise it asks the script `?who=<name>` (allow up to 45 s; show
-  "Checking your progress with the clinic…" / "กำลังตรวจสอบความคืบหน้าของคุณกับคลินิก…"
-  and disable the button meanwhile). On failure fall back to the local `done`
-  list.
-- `offset = done.length % 6`. Build the queue from the remaining difficulty
-  bands only — `BUCKETS.slice(offset)` — and keep `qiOffset` in state and in
-  the saved session. Labels count from the real position:
-  `Case (qi + qiOffset + 1) of 6`, next-case label `qi + qiOffset + 2`, the
-  welcome-back note likewise. `total` is `BUCKETS.length`, not the queue length.
-- `moreCases` starts a fresh set with offset 0; `finish` resets `qiOffset`.
+1. **Progress follows the person**, via `?who=`, with `qiOffset` and
+   `BUCKETS.slice(offset)`.
+2. **One `attemptId` per attempt**, so a resend never duplicates.
+3. **`?exists=` check before reporting a failed send**, plus the offline
+   outbox that resends by itself.
+4. **Roster chips and `canonical()`**, layered over `NAME_ALIASES`.
+5. **Hydrate-on-open** in the marking view.
+6. **Page title** `BPC Patient Journey Trainer`.
 
-## 2. One id per attempt (no duplicates)
+Two corrections Claude Code had to make on top of TH-46 — please fix these in
+source so they stop coming back:
 
-`submit` currently mints a new response id on every click. A phone that lost
-the confirmation re-sends and creates a copy.
+- `begin()` called `buildQueue(offset)` **inside** the `setState` literal, so
+  the queue was still built from the stale local `done` list and a returning
+  physio could be handed a case they had already answered. Pass the freshly
+  fetched list in: `buildQueue(offset, done)`.
+- The bundler shell still ships `<title>Bundled Page</title>` in the outer
+  HTML even though the app sets its own title.
 
-- Keep `attemptId` in state and in the saved session; create it when a case is
-  shown (in `begin`, `resume`, `moreCases`) and after each successful submit
-  (`advance` sets a fresh one for the next case).
-- `submit` uses `id: this.state.attemptId`.
+Also, when a card is opened, fetch its media **one piece at a time** (images
+first), not in parallel — Apps Script refuses concurrent requests from the
+same person and answers all of them with an error page after about a minute.
+Retry each piece up to three times; the script intermittently returns an error
+page under load.
 
-## 3. Confirm before reporting a failed send, and an outbox
+---
 
-Big answers (voice + image) on a weak signal often reach the clinic while the
-reply never reaches the phone.
+# Part B — new work, from the clinic's meeting with the Senior PT
 
-- `landed(id)`: `GET ?exists=<id>` (two tries, 20 s each) → true/false.
-- In `submit`: on any error, `if (await this.landed(id))` treat as received.
-  On a retry while an error is showing, call `landed` **before** uploading.
-- If it really did not land: `queueOutbox(r)` (localStorage `bpc_pj_outbox`),
-  still `advance()` and go to the *between* screen with title
-  "Saved — will send when there is signal." / "เก็บคำตอบไว้แล้ว — จะส่งเมื่อมีสัญญาณ"
-  and body "…kept on this device and will send themselves when there is a
-  connection. Nothing more to do; carry on to the next case."
-- `drainOutbox()`: for each queued answer, `landed` → drop; else POST → on
-  `ok` drop; else if `landed` drop. Run it 3 s after mount, every 60 s, on the
-  `window` `online` event, and 0.5 s after each successful submit. Guard with a
-  `draining` flag.
-- State `pending` = outbox length. On the start screen and the between screen
-  show, when `pending > 0`:
-  "N answers are waiting to send — they go automatically when there is signal;
-  just open this page for a moment somewhere with a good connection." (Thai:
-  "มี N คำตอบรอส่ง — จะส่งให้เองเมื่อมีสัญญาณ เปิดหน้านี้ทิ้งไว้สักครู่เมื่อมีสัญญาณดี").
+## B1. Thai example answers are missing on the site
 
-## 4. Roster chips + canonical names (on top of `NAME_ALIASES`)
+The Thai case files carry Thai `title`, `brief`, `model` and `reveal` for all
+45 cases — but **zero** per-question `key` entries and **zero** `q5key`.
 
-- On mount, `GET ?roster=1`; cache in localStorage `bpc_pj_roster`.
-- Start screen: when the roster is non-empty, the chips under the name field
-  are the roster ("Tap your name:" / "แตะชื่อของคุณ:"), showing the Thai name in
-  Thai mode; picking one sets the name field. Fall back to the device's
-  remembered names when the roster is empty.
-- `canonical(name)`: `canonName(name)` from `NAME_ALIASES` first, then match
-  the result against roster `name` / `th` / `aliases` (using `folderKey`).
-  Use it for `who` on submit and for the `?who=` lookup.
-- Marking view: group folders by `r.person || r.who` (the script resolves
-  the person), keep the "Signed in as …" note.
+The marking view shows the per-question `key` under the label
+"คำตอบตัวอย่าง", so in Thai mode the senior sees a Thai label with English
+text underneath. This is the Senior PT's complaint at 00:42 and 05:04 of the
+meeting.
 
-## 5. Fast marking view
+Add, for all 45 cases in `th-cases-1.js`, `th-cases-2.js`, `th-cases-3.js`:
 
-- `load(key)` unchanged — the list is already light (no media).
-- When a card is opened (`toggle` with `open === false`), call `hydrate(r)`:
-  `GET ?key=&id=<r.id>` and merge `response.answers` into that record, mark
-  `full: true`. While a media key is listed in `r.media` but not yet loaded,
-  show "Loading…" / "กำลังโหลด…" instead of "No answer".
+- a Thai `key` on **every** question, and
+- `q5key`.
 
-## 6. Scores by person on the marking dashboard
+Clinic Thai in the existing style — not a word-for-word translation of the
+English.
 
-Added live on 23 Sept, from the senior's meeting: above "Everyone who has
-answered", a list headed **"Scores by person — weakest first"** / **"คะแนนรายคน
-— คนที่ต้องช่วยก่อน"**. One row per person: their percentage of correct
-pre-arrival multiple choices, their name, and a note reading
-`N of M pre-arrival choices right · K marked, average X/5` (or
-`· nothing marked yet`). Sorted lowest first, and tapping a row opens that
-person's folder. No marking needed — the multiple choice is objective.
+## B2. Four cases per physio instead of six
 
-Watch the `MK` dictionary for duplicate keys: `notMarked` already existed as
-the per-question verdict label, so these use `noMarksYet`, `byPerson`,
-`scoreOf` and `markedOf`. A repeated key in that object literal is silently
-overwritten rather than flagged.
+Do **not** simply trim `BUCKETS`. Trimming to the first four caps difficulty
+at 4, and the Senior PT's specific complaint (02:00) is that he has never yet
+reached a level-5 case. Rebalance so four cases still climb to 5:
 
-## 7. Small things
+```js
+const BUCKETS = [[1, 2], [2], [3], [3, 4], [4], [5]];   // now
+const BUCKETS = [[1, 2], [3], [4], [5]];                // wanted
+```
 
-- `<title>` is `BPC Patient Journey Trainer` (the export ships "Bundled Page").
-- Keep the build stamp in the footer and bump it with each export.
-- No timer (already agreed).
+Progress labels ("Case 2 of 4", the welcome-back note, the next-case button)
+already derive from `BUCKETS.length`. Keep it that way rather than hardcoding
+a 4 anywhere.
 
-## After the next export
+These eight copy strings still say six and must change in both languages:
+`startBody`, `begin`, `ready`, `doneTitle` in the English `UI`, and the same
+four in the Thai `UI`.
 
-Send the export folder to Claude Code, not to GitHub. Claude Code checks the
-footer stamp and that all six behaviours above are present, then commits. Once
-an export contains them all, uploading straight to GitHub becomes safe again.
+## B3. Scores by person on the marking dashboard
+
+Built live on 23 Sept — bake it into source so the next export keeps it. The
+Senior PT asked for this twice (03:37 and 04:21): he wants **names, not
+scenario titles**, as the headline of the dashboard.
+
+Above "Everyone who has answered", a list headed **"Scores by person —
+weakest first"** / **"คะแนนรายคน — คนที่ต้องช่วยก่อน"**. One row per person:
+
+- their percentage of correct pre-arrival multiple choices,
+- their name,
+- a note: `N of M pre-arrival choices right · K marked, average X/5`, or
+  `· nothing marked yet` when he has not scored any of their answers.
+
+Sorted lowest percentage first. Tapping a row opens that person's folder —
+that is his "zoom in on the 30% people and read what they wrote" (04:43).
+
+No marking is required for this: the pre-arrival multiple choice is
+objectively right or wrong, and whatever he has already scored out of 5 is
+averaged into the note.
+
+**Careful with the `MK` dictionary:** `notMarked` already exists as the
+per-question verdict label. These strings are `noMarksYet`, `byPerson`,
+`scoreOf`, `markedOf`. A duplicate key in that object literal is silently
+overwritten rather than flagged — it cost an afternoon once already.
+
+## B4. Heads-up only — no work yet
+
+Automatic grading of questions 2 and 3 is being built on the Claude Code side,
+**without any AI service or API key**, by checking whether an answer covers
+the concepts a good answer must contain. The Senior PT named the recurring
+ones himself at 05:40: Severity of Symptoms, History of Treatment, Mechanism
+of Injury.
+
+That will add a new per-question data field holding those concepts together
+with the different Thai and English wordings physios use for each. Question 4
+(the image) stays manually graded — he said so explicitly at 05:04.
+
+Do not build anything for this. Just expect case data to grow a field.
+
+---
+
+## When you are done
+
+Hand the export folder to Claude Code rather than uploading it to GitHub. It
+checks the footer build stamp and that everything in Part A survived, then
+commits. Once an export arrives with all of it intact, uploading straight to
+GitHub becomes safe again.
