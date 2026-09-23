@@ -1,0 +1,124 @@
+{
+  "_about": "Shared concept library for grading questions 2 and 3. A physio's answer is scanned for each concept a case requires; the score is coverage. Matching is plain substring, case-folded, so Thai needs no word splitting. Draft for the Senior PT to correct: add wordings under 'say', remove concepts that do not belong, change which ones a case requires.",
+  "_status": "DRAFT — c01 to c05 only, for format review",
+
+  "concepts": {
+    "duration": {
+      "th": "เป็นมานานเท่าไหร่",
+      "en": "How long it has been going on",
+      "say": ["นานแค่ไหน", "มานานเท่าไหร่", "เป็นมานาน", "เริ่มเมื่อไหร่", "เริ่มเมื่อไร", "ตั้งแต่เมื่อไหร่", "กี่วัน", "กี่อาทิตย์", "กี่สัปดาห์", "กี่เดือน", "กี่ปี", "ระยะเวลา",
+               "how long", "since when", "when did it start", "when it started", "duration", "how many weeks", "how many months"]
+    },
+    "mechanism": {
+      "th": "สาเหตุ / เกิดขึ้นได้อย่างไร",
+      "en": "What brought it on — activity, posture, injury or gradual",
+      "say": ["เกิดจากอะไร", "สาเหตุ", "เกิดขึ้นได้อย่างไร", "เป็นได้ยังไง", "มีอุบัติเหตุ", "บาดเจ็บ", "ยกของ", "ท่าทาง", "กิจกรรม", "ล้ม", "ค่อยเป็นค่อยไป", "อยู่ๆ ก็เป็น",
+               "how did it happen", "what caused", "mechanism", "injury", "accident", "trauma", "lifting", "posture", "gradual", "sudden", "what were you doing"]
+    },
+    "progression": {
+      "th": "ตั้งแต่นั้นเปลี่ยนไปอย่างไร",
+      "en": "Better, worse or the same since it began",
+      "say": ["ดีขึ้น", "แย่ลง", "เหมือนเดิม", "เปลี่ยนไป", "ตอนนี้เป็นยังไง", "ทรงตัว",
+               "better", "worse", "same", "changed since", "improving", "getting worse", "progressed"]
+    },
+    "severity": {
+      "th": "ความรุนแรงของอาการ",
+      "en": "How bad it is, and what it stops them doing",
+      "say": ["ปวดแค่ไหน", "ระดับความปวด", "เต็ม 10", "คะแนนความปวด", "รุนแรง", "ทำอะไรไม่ได้", "ทำอะไรได้บ้าง", "กระทบ", "รบกวน",
+               "how bad", "pain score", "out of 10", "severity", "stops him", "stops her", "stop you doing", "limit", "affect"]
+    },
+    "aggravating_easing": {
+      "th": "อะไรทำให้ดีขึ้นหรือแย่ลง",
+      "en": "What makes it worse and what eases it",
+      "say": ["อะไรทำให้ปวดมากขึ้น", "ทำให้แย่ลง", "ทำให้ดีขึ้น", "ท่าไหนปวด", "ตอนไหนปวด", "พักแล้วดีขึ้น", "ขยับแล้ว",
+               "worse when", "eases", "aggravat", "relieve", "what makes it", "after resting", "when you move"]
+    },
+    "occupation_load": {
+      "th": "อาชีพ งานอดิเรก และภาระที่ลงกับร่างกาย",
+      "en": "Job, sport, hobbies — the physical load of their day",
+      "say": ["ทำงานอะไร", "อาชีพ", "งานอดิเรก", "เล่นกีฬา", "ออกกำลังกาย", "วันหนึ่งทำอะไร", "ยกของหนัก", "นั่งนาน", "ยืนนาน", "วิ่ง", "ซ้อม",
+               "what do you do", "occupation", "job", "work as", "hobby", "sport", "training", "running", "your day", "lifting at work", "sit all day", "stand all day"]
+    },
+    "treatment_history": {
+      "th": "เคยรักษาอะไรมาแล้วบ้าง",
+      "en": "What has already been tried — physio, injection, imaging, surgery",
+      "say": ["เคยรักษา", "รักษาอะไรมา", "เคยไปหาหมอ", "เคยทำกายภาพ", "ฉีดยา", "ผ่าตัด", "เอกซเรย์", "เคยตรวจ", "mri", "ทำอะไรมาแล้ว",
+               "treated before", "treatment so far", "seen anyone", "physio before", "injection", "surgery", "scan", "x-ray", "imaging", "what has been done"]
+    },
+    "medication": {
+      "th": "ยาที่ใช้อยู่",
+      "en": "What they are taking, and what is safe for them",
+      "say": ["กินยา", "ยาอะไร", "ยาแก้ปวด", "ยาประจำ", "กินอะไรอยู่",
+               "medication", "taking anything", "painkillers", "any drugs", "what are you taking"]
+    },
+    "red_flags": {
+      "th": "สัญญาณอันตราย",
+      "en": "Numbness, weakness, night pain, radiating pain, weight loss",
+      "say": ["ชา", "อ่อนแรง", "ร้าวลงขา", "ร้าวไป", "ปวดตอนกลางคืน", "ตื่นกลางดึก", "น้ำหนักลด", "ควบคุมปัสสาวะ", "มีไข้",
+               "numb", "weakness", "pins and needles", "radiat", "down the leg", "night pain", "wakes", "weight loss", "bladder", "bowel", "fever", "red flag"]
+    },
+    "goal_expectation": {
+      "th": "เป้าหมายและสิ่งที่เขาคาดหวัง",
+      "en": "What they want back, what they think they are coming for, any deadline",
+      "say": ["อยากได้อะไร", "คาดหวัง", "เป้าหมาย", "อยากกลับไป", "เลิกทำอะไร", "หยุดทำ", "ต้องการอะไรจากการมา", "คิดว่าจะมาทำอะไร", "มีแข่ง", "กลับไปทำงาน", "เมื่อไหร่ต้อง",
+               "what do you want", "goal", "expect", "hoping", "stopped doing", "get back to", "return to work", "deadline", "race", "event", "why are you coming", "what they think"]
+    },
+    "patient_basics": {
+      "th": "ข้อมูลพื้นฐานของคนไข้",
+      "en": "Age, which side, exactly where — when someone else did the booking",
+      "say": ["ข้างไหน", "ซ้ายหรือขวา", "อายุเท่าไหร่", "ตรงไหน", "บริเวณไหน", "จุดไหน",
+               "which side", "left or right", "how old", "age", "where exactly", "which knee", "which shoulder"]
+    },
+    "reach_the_patient": {
+      "th": "คุยกับคนไข้เองโดยตรง",
+      "en": "Get the patient on the phone rather than the person who booked",
+      "say": ["คุยกับคนไข้เอง", "ขอเบอร์คนไข้", "ให้คนไข้โทร", "พูดกับเจ้าตัว", "ติดต่อคนไข้โดยตรง",
+               "speak to the patient", "patient on the phone", "talk to him directly", "talk to her directly", "get his number", "get her number", "contact the patient"]
+    },
+    "is_there_a_problem": {
+      "th": "จริง ๆ แล้วมีปัญหาหรือไม่",
+      "en": "Whether there is a complaint at all — scheme and package bookings",
+      "say": ["มีอาการอะไรไหม", "มีปัญหาอะไรไหม", "เจ็บตรงไหนไหม", "มีอะไรให้ช่วยไหม", "ปวดอะไรหรือเปล่า",
+               "any problem at all", "is there a complaint", "anything bothering", "do you have pain", "whether he has a problem", "whether she has a problem"]
+    }
+  },
+
+  "cases": {
+    "c01": {
+      "title": "Lower back / ปวดหลังล่าง",
+      "q2": ["duration", "mechanism", "occupation_load", "goal_expectation", "medication"],
+      "q2_expected": 3,
+      "note": "Model answer asks: how long + how it started; what her day is (nursery, lifting children); what she has stopped doing and what she is taking (breastfeeding)."
+    },
+    "c02": {
+      "title": "Focus: shoulders",
+      "q2": ["is_there_a_problem", "duration", "severity", "treatment_history", "goal_expectation"],
+      "q2_expected": 3,
+      "note": "Scheme booking. Is there a complaint at all; then an ordinary history — how long, what it stops him doing, what has been done (the injection); and what he thinks he is coming for (a massage)."
+    },
+    "c03": {
+      "title": "Booked by a friend",
+      "q2": ["reach_the_patient", "patient_basics", "duration", "severity", "goal_expectation"],
+      "q2_expected": 3,
+      "note": "Third-party booking. Get the patient on the phone; which side, how long, what the knee does (locking, swelling); what he wants from the visit (whether he needs a scan)."
+    },
+    "c04": {
+      "title": "Sports massage, please",
+      "q2": ["goal_expectation", "duration", "occupation_load", "aggravating_easing"],
+      "q2_expected": 3,
+      "note": "What he wants the massage for; how long the tightness and what it does when he runs (40 km a week, relief lasts two days); anything coming up (a race in five weeks)."
+    },
+    "c05": {
+      "title": "I need a certificate",
+      "q2": ["mechanism", "progression", "red_flags", "goal_expectation"],
+      "q2_expected": 3,
+      "note": "What actually happened and how it has changed; the negatives — leg pain, numbness, weakness; what he needs to be able to do and when (in and out of a van, return to work)."
+    }
+  },
+
+  "scoring": {
+    "_about": "Question 2 scores on how many required concepts the answer covers. Question 3 scores on how many of those the physio ties to a consequence for the first session.",
+    "map": {"3": 5, "2": 4, "1": 2, "0": 0},
+    "_note": "Out of q2_expected. Covering more than expected does not score higher. The senior can override every score."
+  }
+}
