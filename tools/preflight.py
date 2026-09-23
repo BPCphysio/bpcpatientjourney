@@ -302,6 +302,41 @@ if clipped:
 else:
     ok('Thai copy uses the full word for physiotherapist')
 
+# The same word rule applies to the 45 cases, which live compressed in the
+# manifest rather than in the template. The only places allowed to say
+# "physio" are four patient chart entries: a patient writing it on an intake
+# form is what a real chart looks like, and reading real charts is the point.
+CHART_QUOTES = [
+    '"physio elsewhere, 6 sessions, mostly machines."',
+    '"splint at night, some physio last year."',
+    '"physio at my club, 4 sessions, some improvement."',
+    '"3 physios, 2 chiropractors, an osteopath."',
+]
+case_text = ''
+for _v in man.values():
+    if 'javascript' not in _v.get('mime', ''):
+        continue
+    _raw = base64.b64decode(_v['data'])
+    if str(_v.get('compressed')) == 'True':
+        _raw = gzip.decompress(_raw)
+    case_text += _raw.decode('utf-8', 'replace')
+
+_scan = case_text
+for _q in CHART_QUOTES:
+    _scan = _scan.replace(_q, '')
+_bare = [_scan[max(0, x.start() - 40):x.start() + 30].replace('\n', ' ')
+         for x in re.finditer(r'\bphysio(?!therap)', _scan, re.I)]
+if _bare:
+    fail(f'{len(_bare)} case(s) say "physio" outside a patient chart quote: {_bare[:2]}')
+else:
+    ok('case text says physiotherapist, except in quoted chart entries')
+
+_clip = re.findall('\u0e19\u0e31\u0e01\u0e01\u0e32\u0e22\u0e20\u0e32\u0e1e(?!\u0e1a\u0e33\u0e1a\u0e31\u0e14)', case_text)
+if _clip:
+    fail(f'{len(_clip)} Thai case string(s) clip the word for physiotherapist')
+else:
+    ok('Thai case text uses the full word for physiotherapist')
+
 if re.search(r'Promise\.all\(\s*keys', tpl):
     fail('media keys are fetched with Promise.all — Apps Script refuses '
          'concurrent requests and answers every one with an error page')
