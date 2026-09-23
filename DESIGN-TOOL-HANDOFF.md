@@ -158,6 +158,41 @@ Please drop `netlify.toml` from the export, and either drop `README.md` or
 point it at https://bpcphysio.github.io/bpcpatientjourney/ with the Netlify
 section removed.
 
+## B7. Remove the scenario ranking — OUTSTANDING
+
+"Where the team is weakest" (cases ranked by wrong pre-arrival answers) has
+been removed from the marking dashboard. The Senior PT asked twice for names
+instead of case titles — *"ไม่ได้อยากเอา Scenario ขึ้น"* (04:21) — and that
+block was the one she was reading at 04:08 when she misread the case title
+"Just taping" as "Just Typing" and could not tell what its 50% meant.
+
+"Scores by person — weakest first" (B3) replaces it. Keep `casesSeen`: it
+feeds the "cases covered" figure. Gone: the `perCase`/`weak` computation, the
+`weak`/`hasWeak`/`mkWeakest` exposures and the template block.
+
+## B8. The answer key must be read — OUTSTANDING
+
+The reveal is the learning moment, and นิมิต was not sure anyone was reading
+it: *"นักกายภาพทุกคนที่ทำข้อสอบ ต้องอ่านเฉลย ทุกข้อ (ฉันไม่แน่ใจว่า… เขาอ่านกันไหม
+เพราะมันเป็น turning point ของการทำข้อสอบที่จะทำให้เรียนรู้และตาสว่าง)"*
+
+Taker side:
+
+- `doReveal` stamps `revealedAt`.
+- Under the model answer, a checkbox **"I have read this answer"** /
+  **"อ่านเฉลยนี้แล้ว"** bound to `readOk`.
+- Submit is disabled while `revealed && !readOk`, and the note beside it
+  reads "Read the answer above, then tick the box to send." /
+  "อ่านเฉลยด้านบนก่อน แล้วติ๊กช่องเพื่อส่งคำตอบ".
+- `revealedAt` and `readOk` live in state **and in the saved session**, and
+  reset on every new case (`begin`, `next`/`advance`, `moreCases`).
+- The submitted record carries `readOk` and `readMs` (now − `revealedAt`).
+
+Marking side: a tag on each card reading `Read the answer · 1:12` or
+`Did not confirm reading the answer`. New `MK` keys: `readFor(s)`, `readNot`;
+`UI` keys: `readIt`, `readFirst`. Records from before this change have no
+`readOk`, so they show the second form — that is correct, not a bug.
+
 ## B4. Heads-up only — no work yet
 
 Automatic grading of questions 2 and 3 is being built on the Claude Code side,
