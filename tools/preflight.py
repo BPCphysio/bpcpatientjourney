@@ -225,6 +225,21 @@ if "error: 'That passcode did not work, or the collection endpoint could not be 
 else:
     ok('a failed load is not blamed on the passcode')
 
+# The senior asked, more than once, for the full word.
+short = [x.group(0) for x in re.finditer(r"[^']{0,40}physio(?!therap)[^']{0,20}", tpl)
+         if '//' not in x.group(0)]
+if short:
+    fail(f'copy still says "physio" instead of "physiotherapist": {short[:2]}')
+else:
+    ok('copy says physiotherapist, never physio')
+
+# Inside a branch the header once counted every answer in the clinic.
+if 'openB ? openB.answers' not in tpl or 'openB ? openB.left' not in tpl:
+    fail('the marking header does not scope its answer counts to the open '
+         'branch — it will show the clinic-wide totals')
+else:
+    ok('marking header counts are scoped to the open branch')
+
 if re.search(r'Promise\.all\(\s*keys', tpl):
     fail('media keys are fetched with Promise.all — Apps Script refuses '
          'concurrent requests and answers every one with an error page')
