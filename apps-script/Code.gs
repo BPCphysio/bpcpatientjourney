@@ -187,10 +187,20 @@ function people_() {
     var name = String(rows[i][0] || '').trim();
     if (!name) continue;
     var aliases = String(rows[i][2] || '').split(',').map(function (s) { return s.trim(); }).filter(String);
-    out.push({ name: name, th: String(rows[i][1] || '').trim(), aliases: aliases });
+    out.push({ name: name, th: String(rows[i][1] || '').trim(), aliases: aliases,
+               branch: String(rows[i][4] || '').trim() });
   }
   cache.put('people', JSON.stringify(out), 900);
   return out;
+}
+
+// Which branch a resolved person works at, '' when the roster does not say.
+function branchOf_(person, people) {
+  var k = nameKey_(person);
+  for (var i = 0; i < people.length; i++) {
+    if (nameKey_(people[i].name) === k) return people[i].branch || '';
+  }
+  return '';
 }
 
 // Whichever spelling a person typed, resolve it to their roster name.
@@ -316,7 +326,10 @@ function doGet(e) {
 
     var roster = people_();
     var out = readIndex_().slice();
-    out.forEach(function (r) { r.person = resolve_(r.who, roster); });
+    out.forEach(function (r) {
+      r.person = resolve_(r.who, roster);
+      r.branch = branchOf_(r.person, roster);
+    });
     out.sort(function (a, b) { return (b.when || 0) - (a.when || 0); });
     return json_({ ok: true, responses: out });
   } catch (err) {

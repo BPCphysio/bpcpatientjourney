@@ -203,6 +203,7 @@ required = {
     'marking: media per key':      ['&k=', 'hydrate('],
     'marking: shows the chart':    ['theCase', 'hasBrief'],
     'marking: scores by person':   ['byPerson', 'scoreOf'],
+    'marking: branch level':       ['openBranch', 'branchMeta'],
 }
 for label, needles in required.items():
     missing = [n for n in needles if n not in tpl]
@@ -210,6 +211,19 @@ for label, needles in required.items():
         fail(f'{label}: missing {", ".join(missing)}')
     else:
         ok(label)
+
+# An export reverted this once: a single attempt, and every failure reported
+# as a wrong passcode. Both halves matter, so both are checked.
+if 'attempt < 3' not in tpl and 'attempt < 2' not in tpl:
+    fail('the marking view no longer retries a failed load — a blip will read '
+         'as a wrong passcode')
+else:
+    ok('marking view retries a failed load')
+if "error: 'That passcode did not work, or the collection endpoint could not be reached.'" in tpl:
+    fail('the marking view still blames the passcode for any failure; only a '
+         'server "bad key" should say that')
+else:
+    ok('a failed load is not blamed on the passcode')
 
 if re.search(r'Promise\.all\(\s*keys', tpl):
     fail('media keys are fetched with Promise.all — Apps Script refuses '
