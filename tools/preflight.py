@@ -240,6 +240,26 @@ if 'openB ? openB.answers' not in tpl or 'openB ? openB.left' not in tpl:
 else:
     ok('marking header counts are scoped to the open branch')
 
+# Apps Script serves one request per user at a time. Two at once and one of
+# them comes back as an HTML error page, which the marking view read as a
+# wrong passcode after forty seconds of Loading.
+if 'clinicFetch' not in tpl or 'CLINIC_Q' not in tpl:
+    fail('clinic requests are no longer queued through clinicFetch - two at '
+         'once and Apps Script answers one of them with an error page')
+else:
+    bare = [x.group(0) for x in re.finditer(r'(?<![.\w])fetch\((?:ep|url|this\.qs_)', tpl)]
+    allowed = tpl.count('await fetch(url, init)')
+    if len(bare) > allowed:
+        fail(f'{len(bare) - allowed} clinic call(s) bypass clinicFetch')
+    else:
+        ok('every clinic request goes through the one-at-a-time queue')
+
+if 'ctl.abort()' not in tpl:
+    fail('clinic requests have no timeout; Apps Script can hold one open for '
+         'a minute and no retry will fire')
+else:
+    ok('clinic requests have a ceiling and can be retried')
+
 if re.search(r'Promise\.all\(\s*keys', tpl):
     fail('media keys are fetched with Promise.all — Apps Script refuses '
          'concurrent requests and answers every one with an error page')
