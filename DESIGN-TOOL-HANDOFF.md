@@ -193,6 +193,33 @@ Marking side: a tag on each card reading `Read the answer · 1:12` or
 `UI` keys: `readIt`, `readFirst`. Records from before this change have no
 `readOk`, so they show the second form — that is correct, not a bug.
 
+## B9. Drag and drop an image — OUTSTANDING
+
+The image box accepted a file-picker click, a paste or a URL, but not
+dragging a file in, which is what people reach for on a laptop.
+
+Both image boxes (phase 1 and phase 2 render the same block) now carry
+`sc-camel-on-drag-over`, `sc-camel-on-drag-leave` and `sc-camel-on-drop`. The
+handlers are `onDragOver` / `onDragLeave` / `onDrop` on the question object,
+with `dropEdge` and `dropFill` driving the border and background while a file
+is over the box, and `dropping` showing "Drop the image to use it" /
+"วางรูปเพื่อใช้รูปนี้".
+
+`dropImage(qid, ev)` takes the first `image/*` file and sends it through the
+existing `readBlob` → `shrink` → `setImage` path. An image dragged out of
+another browser tab arrives as text rather than a file, so a dropped
+`text/uri-list` or `text/plain` beginning `http` goes through `useUrl`.
+Anything else sets the error `dropNotImage`.
+
+New `UI` keys, both languages: `dropHere`, `dropNotImage`. `orPaste` now
+mentions dragging.
+
+## B10. Two decisions that are now closed
+
+- **Full names for physios** — not wanted. The roster stays nicknames only.
+- **Drive-hosted media** — not wanted. Recordings and images keep coming
+  through Apps Script; the per-piece fetch is fast enough.
+
 ## B4. Heads-up only — no work yet
 
 Automatic grading of questions 2 and 3 is being built on the Claude Code side,
