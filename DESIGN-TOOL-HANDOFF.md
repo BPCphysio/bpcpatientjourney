@@ -98,7 +98,22 @@ reply never reaches the phone.
   `full: true`. While a media key is listed in `r.media` but not yet loaded,
   show "Loading…" / "กำลังโหลด…" instead of "No answer".
 
-## 6. Small things
+## 6. Scores by person on the marking dashboard
+
+Added live on 23 Sept, from the senior's meeting: above "Everyone who has
+answered", a list headed **"Scores by person — weakest first"** / **"คะแนนรายคน
+— คนที่ต้องช่วยก่อน"**. One row per person: their percentage of correct
+pre-arrival multiple choices, their name, and a note reading
+`N of M pre-arrival choices right · K marked, average X/5` (or
+`· nothing marked yet`). Sorted lowest first, and tapping a row opens that
+person's folder. No marking needed — the multiple choice is objective.
+
+Watch the `MK` dictionary for duplicate keys: `notMarked` already existed as
+the per-question verdict label, so these use `noMarksYet`, `byPerson`,
+`scoreOf` and `markedOf`. A repeated key in that object literal is silently
+overwritten rather than flagged.
+
+## 7. Small things
 
 - `<title>` is `BPC Patient Journey Trainer` (the export ships "Bundled Page").
 - Keep the build stamp in the footer and bump it with each export.
