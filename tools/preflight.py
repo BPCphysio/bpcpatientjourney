@@ -260,6 +260,48 @@ if 'ctl.abort()' not in tpl:
 else:
     ok('clinic requests have a ceiling and can be retried')
 
+# A physiotherapist working in Thai should never be answered in English. The
+# dictionaries are checked key by key above; these are the messages built in
+# the code, where a missing Thai half is invisible until someone hits it.
+CODE_MSGS = [
+    'Saved in this browser.',
+    'Marks saved to the clinic record.',
+    'Could not load the case library.',
+    'Those marks were not saved',
+    'That answer was not deleted',
+]
+english_only = []
+for msg in CODE_MSGS:
+    at = tpl.find(msg)
+    if at < 0:
+        continue
+    if "lang === 'th'" not in tpl[max(0, at - 320):at]:
+        english_only.append(msg[:46])
+if english_only:
+    fail('these messages show in English inside the Thai app: '
+         + '; '.join(english_only))
+else:
+    ok('every message built in code has a Thai half')
+
+# Two typos that reached staff: a comment box labelled with half a word, and
+# the picture question labelled "rop".
+TH_TYPOS = {
+    '\u0e04\u0e33\u0e41\u0e19\u0e30\u0e02\u0e2d\u0e07': 'should be \u0e04\u0e33\u0e41\u0e19\u0e30\u0e19\u0e33 (advice), not \u0e04\u0e33\u0e41\u0e19\u0e30',
+    '\u0e23\u0e2d\u0e1b\u0e17\u0e35\u0e48': 'should be \u0e23\u0e39\u0e1b (picture), not \u0e23\u0e2d\u0e1b',
+}
+found = [f'{k} ({why})' for k, why in TH_TYPOS.items() if k in tpl]
+if found:
+    fail('Thai typo back in the copy: ' + '; '.join(found))
+else:
+    ok('the two known Thai typos are not back')
+
+# The clipped Thai word, the same correction as the English one.
+clipped = re.findall('\u0e19\u0e31\u0e01\u0e01\u0e32\u0e22\u0e20\u0e32\u0e1e(?!\u0e1a\u0e33\u0e1a\u0e31\u0e14)', tpl)
+if clipped:
+    fail(f'{len(clipped)} Thai string(s) clip \u0e19\u0e31\u0e01\u0e01\u0e32\u0e22\u0e20\u0e32\u0e1e\u0e1a\u0e33\u0e1a\u0e31\u0e14 down to \u0e19\u0e31\u0e01\u0e01\u0e32\u0e22\u0e20\u0e32\u0e1e')
+else:
+    ok('Thai copy uses the full word for physiotherapist')
+
 if re.search(r'Promise\.all\(\s*keys', tpl):
     fail('media keys are fetched with Promise.all — Apps Script refuses '
          'concurrent requests and answers every one with an error page')
