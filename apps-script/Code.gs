@@ -300,10 +300,18 @@ function doGet(e) {
 
     if (p.key !== ADMIN_KEY) return json_({ ok: false, error: 'bad key' });
 
-    // One full answer, image and audio included, for an opened card.
+    // One opened card. Media is base64 inside the record and Apps Script
+    // serves it slowly (~17 KB/s), so a card with two recordings and an
+    // image took ~28 s as one lump. With ?k= the trainer pulls each piece
+    // on its own and they arrive in parallel.
     if (p.id) {
       var one = readRecord_(p.id);
-      return one ? json_({ ok: true, response: one }) : json_({ ok: false, error: 'not found' });
+      if (!one) return json_({ ok: false, error: 'not found' });
+      if (p.k) {
+        var v = (one.answers || {})[p.k];
+        return json_({ ok: true, id: p.id, key: p.k, value: v === undefined ? null : v });
+      }
+      return json_({ ok: true, response: one });
     }
 
     var roster = people_();
