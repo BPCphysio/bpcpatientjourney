@@ -1561,13 +1561,11 @@
       "en": "The employer's account is about her, not hers",
       "th": "ประวัติจากนายจ้างคือประวัติ \"เกี่ยวกับ\" เธอ ไม่ใช่ของเธอ",
       "core": [
-       "about her",
        "her own",
        "her version",
        "her words",
        "second-hand",
        "first-hand",
-       "from her",
        "เกี่ยวกับเธอ",
        "จากปากเธอ",
        "ของเธอเอง",
@@ -1580,7 +1578,9 @@
        "employer",
        "นายจ้าง",
        "history",
-       "ประวัติ"
+       "ประวัติ",
+       "about her",
+       "from her"
       ]
      },
      {
@@ -2304,15 +2304,15 @@
        "แผ่นรองเท้า",
        "ยืด",
        "ทำนานแค่ไหน",
-       "ทำบ่อย",
-       "ทำยังไง"
+       "ทำบ่อย"
       ],
       "near": [
        "treated before",
        "เคยรักษา",
        "adherence",
        "compliance",
-       "failed"
+       "failed",
+       "ทำยังไง"
       ]
      },
      {
@@ -3493,7 +3493,6 @@
        "given up",
        "gym",
        "ฟิตเนส",
-       "before",
        "มาก่อน",
        "previous",
        "history",
@@ -4319,7 +4318,6 @@
       "en": "Has anything like this ever happened before",
       "th": "เคยเป็นแบบนี้มาก่อนไหม",
       "core": [
-       "before",
        "ever had",
        "ever happened",
        "previous",
@@ -4340,7 +4338,8 @@
        "duration",
        "ระยะเวลา",
        "years",
-       "ปี"
+       "ปี",
+       "before"
       ]
      },
      {
@@ -4375,8 +4374,6 @@
       "en": "What he needs from tomorrow",
       "th": "อยากได้อะไรจากพรุ่งนี้",
       "core": [
-       "tomorrow",
-       "พรุ่งนี้",
        "expect",
        "คาดหวัง",
        "hoping",
@@ -4397,7 +4394,8 @@
        "booked",
        "จอง",
        "permanent",
-       "ถาวร"
+       "ถาวร",
+       "tomorrow"
       ]
      }
     ],
@@ -6961,7 +6959,6 @@
        "what he thinks",
        "what it means",
        "หมายถึงอะไร",
-       "เข้าใจว่า",
        "understood",
        "degenerat",
        "เสื่อม",
@@ -6976,7 +6973,8 @@
        "diagnosis",
        "imaging",
        "ฟิล์ม",
-       "worn out"
+       "worn out",
+       "เข้าใจว่า"
       ]
      },
      {
@@ -7747,8 +7745,7 @@
        "ได้ดูก่อน",
        "promise",
        "สัญญา",
-       "can keep",
-       "รักษาได้"
+       "can keep"
       ],
       "near": [
        "report",
@@ -7757,7 +7754,8 @@
        "นายจ้าง",
        "third party",
        "บุคคลที่สาม",
-       "privacy"
+       "privacy",
+       "รักษาได้"
       ]
      }
     ],
@@ -10328,8 +10326,7 @@
        "menisc",
        "หมอนรองเข่า",
        "structural",
-       "effusion",
-       "ตรวจให้ดี"
+       "effusion"
       ],
       "near": [
        "different",
@@ -10337,7 +10334,8 @@
        "ACL",
        "ligament",
        "เอ็น",
-       "exam"
+       "exam",
+       "ตรวจให้ดี"
       ]
      },
      {
@@ -12737,7 +12735,6 @@
        "ว่ายน้ำ",
        "สระ",
        "ถามทางนี้",
-       "ถามแบบนี้",
        "สิ่งเดียว",
        "อย่างเดียวที่",
        "ได้ผลจริง",
