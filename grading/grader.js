@@ -205,8 +205,12 @@
           var list = [];
           ['en', 'th'].forEach(function (lang) {
             (b.answers[lang] || []).forEach(function (a, j) {
-              list.push({ text: a[i], lang: lang, n: j, vec: vec(norm(a[i])) });
+              list.push({ text: a[i], lang: lang, n: j, cap: 1, vec: vec(norm(a[i])) });
             });
+          });
+          // the head physiotherapists' own words, worth what they were marked
+          (p.staff || []).forEach(function (st) {
+            list.push({ text: st.text, lang: st.lang, src: st.src, cap: st.credit, vec: vec(norm(st.text)) });
           });
           return list;
         });
@@ -228,7 +232,8 @@
 
   // ---------------------------------------------------------------- grade
   // skip: optional {lang, n} — leave that reference answer out, so a
-  // reference can be graded against the other nine without meeting itself.
+  // reference can be graded against the other nine without meeting itself;
+  // or {src} — leave out phrasings taken from that staff answer.
   function grade(caseId, q, text, skip) {
     if (!data) return { graded: false, reason: 'not loaded' };
     var block = data.cases[caseId] && data.cases[caseId][q];
@@ -262,15 +267,16 @@
         }
       }
       // likeness to the reference phrasings for this point
-      var top = 0, topRef = null;
+      var top = 0, topRef = null, simCredit = 0;
       refs[caseId][q][i].forEach(function (r) {
-        if (skip && r.lang === skip.lang && r.n === skip.n) return;
+        if (skip && skip.src && r.src === skip.src) return;
+        if (skip && !skip.src && r.lang === skip.lang && r.n === skip.n) return;
         parts.forEach(function (pc) {
           var s = cos(pc.vec, r.vec);
-          if (s > top) { top = s; topRef = r.text; }
+          var c = Math.min(r.cap, s >= params.hi ? 1 : s >= params.lo ? 0.5 : 0);
+          if (c > simCredit || (c === simCredit && s > top)) { simCredit = c; top = s; topRef = r.text; }
         });
       });
-      var simCredit = top >= params.hi ? 1 : top >= params.lo ? 0.5 : 0;
       if (simCredit > best.credit) best = { credit: simCredit, how: 'similar', evidence: topRef, sim: top };
       best.sim = Math.round(top * 100) / 100;
       best.label = { en: p.en, th: p.th };
@@ -279,6 +285,25 @@
 
     var pct = Math.round(points.reduce(function (s, p) { return s + p.credit; }, 0) / points.length * 100);
     return { graded: true, pct: pct, suggested: Math.round(pct / 20), points: points };
+  }
+
+  // Where the language model on the clinic PC has read an answer (r.ai,
+  // written by grading/ai/grade-new.mjs), its reading is used for "why those
+  // three": against the blind marking it lands the same mark 76% of the time
+  // where wording lands 55%, and its average gap is 5 points against 10. For
+  // "the three questions" wording is still ahead, so the model's reading is
+  // kept beside it as a second opinion. Measured by grading/ai/eval.mjs.
+  var MODEL_LEADS = { q2: true };
+
+  function fromModel(caseId, q, ai) {
+    var b = data && data.cases[caseId] && data.cases[caseId][q];
+    if (!b || !ai || !Array.isArray(ai.credits) || ai.credits.length !== 3) return null;
+    var points = b.points.map(function (p, i) {
+      return { credit: Number(ai.credits[i]) || 0, how: 'model', evidence: (ai.notes || [])[i] || '', sim: 0,
+               label: { en: p.en, th: p.th } };
+    });
+    var pct = Math.round(points.reduce(function (s, p) { return s + p.credit; }, 0) / 3 * 100);
+    return { graded: true, pct: pct, suggested: Math.round(pct / 20), points: points, source: 'model' };
   }
 
   // Whole submission: the multiple choice plus the two written answers.
@@ -295,6 +320,10 @@
     }
     ['q1', 'q2'].forEach(function (q) {
       var g = grade(r.scenarioId, q, a[q + ':text']);
+      var m = r.ai && r.ai[q] ? fromModel(r.scenarioId, q, r.ai[q]) : null;
+      if (g.graded) g.source = 'wording';
+      if (m && MODEL_LEADS[q]) { m.second = g.graded ? g : null; g = m; }
+      else if (m && g.graded) g.second = m;
       if (g.graded) { out[q] = g; parts.push(g.pct); }
       else if (a[q + ':audiosec'] || (r.media || []).indexOf(q + ':audio') > -1) out.spoken.push(q);
     });
@@ -309,7 +338,7 @@
   }
 
   var api = {
-    load: load, ready: ready, grade: grade, gradeResponse: gradeResponse, points: points,
+    load: load, ready: ready, grade: grade, gradeResponse: gradeResponse, points: points, fromModel: fromModel,
     norm: norm, pieces: pieces,
     set: function (p) {
       var rebuild = p.n !== undefined && p.n !== params.n;

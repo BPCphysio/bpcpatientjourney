@@ -1,86 +1,83 @@
 # Maintenance notes
 
 The site lives at [github.com/BPCphysio/bpcpatientjourney](https://github.com/BPCphysio/bpcpatientjourney)
-and deploys via GitHub Pages (`main` branch, root folder) — no tokens, no
-build step. Live: https://bpcphysio.github.io/bpcpatientjourney/
+and deploys via GitHub Pages (`main` branch, root folder): every push is live
+within a minute or two, no tokens, no build step.
+Live: https://bpcphysio.github.io/bpcpatientjourney/
 
-**This repo is the source of truth for `index.html`.** The fixes described
-below live only in the bundle here. A fresh export from the design tool
-(the folder with `index.html`, `HANDOFF.md`, `NAME-ALIASES.md`, …) does
-**not** contain them — never upload it to GitHub as-is. Hand the export to
-Claude Code and it merges the new content (cases, Thai, UI) with the fixes;
-`C:\tmp\bundle_js\merge.py` in the last session is the script that did it
-for build TH-45. The grey footer line prints the design tool's build stamp
-(`build TH-45`) so you can see which content build is live.
+**This repository is the only source.** Claude Design is no longer used.
+Claude Code edits the files here, runs `python tools/preflight.py`, and
+pushes. The footer shows the build stamp (`build TH-…`) so you can see which
+build is live.
 
-## The two halves
+## The pieces
 
 | Piece | Where | Purpose |
 | --- | --- | --- |
-| `index.html` | this repo → GitHub Pages | The whole trainer UI and the 45 cases |
-| Apps Script "Patient Journey" | Google Drive of contact@bpcphysio.com | Stores answers, the staff passcode, the People roster |
+| `index.html` | this repo, on GitHub Pages | The trainer and the 45 cases, English and Thai |
+| `grading/` | this repo, on GitHub Pages | The auto-grader the marking view uses, and its reference answers |
+| Apps Script "Patient Journey" | Google Drive of contact@bpcphysio.com | Stores answers and marks, checks the staff passcode, holds the People roster |
+| `grading/ai/` job | the clinic PC, every 10 minutes | Reads new written answers with a language model and stores its reading beside them |
 
-The Apps Script keeps its data in the Drive folder **BPC Trainer Responses**:
-one `.json` per submitted answer, an `index.json` the script maintains (every
-answer in light form, without image/audio data — what the marking view and
-the progress lookup read, one file instead of one per answer; rebuilt
-automatically if it is ever missing), plus a spreadsheet of the same name
-with a `Sheet1` log and a **People** tab. The marking view fetches an
-answer's image/audio only when its card is opened.
+The repo is public, so nothing secret is written in it. The staff passcode
+lives only in the deployed Apps Script (line 1 of the editor's copy) and in
+the clinic PC's settings file. `apps-script/Code.gs` here carries a
+placeholder on that line.
 
-Changing the script: edit `Code.gs`, save, then **Deploy → Manage
-deployments → pencil → Version: New version → Deploy**. Saving alone does not
-change the live `/exec` URL.
+## Apps Script
 
-## Staff passcode
+Data sits in the Drive folder **BPC Trainer Responses**: one `.json` per
+submitted answer, and an `index.json` the script keeps with every answer in
+light form (no image or audio data). The marking view reads the index in one
+request and fetches an answer's image or audio only when its card is opened.
+The spreadsheet of the same name has a `Sheet1` log and the **People** tab.
 
-`var ADMIN_KEY` at the top of `Code.gs` (currently `12345678`). The passcode
-is checked by the script, not by `index.html`.
+The script answers one request per person at a time and is slow to wake:
+eight seconds or more on the first call after a quiet spell. The page queues
+every call, leaves a gap between them, and gives the first attempt a minute.
 
-## People roster (Thai / English names are one person)
+Changing the script: edit it in the Apps Script editor, keeping the editor's
+own line 1, save, then **Deploy → Manage deployments → pencil → Version: New
+version → Deploy**. Saving alone does not change the live `/exec` URL. Keep
+`apps-script/Code.gs` in step, apart from line 1.
 
-The **People** tab in the spreadsheet has one row per physio:
+## People roster
 
-| Name | Thai name | Other spellings (comma-separated) |
-| --- | --- | --- |
-| Moo | หมู | Mu, Mhoo |
-
-Any of those spellings typed on the start screen resolves to the row's
-`Name`, for progress and for the marking-view folders. The tab is created
-automatically the first time the script needs it, pre-filled with every name
-that has answered so far — the clinic only fills in the Thai/English pairs.
-The start screen shows the roster as tap-to-pick chips (Thai names in Thai
-mode), so typing is the fallback, not the norm.
+The **People** tab has one row per physiotherapist: Name, Thai name, other
+spellings, full name (reference only), Branch. Any spelling typed on the start
+screen resolves to the row's Name, for progress and for the marking view,
+which groups answers by branch, then person.
 
 ## How progress works
 
-Progress follows the **person**, not the browser. When someone presses
-*Start my six cases* the trainer asks the script which cases that name has
-already answered, and continues from there: one answered → *Case 2 of 6*,
-two → *Case 3 of 6*, and so on, on any device. Answers in progress but not
-yet submitted are still only on the device they were written on.
+Progress follows the person, not the browser. Each set is four cases,
+rising in difficulty; starting again continues from the next case that
+person has not answered, on any device. Each attempt has one id, so a resend
+is never a duplicate. A failed send is checked with the script first, then
+kept in an outbox on the phone that sends itself when there is signal.
 
-Submissions carry one id per attempt, and the script treats a resend of the
-same id as already received — a phone that drops the connection mid-submit
-no longer produces a duplicate record.
+## Auto-grading
 
-If a send fails, the app first asks the script whether the answer landed
-anyway (`?exists=<id>`), and if not, keeps it in an **outbox** on the phone
-and moves the person on to the next case. The outbox sends itself: a few
-seconds after the app opens, once a minute while it is open, when the phone
-comes back online, and after each successful send. The start screen shows
-"N answers waiting to send" until it is empty. Voice recordings are stored
-at 32 kbps (about 0.25 MB per minute), images at 1100 px JPEG.
+See the README. In short: the wording grader (`grading/grader.js`) runs in
+the page for every typed answer. The language model's reading, when the job
+on the clinic PC has made one, leads on "why those three" and is a second
+opinion on "the three questions". Both are measured against a blind marking
+of real staff answers: `node grading/test.js` and `node grading/ai/eval.mjs`.
 
-## Current content state
+## The job on the clinic PC
 
-45 cases are in the live bundle. Each case runs four steps: 1 multiple choice
-(what you do before the patient arrives), 2 the three questions you would ask on
-the call, 3 why those three — then **Next step** locks those answers and reveals
-what the call actually found, followed by 4, upload the image you would have on
-the screen when the patient walks in, with a box to explain why that image and
-what it changes about the session.
-
-The four step prompts, labels and buttons follow the chosen language. Case
-prose (title, brief, reveal, model answer, options) is still English for the
-45 current cases; translating them is a separate batch of work.
+- **What runs:** Task Scheduler task *BPC answer grader*, every 10 minutes
+  while someone is signed in, launching `%USERPROFILE%\llm\run-grader.vbs`
+  (no window), which runs `node grading\ai\grade-new.mjs`.
+- **What it needs:** `%USERPROFILE%\llm\config.json` (clinic script address,
+  staff passcode, folders), llama.cpp in `%USERPROFILE%\llm\llama`, and the
+  model `Qwen3-8B-Q4_K_M.gguf` in `%USERPROFILE%\llm\models`. All free and
+  open-source; nothing is sent anywhere but the clinic's own script.
+- **What it does:** one light request to the clinic script. If a written
+  answer has no reading, it starts the model on the graphics card, reads
+  each new answer (about 7 seconds each), stores the readings beside the
+  answers, and stops the model. With nothing new it finishes in seconds.
+- **Log:** `%USERPROFILE%\llm\grader.log`.
+- **If the PC is off:** nothing breaks. New answers show the wording grade
+  until the PC is next on, then the model's reading appears.
+- **If the passcode changes:** update `key` in `config.json`.

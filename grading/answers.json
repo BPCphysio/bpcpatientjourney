@@ -1,5 +1,5 @@
 {
- "_about": "Reference answers for the automatic grader. For each case, q1 is \"the three most important questions\" and q2 is \"why those three\". Each has three key points; each point has core terms (earn the point), near terms (half), and ten reference answers, five English and five Thai, all full marks. Written for the senior physiotherapist to correct: change a term or an answer here and the grader follows.",
+ "_about": "Reference answers for the automatic grader. For each case, q1 is \"the three most important questions\" and q2 is \"why those three\". Each has three key points; each point has core terms (earn the point), near terms (half), and ten reference answers, five English and five Thai, all full marks. Written for the senior physiotherapist to correct: change a term or an answer here and the grader follows. Points may also carry \"staff\": real phrasings from the head physiotherapists' own answers, each worth the credit a blind marker gave it.",
  "_status": "first draft, not yet reviewed by the senior physiotherapist",
  "version": 1,
  "cases": {
@@ -31,6 +31,14 @@
        "history",
        "ประวัติ",
        "เมื่อไหร่"
+      ],
+      "staff": [
+       {
+        "text": "what’s the date that start of pain",
+        "credit": 1,
+        "lang": "en",
+        "src": "53231cd3e0"
+       }
       ]
      },
      {
@@ -88,6 +96,14 @@
        "กิจกรรม",
        "หลีกเลี่ยง",
        "ยาแก้ปวด"
+      ],
+      "staff": [
+       {
+        "text": "What’s activity limited by pain in daily",
+        "credit": 0.5,
+        "lang": "en",
+        "src": "53231cd3e0"
+       }
       ]
      }
     ],
@@ -174,6 +190,14 @@
        "duration",
        "ระยะเวลา",
        "mechanism"
+      ],
+      "staff": [
+       {
+        "text": "Know the pain mechanism",
+        "credit": 0.5,
+        "lang": "en",
+        "src": "53231cd3e0"
+       }
       ]
      },
      {
@@ -615,6 +639,14 @@
        "football",
        "บอล",
        "sport"
+      ],
+      "staff": [
+       {
+        "text": "เริ่มมีอาการปวดจากการทำอะไร มีอาการปวดมานานแค่ไหน",
+        "credit": 0.5,
+        "lang": "th",
+        "src": "864736b8c7"
+       }
       ]
      },
      {
@@ -641,6 +673,14 @@
        "คำถาม",
        "worry",
        "กังวล"
+      ],
+      "staff": [
+       {
+        "text": "เป้าหมายในการรักษาคืออะไร",
+        "credit": 0.5,
+        "lang": "th",
+        "src": "864736b8c7"
+       }
       ]
      }
     ],
@@ -752,6 +792,20 @@
        "ตรวจอะไร",
        "effusion",
        "football"
+      ],
+      "staff": [
+       {
+        "text": "สามารถตั้ง differentials diagnosis ได้",
+        "credit": 0.5,
+        "lang": "th",
+        "src": "864736b8c7"
+       },
+       {
+        "text": "Analysis the mechanics and prepare for some test and photo",
+        "credit": 0.5,
+        "lang": "en",
+        "src": "db97fa577e"
+       }
       ]
      },
      {
@@ -867,6 +921,14 @@
        "ปัญหา",
        "area",
        "ตรงไหน"
+      ],
+      "staff": [
+       {
+        "text": "ทำอะไรมาถึงอยาก sport massage",
+        "credit": 1,
+        "lang": "th",
+        "src": "bcdc05af4d"
+       }
       ]
      },
      {
@@ -895,6 +957,14 @@
        "บ่อย",
        "mileage",
        "km"
+      ],
+      "staff": [
+       {
+        "text": "what’s sport or exercise he does",
+        "credit": 0.5,
+        "lang": "en",
+        "src": "af92f133c6"
+       }
       ]
      },
      {
@@ -1007,6 +1077,14 @@
        "กายภาพ",
        "silly",
        "เขิน"
+      ],
+      "staff": [
+       {
+        "text": "make sure ได้มากขึ้นว่าเขาทำ sport massage ได้",
+        "credit": 0.5,
+        "lang": "th",
+        "src": "bcdc05af4d"
+       }
       ]
      },
      {
@@ -1153,6 +1231,14 @@
        "lift",
        "ยกของ",
        "MOI"
+      ],
+      "staff": [
+       {
+        "text": "Ask him what is the cause of the pain In the area that he's concerned",
+        "credit": 0.5,
+        "lang": "en",
+        "src": "48e08bd57c"
+       }
       ]
      },
      {
@@ -1180,6 +1266,14 @@
        "bladder",
        "ปัสสาวะ",
        "flag"
+      ],
+      "staff": [
+       {
+        "text": "Any more symptoms refer down to your leg",
+        "credit": 0.5,
+        "lang": "en",
+        "src": "737f03f080"
+       }
       ]
      },
      {
@@ -1208,6 +1302,26 @@
        "driv",
        "ขับรถ",
        "limitation"
+      ],
+      "staff": [
+       {
+        "text": "Ask him about the limitation that caused from the back",
+        "credit": 0.5,
+        "lang": "en",
+        "src": "48e08bd57c"
+       },
+       {
+        "text": "What’s the work does you have",
+        "credit": 0.5,
+        "lang": "en",
+        "src": "737f03f080"
+       },
+       {
+        "text": "ลักษณะการทำงานเป็นแบบไหน",
+        "credit": 0.5,
+        "lang": "th",
+        "src": "9387fbf1dc"
+       }
       ]
      }
     ],
@@ -1323,6 +1437,14 @@
        "อ่อนแรง",
        "form",
        "ฟอร์ม"
+      ],
+      "staff": [
+       {
+        "text": "evaluation the yellow and green flag",
+        "credit": 0.5,
+        "lang": "en",
+        "src": "737f03f080"
+       }
       ]
      },
      {
@@ -1351,6 +1473,14 @@
        "worried",
        "กังวล",
        "RTW"
+      ],
+      "staff": [
+       {
+        "text": "also give me more information further than just for medical certificate",
+        "credit": 0.5,
+        "lang": "en",
+        "src": "48e08bd57c"
+       }
       ]
      }
     ],
@@ -1439,6 +1569,14 @@
        "นายจ้าง",
        "phone",
        "สาย"
+      ],
+      "staff": [
+       {
+        "text": "สอบถามพี่เลี้ยงเกี่ยวกับสาเหตุที่ทำให้เกิดอาการ",
+        "credit": 0.5,
+        "lang": "th",
+        "src": "f1005cff14"
+       }
       ]
      },
      {
@@ -1495,6 +1633,14 @@
        "ข้อมือ",
        "severity",
        "ความรุนแรง"
+      ],
+      "staff": [
+       {
+        "text": "งานแบบไหนบ้างที่ทำให้อาการเค้ามันเพิ่มขึ้น",
+        "credit": 1,
+        "lang": "th",
+        "src": "f1005cff14"
+       }
       ]
      }
     ],
@@ -1581,6 +1727,14 @@
        "ประวัติ",
        "about her",
        "from her"
+      ],
+      "staff": [
+       {
+        "text": "เพื่อที่เราจะได้เข้าใจอาการของคนไข้ได้อย่างถูกต้องจากการสอบถามผ่านคนไข้โดยตรง",
+        "credit": 1,
+        "lang": "th",
+        "src": "f1005cff14"
+       }
       ]
      },
      {
@@ -2572,6 +2726,14 @@
        "schedule",
        "ตารางซ้อม",
        "โหลด"
+      ],
+      "staff": [
+       {
+        "text": "โปรแกรมการซ้อมตอนนี้เป็นยังไงบ้าง",
+        "credit": 1,
+        "lang": "th",
+        "src": "ac5bebf62d"
+       }
       ]
      },
      {
@@ -2772,6 +2934,14 @@
        "deadline",
        "modify",
        "ปรับแผน"
+      ],
+      "staff": [
+       {
+        "text": "วางแผนการ rehab ให้สอดคล้องกับอาการและสามารถปรับแผนการrehabให้เข้ากับโปรแกรมการซ้อมได้เพิ่มมากขึ้น",
+        "credit": 0.5,
+        "lang": "th",
+        "src": "ac5bebf62d"
+       }
       ]
      }
     ],
@@ -3750,6 +3920,14 @@
        "เที่ยว",
        "hotel",
        "โรงแรม"
+      ],
+      "staff": [
+       {
+        "text": "เป้าหมายคือต้องการกลับไปทำอะไร หรือทำกิจกรรมประเภทไหน",
+        "credit": 1,
+        "lang": "th",
+        "src": "b5ee8267dc"
+       }
       ]
      },
      {
@@ -3896,6 +4074,14 @@
        "step down",
        "goal",
        "เป้าหมาย"
+      ],
+      "staff": [
+       {
+        "text": "เพื่อที่เราจะได้เอามาอ้างอิงรวมถึงวางแผนให้สอดคล้องกับเวลา12วันที่คนไข้จะอยู่รักษากับเราได้",
+        "credit": 0.5,
+        "lang": "th",
+        "src": "b5ee8267dc"
+       }
       ]
      },
      {
@@ -5227,6 +5413,14 @@
        "คัดกรอง",
        "night",
        "กลางคืน"
+      ],
+      "staff": [
+       {
+        "text": "สอบถามเกี่ยวกับอาการของคนไข้ที่คนไข้กังวล",
+        "credit": 1,
+        "lang": "th",
+        "src": "21132dd9f6"
+       }
       ]
      },
      {
@@ -5399,6 +5593,14 @@
        "กลัว",
        "company",
        "บริษัท"
+      ],
+      "staff": [
+       {
+        "text": "สร้างความเชื่อใจให้คนไข้ซึ่งเค้าอาจจะส่งข้อมูลส่วนตัวตามมาภายหลังได้",
+        "credit": 0.5,
+        "lang": "th",
+        "src": "21132dd9f6"
+       }
       ]
      },
      {
@@ -5517,6 +5719,14 @@
        "rehab",
        "ท่า",
        "compliance"
+      ],
+      "staff": [
+       {
+        "text": "ปกติออกกำลังกายอะไรบ้างสำหรับrehab และทำบ่อยแค่ไหน",
+        "credit": 0.5,
+        "lang": "th",
+        "src": "601d283fdb"
+       }
       ]
      },
      {
@@ -5573,6 +5783,14 @@
        "หมอ",
        "rotator cuff",
        "protocol"
+      ],
+      "staff": [
+       {
+        "text": "ถามถึงสาเหตุการบาดเจ็บก่อนหน้า ทำไมถึงทำการผ่าตัด ผ่าตัดแบบไหนพอจำได้ไหม",
+        "credit": 1,
+        "lang": "th",
+        "src": "601d283fdb"
+       }
       ]
      }
     ],
@@ -5661,6 +5879,14 @@
        "เจ็บ",
        "hurt",
        "explain each"
+      ],
+      "staff": [
+       {
+        "text": "เพื่อทีาจะได้ดูแนวโน้มว่าเราจะสามารถให้คนไข้ออกกำลังกายได้ไหม หรือต้องให้ความรู้คนไข้อย่างไร เพราะคนไข้ต้องการนวดอย่างเดียว",
+        "credit": 0.5,
+        "lang": "th",
+        "src": "601d283fdb"
+       }
       ]
      },
      {
@@ -5717,6 +5943,14 @@
        "ไม่มีผลผ่าตัด",
        "progress",
        "ค่อยๆ เพิ่ม"
+      ],
+      "staff": [
+       {
+        "text": "เพื่อเลือกใช้ rehab protocol ได้ถูกต้อง",
+        "credit": 0.5,
+        "lang": "th",
+        "src": "601d283fdb"
+       }
       ]
      }
     ],
@@ -5807,6 +6041,20 @@
        "กลับไปเล่น",
        "aggravating",
        "load"
+      ],
+      "staff": [
+       {
+        "text": "สอบถามสาเหตุความรุนแรงของอาการ",
+        "credit": 0.5,
+        "lang": "th",
+        "src": "52a11c9ed2"
+       },
+       {
+        "text": "How long for this condition",
+        "credit": 1,
+        "lang": "en",
+        "src": "22b7c0ac97"
+       }
       ]
      },
      {
@@ -5864,6 +6112,14 @@
        "ตรงๆ",
        "course",
        "คอร์ส"
+      ],
+      "staff": [
+       {
+        "text": "อธิบายว่าจำนวนครั้งในการรักษาขึ้นอยู่กับผลหลังการรักษาในครั้งแรก",
+        "credit": 1,
+        "lang": "th",
+        "src": "52a11c9ed2"
+       }
       ]
      }
     ],
@@ -6011,6 +6267,14 @@
        "ราคา",
        "trust",
        "commit"
+      ],
+      "staff": [
+       {
+        "text": "อาจจะทำให้คนไข้เข้าใจว่าการกำหนดจำนวนครั้งการรักษาขึ้นอยู่กับการตรวจร่างกายและตอบสนองต่อการรักษาของร่างกายของแต่ละบุคคล",
+        "credit": 0.5,
+        "lang": "th",
+        "src": "52a11c9ed2"
+       }
       ]
      }
     ],
@@ -6686,6 +6950,14 @@
        "heat",
        "result",
        "ผล"
+      ],
+      "staff": [
+       {
+        "text": "สิ่งที่ได้รับในการรักษาก่อนหน้าว่าทำอะไรไปบ้าง ความถี่ที่เข้ารับการรักษา และผลของการรักษาเป็นยังไง",
+        "credit": 0.5,
+        "lang": "th",
+        "src": "8df56cc864"
+       }
       ]
      },
      {
@@ -6712,6 +6984,14 @@
        "ADL",
        "daily",
        "ชีวิตประจำวัน"
+      ],
+      "staff": [
+       {
+        "text": "ถามสิ่งที่กระตุ้นอาการ หรือท่าทางที่ทำให้อาการเพิ่มขึ้น",
+        "credit": 0.5,
+        "lang": "th",
+        "src": "8df56cc864"
+       }
       ]
      },
      {
@@ -6740,6 +7020,14 @@
        "charge",
        "bill",
        "บิล"
+      ],
+      "staff": [
+       {
+        "text": "แล้วก็อธิบายเบื้องต้นว่าหากมีการใช้เครื่องมือเพิ่มเติมจะมีอะไรบ้างและราคาเท่าไหร่บ้าง",
+        "credit": 0.5,
+        "lang": "th",
+        "src": "8df56cc864"
+       }
       ]
      }
     ],
@@ -6829,6 +7117,14 @@
        "explain",
        "อธิบาย",
        "diagnosis"
+      ],
+      "staff": [
+       {
+        "text": "เพื่อให้เราเตรียมการรักษาที่มีความแตกต่าง จากเดิมที่คนไข้เคยได้รับ",
+        "credit": 0.5,
+        "lang": "th",
+        "src": "8df56cc864"
+       }
       ]
      },
      {
@@ -6885,6 +7181,14 @@
        "ถามก่อน",
        "cost",
        "ค่าใช้จ่าย"
+      ],
+      "staff": [
+       {
+        "text": "เพื่อให้ คนไข้มั่นใจว่า หากมีการใช้เครื่องมือเพิ่มเติม จะมีแจ้ง ก่อนทุกครั้ง",
+        "credit": 0.5,
+        "lang": "th",
+        "src": "8df56cc864"
+       }
       ]
      }
     ],
@@ -7584,6 +7888,20 @@
        "driving",
        "ขับรถ",
        "pattern"
+      ],
+      "staff": [
+       {
+        "text": "สอบถามเพิ่มเติมเกี่ยวกับระยะเวลาและสาเหตุของอาการอาจจะสอบถามคร่าวคร่าวๆเกี่ยวกับงานและสิ่งที่เขาอยากกลับไปทำได้",
+        "credit": 0.5,
+        "lang": "th",
+        "src": "445ad5c884"
+       },
+       {
+        "text": "the behavior of the symptom",
+        "credit": 0.5,
+        "lang": "en",
+        "src": "c50689f9f8"
+       }
       ]
      },
      {
@@ -7612,6 +7930,14 @@
        "ตามจริง",
        "employer",
        "นายจ้าง"
+      ],
+      "staff": [
+       {
+        "text": "อธิบายคร่าวๆว่า ข้อมูลของคนไข้ที่ถูกบันทึกจะไม่ได้มีการส่งต่อจนกว่าจะได้รับการยินยอมจากคนไข้",
+        "credit": 0.5,
+        "lang": "th",
+        "src": "445ad5c884"
+       }
       ]
      }
     ],
@@ -10759,6 +11085,14 @@
        "วินิจฉัย",
        "waiting",
        "โรคประจำตัว"
+      ],
+      "staff": [
+       {
+        "text": "ตอนนี้ผลแลบที่รอที่โรงพยาบาลคือผลตรวจอะไร",
+        "credit": 1,
+        "lang": "th",
+        "src": "f734f1ec51"
+       }
       ]
      },
      {
@@ -10789,6 +11123,14 @@
        "ทั้งตัว",
        "separate",
        "แยกกัน"
+      ],
+      "staff": [
+       {
+        "text": "อาการปวดและบวมในตอนเช้ามีแค่บริเวณเดียวหรือมีข้ออื่นๆด้วย",
+        "credit": 1,
+        "lang": "th",
+        "src": "f734f1ec51"
+       }
       ]
      },
      {
@@ -10818,6 +11160,14 @@
        "morning",
        "warm up",
        "ใช้งานได้"
+      ],
+      "staff": [
+       {
+        "text": "ถามถึงอาการบวมและstiff ว่านอกจากตอนเช้ามีอาการตอนอื่นอีกไหม",
+        "credit": 0.5,
+        "lang": "th",
+        "src": "f734f1ec51"
+       }
       ]
      }
     ],
@@ -10908,6 +11258,14 @@
        "ผลเลือด",
        "diagnosis",
        "วินิจฉัย"
+      ],
+      "staff": [
+       {
+        "text": "ดูแนวโน้มว่ามีความเสี่ยงในการเป็นโรคทาง immune ไหม และเราจะรักษาได้ไหม หรือควรให้ไปโรงพยาบาล",
+        "credit": 1,
+        "lang": "th",
+        "src": "f734f1ec51"
+       }
       ]
      },
      {
@@ -10938,6 +11296,14 @@
        "ทั้งตัว",
        "not local",
        "ไม่ใช่เฉพาะที่"
+      ],
+      "staff": [
+       {
+        "text": "ถ้ามีอาการปวดบริเวณอื่นๆด้วย จะได้เน้นโฟกะสรักษาที่ข้อมือหรือต้องโฟกัสพาร์ทไหนเพิ่มเติมอีกมั้ย",
+        "credit": 1,
+        "lang": "th",
+        "src": "f734f1ec51"
+       }
       ]
      },
      {
@@ -10968,6 +11334,14 @@
        "ส่งต่อ",
        "แพทย์",
        "red flag"
+      ],
+      "staff": [
+       {
+        "text": "พอที่จะคาดเดาโรคได้",
+        "credit": 0.5,
+        "lang": "th",
+        "src": "f734f1ec51"
+       }
       ]
      }
     ],
@@ -12268,6 +12642,14 @@
        "ประวัติ",
        "history",
        "tbi"
+      ],
+      "staff": [
+       {
+        "text": "การผ่าตัดเป็นการผ่าตัดแบบไหน แนะนำให้ส่งreportมาก่อนเข้ารับการรักษา",
+        "credit": 1,
+        "lang": "th",
+        "src": "dd591d1b81"
+       }
       ]
      },
      {
@@ -12328,6 +12710,14 @@
        "จับปากกา",
        "expect",
        "คาดหวัง"
+      ],
+      "staff": [
+       {
+        "text": "ลักษณะงานที่ทำเป็นยังไง",
+        "credit": 0.5,
+        "lang": "th",
+        "src": "dd591d1b81"
+       }
       ]
      }
     ],
@@ -12418,6 +12808,14 @@
        "ข้อควรระวัง",
        "upper motor",
        "tbi"
+      ],
+      "staff": [
+       {
+        "text": "จะได้รู้ว่าการผ่าตัดคือการผ่าตัดบริเวณไหน เนื่องจากเป็นโรคทางนิวโรมา 2ปีแล้ส จะได้วางgoal หรือรู้ prognosis ได้",
+        "credit": 0.5,
+        "lang": "th",
+        "src": "dd591d1b81"
+       }
       ]
      },
      {
@@ -12478,6 +12876,14 @@
        "prognosis",
        "พยากรณ์",
        "goal"
+      ],
+      "staff": [
+       {
+        "text": "ถ้ารู้ลักษณะงานจะได้วางแผนการรักษาให้เป็นฟังก์ชันตรงกับเป้าหมายคนของไข้มากขึ้น",
+        "credit": 0.5,
+        "lang": "th",
+        "src": "dd591d1b81"
+       }
       ]
      }
     ],

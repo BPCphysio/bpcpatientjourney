@@ -45,7 +45,8 @@ const hash = s => [...s].reduce((h, c) => (h * 31 + c.charCodeAt(0)) >>> 0, 7);
 function real(subset) {
   const rows = [];
   subset.forEach(t => {
-    const g = G.grade(t.case, t.q, t.text);
+    // never let an answer meet the phrasings taken from itself
+    const g = G.grade(t.case, t.q, t.text, { src: t.rid });
     if (!g.graded) return;
     rows.push({ t, g, gap: Math.abs(g.pct - t.pct), step: Math.abs(g.suggested - Math.round(t.pct / 20)) });
   });
@@ -155,6 +156,17 @@ if (process.argv.includes('--rows')) {
     console.log('  ' + x.t.text.replace(/\n/g, ' / ').slice(0, 160));
     x.g.points.forEach((p, i) => p.credit && console.log(`   p${i + 1} ${p.how}: ${String(p.evidence).slice(0, 70)}`));
   });
+}
+
+// the model's reading leads on "why", and wording on "the three questions"
+{
+  const r = { scenarioId: 'c01', answers: { 'q0:mc': 0, 'q1:text': 'how long has it been', 'q2:text': 'to know the mechanism' },
+    ai: { q1: { credits: [1, 1, 1], notes: ['a', 'b', 'c'] }, q2: { credits: [1, 0.5, 0], notes: ['x', 'y', 'z'] } } };
+  const g = G.gradeResponse(r, 0);
+  const okWhy = g.q2 && g.q2.source === 'model' && g.q2.pct === 50 && g.q2.second && g.q2.second.source === 'wording';
+  const okQs = g.q1 && g.q1.source === 'wording' && g.q1.second && g.q1.second.pct === 100;
+  console.log(`model reading used for "why", kept as second opinion for the questions: ${okWhy && okQs ? 'yes' : 'NO'}`);
+  if (!(okWhy && okQs)) { console.log('FAIL model/wording combination'); process.exit(1); }
 }
 
 const fail = [];

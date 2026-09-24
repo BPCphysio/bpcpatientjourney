@@ -14,7 +14,8 @@ pre-arrival, what three questions they'd ask on the call, and why.
 | `grading/grader.js` | The auto-grader for the two written answers. Runs in the browser; no service, no key, no cost. |
 | `grading/answers.json` | What the grader compares against: for every case and written question, three key points with their Thai and English cue words, and ten full-marks reference answers (five Thai, five English). Edit this to change how a case is graded. |
 | `grading/testset.json` | Real staff answers (no names), marked point by point by a blind human marker. |
-| `grading/test.js` | Measures the grader against that marking. `node grading/test.js` |
+| `grading/test.js` | Measures the wording grader against that marking. `node grading/test.js` |
+| `grading/ai/` | The language-model reader the clinic PC runs, and its accuracy test `node grading/ai/eval.mjs`. |
 | `apps-script/Code.gs` | The clinic's collection script, as deployed. |
 | `tools/preflight.py` | Run before every push. `python tools/preflight.py` |
 
@@ -24,15 +25,24 @@ auto-grade.
 
 ## Auto-grading
 
-Each written question has three key points. For each one the grader looks for
-the point's cue words, and for likeness to its ten reference phrasings, and
-gives full, half or no credit. The question's percentage is the average; the
-suggested mark out of 5 is that divided by 20. The senior physiotherapist sees
-which points were found and why, and the suggested mark is pre-selected so
-they can accept it or change it. Saving records both. Physiotherapists taking
-the cases never see the auto-grade.
+Each written question has three key points. Two readers mark them:
 
-Spoken-only answers are not auto-graded: the grader cannot listen.
+- **The wording grader** (`grading/grader.js`) runs in the page on every typed
+  answer. For each point it looks for the point's cue words and for likeness
+  to ten full-marks reference answers and the head physiotherapists' own
+  phrasings, and gives full, half or no credit.
+- **The language model** (Qwen3 8B, open-source, free) runs on the clinic
+  PC every 10 minutes, reads each new answer for meaning, and stores its
+  reading, with a short note per point, beside the answer. See HANDOFF.md.
+
+Against a blind marking of 58 real answers, the model is clearly better on
+"why those three" and the wording grader on "the three questions", so the
+page suggests the model's mark for "why" and the wording mark for the
+questions, and shows the other as a second opinion; a big disagreement is
+flagged. The suggested mark out of 5 is pre-selected; the senior accepts or
+changes it, and saving records both. Staff taking cases never see it.
+
+Spoken-only answers are not auto-graded.
 
 ## Deploying
 
@@ -46,12 +56,14 @@ Serve the folder. Or just open `index.html` in a browser — it works offline.
 
 ## Updating the content
 
-`index.html` is a **generated bundle**, not the source of truth. The scenario
-cases and app UI are authored elsewhere and re-bundled into this one file.
-To publish an update: replace `index.html` wholesale, commit, push.
+This repository is the source of truth. The site is no longer exported from
+Claude Design; Claude Code edits `index.html` and the files beside it
+directly, runs `python tools/preflight.py`, and pushes. Nothing needs
+uploading by hand.
 
-Do not hand-edit `index.html` unless the change is a one-off text fix — edits
-will be overwritten by the next bundle.
+`index.html` keeps the single-file shape it was exported in: the page
+template and the case modules are embedded inside it. Preflight checks that
+every fix made so far is still in place before anything is pushed.
 
 ## Structure of a case
 

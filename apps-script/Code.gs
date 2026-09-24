@@ -1,4 +1,7 @@
-var ADMIN_KEY = '12345678';
+// The staff passcode. The deployed script has the real one on this line;
+// this copy is public on GitHub, so it carries a placeholder. When pasting
+// this file into the Apps Script editor, keep the editor's own line 1.
+var ADMIN_KEY = 'SET-IN-THE-DEPLOYED-SCRIPT-ONLY';
 var FOLDER_NAME = 'BPC Trainer Responses';
 var PEOPLE_SHEET = 'People';
 var INDEX_NAME = 'index.json';
@@ -246,6 +249,27 @@ function doPost(e) {
         if (data[i][5] === body.id) { sh.getRange(i + 1, 7).setValue('yes'); break; }
       }
       return json_({ ok: true });
+    }
+
+    // A language model on the clinic PC reads the written answers and posts
+    // its reading here. It sits beside the senior's marks and never touches
+    // them. Several answers can come in one request.
+    if (body.action === 'ai') {
+      if (body.key !== ADMIN_KEY) return json_({ ok: false, error: 'bad key' });
+      var got = {};
+      (body.items || []).forEach(function (it) {
+        var found = folder_().getFilesByName(it.id + '.json');
+        if (!found.hasNext()) return;
+        var af = found.next();
+        var arec = JSON.parse(af.getBlob().getDataAsString());
+        arec.ai = Object.assign({}, arec.ai || {}, it.ai || {});
+        af.setContent(JSON.stringify(arec));
+        got[it.id] = arec.ai;
+      });
+      updateIndex_(function (arr) {
+        return arr.map(function (r) { return got[r.id] ? Object.assign({}, r, { ai: got[r.id] }) : r; });
+      });
+      return json_({ ok: true, saved: Object.keys(got).length });
     }
 
     if (body.action === 'delete') {

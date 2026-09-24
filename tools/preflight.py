@@ -373,7 +373,7 @@ import subprocess                                             # noqa: E402
 GRADING = ROOT / 'grading'
 if '<script src="grading/grader.js"></script>' not in html:
     fail('index.html no longer loads grading/grader.js — the marking view will '
-         'show no auto-grade (a design-tool export drops it; see DESIGN-TOOL-HANDOFF.md)')
+         'show no auto-grade')
 else:
     ok('page loads the grader')
 for needle in ('loadGrader()', 'autoFor(', 'a.autoHead', 'mk.auto = g.pct'):
@@ -382,6 +382,23 @@ for needle in ('loadGrader()', 'autoFor(', 'a.autoHead', 'mk.auto = g.pct'):
         break
 else:
     ok('marking view shows and saves the auto-grade')
+
+# The language model's reading, written beside each answer by the job on the
+# clinic PC, leads on "why" and is a second opinion on the questions.
+gjs = (GRADING / 'grader.js').read_text(encoding='utf-8')
+if 'function fromModel' not in gjs or 'MODEL_LEADS' not in gjs:
+    fail('grader.js no longer uses the language model reading')
+elif 'a.autoSecond' not in tpl or 'a.autoSource' not in tpl:
+    fail('marking view no longer shows where the auto-grade came from')
+elif not all((GRADING / 'ai' / f).exists() for f in ('prompt.mjs', 'engine.mjs', 'grade-new.mjs', 'eval.mjs')):
+    fail('grading/ai is missing a file the clinic PC job needs')
+else:
+    ok('language model reading: used for "why", second opinion on the questions')
+
+if re.search(r"STAFF_PASSCODE = '[^']+'", tpl) or '12345678' in html:
+    fail('the staff passcode is written into the public page')
+else:
+    ok('staff passcode is not in the page')
 
 try:
     ref = json.loads((GRADING / 'answers.json').read_text(encoding='utf-8'))
