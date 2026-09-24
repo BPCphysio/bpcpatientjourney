@@ -219,19 +219,30 @@ mentions dragging.
 - **Drive-hosted media** — not wanted. Recordings and images keep coming
   through Apps Script; the per-piece fetch is fast enough.
 
-## B4. Heads-up only — no work yet
+## B4. The auto-grade — keep its hooks
 
-Automatic grading of questions 2 and 3 is being built on the Claude Code side,
-**without any AI service or API key**, by checking whether an answer covers
-the concepts a good answer must contain. The Senior PT named the recurring
-ones himself at 05:40: Severity of Symptoms, History of Treatment, Mechanism
-of Injury.
+Automatic grading of the two written answers is built, **without any AI
+service or API key**. It lives outside `index.html`, in `grading/`
+(`grader.js`, `answers.json`), so a new export cannot erase the grading
+itself. What an export CAN erase are the hooks in the page. Keep all of these:
 
-That will add a new per-question data field holding those concepts together
-with the different Thai and English wordings physios use for each. Question 4
-(the image) stays manually graded — he said so explicitly at 05:04.
+1. In the outer page, just before `</head>`:
+   `<script src="grading/grader.js"></script>`
+2. In the app component: `loadGrader()`, `autoFor(r)`, the `graderOn` state
+   flag, and the call to `this.loadGrader()` after the marking view loads.
+3. `saveMarks` sends **every** mark for the answer — previously saved, changed
+   now, and the pre-selected suggestion for any written answer nobody touched —
+   plus `auto` (the percentage) beside each written mark. The clinic script
+   replaces the whole set on each save; sending only this visit's changes
+   wipes earlier marks.
+4. Per written answer in the marking view: the auto-grade panel (`a.hasAuto`,
+   `a.autoHead`, `a.autoPoints`), the suggested score pre-selected in the /5
+   dropdown, and the key points shown as the answer key when a case has no key
+   of its own (the English "why" question).
+5. Scores by person count written answers at the senior's mark, or the
+   auto-grade where there is none yet. The CSV has three auto columns.
 
-Do not build anything for this. Just expect case data to grow a field.
+Question 4 (the image) stays manually graded.
 
 ---
 

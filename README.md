@@ -1,6 +1,6 @@
 # BPC Patient Journey — Scenario Trainer
 
-Staff training tool for Bangkok Physiotherapy Center. Physios work through real
+Staff training tool for Bangkok Physiotherapy Center. Physiotherapists work through real
 patient-enquiry scenarios: what reception received, how they'd handle it
 pre-arrival, what three questions they'd ask on the call, and why.
 
@@ -10,9 +10,29 @@ pre-arrival, what three questions they'd ask on the call, and why.
 
 | File | Purpose |
 | --- | --- |
-| `index.html` | The entire application. Self-contained — all HTML, CSS, JS, case data and fonts are inlined. No build step, no dependencies, no network calls. |
+| `index.html` | The application: HTML, CSS, JS, case data and fonts, inlined. |
+| `grading/grader.js` | The auto-grader for the two written answers. Runs in the browser; no service, no key, no cost. |
+| `grading/answers.json` | What the grader compares against: for every case and written question, three key points with their Thai and English cue words, and ten full-marks reference answers (five Thai, five English). Edit this to change how a case is graded. |
+| `grading/testset.json` | Real staff answers (no names), marked point by point by a blind human marker. |
+| `grading/test.js` | Measures the grader against that marking. `node grading/test.js` |
+| `apps-script/Code.gs` | The clinic's collection script, as deployed. |
+| `tools/preflight.py` | Run before every push. `python tools/preflight.py` |
 
-That's it. This is a single-file static site.
+A static site: no build step. The page itself works offline; the marking view
+reads the grader from `grading/` beside it, and without it simply shows no
+auto-grade.
+
+## Auto-grading
+
+Each written question has three key points. For each one the grader looks for
+the point's cue words, and for likeness to its ten reference phrasings, and
+gives full, half or no credit. The question's percentage is the average; the
+suggested mark out of 5 is that divided by 20. The senior physiotherapist sees
+which points were found and why, and the suggested mark is pre-selected so
+they can accept it or change it. Saving records both. Physiotherapists taking
+the cases never see the auto-grade.
+
+Spoken-only answers are not auto-graded: the grader cannot listen.
 
 ## Deploying
 
@@ -42,8 +62,9 @@ Every scenario runs the same five steps:
 2. **Step 1 — multiple choice.** How would you handle this before the patient
    arrives? Four broad, human options; three are plausible-but-worse judgment
    calls, not obvious mistakes.
-3. **Three questions.** Learner types or speaks the three questions they'd ask
-   on the call, then explains why those three.
+3. **Three questions.** The physiotherapist types or speaks the three questions
+   they'd ask on the call, then explains why those three. Typed answers are
+   auto-graded for the marker; see above.
 4. **Next step** — reveals what the call actually surfaced and locks the
    learner's earlier answers so they can't revise with hindsight.
 5. **Second MCQ + image upload** — a judgment question on the new information,

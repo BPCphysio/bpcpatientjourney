@@ -1,0 +1,182 @@
+{
+ "c01": {
+  "en": "Lower back",
+  "th": "ปวดหลังล่าง"
+ },
+ "c02": {
+  "en": "Focus: shoulders",
+  "th": "ระบุมาว่า \"ไหล่\""
+ },
+ "c03": {
+  "en": "Booked by a friend",
+  "th": "เพื่อนจองมาให้"
+ },
+ "c04": {
+  "en": "Sports massage, please",
+  "th": "ขอนวดสปอร์ตแมสสาจ"
+ },
+ "c05": {
+  "en": "I need a certificate",
+  "th": "ขอใบรับรองแพทย์"
+ },
+ "c06": {
+  "en": "Booked by her employer",
+  "th": "นายจ้างจองมาให้"
+ },
+ "c07": {
+  "en": "Posture check, no pain",
+  "th": "มาเช็กท่าทาง ไม่ปวด"
+ },
+ "c08": {
+  "en": "The doctor wrote the plan",
+  "th": "หมอเขียนแผนมาให้แล้ว"
+ },
+ "c09": {
+  "en": "I want shockwave",
+  "th": "ผมอยากทำช็อกเวฟ"
+ },
+ "c10": {
+  "en": "Competitive dodgeball",
+  "th": "ดอดจ์บอลทีมชาติ"
+ },
+ "c11": {
+  "en": "Approval first",
+  "th": "ขออนุมัติก่อน"
+ },
+ "c12": {
+  "en": "The yoga teacher",
+  "th": "ครูสอนโยคะ"
+ },
+ "c13": {
+  "en": "The form answered everything",
+  "th": "ฟอร์มตอบมาครบทุกข้อ"
+ },
+ "c14": {
+  "en": "Flying home on the 14th",
+  "th": "บินกลับวันที่ 14"
+ },
+ "c15": {
+  "en": "The patient who brought a plan",
+  "th": "คนไข้ที่เอาแผนมาให้"
+ },
+ "c16": {
+  "en": "Seven or eight days",
+  "th": "เจ็ดหรือแปดวัน"
+ },
+ "c17": {
+  "en": "Just taping",
+  "th": "ขอแค่ติดเทป"
+ },
+ "c18": {
+  "en": "Half an hour is enough",
+  "th": "ครึ่งชั่วโมงก็พอแล้ว"
+ },
+ "c19": {
+  "en": "He will not give ID",
+  "th": "เขาไม่ยอมให้บัตรประชาชน"
+ },
+ "c20": {
+  "en": "Massage only, no exercises",
+  "th": "ขอนวดอย่างเดียว ไม่เอาท่าออกกำลังกาย"
+ },
+ "c21": {
+  "en": "Which package should I buy?",
+  "th": "ควรซื้อแพ็กเกจไหน"
+ },
+ "c22": {
+  "en": "Put the certificate fee on the insurance bill",
+  "th": "ขอเอาค่าใบรับรองไปลงบิลประกัน"
+ },
+ "c23": {
+  "en": "The discount that went wrong",
+  "th": "ส่วนลดที่ผิดพลาด"
+ },
+ "c24": {
+  "en": "Ask me before you use a machine",
+  "th": "ถามผมก่อนถ้าจะใช้เครื่อง"
+ },
+ "c25": {
+  "en": "The doctor said traction",
+  "th": "หมอบอกว่าให้ดึงหลัง"
+ },
+ "c26": {
+  "en": "The report has to look like this",
+  "th": "รายงานต้องออกมาหน้าตาแบบนี้"
+ },
+ "c27": {
+  "en": "Keep it off the paperwork",
+  "th": "อย่าใส่ไว้ในเอกสาร"
+ },
+ "c28": {
+  "en": "It got worse after the manipulation",
+  "th": "แย่ลงหลังจากไปดัด"
+ },
+ "c29": {
+  "en": "An ordinary-looking back",
+  "th": "หลังที่ดูธรรมดา"
+ },
+ "c30": {
+  "en": "Eleven years, written out",
+  "th": "สิบเอ็ดปี เขียนมาครบ"
+ },
+ "c31": {
+  "en": "Walked in yesterday",
+  "th": "เดินเข้ามาจองเมื่อวาน"
+ },
+ "c32": {
+  "en": "The number is withheld",
+  "th": "เบอร์ปิดไว้"
+ },
+ "c33": {
+  "en": "His wife booked it",
+  "th": "ภรรยาจองมาให้"
+ },
+ "c34": {
+  "en": "Her mother filled in the form",
+  "th": "แม่กรอกฟอร์มมาให้"
+ },
+ "c35": {
+  "en": "The photographer and the gear",
+  "th": "ช่างภาพกับอุปกรณ์"
+ },
+ "c36": {
+  "en": "The professional fighter",
+  "th": "นักมวยอาชีพ"
+ },
+ "c37": {
+  "en": "The golfer with a date",
+  "th": "นักกอล์ฟที่มีวันแข่ง"
+ },
+ "c38": {
+  "en": "One joint on the form",
+  "th": "ในฟอร์มมีข้อเดียว"
+ },
+ "c39": {
+  "en": "Shoulder, one word",
+  "th": "ไหล่ คำเดียว"
+ },
+ "c40": {
+  "en": "What methods do you use?",
+  "th": "ที่นี่ใช้วิธีอะไร"
+ },
+ "c41": {
+  "en": "Skip the assessment",
+  "th": "ขอข้ามการตรวจประเมิน"
+ },
+ "c42": {
+  "en": "Both sides, and slowly worse",
+  "th": "สองข้าง และค่อยๆ แย่ลง"
+ },
+ "c43": {
+  "en": "After the head injury",
+  "th": "หลังจากบาดเจ็บที่ศีรษะ"
+ },
+ "c44": {
+  "en": "Nothing has ever worked",
+  "th": "ไม่เคยมีอะไรได้ผล"
+ },
+ "c45": {
+  "en": "A full history and no pain",
+  "th": "ประวัติครบถ้วน และไม่ปวด"
+ }
+}

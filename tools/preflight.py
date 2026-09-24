@@ -331,6 +331,12 @@ if _bare:
 else:
     ok('case text says physiotherapist, except in quoted chart entries')
 
+_dbl = re.findall(r'physiotherapist\w*therap|นักกายภาพบำบัดบำบัด', case_text + tpl)
+if _dbl:
+    fail(f'a word was doubled by a find-and-replace: {_dbl[:2]}')
+else:
+    ok('no doubled "physiotherapisttherapist" left by a replace')
+
 _clip = re.findall('\u0e19\u0e31\u0e01\u0e01\u0e32\u0e22\u0e20\u0e32\u0e1e(?!\u0e1a\u0e33\u0e1a\u0e31\u0e14)', case_text)
 if _clip:
     fail(f'{len(_clip)} Thai case string(s) clip the word for physiotherapist')
@@ -358,6 +364,61 @@ if buckets:
                      re.finditer(r"[A-Za-z0-9_]+\s*:\s*'[^']*" + word + r"[^']*'", tpl)]
         if leftovers and len(bands) != 6:
             fail(f'copy still says "{word}" though a set is {len(bands)} cases: {leftovers[:2]}')
+
+# ------------------------------------------------------------------ grader
+# The auto-grade lives in grading/: the grader, its reference answers, and a
+# test that measures it against a blind human marking of real staff answers.
+import subprocess                                             # noqa: E402
+
+GRADING = ROOT / 'grading'
+if '<script src="grading/grader.js"></script>' not in html:
+    fail('index.html no longer loads grading/grader.js — the marking view will '
+         'show no auto-grade (a design-tool export drops it; see DESIGN-TOOL-HANDOFF.md)')
+else:
+    ok('page loads the grader')
+for needle in ('loadGrader()', 'autoFor(', 'a.autoHead', 'mk.auto = g.pct'):
+    if needle not in tpl:
+        fail(f'marking view has lost the auto-grade ({needle} missing)')
+        break
+else:
+    ok('marking view shows and saves the auto-grade')
+
+try:
+    ref = json.loads((GRADING / 'answers.json').read_text(encoding='utf-8'))
+    bad = []
+    for cid in sorted(set(en_ids)):
+        c = ref['cases'].get(cid)
+        if not c:
+            bad.append(f'{cid} missing')
+            continue
+        for q in ('q1', 'q2'):
+            b = c.get(q) or {}
+            if len(b.get('points', [])) != 3:
+                bad.append(f'{cid}.{q} points')
+            for lang in ('en', 'th'):
+                lst = (b.get('answers') or {}).get(lang) or []
+                if len(lst) != 5 or any(len(a) != 3 for a in lst):
+                    bad.append(f'{cid}.{q}.{lang}')
+    if bad:
+        fail(f'reference answers incomplete: {", ".join(bad[:6])}')
+    else:
+        ok(f'reference answers: {len(ref["cases"])} cases, 5 English + 5 Thai per question')
+except Exception as exc:                                     # noqa: BLE001
+    fail(f'grading/answers.json unreadable: {exc}')
+
+try:
+    run = subprocess.run(['node', str(GRADING / 'test.js')], capture_output=True,
+                         text=True, encoding='utf-8', timeout=180)
+    last = [l for l in run.stdout.splitlines() if l.strip()]
+    within = next((l.strip() for l in last if l.strip().startswith('within one mark')), '')
+    if run.returncode != 0:
+        fail('grader test failed — ' + ' / '.join(l.strip() for l in last[-3:]))
+    else:
+        ok('grader agrees with the blind marking: ' + ' '.join(within.split()[:4]))
+except FileNotFoundError:
+    notes.append('node not installed here; grader test skipped')
+except subprocess.TimeoutExpired:
+    fail('grader test took over three minutes')
 
 # ------------------------------------------------------------------- report
 print()

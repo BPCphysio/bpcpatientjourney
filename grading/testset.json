@@ -1,0 +1,814 @@
+[
+ {
+  "rid": "a01446e5d8",
+  "case": "c17",
+  "lang": "th",
+  "q": "q1",
+  "text": "1.ทำไมถึงต้องการติดเทป\n2.ข้อเท้าบาดเจ็บอย่่างไร เป็นมานานไหม\n3.ถามหาmecjamism of injury",
+  "credits": [
+   1,
+   0.5,
+   0
+  ],
+  "pct": 50,
+  "note": "asks why tape (P1); injury history only vaguely toward give-way count; no Saturday need"
+ },
+ {
+  "rid": "a01446e5d8",
+  "case": "c17",
+  "lang": "th",
+  "q": "q2",
+  "text": "1.เพื่อถามวัตถุประสงค์ และวางแผนได้ถูกต้อง\n2.รู้ว่าการบาดเจ็บลักษณะไหน screen red yellow flag\n3.กลไกการบาดเจ็บ",
+  "credits": [
+   0.5,
+   0,
+   0
+  ],
+  "pct": 17,
+  "note": "purpose reason generic; flags/mechanism not the worsening-instability reason"
+ },
+ {
+  "rid": "445ad5c884",
+  "case": "c27",
+  "lang": "th",
+  "q": "q1",
+  "text": "สอบถามเพิ่มเติมเกี่ยวกับระยะเวลาและสาเหตุของอาการอาจจะสอบถามคร่าวคร่าวๆเกี่ยวกับงานและสิ่งที่เขาอยากกลับไปทำได้\nและอธิบายคร่าวๆว่า ข้อมูลของคนไข้ที่ถูกบันทึกจะไม่ได้มีการส่งต่อจนกว่าจะได้รับการยินยอมจากคนไข้",
+  "credits": [
+   0,
+   0.5,
+   0.5
+  ],
+  "pct": 33,
+  "note": "rough history only; no asking what she wants unrecorded; consent-to-share touches notes vs report only partly"
+ },
+ {
+  "rid": "445ad5c884",
+  "case": "c27",
+  "lang": "th",
+  "q": "q2",
+  "text": "เพื่อที่จะได้เข้าใจอาการของคนไข้และกำหนดเป้าหมายของการรักษาได้ตรงกับสิ่งที่คนไข้ต้องการมากขึ้น",
+  "credits": [
+   0,
+   0,
+   0
+  ],
+  "pct": 0,
+  "note": "generic understand symptoms/goal reason"
+ },
+ {
+  "rid": "f1005cff14",
+  "case": "c06",
+  "lang": "th",
+  "q": "q1",
+  "text": "สอบถามพี่เลี้ยงเกี่ยวกับสาเหตุที่ทำให้เกิดอาการ \nงานแบบไหนบ้างที่ทำให้อาการเค้ามันเพิ่มขึ้น \nและถามว่าอาการของเขาเกิดขึ้นมานานแค่ไหนแล้วรวมถึงความรุนแรงของอาการ",
+  "credits": [
+   0.5,
+   0,
+   1
+  ],
+  "pct": 50,
+  "note": "directs questions to the nanny implicitly; no privacy answer; ordinary history covered"
+ },
+ {
+  "rid": "f1005cff14",
+  "case": "c06",
+  "lang": "th",
+  "q": "q2",
+  "text": "เพื่อที่เราจะได้เข้าใจอาการของคนไข้ได้อย่างถูกต้องจากการสอบถามผ่านคนไข้โดยตรง และจะได้เลือกการตรวจตรวจร่างกายและการรักษาที่เหมาะเหมาะสมกับคนไข้",
+  "credits": [
+   1,
+   0,
+   0
+  ],
+  "pct": 33,
+  "note": "accurate history from patient directly matches P1 reason; rest generic"
+ },
+ {
+  "rid": "21132dd9f6",
+  "case": "c19",
+  "lang": "th",
+  "q": "q1",
+  "text": "สอบถามเกี่ยวกับอาการของคนไข้ที่คนไข้กังวล\nสอบถามเกี่ยวกับสาเหตุของการเกิดอาการนี้\nและสอบถามเกี่ยวกับขั้นตอนที่จะเกิดขึ้นในวันพรุ่งนี้",
+  "credits": [
+   1,
+   0,
+   0
+  ],
+  "pct": 33,
+  "note": "takes ordinary history; never asks what he fears recorded or answers privacy"
+ },
+ {
+  "rid": "21132dd9f6",
+  "case": "c19",
+  "lang": "th",
+  "q": "q2",
+  "text": "ทำให้คนไข้มั่นใจในตัวเราว่าเรามีการเตรียมการประเมินและรักษาของเขามาเป็นอย่างดี และสร้างความเชื่อใจให้คนไข้ซึ่งเค้าอาจจะส่งข้อมูลส่วนตัวตามมาภายหลังได้",
+  "credits": [
+   0,
+   0.5,
+   0
+  ],
+  "pct": 17,
+  "note": "trust so he may share personal info later touches P2"
+ },
+ {
+  "rid": "8df56cc864",
+  "case": "c24",
+  "lang": "th",
+  "q": "q1",
+  "text": "1. ถามสิ่งที่กระตุ้นอาการ หรือท่าทางที่ทำให้อาการเพิ่มขึ้น\n2. สิ่งที่ได้รับในการรักษาก่อนหน้าว่าทำอะไรไปบ้าง ความถี่ที่เข้ารับการรักษา และผลของการรักษาเป็นยังไง\n3. แล้วก็อธิบายเบื้องต้นว่าหากมีการใช้เครื่องมือเพิ่มเติมจะมีอะไรบ้างและราคาเท่าไหร่บ้าง",
+  "credits": [
+   0.5,
+   0.5,
+   0.5
+  ],
+  "pct": 50,
+  "note": "prior treatment asked but not whether explained; aggravators without night; pre-explains machine costs rather than agreeing to ask first"
+ },
+ {
+  "rid": "8df56cc864",
+  "case": "c24",
+  "lang": "th",
+  "q": "q2",
+  "text": "ที่เราจะได้รู้คร่าวคร่าวๆว่า ท่าทางไหนที่กระตุ้นอาการและจะได้รู้ว่าการรักษาที่เขาได้รับมามันได้ผลกับเขามากน้อยแค่ไหน เพราะความถี่ในการรักษาอาจมีผล และเพื่อให้เราเตรียมการรักษาที่มีความแตกต่าง จากเดิมที่คนไข้เคยได้รับ และเพื่อให้ คนไข้มั่นใจว่า หากมีการใช้เครื่องมือเพิ่มเติม จะมีแจ้ง ก่อนทุกครั้ง",
+  "credits": [
+   0.5,
+   0,
+   0.5
+  ],
+  "pct": 33,
+  "note": "plan different from past treatment; reassure he will be told first"
+ },
+ {
+  "rid": "52a11c9ed2",
+  "case": "c21",
+  "lang": "th",
+  "q": "q1",
+  "text": "สอบถามสาเหตุความรุนแรงของอาการ\nอธิบายบายให้คนไข้ฟังเกี่ยวกับแนวทางการรักษา\nอธิบายว่าจำนวนครั้งในการรักษาขึ้นอยู่กับผลหลังการรักษาในครั้งแรก",
+  "credits": [
+   0.5,
+   0,
+   1
+  ],
+  "pct": 50,
+  "note": "generic cause/severity; ignores why he asks price; sessions depend on first assessment covers P3"
+ },
+ {
+  "rid": "52a11c9ed2",
+  "case": "c21",
+  "lang": "th",
+  "q": "q2",
+  "text": "อาจจะทำให้คนไข้เข้าใจว่าการกำหนดจำนวนครั้งการรักษาขึ้นอยู่กับการตรวจร่างกายและตอบสนองต่อการรักษาของร่างกายของแต่ละบุคคล และทำให้คนไข้มั่นใจได้ว่าสิ่งที่เราแนะนำ ได้แนะนำตามความเหมาะสม",
+  "credits": [
+   0,
+   0,
+   0.5
+  ],
+  "pct": 17,
+  "note": "honest non-sales session count, misses his real concern"
+ },
+ {
+  "rid": "3fab7af89b",
+  "case": "c17",
+  "lang": "th",
+  "q": "q1",
+  "text": "สอบถามสาเหตุ\nแจ้งว่าทำไมเราต้องตรวจร่างกายก่อน\nอธิบายขั้นตอนว่าพรุ่งนี้จะตรวจร่างกายยังไงและเราเตรียมตัวยังไง",
+  "credits": [
+   0,
+   0,
+   0
+  ],
+  "pct": 0,
+  "note": "generic cause then explaining need for exam; none of the key questions"
+ },
+ {
+  "rid": "3fab7af89b",
+  "case": "c17",
+  "lang": "th",
+  "q": "q2",
+  "text": "จะได้ทราบสาเหตุ และข้อควรระวังในการเทป\nให้คนไข้เข้าใจว่าการตรวจร่างกายจะทำให้เราเข้าใจอาการและทราบส่วนที่ได้รับการบาดเจ็บ",
+  "credits": [
+   0,
+   0,
+   0
+  ],
+  "pct": 0,
+  "note": "generic cause/taping precautions"
+ },
+ {
+  "rid": "f734f1ec51",
+  "case": "c38",
+  "lang": "th",
+  "q": "q1",
+  "text": "-ถามถึงอาการบวมและstiff ว่านอกจากตอนเช้ามีอาการตอนอื่นอีกไหม\n-อาการปวดและบวมในตอนเช้ามีแค่บริเวณเดียวหรือมีข้ออื่นๆด้วย\n-ตอนนี้ผลแลบที่รอที่โรงพยาบาลคือผลตรวจอะไร และมีโรคประจำตัวอะไรไหม",
+  "credits": [
+   1,
+   1,
+   0.5
+  ],
+  "pct": 83,
+  "note": "tests asked (not when due); other joints asked; stiffness asked but not duration"
+ },
+ {
+  "rid": "f734f1ec51",
+  "case": "c38",
+  "lang": "th",
+  "q": "q2",
+  "text": "-พอที่จะคาดเดาโรคได้และกิจกรรมอะไรที่ทำให้ปวด ทำให้สามารถวางแผนการรักษาได้ด้ตรงจุดมากขึ้น\n-ถ้ามีอาการปวดบริเวณอื่นๆด้วย จะได้เน้นโฟกะสรักษาที่ข้อมือหรือต้องโฟกัสพาร์ทไหนเพิ่มเติมอีกมั้ย\n-ดูแนวโน้มว่ามีความเสี่ยงในการเป็นโรคทาง immune ไหม และเราจะรักษาได้ไหม หรือควรให้ไปโรงพยาบาล",
+  "credits": [
+   1,
+   1,
+   0.5
+  ],
+  "pct": 83,
+  "note": "other joints changes focus; immune risk/refer frames case; stiffness reason vague"
+ },
+ {
+  "rid": "601d283fdb",
+  "case": "c20",
+  "lang": "th",
+  "q": "q1",
+  "text": "-ถามถึงสาเหตุการบาดเจ็บก่อนหน้า ทำไมถึงทำการผ่าตัด ผ่าตัดแบบไหนพอจำได้ไหม\n-รู้สึกติดและsoreบริเวณไหน อาการถ้าเทียบกับช่วงแรกที่ผ่าตัดกับตอนนี้ อาการเป็นอย่างไรบ้าง\n-ปกติออกกำลังกายอะไรบ้างสำหรับrehab และทำบ่อยแค่ไหน",
+  "credits": [
+   0.5,
+   0,
+   1
+  ],
+  "pct": 50,
+  "note": "asks rehab exercises but not what happened; no 'what were you told'; surgery type asked"
+ },
+ {
+  "rid": "601d283fdb",
+  "case": "c20",
+  "lang": "th",
+  "q": "q2",
+  "text": "-เพื่อเลือกใช้ rehab protocol ได้ถูกต้อง\n-รู้ถึง prognosis หากอาการไม่ดีขึ้นกว่าตอนแรกจะได้แจ้งและให้เหตุผลคนไข้ได้ว่าสิ่งที่คนำข้ทำอยู่ตรงนี้ขาดในส่วนไหนไป แพลนการออกกำลังกายดรพอหรือยัง\n-เพื่อทีาจะได้ดูแนวโน้มว่าเราจะสามารถให้คนไข้ออกกำลังกายได้ไหม หรือต้องให้ความรู้คนไข้อย่างไร เพราะคนไข้ต้องการนวดอย่างเดียว",
+  "credits": [
+   0.5,
+   0,
+   0.5
+  ],
+  "pct": 33,
+  "note": "protocol from surgery info; whether he can exercise/education partly P1"
+ },
+ {
+  "rid": "dd591d1b81",
+  "case": "c43",
+  "lang": "th",
+  "q": "q1",
+  "text": "-การผ่าตัดเป็นการผ่าตัดแบบไหน แนะนำให้ส่งreportมาก่อนเข้ารับการรักษา\n-ตอนนี้กิจวัตรประจำวัน และการทำกิจกรรมอยู่ไหนระดับไหน สามารถทำอะไรได้บ้าง\n-ลักษณะงานที่ทำเป็นยังไง",
+  "credits": [
+   1,
+   0,
+   0.5
+  ],
+  "pct": 50,
+  "note": "surgery asked (plus report); function not why rehab stopped; job type only part of P3"
+ },
+ {
+  "rid": "dd591d1b81",
+  "case": "c43",
+  "lang": "th",
+  "q": "q2",
+  "text": "-จะได้รู้ว่าการผ่าตัดคือการผ่าตัดบริเวณไหน เนื่องจากเป็นโรคทางนิวโรมา 2ปีแล้ส จะได้วางgoal หรือรู้ prognosis ได้\n-เพื่อเป็นการประเมินอาการและความสามารถคนไข้เบื้องต้น จะได้มีผลต่อการตรวจและได้วางแพลนการรักษาได้ตรงจุดมากขึ้น ไม่ง่ายหรือไม่ยากจนเกินไป\n-ถ้ารู้ลักษณะงานจะได้วางแผนการรักษาให้เป็นฟังก์ชันตรงกับเป้าหมายคนของไข้มากขึ้น",
+  "credits": [
+   0.5,
+   0,
+   0.5
+  ],
+  "pct": 33,
+  "note": "history/prognosis and work goal reasons partial"
+ },
+ {
+  "rid": "b5ee8267dc",
+  "case": "c14",
+  "lang": "th",
+  "q": "q1",
+  "text": "-ตอนที่มีอาการปวด เป็นการ hiking ครั้งแรกหรือปกติมีการ hiking อยู่แล้ว\n-ขณะ hiking อยู่มีอาการปวดจังหวะไหน พอจำkmที่มีอาการปวดได้ไหม\n-เป้าหมายคือต้องการกลับไปทำอะไร หรือทำกิจกรรมประเภทไหน",
+  "credits": [
+   1,
+   0,
+   0
+  ],
+  "pct": 33,
+  "note": "asks goal activity; no medication; no realistic 12-day agreement"
+ },
+ {
+  "rid": "b5ee8267dc",
+  "case": "c14",
+  "lang": "th",
+  "q": "q2",
+  "text": "-ทราบถึง physical level/ health condition/ activity \n-ทราบถึง cause / mechanism of injury \n-เพื่อที่เราจะได้เอามาอ้างอิงรวมถึงวางแผนให้สอดคล้องกับเวลา12วันที่คนไข้จะอยู่รักษากับเราได้",
+  "credits": [
+   0.5,
+   0,
+   0
+  ],
+  "pct": 17,
+  "note": "plan to fit 12 days partly P1; others generic"
+ },
+ {
+  "rid": "864736b8c7",
+  "case": "c03",
+  "lang": "th",
+  "q": "q1",
+  "text": "-ปวดเข่าบริเวณไหน\n-เริ่มมีอาการปวดจากการทำอะไร มีอาการปวดมานานแค่ไหน\n-เป้าหมายในการรักษาคืออะไร",
+  "credits": [
+   0,
+   0.5,
+   0.5
+  ],
+  "pct": 33,
+  "note": "no getting the patient on the phone; location/duration without locking/swelling; treatment goal not visit want"
+ },
+ {
+  "rid": "864736b8c7",
+  "case": "c03",
+  "lang": "th",
+  "q": "q2",
+  "text": "-สามารถตั้ง differentials diagnosis ได้\n-ทราบ mechanism of injury\n-ถ้าทราบเป้าหมายในการรักษา จะสามารถทราบได้คร่าวๆว่าคนไข้ทำกิจกรรมอะไร หรือเป็นนักกีฬาไหม จะมีแข่งไหม จะได้กำหนดแลพวางแพลนการรักษาให้ได้ในตามเวบาและเป้าหมายของคนไข้",
+  "credits": [
+   0,
+   0.5,
+   0
+  ],
+  "pct": 17,
+  "note": "differentials loosely toward what to test"
+ },
+ {
+  "rid": "ac5bebf62d",
+  "case": "c10",
+  "lang": "th",
+  "q": "q1",
+  "text": "-ตอนที่เริ่มปวดทำอะไรมา หรือทำท่าไหนจึงเกิดอาการปวด\n-ถ้าเทียบพับตอนแรกที่เริ่มมีอาการปวด กับตอนนี้อาการดีขึ้นไหม\n-โปรแกรมการซ้อมตอนนี้เป็นยังไงบ้าง",
+  "credits": [
+   1,
+   0,
+   0
+  ],
+  "pct": 33,
+  "note": "onset activity and training program cover load; no night pain/action; no constraint"
+ },
+ {
+  "rid": "ac5bebf62d",
+  "case": "c10",
+  "lang": "th",
+  "q": "q2",
+  "text": "-ทราบ Mechanism of injury สามารถตั้ง differential diagnosis ได้ตรงจุดมากขึ้น\n-รู้ on set and prognosis ของอาการ\n-วางแผนการ rehab ให้สอดคล้องกับอาการและสามารถปรับแผนการrehabให้เข้ากับโปรแกรมการซ้อมได้เพิ่มมากขึ้น",
+  "credits": [
+   0,
+   0,
+   0.5
+  ],
+  "pct": 17,
+  "note": "fit rehab to training program partly P3"
+ },
+ {
+  "rid": "c50689f9f8",
+  "case": "c27",
+  "lang": "en",
+  "q": "q1",
+  "text": "the behavior of the symptom\nask about her seat",
+  "credits": [
+   0,
+   0.5,
+   0
+  ],
+  "pct": 17,
+  "note": "only symptom behaviour and seat; misses record question and notes vs report"
+ },
+ {
+  "rid": "c50689f9f8",
+  "case": "c27",
+  "lang": "en",
+  "q": "q2",
+  "text": "differentiat",
+  "credits": [
+   0,
+   0,
+   0
+  ],
+  "pct": 0,
+  "note": "one word, generic"
+ },
+ {
+  "rid": "523c4115cc",
+  "case": "c34",
+  "lang": "en",
+  "q": "q2",
+  "text": "help to differentiate the symptom",
+  "credits": [
+   0,
+   0,
+   0
+  ],
+  "pct": 0,
+  "note": "generic differentiate"
+ },
+ {
+  "rid": "a2e2fe84c1",
+  "case": "c14",
+  "lang": "en",
+  "q": "q1",
+  "text": "ask him about anything that happened during his hike\nother symptom like clicking of popping sound\nask him for the behavior of the symptom",
+  "credits": [
+   0,
+   0,
+   0
+  ],
+  "pct": 0,
+  "note": "hike events, clicking, behaviour; none of goal, meds, realistic plan"
+ },
+ {
+  "rid": "a2e2fe84c1",
+  "case": "c14",
+  "lang": "en",
+  "q": "q2",
+  "text": "that will help to estimate and rule out the cause of the injury and the severity of the symptom",
+  "credits": [
+   0,
+   0,
+   0
+  ],
+  "pct": 0,
+  "note": "generic cause/severity"
+ },
+ {
+  "rid": "48e08bd57c",
+  "case": "c05",
+  "lang": "en",
+  "q": "q1",
+  "text": "Ask him about his back pain\nAsk him what is the cause of the pain In the area that he's concerned\nAsk him about the limitation that caused from the back",
+  "credits": [
+   0.5,
+   0,
+   0.5
+  ],
+  "pct": 33,
+  "note": "generic cause; no leg/numbness screen; limitations not work target"
+ },
+ {
+  "rid": "48e08bd57c",
+  "case": "c05",
+  "lang": "en",
+  "q": "q2",
+  "text": "They help me to scopes give me the plan of the treatment and assessment for the next session also give me more information further than just for medical certificate",
+  "credits": [
+   0,
+   0,
+   0.5
+  ],
+  "pct": 17,
+  "note": "more than just certificate touches P3"
+ },
+ {
+  "rid": "4159efa993",
+  "case": "c05",
+  "lang": "en",
+  "q": "q1",
+  "text": "คนไข้ชื่ออะไร จากนั้นใช้ชื่อเขาในการพูดคุยเสมอ \nที่แจ้งว่าปวดหลังในช่วง 1 สัปดาห์ที่ผ่านมา มีไปทำอะไรมา ถึงทำให้ปวดหลังในครั้งนี้ \nเป้าหมายในการมารักษาในครั้งนี้",
+  "credits": [
+   0.5,
+   0,
+   0.5
+  ],
+  "pct": 33,
+  "note": "what he did; no neuro screen; generic treatment goal"
+ },
+ {
+  "rid": "4159efa993",
+  "case": "c05",
+  "lang": "en",
+  "q": "q2",
+  "text": "Personalize หากทราบชื่อก็จะสามารถ คนไข้ถูกเราจำได้ และเราจะใช้ชื่อของเรา และเรียกชื่อของเขาในการพูดคุยเสมอ \nKnow about mechanism of injury and cause \nสามารถ Personalized deeply in his life and goal of treatment",
+  "credits": [
+   0.5,
+   0,
+   0
+  ],
+  "pct": 17,
+  "note": "mechanism reason partial; name/personalise generic"
+ },
+ {
+  "rid": "53231cd3e0",
+  "case": "c01",
+  "lang": "en",
+  "q": "q1",
+  "text": "-what’s the date that start of pain\n-Cause of pain \n- What’s activity limited by pain in daily",
+  "credits": [
+   1,
+   0,
+   0.5
+  ],
+  "pct": 50,
+  "note": "onset and cause; no work/lifting; activity limitation without meds"
+ },
+ {
+  "rid": "53231cd3e0",
+  "case": "c01",
+  "lang": "en",
+  "q": "q2",
+  "text": "-Know the pain mechanism \n- Try to know her personal \n- Severity of the condition",
+  "credits": [
+   0.5,
+   0,
+   0
+  ],
+  "pct": 17,
+  "note": "pain mechanism loosely P1"
+ },
+ {
+  "rid": "737f03f080",
+  "case": "c05",
+  "lang": "en",
+  "q": "q1",
+  "text": "-Any more symptoms refer down to your leg\n-What’s the work does you have\n- Have any kind of this condition before",
+  "credits": [
+   0,
+   0.5,
+   0.5
+  ],
+  "pct": 33,
+  "note": "leg referral only; work asked without return target; previous episodes"
+ },
+ {
+  "rid": "737f03f080",
+  "case": "c05",
+  "lang": "en",
+  "q": "q2",
+  "text": "-Analysis the mechanism of pain\n-evaluation the yellow and green flag\n-Personalize the patient",
+  "credits": [
+   0,
+   0.5,
+   0
+  ],
+  "pct": 17,
+  "note": "flags screening vaguely; rest generic"
+ },
+ {
+  "rid": "af92f133c6",
+  "case": "c04",
+  "lang": "en",
+  "q": "q1",
+  "text": "-area that he need to focus\n-what’s sport or exercise he does\n- any further condition or surgery in his body",
+  "credits": [
+   0,
+   0.5,
+   0
+  ],
+  "pct": 17,
+  "note": "never asks what massage is for; sport asked; no event"
+ },
+ {
+  "rid": "af92f133c6",
+  "case": "c04",
+  "lang": "en",
+  "q": "q2",
+  "text": "- Prepare to get the massage \n- Personalize each sport \n-screening precautions and contraindications",
+  "credits": [
+   0,
+   0,
+   0
+  ],
+  "pct": 0,
+  "note": "massage prep/contraindication screening"
+ },
+ {
+  "rid": "db97fa577e",
+  "case": "c03",
+  "lang": "en",
+  "q": "q1",
+  "text": "-What’s the activity make you feel pain (recently)\n-What causes of the pain happen \n- Have any injuries in knee/ hip and ankle before",
+  "credits": [
+   0,
+   0,
+   0
+  ],
+  "pct": 0,
+  "note": "no patient contact, side, locking/swelling or visit want"
+ },
+ {
+  "rid": "db97fa577e",
+  "case": "c03",
+  "lang": "en",
+  "q": "q2",
+  "text": "- Plan to check the hip and ankle which related with her condition \n- Analysis the mechanics and prepare for some test and photo\n- evaluation the severity of condition",
+  "credits": [
+   0,
+   0.5,
+   0
+  ],
+  "pct": 17,
+  "note": "prepare tests loosely P2"
+ },
+ {
+  "rid": "22b7c0ac97",
+  "case": "c21",
+  "lang": "en",
+  "q": "q1",
+  "text": "-which position in tennis make you feel most pain\n-How long for this condition \n- Have any competition for now",
+  "credits": [
+   1,
+   0,
+   0
+  ],
+  "pct": 33,
+  "note": "elbow history covered; ignores price question entirely"
+ },
+ {
+  "rid": "22b7c0ac97",
+  "case": "c21",
+  "lang": "en",
+  "q": "q2",
+  "text": "- Analysis the mechanism \n- Preparing the photo related with his condition \n- Evaluation the other part of body may effect",
+  "credits": [
+   0,
+   0,
+   0
+  ],
+  "pct": 0,
+  "note": "mechanism/photo generic"
+ },
+ {
+  "rid": "0076756ee7",
+  "case": "c31",
+  "lang": "en",
+  "q": "q1",
+  "text": "-How long for the pain\n-Cause of pain\n-Screening red flag and yellow flag",
+  "credits": [
+   0,
+   0,
+   0
+  ],
+  "pct": 0,
+  "note": "re-asks duration/cause the desk sheet holds; no load or work constraint"
+ },
+ {
+  "rid": "0076756ee7",
+  "case": "c31",
+  "lang": "en",
+  "q": "q2",
+  "text": "-Planning the room and space\n-Evaluating the severity of conditions \n-Prepare the plan of physical examination",
+  "credits": [
+   0,
+   0,
+   0
+  ],
+  "pct": 0,
+  "note": "room planning, severity, exam plan"
+ },
+ {
+  "rid": "f83aec9e8b",
+  "case": "c21",
+  "lang": "en",
+  "q": "q1",
+  "text": "1. How often do you play tennis/week\n2. How long is each session\n3. Does the pain radiate anywhere else on the arm/body",
+  "credits": [
+   0.5,
+   0,
+   0
+  ],
+  "pct": 17,
+  "note": "tennis load only; nothing on price"
+ },
+ {
+  "rid": "f83aec9e8b",
+  "case": "c21",
+  "lang": "en",
+  "q": "q2",
+  "text": "Question 1 + 2 - to better understand how many hours he plays a week\nQuestion 3 - to see and understand if the pain has moved elsewhere and we can check in more detail tomorrow",
+  "credits": [
+   0.5,
+   0,
+   0
+  ],
+  "pct": 17,
+  "note": "playing volume partly P1 reason"
+ },
+ {
+  "rid": "169cf75d52",
+  "case": "c17",
+  "lang": "en",
+  "q": "q1",
+  "text": "- What is your symptom?\n- How did it happen?\n- What is your main concern?",
+  "credits": [
+   0,
+   0,
+   0.5
+  ],
+  "pct": 17,
+  "note": "generic symptom/cause; main concern partly Saturday need"
+ },
+ {
+  "rid": "2194dd59f8",
+  "case": "c14",
+  "lang": "en",
+  "q": "q1",
+  "text": "-เจ็บบริเวณไหนของเข่า\n-เจ็บจังหวะ uphil or downhill\n-ใน6 วีคอาการดีขึ้นแย่ลงยังไงบ้าง",
+  "credits": [
+   0,
+   0,
+   0
+  ],
+  "pct": 0,
+  "note": "location, hill direction, trend; none of key points"
+ },
+ {
+  "rid": "2194dd59f8",
+  "case": "c14",
+  "lang": "en",
+  "q": "q2",
+  "text": "จะได้เห็น mechanism of injury ชัดขึ้น",
+  "credits": [
+   0,
+   0,
+   0
+  ],
+  "pct": 0,
+  "note": "mechanism only"
+ },
+ {
+  "rid": "9387fbf1dc",
+  "case": "c05",
+  "lang": "en",
+  "q": "q1",
+  "text": "มีอาการปวดมั้ย หรือปวดมากแค่ไหน\nลักษณะการทำงานเป็นแบบไหน\nถ้ามีปวด อาการมากขึ้นตอนทำงานไหมหรือ กิจกรรมไหนเป็นพิเศษ",
+  "credits": [
+   0,
+   0,
+   0.5
+  ],
+  "pct": 17,
+  "note": "pain severity, work nature/aggravation partial P3; no incident or neuro screen"
+ },
+ {
+  "rid": "9387fbf1dc",
+  "case": "c05",
+  "lang": "en",
+  "q": "q2",
+  "text": "จะได้เห็นภาพคนไข้มากขึ้น",
+  "credits": [
+   0,
+   0,
+   0
+  ],
+  "pct": 0,
+  "note": "generic see patient more"
+ },
+ {
+  "rid": "fb70b962c4",
+  "case": "c05",
+  "lang": "en",
+  "q": "q1",
+  "text": "มีอาการปวดมั้ย หรือปวดมากแค่ไหน\nลักษณะการทำงานเป็นแบบไหน\nถ้ามีปวด อาการมากขึ้นตอนทำงานไหมหรือ กิจกรรมไหนเป็นพิเศษ",
+  "credits": [
+   0,
+   0,
+   0.5
+  ],
+  "pct": 17,
+  "note": "pain severity, work nature/aggravation partial P3; no incident or neuro screen"
+ },
+ {
+  "rid": "fb70b962c4",
+  "case": "c05",
+  "lang": "en",
+  "q": "q2",
+  "text": "จะได้เห็นภาพคนไข้มากขึ้น",
+  "credits": [
+   0,
+   0,
+   0
+  ],
+  "pct": 0,
+  "note": "generic see patient more"
+ },
+ {
+  "rid": "bcdc05af4d",
+  "case": "c04",
+  "lang": "en",
+  "q": "q1",
+  "text": "-ทำอะไรมาถึงอยาก sport massage\n-รู้สึกว่าเป็น part ไหนเป็นพิเศษมั้ย\n-เคยทำ sport massage มาก่อนรึยัง",
+  "credits": [
+   1,
+   0,
+   0
+  ],
+  "pct": 33,
+  "note": "asks why sports massage; region and prior massage; no duration/run or event"
+ },
+ {
+  "rid": "bcdc05af4d",
+  "case": "c04",
+  "lang": "en",
+  "q": "q2",
+  "text": "ทำให้รู้ข้อมูลมากขึ้นและ make sure ได้มากขึ้นว่าเขาทำ sport massage ได้",
+  "credits": [
+   0.5,
+   0,
+   0
+  ],
+  "pct": 17,
+  "note": "checking suitability loosely P1"
+ }
+]
