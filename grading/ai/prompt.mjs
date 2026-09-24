@@ -3,7 +3,7 @@
 import crypto from 'crypto';
 
 export const MODEL_FILE = 'Qwen3-8B-Q4_K_M.gguf';
-export const PROMPT_VERSION = 'v1';
+export const PROMPT_VERSION = 'v3';
 
 const QTEXT = {
   q1: 'Say the three most important questions you would ask on this call.',
@@ -19,7 +19,9 @@ The clinic has defined exactly three key points for this question. For each key 
 
 Be strict about generic answers. Asking "the cause", "the severity" or "the history", or giving a reason like "to plan the treatment" or "to understand the symptoms", does not cover a point that is specific to this case; it earns at most 0.5 on the single point it is closest to, and usually 0. Credit each part of the answer to at most one key point.
 
-Reply with JSON only. Format: {"credits": [c1, c2, c3], "notes": ["...", "...", "..."]} where each credit is 0, 0.5 or 1 and each note is a few words, in English, on why.`;
+Then list the answer's EXTRA items. The clinic counts a good question as long as it relates to this actual patient. An extra is a separate question (or, for the "why" question, a separate reason) in the answer that earns no credit on a key point and is tied to a SPECIFIC detail of this patient's chart: something the chart says about them, or something it conspicuously leaves out about their particular complaint. The standard history questions every physiotherapist asks every patient are NOT extras, however sensible: how long, how it started or the mechanism of injury, how severe, what makes it worse, previous treatment and how it went, goals, medication, general health, red flags in general, explaining the exam, next steps, building trust or rapport, planning the treatment. They become an extra only when the answer ties them to a detail of this chart (for a runner booked "for shockwave": "has shockwave been done before, and did it help?"). An item credited on a key point is not also an extra. For each extra, copy the exact words from the chart (the "What the chart said" section, in English) that make it specific to this patient; if you cannot quote such words, it is not an extra. At most 3; most answers have none.
+
+Reply with JSON only. Format: {"credits": [c1, c2, c3], "notes": ["...", "...", "..."], "extras": [{"item": "...", "chart": "exact words from the chart"}]} where each credit is 0, 0.5 or 1, each note is a few words in English on why, and each extra names the item in a few English words (an empty list if there are none).`;
 
 export function userPrompt(c, block, q, answer) {
   const pts = block.points.map((p, i) => `${i + 1}. ${p.en}  |  ${p.th}`).join('\n');
@@ -58,7 +60,39 @@ export function fingerprint(q, answer) {
 
 const snap = c => (c >= 0.75 ? 1 : c >= 0.25 ? 0.5 : 0);
 
-// Returns {credits, notes} or null if the reply is not usable.
+// The clinic's rule: each extra item relevant to this patient adds half a
+// point to the weakest key point not yet full. The key points remain the only
+// way to full marks on their own; extras fill gaps. Used by the job, the
+// accuracy test and the re-marked test answers alike.
+export function withExtras(credits, extras) {
+  const slots = credits.slice();
+  for (let k = 0; k < Math.min(3, extras); k++) {
+    let at = -1;
+    slots.forEach((c, i) => { if (c < 1 && (at < 0 || c < slots[at])) at = i; });
+    if (at < 0) break;
+    slots[at] = Math.min(1, slots[at] + 0.5);
+  }
+  return { final: slots, pct: Math.round(slots.reduce((a, b) => a + b, 0) / 3 * 100) };
+}
+
+// An extra counts only if the chart words the model quotes are really in
+// the chart, and are more than a word or two: a model that cannot point at
+// the detail that makes a question specific to this patient has not found one.
+const squash = t => String(t || '').toLowerCase().replace(/[^a-z0-9฀-๿]+/g, ' ').trim();
+export function groundExtras(extras, brief) {
+  const chart = ' ' + squash(brief) + ' ';
+  const seen = new Set();
+  return (extras || []).filter(x => x && typeof x === 'object').map(x => ({ item: String(x.item || '').slice(0, 140), chart: String(x.chart || '') }))
+    .filter(x => {
+      const q = squash(x.chart);
+      if (!x.item || q.length < 8 || q.split(' ').length < 2 || seen.has(q)) return false;
+      if (chart.indexOf(' ' + q + ' ') < 0 && chart.indexOf(q) < 0) return false;
+      seen.add(q);
+      return true;
+    });
+}
+
+// Returns {credits, notes, extras} or null if the reply is not usable.
 export function parseReply(txt) {
   txt = String(txt || '');
   const a = txt.indexOf('{'), b = txt.lastIndexOf('}');
@@ -70,7 +104,8 @@ export function parseReply(txt) {
     if (credits.some(x => isNaN(x))) return null;
     const notes = Array.isArray(o.notes) ? o.notes.slice(0, 3).map(n => String(n).slice(0, 140)) : ['', '', ''];
     while (notes.length < 3) notes.push('');
-    return { credits: credits.map(snap), notes };
+    const extras = Array.isArray(o.extras) ? o.extras.slice(0, 3) : [];
+    return { credits: credits.map(snap), notes, extras };
   } catch (e) {
     return null;
   }

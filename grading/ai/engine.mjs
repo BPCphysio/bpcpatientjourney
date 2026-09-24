@@ -5,7 +5,7 @@ import vm from 'vm';
 import zlib from 'zlib';
 import { spawn } from 'child_process';
 import { fileURLToPath } from 'url';
-import { SYSTEM, userPrompt, parseReply } from './prompt.mjs';
+import { SYSTEM, userPrompt, parseReply, groundExtras } from './prompt.mjs';
 
 export const REPO = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
 
@@ -76,7 +76,7 @@ export async function judge(port, c, block, q, answer) {
       });
       const j = await r.json();
       const out = parseReply(j.choices && j.choices[0] && j.choices[0].message && j.choices[0].message.content);
-      if (out) return out;
+      if (out) { out.extras = groundExtras(out.extras, c.brief); return out; }
     } catch (e) { /* try again */ }
   }
   return null;

@@ -11,7 +11,8 @@
    0
   ],
   "pct": 50,
-  "note": "asks why tape (P1); injury history only vaguely toward give-way count; no Saturday need"
+  "note": "asks why tape (P1); injury history only vaguely toward give-way count; no Saturday need",
+  "extras": []
  },
  {
   "rid": "a01446e5d8",
@@ -25,7 +26,8 @@
    0
   ],
   "pct": 17,
-  "note": "purpose reason generic; flags/mechanism not the worsening-instability reason"
+  "note": "purpose reason generic; flags/mechanism not the worsening-instability reason",
+  "extras": []
  },
  {
   "rid": "445ad5c884",
@@ -39,7 +41,8 @@
    0.5
   ],
   "pct": 33,
-  "note": "rough history only; no asking what she wants unrecorded; consent-to-share touches notes vs report only partly"
+  "note": "rough history only; no asking what she wants unrecorded; consent-to-share touches notes vs report only partly",
+  "extras": []
  },
  {
   "rid": "445ad5c884",
@@ -53,7 +56,8 @@
    0
   ],
   "pct": 0,
-  "note": "generic understand symptoms/goal reason"
+  "note": "generic understand symptoms/goal reason",
+  "extras": []
  },
  {
   "rid": "f1005cff14",
@@ -67,7 +71,8 @@
    1
   ],
   "pct": 50,
-  "note": "directs questions to the nanny implicitly; no privacy answer; ordinary history covered"
+  "note": "directs questions to the nanny implicitly; no privacy answer; ordinary history covered",
+  "extras": []
  },
  {
   "rid": "f1005cff14",
@@ -81,7 +86,8 @@
    0
   ],
   "pct": 33,
-  "note": "accurate history from patient directly matches P1 reason; rest generic"
+  "note": "accurate history from patient directly matches P1 reason; rest generic",
+  "extras": []
  },
  {
   "rid": "21132dd9f6",
@@ -95,7 +101,8 @@
    0
   ],
   "pct": 33,
-  "note": "takes ordinary history; never asks what he fears recorded or answers privacy"
+  "note": "takes ordinary history; never asks what he fears recorded or answers privacy",
+  "extras": []
  },
  {
   "rid": "21132dd9f6",
@@ -109,7 +116,8 @@
    0
   ],
   "pct": 17,
-  "note": "trust so he may share personal info later touches P2"
+  "note": "trust so he may share personal info later touches P2",
+  "extras": []
  },
  {
   "rid": "8df56cc864",
@@ -123,7 +131,8 @@
    0.5
   ],
   "pct": 50,
-  "note": "prior treatment asked but not whether explained; aggravators without night; pre-explains machine costs rather than agreeing to ask first"
+  "note": "prior treatment asked but not whether explained; aggravators without night; pre-explains machine costs rather than agreeing to ask first",
+  "extras": []
  },
  {
   "rid": "8df56cc864",
@@ -137,7 +146,8 @@
    0.5
   ],
   "pct": 33,
-  "note": "plan different from past treatment; reassure he will be told first"
+  "note": "plan different from past treatment; reassure he will be told first",
+  "extras": []
  },
  {
   "rid": "52a11c9ed2",
@@ -151,7 +161,8 @@
    1
   ],
   "pct": 50,
-  "note": "generic cause/severity; ignores why he asks price; sessions depend on first assessment covers P3"
+  "note": "generic cause/severity; ignores why he asks price; sessions depend on first assessment covers P3",
+  "extras": []
  },
  {
   "rid": "52a11c9ed2",
@@ -165,7 +176,8 @@
    0.5
   ],
   "pct": 17,
-  "note": "honest non-sales session count, misses his real concern"
+  "note": "honest non-sales session count, misses his real concern",
+  "extras": []
  },
  {
   "rid": "3fab7af89b",
@@ -179,7 +191,13 @@
    0
   ],
   "pct": 0,
-  "note": "generic cause then explaining need for exam; none of the key questions"
+  "note": "generic cause then explaining need for exam; none of the key questions",
+  "extras": [
+   {
+    "text": "แจ้งว่าทำไมเราต้องตรวจร่างกายก่อน",
+    "why": "answers her taping-only request"
+   }
+  ]
  },
  {
   "rid": "3fab7af89b",
@@ -193,7 +211,13 @@
    0
   ],
   "pct": 0,
-  "note": "generic cause/taping precautions"
+  "note": "generic cause/taping precautions",
+  "extras": [
+   {
+    "text": "ข้อควรระวังในการเทป",
+    "why": "taping precautions for her request"
+   }
+  ]
  },
  {
   "rid": "f734f1ec51",
@@ -207,7 +231,8 @@
    0.5
   ],
   "pct": 83,
-  "note": "tests asked (not when due); other joints asked; stiffness asked but not duration"
+  "note": "tests asked (not when due); other joints asked; stiffness asked but not duration",
+  "extras": []
  },
  {
   "rid": "f734f1ec51",
@@ -221,7 +246,8 @@
    0.5
   ],
   "pct": 83,
-  "note": "other joints changes focus; immune risk/refer frames case; stiffness reason vague"
+  "note": "other joints changes focus; immune risk/refer frames case; stiffness reason vague",
+  "extras": []
  },
  {
   "rid": "601d283fdb",
@@ -235,7 +261,13 @@
    1
   ],
   "pct": 50,
-  "note": "asks rehab exercises but not what happened; no 'what were you told'; surgery type asked"
+  "note": "asks rehab exercises but not what happened; no 'what were you told'; surgery type asked",
+  "extras": [
+   {
+    "text": "อาการถ้าเทียบกับช่วงแรกที่ผ่าตัดกับตอนนี้ อาการเป็นอย่างไรบ้าง",
+    "why": "post-op trajectory at 6 weeks"
+   }
+  ]
  },
  {
   "rid": "601d283fdb",
@@ -249,7 +281,13 @@
    0.5
   ],
   "pct": 33,
-  "note": "protocol from surgery info; whether he can exercise/education partly P1"
+  "note": "protocol from surgery info; whether he can exercise/education partly P1",
+  "extras": [
+   {
+    "text": "รู้ถึง prognosis หากอาการไม่ดีขึ้นกว่าตอนแรกจะได้แจ้งและให้เหตุผลคนไข้ได้",
+    "why": "post-op progress shapes explanation"
+   }
+  ]
  },
  {
   "rid": "dd591d1b81",
@@ -263,7 +301,13 @@
    0.5
   ],
   "pct": 50,
-  "note": "surgery asked (plus report); function not why rehab stopped; job type only part of P3"
+  "note": "surgery asked (plus report); function not why rehab stopped; job type only part of P3",
+  "extras": [
+   {
+    "text": "ตอนนี้กิจวัตรประจำวัน และการทำกิจกรรมอยู่ไหนระดับไหน สามารถทำอะไรได้บ้าง",
+    "why": "current function after brain injury"
+   }
+  ]
  },
  {
   "rid": "dd591d1b81",
@@ -277,7 +321,13 @@
    0.5
   ],
   "pct": 33,
-  "note": "history/prognosis and work goal reasons partial"
+  "note": "history/prognosis and work goal reasons partial",
+  "extras": [
+   {
+    "text": "จะได้มีผลต่อการตรวจและได้วางแพลนการรักษาได้ตรงจุดมากขึ้น ไม่ง่ายหรือไม่ยากจนเกินไป",
+    "why": "pitch exam to his neuro ability"
+   }
+  ]
  },
  {
   "rid": "b5ee8267dc",
@@ -291,7 +341,17 @@
    0
   ],
   "pct": 33,
-  "note": "asks goal activity; no medication; no realistic 12-day agreement"
+  "note": "asks goal activity; no medication; no realistic 12-day agreement",
+  "extras": [
+   {
+    "text": "ตอนที่มีอาการปวด เป็นการ hiking ครั้งแรกหรือปกติมีการ hiking อยู่แล้ว",
+    "why": "load change behind hike onset"
+   },
+   {
+    "text": "ขณะ hiking อยู่มีอาการปวดจังหวะไหน",
+    "why": "onset during the hike"
+   }
+  ]
  },
  {
   "rid": "b5ee8267dc",
@@ -305,7 +365,8 @@
    0
   ],
   "pct": 17,
-  "note": "plan to fit 12 days partly P1; others generic"
+  "note": "plan to fit 12 days partly P1; others generic",
+  "extras": []
  },
  {
   "rid": "864736b8c7",
@@ -319,7 +380,8 @@
    0.5
   ],
   "pct": 33,
-  "note": "no getting the patient on the phone; location/duration without locking/swelling; treatment goal not visit want"
+  "note": "no getting the patient on the phone; location/duration without locking/swelling; treatment goal not visit want",
+  "extras": []
  },
  {
   "rid": "864736b8c7",
@@ -333,7 +395,8 @@
    0
   ],
   "pct": 17,
-  "note": "differentials loosely toward what to test"
+  "note": "differentials loosely toward what to test",
+  "extras": []
  },
  {
   "rid": "ac5bebf62d",
@@ -347,7 +410,8 @@
    0
   ],
   "pct": 33,
-  "note": "onset activity and training program cover load; no night pain/action; no constraint"
+  "note": "onset activity and training program cover load; no night pain/action; no constraint",
+  "extras": []
  },
  {
   "rid": "ac5bebf62d",
@@ -361,7 +425,8 @@
    0.5
   ],
   "pct": 17,
-  "note": "fit rehab to training program partly P3"
+  "note": "fit rehab to training program partly P3",
+  "extras": []
  },
  {
   "rid": "c50689f9f8",
@@ -375,7 +440,8 @@
    0
   ],
   "pct": 17,
-  "note": "only symptom behaviour and seat; misses record question and notes vs report"
+  "note": "only symptom behaviour and seat; misses record question and notes vs report",
+  "extras": []
  },
  {
   "rid": "c50689f9f8",
@@ -389,7 +455,8 @@
    0
   ],
   "pct": 0,
-  "note": "one word, generic"
+  "note": "one word, generic",
+  "extras": []
  },
  {
   "rid": "523c4115cc",
@@ -403,7 +470,8 @@
    0
   ],
   "pct": 0,
-  "note": "generic differentiate"
+  "note": "generic differentiate",
+  "extras": []
  },
  {
   "rid": "a2e2fe84c1",
@@ -417,7 +485,17 @@
    0
   ],
   "pct": 0,
-  "note": "hike events, clicking, behaviour; none of goal, meds, realistic plan"
+  "note": "hike events, clicking, behaviour; none of goal, meds, realistic plan",
+  "extras": [
+   {
+    "text": "ask him about anything that happened during his hike",
+    "why": "onset event on the hike"
+   },
+   {
+    "text": "other symptom like clicking of popping sound",
+    "why": "knee mechanical symptoms"
+   }
+  ]
  },
  {
   "rid": "a2e2fe84c1",
@@ -431,7 +509,8 @@
    0
   ],
   "pct": 0,
-  "note": "generic cause/severity"
+  "note": "generic cause/severity",
+  "extras": []
  },
  {
   "rid": "48e08bd57c",
@@ -445,7 +524,8 @@
    0.5
   ],
   "pct": 33,
-  "note": "generic cause; no leg/numbness screen; limitations not work target"
+  "note": "generic cause; no leg/numbness screen; limitations not work target",
+  "extras": []
  },
  {
   "rid": "48e08bd57c",
@@ -459,7 +539,8 @@
    0.5
   ],
   "pct": 17,
-  "note": "more than just certificate touches P3"
+  "note": "more than just certificate touches P3",
+  "extras": []
  },
  {
   "rid": "4159efa993",
@@ -473,7 +554,8 @@
    0.5
   ],
   "pct": 33,
-  "note": "what he did; no neuro screen; generic treatment goal"
+  "note": "what he did; no neuro screen; generic treatment goal",
+  "extras": []
  },
  {
   "rid": "4159efa993",
@@ -487,7 +569,8 @@
    0
   ],
   "pct": 17,
-  "note": "mechanism reason partial; name/personalise generic"
+  "note": "mechanism reason partial; name/personalise generic",
+  "extras": []
  },
  {
   "rid": "53231cd3e0",
@@ -501,7 +584,8 @@
    0.5
   ],
   "pct": 50,
-  "note": "onset and cause; no work/lifting; activity limitation without meds"
+  "note": "onset and cause; no work/lifting; activity limitation without meds",
+  "extras": []
  },
  {
   "rid": "53231cd3e0",
@@ -515,7 +599,8 @@
    0
   ],
   "pct": 17,
-  "note": "pain mechanism loosely P1"
+  "note": "pain mechanism loosely P1",
+  "extras": []
  },
  {
   "rid": "737f03f080",
@@ -529,7 +614,13 @@
    0.5
   ],
   "pct": 33,
-  "note": "leg referral only; work asked without return target; previous episodes"
+  "note": "leg referral only; work asked without return target; previous episodes",
+  "extras": [
+   {
+    "text": "Have any kind of this condition before",
+    "why": "prior back episodes, acute vs recurrent"
+   }
+  ]
  },
  {
   "rid": "737f03f080",
@@ -543,7 +634,8 @@
    0
   ],
   "pct": 17,
-  "note": "flags screening vaguely; rest generic"
+  "note": "flags screening vaguely; rest generic",
+  "extras": []
  },
  {
   "rid": "af92f133c6",
@@ -557,7 +649,17 @@
    0
   ],
   "pct": 17,
-  "note": "never asks what massage is for; sport asked; no event"
+  "note": "never asks what massage is for; sport asked; no event",
+  "extras": [
+   {
+    "text": "area that he need to focus",
+    "why": "what the massage is targeting"
+   },
+   {
+    "text": "any further condition or surgery in his body",
+    "why": "massage contraindication screen, no history on chart"
+   }
+  ]
  },
  {
   "rid": "af92f133c6",
@@ -571,7 +673,13 @@
    0
   ],
   "pct": 0,
-  "note": "massage prep/contraindication screening"
+  "note": "massage prep/contraindication screening",
+  "extras": [
+   {
+    "text": "screening precautions and contraindications",
+    "why": "safety of the requested massage"
+   }
+  ]
  },
  {
   "rid": "db97fa577e",
@@ -585,7 +693,13 @@
    0
   ],
   "pct": 0,
-  "note": "no patient contact, side, locking/swelling or visit want"
+  "note": "no patient contact, side, locking/swelling or visit want",
+  "extras": [
+   {
+    "text": "Have any injuries in knee/ hip and ankle before",
+    "why": "prior knee and adjacent-joint injury"
+   }
+  ]
  },
  {
   "rid": "db97fa577e",
@@ -599,7 +713,13 @@
    0
   ],
   "pct": 17,
-  "note": "prepare tests loosely P2"
+  "note": "prepare tests loosely P2",
+  "extras": [
+   {
+    "text": "Plan to check the hip and ankle which related with her condition",
+    "why": "examine adjacent joints of knee"
+   }
+  ]
  },
  {
   "rid": "22b7c0ac97",
@@ -613,7 +733,8 @@
    0
   ],
   "pct": 33,
-  "note": "elbow history covered; ignores price question entirely"
+  "note": "elbow history covered; ignores price question entirely",
+  "extras": []
  },
  {
   "rid": "22b7c0ac97",
@@ -627,7 +748,8 @@
    0
   ],
   "pct": 0,
-  "note": "mechanism/photo generic"
+  "note": "mechanism/photo generic",
+  "extras": []
  },
  {
   "rid": "0076756ee7",
@@ -641,7 +763,8 @@
    0
   ],
   "pct": 0,
-  "note": "re-asks duration/cause the desk sheet holds; no load or work constraint"
+  "note": "re-asks duration/cause the desk sheet holds; no load or work constraint",
+  "extras": []
  },
  {
   "rid": "0076756ee7",
@@ -655,7 +778,8 @@
    0
   ],
   "pct": 0,
-  "note": "room planning, severity, exam plan"
+  "note": "room planning, severity, exam plan",
+  "extras": []
  },
  {
   "rid": "f83aec9e8b",
@@ -669,7 +793,13 @@
    0
   ],
   "pct": 17,
-  "note": "tennis load only; nothing on price"
+  "note": "tennis load only; nothing on price",
+  "extras": [
+   {
+    "text": "Does the pain radiate anywhere else on the arm/body",
+    "why": "referral from elbow pain"
+   }
+  ]
  },
  {
   "rid": "f83aec9e8b",
@@ -683,7 +813,13 @@
    0
   ],
   "pct": 17,
-  "note": "playing volume partly P1 reason"
+  "note": "playing volume partly P1 reason",
+  "extras": [
+   {
+    "text": "to see and understand if the pain has moved elsewhere and we can check in more detail tomorrow",
+    "why": "elbow referral changes exam"
+   }
+  ]
  },
  {
   "rid": "169cf75d52",
@@ -697,7 +833,8 @@
    0.5
   ],
   "pct": 17,
-  "note": "generic symptom/cause; main concern partly Saturday need"
+  "note": "generic symptom/cause; main concern partly Saturday need",
+  "extras": []
  },
  {
   "rid": "2194dd59f8",
@@ -711,7 +848,17 @@
    0
   ],
   "pct": 0,
-  "note": "location, hill direction, trend; none of key points"
+  "note": "location, hill direction, trend; none of key points",
+  "extras": [
+   {
+    "text": "เจ็บบริเวณไหนของเข่า",
+    "why": "where in the knee"
+   },
+   {
+    "text": "เจ็บจังหวะ uphil or downhill",
+    "why": "load direction on the hike"
+   }
+  ]
  },
  {
   "rid": "2194dd59f8",
@@ -725,7 +872,8 @@
    0
   ],
   "pct": 0,
-  "note": "mechanism only"
+  "note": "mechanism only",
+  "extras": []
  },
  {
   "rid": "9387fbf1dc",
@@ -739,7 +887,8 @@
    0.5
   ],
   "pct": 17,
-  "note": "pain severity, work nature/aggravation partial P3; no incident or neuro screen"
+  "note": "pain severity, work nature/aggravation partial P3; no incident or neuro screen",
+  "extras": []
  },
  {
   "rid": "9387fbf1dc",
@@ -753,7 +902,8 @@
    0
   ],
   "pct": 0,
-  "note": "generic see patient more"
+  "note": "generic see patient more",
+  "extras": []
  },
  {
   "rid": "fb70b962c4",
@@ -767,7 +917,8 @@
    0.5
   ],
   "pct": 17,
-  "note": "pain severity, work nature/aggravation partial P3; no incident or neuro screen"
+  "note": "pain severity, work nature/aggravation partial P3; no incident or neuro screen",
+  "extras": []
  },
  {
   "rid": "fb70b962c4",
@@ -781,7 +932,8 @@
    0
   ],
   "pct": 0,
-  "note": "generic see patient more"
+  "note": "generic see patient more",
+  "extras": []
  },
  {
   "rid": "bcdc05af4d",
@@ -795,7 +947,17 @@
    0
   ],
   "pct": 33,
-  "note": "asks why sports massage; region and prior massage; no duration/run or event"
+  "note": "asks why sports massage; region and prior massage; no duration/run or event",
+  "extras": [
+   {
+    "text": "รู้สึกว่าเป็น part ไหนเป็นพิเศษมั้ย",
+    "why": "area the massage targets"
+   },
+   {
+    "text": "เคยทำ sport massage มาก่อนรึยัง",
+    "why": "prior massage experience"
+   }
+  ]
  },
  {
   "rid": "bcdc05af4d",
@@ -809,6 +971,7 @@
    0
   ],
   "pct": 17,
-  "note": "checking suitability loosely P1"
+  "note": "checking suitability loosely P1",
+  "extras": []
  }
 ]

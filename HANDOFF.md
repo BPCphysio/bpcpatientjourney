@@ -60,9 +60,12 @@ kept in an outbox on the phone that sends itself when there is signal.
 
 See the README. In short: the wording grader (`grading/grader.js`) runs in
 the page for every typed answer. The language model's reading, when the job
-on the clinic PC has made one, leads on "why those three" and is a second
-opinion on "the three questions". Both are measured against a blind marking
-of real staff answers: `node grading/test.js` and `node grading/ai/eval.mjs`.
+on the clinic PC has made one, leads on "why those three"; on "the three
+questions" wording leads and the model's checked extras (questions tied to
+this patient's chart) add half a point each. Both readers are measured against
+a blind marking of real staff answers: `node grading/test.js` and
+`node grading/ai/eval.mjs`. Voice recordings are marked by the
+physiotherapist. The staff passcode is deliberately unchanged.
 
 ## The job on the clinic PC
 

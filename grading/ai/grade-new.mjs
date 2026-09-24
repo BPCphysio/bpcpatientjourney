@@ -92,6 +92,7 @@ async function main() {
       const pct = Math.round(got.credits.reduce((s, x) => s + x, 0) / 3 * 100);
       (out[w.r.id] = out[w.r.id] || {})[w.qk] = {
         credits: got.credits, notes: got.notes, pct: pct, h: w.h,
+        extras: got.extras.map(x => x.item), extrasChart: got.extras.map(x => x.chart),
         model: cfg.model.replace(/\.gguf$/, ''), v: PROMPT_VERSION, at: Date.now()
       };
       done++;

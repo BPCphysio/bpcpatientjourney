@@ -35,14 +35,23 @@ Each written question has three key points. Two readers mark them:
   PC every 10 minutes, reads each new answer for meaning, and stores its
   reading, with a short note per point, beside the answer. See HANDOFF.md.
 
-Against a blind marking of 58 real answers, the model is clearly better on
-"why those three" and the wording grader on "the three questions", so the
-page suggests the model's mark for "why" and the wording mark for the
-questions, and shows the other as a second opinion; a big disagreement is
-flagged. The suggested mark out of 5 is pre-selected; the senior accepts or
-changes it, and saving records both. Staff taking cases never see it.
+**The clinic's rule:** a good question counts as long as it relates to this
+patient. So on "the three questions", each extra question tied to a detail of
+this patient's chart earns half a point toward a missed key point. The model
+names those extras and must quote the chart detail, which the job checks is
+really in the chart; generic questions that fit any patient never count.
 
-Spoken-only answers are not auto-graded.
+**Which reader leads,** measured against a blind marking of 58 real answers
+under that rule (`node grading/ai/eval.mjs`): on "why those three" the model's
+reading of the key points; on "the three questions" the wording grader's key
+points plus the model's checked extras. Together: suggested mark within one of
+the human's 97% of the time, the same mark 60%, average gap 9.5 points, against
+90%, 50% and 12 for the wording grader alone. The page shows the other reader
+as a second opinion and flags a big disagreement. The suggested mark out of 5
+is pre-selected; the senior accepts or changes it, and saving records both.
+Staff taking cases never see it.
+
+Spoken answers are marked by the physiotherapist, not auto-graded.
 
 ## Deploying
 

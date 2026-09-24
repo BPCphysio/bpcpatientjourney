@@ -288,12 +288,34 @@
   }
 
   // Where the language model on the clinic PC has read an answer (r.ai,
-  // written by grading/ai/grade-new.mjs), its reading is used for "why those
-  // three": against the blind marking it lands the same mark 76% of the time
-  // where wording lands 55%, and its average gap is 5 points against 10. For
-  // "the three questions" wording is still ahead, so the model's reading is
-  // kept beside it as a second opinion. Measured by grading/ai/eval.mjs.
+  // written by grading/ai/grade-new.mjs), two things are used, as measured
+  // against a blind marking of real answers (grading/ai/eval.mjs):
+  //
+  //  - "why those three": the model's reading of the three key points leads.
+  //    It lands the same mark far more often than wording does.
+  //  - "the three questions": wording leads on the key points, and the clinic's
+  //    rule adds half a point for each extra question the model found that is
+  //    tied to a detail of this patient's chart (the model must quote the chart
+  //    for it to count). Extras are not used on "why": they made it worse.
+  //
+  // The other reading is kept beside it as a second opinion.
   var MODEL_LEADS = { q2: true };
+  var EXTRAS_COUNT = { q1: true };
+
+  // Each extra fills half of the weakest key point not yet full.
+  function withExtras(credits, n) {
+    var slots = credits.slice();
+    for (var k = 0; k < Math.min(3, n); k++) {
+      var at = -1;
+      slots.forEach(function (c, i) { if (c < 1 && (at < 0 || c < slots[at])) at = i; });
+      if (at < 0) break;
+      slots[at] = Math.min(1, slots[at] + 0.5);
+    }
+    return slots;
+  }
+  function pctOf(credits) {
+    return Math.round(credits.reduce(function (s, c) { return s + c; }, 0) / credits.length * 100);
+  }
 
   function fromModel(caseId, q, ai) {
     var b = data && data.cases[caseId] && data.cases[caseId][q];
@@ -302,8 +324,17 @@
       return { credit: Number(ai.credits[i]) || 0, how: 'model', evidence: (ai.notes || [])[i] || '', sim: 0,
                label: { en: p.en, th: p.th } };
     });
-    var pct = Math.round(points.reduce(function (s, p) { return s + p.credit; }, 0) / 3 * 100);
+    var pct = pctOf(points.map(function (p) { return p.credit; }));
     return { graded: true, pct: pct, suggested: Math.round(pct / 20), points: points, source: 'model' };
+  }
+
+  function addExtras(g, ai) {
+    var list = ai && Array.isArray(ai.extras) ? ai.extras.filter(Boolean) : [];
+    if (!g.graded || !list.length) return g;
+    var pct = pctOf(withExtras(g.points.map(function (p) { return p.credit; }), list.length));
+    if (pct === g.pct) return g;
+    g.pct = pct; g.suggested = Math.round(pct / 20); g.extras = list.slice(0, 3);
+    return g;
   }
 
   // Whole submission: the multiple choice plus the two written answers.
@@ -320,10 +351,12 @@
     }
     ['q1', 'q2'].forEach(function (q) {
       var g = grade(r.scenarioId, q, a[q + ':text']);
-      var m = r.ai && r.ai[q] ? fromModel(r.scenarioId, q, r.ai[q]) : null;
+      var ai = r.ai && r.ai[q];
+      var m = ai ? fromModel(r.scenarioId, q, ai) : null;
       if (g.graded) g.source = 'wording';
       if (m && MODEL_LEADS[q]) { m.second = g.graded ? g : null; g = m; }
       else if (m && g.graded) g.second = m;
+      if (EXTRAS_COUNT[q]) g = addExtras(g, ai);
       if (g.graded) { out[q] = g; parts.push(g.pct); }
       else if (a[q + ':audiosec'] || (r.media || []).indexOf(q + ':audio') > -1) out.spoken.push(q);
     });
@@ -338,7 +371,7 @@
   }
 
   var api = {
-    load: load, ready: ready, grade: grade, gradeResponse: gradeResponse, points: points, fromModel: fromModel,
+    load: load, ready: ready, grade: grade, gradeResponse: gradeResponse, points: points, fromModel: fromModel, withExtras: withExtras,
     norm: norm, pieces: pieces,
     set: function (p) {
       var rebuild = p.n !== undefined && p.n !== params.n;

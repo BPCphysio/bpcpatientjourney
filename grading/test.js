@@ -161,11 +161,14 @@ if (process.argv.includes('--rows')) {
 // the model's reading leads on "why", and wording on "the three questions"
 {
   const r = { scenarioId: 'c01', answers: { 'q0:mc': 0, 'q1:text': 'how long has it been', 'q2:text': 'to know the mechanism' },
-    ai: { q1: { credits: [1, 1, 1], notes: ['a', 'b', 'c'] }, q2: { credits: [1, 0.5, 0], notes: ['x', 'y', 'z'] } } };
+    ai: { q1: { credits: [1, 1, 1], notes: ['a', 'b', 'c'], extras: ['knee locking'] },
+          q2: { credits: [1, 0.5, 0], notes: ['x', 'y', 'z'], extras: ['ignored on why'] } } };
+  const plain = G.grade('c01', 'q1', 'how long has it been');
   const g = G.gradeResponse(r, 0);
-  const okWhy = g.q2 && g.q2.source === 'model' && g.q2.pct === 50 && g.q2.second && g.q2.second.source === 'wording';
-  const okQs = g.q1 && g.q1.source === 'wording' && g.q1.second && g.q1.second.pct === 100;
-  console.log(`model reading used for "why", kept as second opinion for the questions: ${okWhy && okQs ? 'yes' : 'NO'}`);
+  const okWhy = g.q2 && g.q2.source === 'model' && g.q2.pct === 50 && g.q2.second && g.q2.second.source === 'wording' && !g.q2.extras;
+  const okQs = g.q1 && g.q1.source === 'wording' && g.q1.second && g.q1.second.pct === 100
+    && g.q1.extras && g.q1.pct === Math.round(G.withExtras(plain.points.map(p => p.credit), 1).reduce((a, b) => a + b, 0) / 3 * 100);
+  console.log(`model leads on "why"; wording plus the model's extras on the questions: ${okWhy && okQs ? 'yes' : 'NO'}`);
   if (!(okWhy && okQs)) { console.log('FAIL model/wording combination'); process.exit(1); }
 }
 
