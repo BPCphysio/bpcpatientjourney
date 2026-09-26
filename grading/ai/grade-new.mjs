@@ -1,12 +1,15 @@
 // The job the clinic PC runs every ten minutes.
 //
-//   node grading/ai/grade-new.mjs [path to settings]
+//   node grading/ai/grade-new.mjs [path to settings] [--dry-run]
 //
 // Asks the clinic record for its answers (one light request). If any written
 // answer has no reading yet, or was changed since, it starts the model on the
 // graphics card, reads each one, sends the readings back beside the answers,
 // and stops the model again. With nothing new, it exits in seconds and never
 // starts the model.
+//
+// --dry-run asks for the list and prints what a run would read, then stops:
+// no model, nothing sent to the clinic, nothing in the log.
 //
 // Settings live outside the repository, because they hold the staff
 // passcode: %USERPROFILE%\llm\config.json
@@ -21,12 +24,15 @@ import path from 'path';
 import { MODEL_FILE, PROMPT_VERSION, fingerprint } from './prompt.mjs';
 import { loadCases, loadAnswers, startServer, judge } from './engine.mjs';
 
-const CFG_PATH = process.argv[2] || path.join(os.homedir(), 'llm', 'config.json');
+const ARGS = process.argv.slice(2);
+const DRY = ARGS.includes('--dry-run');
+const CFG_PATH = ARGS.find(a => !a.startsWith('--')) || path.join(os.homedir(), 'llm', 'config.json');
 const cfg = Object.assign({ port: 8090, model: MODEL_FILE }, JSON.parse(fs.readFileSync(CFG_PATH, 'utf8')));
 const LOG = path.join(path.dirname(CFG_PATH), 'grader.log');
 const LOCK = path.join(path.dirname(CFG_PATH), 'grader.lock');
 
 function log(msg) {
+  if (DRY) { console.log(msg); return; }
   const line = new Date().toISOString() + '  ' + msg + '\n';
   try {
     fs.appendFileSync(LOG, line);
@@ -35,13 +41,16 @@ function log(msg) {
   } catch (e) {}
 }
 
-// one run at a time; a lock older than an hour belongs to a run that died
-try {
-  const st = fs.statSync(LOCK);
-  if (Date.now() - st.mtimeMs < 3600000) process.exit(0);
-} catch (e) {}
-fs.writeFileSync(LOCK, String(process.pid));
-const unlock = () => { try { fs.unlinkSync(LOCK); } catch (e) {} };
+// one run at a time; a lock older than an hour belongs to a run that died.
+// A dry run changes nothing, so it neither waits for nor holds the lock.
+if (!DRY) {
+  try {
+    const st = fs.statSync(LOCK);
+    if (Date.now() - st.mtimeMs < 3600000) process.exit(0);
+  } catch (e) {}
+  fs.writeFileSync(LOCK, String(process.pid));
+}
+const unlock = () => { if (!DRY) try { fs.unlinkSync(LOCK); } catch (e) {} };
 
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
@@ -77,9 +86,15 @@ async function main() {
       work.push({ r, qk, text, h });
     }
   }
-  if (!work.length) { log(`${list.length} answers, nothing new`); return; }
+  if (!work.length) { log(`${list.length} submissions, nothing new`); return; }
 
-  log(`${work.length} written answers to read`);
+  // Counted two ways on purpose: a submission holds up to two written
+  // answers (Q1 and Q2), so "2 answers from 1 submission" is one new person,
+  // not the same answer read twice. The ids show which ones.
+  const subs = [...new Set(work.map(w => w.r.id))];
+  log(`${work.length} written answers to read, from ${subs.length} submissions: ` +
+    work.map(w => w.r.id + ' ' + w.qk).join(', '));
+  if (DRY) return;
   const cases = loadCases();
   const server = await startServer(cfg);
   const out = {};
@@ -102,15 +117,20 @@ async function main() {
   }
   // send in small batches; each is merged beside the answer on the clinic side
   const ids = Object.keys(out);
+  let saved = 0;
   for (let i = 0; i < ids.length; i += 8) {
     const items = ids.slice(i, i + 8).map(id => ({ id, ai: out[id] }));
-    await clinic(cfg.endpoint, {
+    const j = await clinic(cfg.endpoint, {
       method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' },
       body: JSON.stringify({ action: 'ai', key: cfg.key, items })
     });
+    saved += Number(j.saved) || 0;
     await sleep(1500);
   }
-  log(`read ${done}, could not read ${failed}, sent ${ids.length} answers`);
+  log(`read ${done} answers, could not read ${failed}; sent readings for ${ids.length} submissions, clinic stored ${saved}`);
+  // The clinic stores a reading only if it finds the answer's own file. One it
+  // lists but cannot find would be read again on every run, so say so.
+  if (saved < ids.length) log(`clinic stored ${saved} of ${ids.length}; any it did not store will be read again next run. Sent: ${ids.join(', ')}`);
 }
 
 main().catch(e => log('stopped: ' + (e && e.message || e))).finally(unlock);
