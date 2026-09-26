@@ -45,6 +45,25 @@ function spreadsheet_() {
   return _ss;
 }
 
+// Day/month/year, 24-hour, Bangkok time, however the viewer's device is set.
+function when_(ms) {
+  return Utilities.formatDate(new Date(ms || Date.now()), 'Asia/Bangkok', 'dd/MM/yyyy HH:mm');
+}
+
+// A tab listing who opened the marking view and who saved marks, and when.
+function markingLog_(by, what, rec) {
+  try {
+    var ss = spreadsheet_(), sh = ss.getSheetByName('Marking log');
+    if (!sh) {
+      sh = ss.insertSheet('Marking log');
+      sh.appendRow(['When (day/month/year)', 'Who', 'What', 'Answer from', 'Case', 'Response ID']);
+      sh.setFrozenRows(1);
+    }
+    sh.appendRow([when_(), by || '(name not given)', what,
+      rec ? (rec.person || rec.who || '') : '', rec ? (rec.scenarioTitle || '') : '', rec ? (rec.id || '') : '']);
+  } catch (x) { /* the log must never stop a mark being saved */ }
+}
+
 function sheet_() {
   return spreadsheet_().getSheets()[0];
 }
@@ -236,18 +255,38 @@ function doPost(e) {
       if (!files.hasNext()) return json_({ ok: false, error: 'not found' });
       var file = files.next();
       var rec = JSON.parse(file.getBlob().getDataAsString());
+      // Who marked, and when. The last marker is on the answer; every save is
+      // kept in its history and in the Marking log tab.
+      var by = String(body.by || '').trim().slice(0, 60);
       rec.marks = body.marks || {};
       rec.markedAt = Date.now();
+      rec.markedBy = by;
+      rec.markHistory = (rec.markHistory || []).concat([{ by: by, at: rec.markedAt }]).slice(-20);
       file.setContent(JSON.stringify(rec));
       updateIndex_(function (arr) {
         return arr.map(function (r) {
-          return r.id === body.id ? Object.assign({}, r, { marks: rec.marks, markedAt: rec.markedAt }) : r;
+          return r.id === body.id ? Object.assign({}, r, { marks: rec.marks, markedAt: rec.markedAt,
+            markedBy: rec.markedBy, markHistory: rec.markHistory }) : r;
         });
       });
       var sh = sheet_(), data = sh.getDataRange().getValues();
+      if (String(data[0][8] || '') !== 'Marked by') sh.getRange(1, 9, 1, 2).setValues([['Marked by', 'Marked at']]);
       for (var i = 1; i < data.length; i++) {
-        if (data[i][5] === body.id) { sh.getRange(i + 1, 7).setValue('yes'); break; }
+        if (data[i][5] === body.id) {
+          sh.getRange(i + 1, 7).setValue('yes');
+          sh.getRange(i + 1, 9, 1, 2).setValues([[by, when_(rec.markedAt)]]);
+          break;
+        }
       }
+      markingLog_(by, 'saved marks', rec);
+      return json_({ ok: true, markedAt: rec.markedAt, markedBy: by });
+    }
+
+    // Someone opened the marking view. Sent by the page after the list has
+    // loaded, so it never slows the way in.
+    if (body.action === 'visit') {
+      if (body.key !== ADMIN_KEY) return json_({ ok: false, error: 'bad key' });
+      markingLog_(String(body.by || '').trim().slice(0, 60), 'opened the marking view', null);
       return json_({ ok: true });
     }
 
