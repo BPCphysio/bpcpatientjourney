@@ -418,6 +418,14 @@ if not all(x in tpl for x in ('saveId: saveId', 'saveLanded(', 'postMarks(')) \
 else:
     ok('a slow save is checked for before it is sent again')
 
+# Only the people on the Markers tab can mark (they can read every branch).
+# Checked at the door, before a save, and again by the script on every save.
+if not all(x in tpl for x in ('isListedMarker(', 'LS_MARKERS', 'b.markers')) \
+        or 'isMarker_(body.by)' not in code or 'MARKERS_SHEET' not in code:
+    fail('marking is no longer limited to the markers listed for each branch')
+else:
+    ok('only the listed markers can mark; each branch shows its markers')
+
 # Question 4 takes several images: q3:img, q3:img2 ... The script must treat
 # every one as media, or they end up inside the list every marker downloads.
 if 'MAX_IMAGES' not in tpl or 'accept="image/*" multiple="{{ true }}"' not in tpl \
