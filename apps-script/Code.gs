@@ -217,6 +217,47 @@ function people_() {
   return out;
 }
 
+// Who marks each branch. Only people on this list can save marks; they can
+// read every branch. It lives in the Markers tab so the clinic can change it
+// without touching this script. First use fills it in.
+var MARKERS_SHEET = 'Markers';
+var MARKERS_SEED = [
+  ['Sathorn', 'Gale'], ['Sathorn', 'Kun'], ['Sathorn', "P'Ploy"], ['Sathorn', 'Phing'], ['Sathorn', 'PloyR'], ['Sathorn', 'Tee'],
+  ['Sukhumvit', 'Gift'], ['Sukhumvit', 'Kwang'], ['Sukhumvit', 'Moothong'], ['Sukhumvit', 'Ninew'], ['Sukhumvit', 'Pik'], ['Sukhumvit', 'Tee'],
+  ['Sanam Pao', 'Tee'], ['Sanam Pao', 'Blue'], ['Sanam Pao', 'Nut']
+];
+
+function markers_() {
+  var cache = CacheService.getScriptCache();
+  var hit = cache.get('markers');
+  if (hit) { try { return JSON.parse(hit); } catch (x) {} }
+  var ss = spreadsheet_(), sh = ss.getSheetByName(MARKERS_SHEET);
+  if (!sh) {
+    sh = ss.insertSheet(MARKERS_SHEET);
+    sh.getRange(1, 1, 1, 2).setValues([['Branch', 'Marker (nickname as on the People tab)']]);
+    sh.getRange(2, 1, MARKERS_SEED.length, 2).setValues(MARKERS_SEED);
+    sh.setFrozenRows(1);
+  }
+  var rows = sh.getDataRange().getValues(), out = [];
+  for (var i = 1; i < rows.length; i++) {
+    var b = String(rows[i][0] || '').trim(), n = String(rows[i][1] || '').trim();
+    if (b && n) out.push({ branch: b, name: n });
+  }
+  cache.put('markers', JSON.stringify(out), 600);
+  return out;
+}
+
+// Is this name on the Markers tab, under any spelling the People tab knows?
+// An empty tab lets anyone mark rather than no one.
+function isMarker_(name) {
+  var mks = [];
+  try { mks = markers_(); } catch (x) { return true; }
+  if (!mks.length) return true;
+  var ppl = people_(), k = nameKey_(resolve_(name, ppl));
+  if (!k) return false;
+  return mks.some(function (m) { return nameKey_(resolve_(m.name, ppl)) === k; });
+}
+
 // Which branch a resolved person works at, '' when the roster does not say.
 function branchOf_(person, people) {
   var k = nameKey_(person);
@@ -252,6 +293,7 @@ function doPost(e) {
 
     if (body.action === 'mark') {
       if (body.key !== ADMIN_KEY) return json_({ ok: false, error: 'bad key' });
+      if (!isMarker_(body.by)) return json_({ ok: false, error: 'not a marker' });
       var files = folder_().getFilesByName(body.id + '.json');
       if (!files.hasNext()) return json_({ ok: false, error: 'not found' });
       var file = files.next();
@@ -363,7 +405,9 @@ function doGet(e) {
 
     // The clinic roster, for the start screen's tap-your-name chips.
     if (p.roster === '1') {
-      return json_({ ok: true, people: people_() });
+      var mks = [];
+      try { mks = markers_(); } catch (x) {}
+      return json_({ ok: true, people: people_(), markers: mks });
     }
 
     // Did a submission land? A phone whose confirmation was lost asks this
@@ -406,7 +450,9 @@ function doGet(e) {
       r.branch = branchOf_(r.person, roster);
     });
     out.sort(function (a, b) { return (b.when || 0) - (a.when || 0); });
-    return json_({ ok: true, responses: out });
+    var mk = [];
+    try { mk = markers_(); } catch (x) {}
+    return json_({ ok: true, responses: out, markers: mk });
   } catch (err) {
     return json_({ ok: false, error: 'server: ' + String(err) });
   }
