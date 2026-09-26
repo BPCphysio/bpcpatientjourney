@@ -91,8 +91,9 @@ function nameKey_(n) {
   return String(n || '').trim().toLowerCase().replace(/\s+/g, ' ');
 }
 
+// q3:img is the first image; q3:img2, q3:img3 ... are the rest.
 function isMedia_(k) {
-  return k.slice(-4) === ':img' || k.slice(-6) === ':audio';
+  return /:(img\d*|audio)$/.test(k);
 }
 
 // A record without its image/audio data (those are fetched per answer when
@@ -255,6 +256,12 @@ function doPost(e) {
       if (!files.hasNext()) return json_({ ok: false, error: 'not found' });
       var file = files.next();
       var rec = JSON.parse(file.getBlob().getDataAsString());
+      // The page gives each save an id and, if it gave up waiting, asks
+      // whether that id landed before sending it again. A repeat of a save
+      // that already landed is answered as done, not stored twice.
+      if (body.saveId && rec.saveId === body.saveId) {
+        return json_({ ok: true, markedAt: rec.markedAt, markedBy: rec.markedBy, repeat: true });
+      }
       // Who marked, and when. The last marker is on the answer; every save is
       // kept in its history and in the Marking log tab.
       var by = String(body.by || '').trim().slice(0, 60);
@@ -262,6 +269,7 @@ function doPost(e) {
       rec.markedAt = Date.now();
       rec.markedBy = by;
       rec.markHistory = (rec.markHistory || []).concat([{ by: by, at: rec.markedAt }]).slice(-20);
+      rec.saveId = String(body.saveId || '');
       file.setContent(JSON.stringify(rec));
       updateIndex_(function (arr) {
         return arr.map(function (r) {
@@ -380,6 +388,10 @@ function doGet(e) {
     if (p.id) {
       var one = readRecord_(p.id);
       if (!one) return json_({ ok: false, error: 'not found' });
+      // Did a save land? Asked by a page that gave up waiting on it.
+      if (p.saved) {
+        return json_({ ok: true, id: p.id, saveId: one.saveId || '', markedAt: one.markedAt || 0, markedBy: one.markedBy || '' });
+      }
       if (p.k) {
         var v = (one.answers || {})[p.k];
         return json_({ ok: true, id: p.id, key: p.k, value: v === undefined ? null : v });
