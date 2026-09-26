@@ -395,6 +395,37 @@ elif not all((GRADING / 'ai' / f).exists() for f in ('prompt.mjs', 'engine.mjs',
 else:
     ok('language model reading: used for "why", second opinion on the questions')
 
+# Dates are day/month/year, Bangkok time. toLocaleString() follows the
+# device, and a device set to US English showed month/day/year.
+if re.search(r'toLocale(Date|Time)?String\(', tpl):
+    fail('a date is shown with toLocaleString(); use fmtWhen() for day/month/year')
+else:
+    ok('every date shown day/month/year, Bangkok time')
+
+# Who marked, and when: asked at the door, sent with every save, logged.
+code = (ROOT / 'apps-script' / 'Code.gs').read_text(encoding='utf-8')
+if not all(x in tpl for x in ('LS_MARKER', 'by: by', 'r.markedLine', 'logVisit(')) or 'markingLog_' not in code:
+    fail('the name of the person marking is no longer recorded with their marks')
+else:
+    ok('each mark records who marked it and when')
+
+# A save the page gave up on still finishes on the script. Before sending it
+# again the page asks whether that save's id landed, or it reports a failure
+# for marks that were in fact saved.
+if not all(x in tpl for x in ('saveId: saveId', 'saveLanded(', 'postMarks(')) \
+        or 'rec.saveId === body.saveId' not in code or 'p.saved' not in code:
+    fail('saving marks no longer checks whether a timed-out save landed')
+else:
+    ok('a slow save is checked for before it is sent again')
+
+# Question 4 takes several images: q3:img, q3:img2 ... The script must treat
+# every one as media, or they end up inside the list every marker downloads.
+if 'MAX_IMAGES' not in tpl or 'accept="image/*" multiple="{{ true }}"' not in tpl \
+        or r'/:(img\d*|audio)$/' not in code:
+    fail('question 4 no longer takes more than one image')
+else:
+    ok('question 4 takes up to four images, and the script stores each as media')
+
 if re.search(r"STAFF_PASSCODE = '[^']+'", tpl) or '12345678' in html:
     fail('the staff passcode is written into the public page')
 else:
