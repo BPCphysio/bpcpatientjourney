@@ -1,9 +1,9 @@
 # Maintenance notes
 
 The site lives at [github.com/BPCphysio/bpcpatientjourney](https://github.com/BPCphysio/bpcpatientjourney)
-and deploys via GitHub Pages (`main` branch, root folder): every push is live
-within a minute or two, no tokens, no build step.
-Live: https://bpcphysio.github.io/bpcpatientjourney/
+and deploys on Vercel (project `bpcpatientjourney`, team BPC Learning): every
+push to `main` is live within a minute, no build step. GitHub Pages is off.
+Live: https://bpcpatientjourney.vercel.app/
 
 **This repository is the only source.** Claude Design is no longer used.
 Claude Code edits the files here, runs `python tools/preflight.py`, and
@@ -14,8 +14,8 @@ build is live.
 
 | Piece | Where | Purpose |
 | --- | --- | --- |
-| `index.html` | this repo, on GitHub Pages | The trainer and the 45 cases, English and Thai |
-| `grading/` | this repo, on GitHub Pages | The auto-grader the marking view uses, and its reference answers |
+| `index.html` | this repo, on Vercel | The trainer and the 45 cases, English and Thai |
+| `grading/` | this repo, on Vercel | The auto-grader the marking view uses, and its reference answers |
 | Apps Script "Patient Journey" | Google Drive of contact@bpcphysio.com | Stores answers and marks, checks the staff passcode, holds the People roster |
 | `grading/ai/` job | the clinic PC, every 10 minutes | Reads new written answers with a language model and stores its reading beside them |
 

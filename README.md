@@ -4,7 +4,7 @@ Staff training tool for Bangkok Physiotherapy Center. Physiotherapists work thro
 patient-enquiry scenarios: what reception received, how they'd handle it
 pre-arrival, what three questions they'd ask on the call, and why.
 
-**Live:** https://bpcphysio.github.io/bpcpatientjourney/
+**Live:** https://bpcpatientjourney.vercel.app/
 
 ## What's in here
 
@@ -55,10 +55,10 @@ Spoken answers are marked by the physiotherapist, not auto-graded.
 
 ## Deploying
 
-### GitHub Pages (connected to this repo)
-Settings → Pages → Build and deployment → Source: **Deploy from a branch**,
-Branch: `main`, folder `/ (root)`. Every push to `main` redeploys automatically
-within a minute or two — no tokens, no build step, no config file needed.
+### Vercel (connected to this repo)
+The Vercel project `bpcpatientjourney` imports this repo with no framework and
+no build command. Every push to `main` redeploys automatically within a
+minute. GitHub Pages is switched off.
 
 ### Anywhere else
 Serve the folder. Or just open `index.html` in a browser — it works offline.
@@ -73,6 +73,11 @@ uploading by hand.
 `index.html` keeps the single-file shape it was exported in: the page
 template and the case modules are embedded inside it. Preflight checks that
 every fix made so far is still in place before anything is pushed.
+
+To edit the page, `python tools/template.py extract` writes it out as plain
+HTML at `build/template.html`; edit that, then `python tools/template.py inject`.
+The look (Rubik, navy and teal, after bpcphysio.com) is the "BPC clinic look"
+block at the end of the template's styles; the logo is `assets/bpc-logo.png`.
 
 ## Structure of a case
 

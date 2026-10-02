@@ -4,3 +4,4 @@ node_modules/
 .claude/
 deploy/
 grading/answers-review.xlsx
+build/
