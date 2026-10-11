@@ -128,7 +128,10 @@ async function callClaude(q, examples, text, images, lang) {
     credits: pts.map(p => Number(p.credit) || 0),
     notes: pts.map(p => clip(p.note, 300)),
     comment: clip(got.comment, 1500),
-    model: msg.model, v: GUIDE_VERSION, examples: examples.filter(x => x.same).length
+    model: msg.model, v: GUIDE_VERSION, examples: examples.filter(x => x.same).length,
+    // what this reading cost, so the monthly credit can be watched
+    tokens: { in: msg.usage.input_tokens, out: msg.usage.output_tokens,
+              cacheRead: msg.usage.cache_read_input_tokens || 0, cacheWrite: msg.usage.cache_creation_input_tokens || 0 }
   };
 }
 
@@ -143,16 +146,17 @@ async function readStored(id, opts) {
   const answers = (r.rec && r.rec.answers) || {};
   const ai = Object.assign({}, r.ai || {});
   let changed = false;
-  for (const qk of only) {
-    if (scored((r.marks || {})[qk])) continue;
+  // the three parts are read at the same time
+  const one = async (qk) => {
+    if (scored((r.marks || {})[qk])) return;
     const q = questionFor(r.scenario_id, qk);
-    if (!q) continue;
+    if (!q) return;
     const text = String(answers[qk + ':text'] || '').trim();
     const imgKeys = qk === 'q3' ? ((r.rec.media || []).filter(k => k.indexOf('q3:img') === 0 && isMedia(k))) : [];
-    if (text.replace(/\s/g, '').length < 3 && !imgKeys.length) continue;
+    if (text.replace(/\s/g, '').length < 3 && !imgKeys.length) return;
     const examples = await examplesFor(id, r.scenario_id, qk);
     const fp = fingerprint(qk, text, imgKeys.length, examples);
-    if (ai['c' + qk] && ai['c' + qk].fp === fp) continue;
+    if (ai['c' + qk] && ai['c' + qk].fp === fp) return;
     let images = [];
     if (imgKeys.length) {
       const media = await sql()`SELECT k, value FROM media WHERE response_id = ${id} AND k = ANY(${imgKeys}::text[])`;
@@ -162,10 +166,13 @@ async function readStored(id, opts) {
     const reading = await callClaude(q, examples, text, images, r.rec.language === 'th' ? 'th' : 'en');
     ai['c' + qk] = Object.assign(reading, { fp, at: Date.now() });
     changed = true;
-  }
+  };
+  const results = await Promise.allSettled(only.map(one));
+  const failed = results.find(x => x.status === 'rejected');
   if (changed) {
     await sql()`UPDATE responses SET ai = ${JSON.stringify(ai)}::jsonb, updated_at = now() WHERE id = ${id}`;
   }
+  if (failed && !changed) throw failed.reason;
   return ai;
 }
 
