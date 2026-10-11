@@ -6,6 +6,7 @@ import { Textarea } from '@/components/ui/textarea'
 import { cn } from '@/lib/utils'
 import { MK, type Lang } from '@/lib/strings'
 import { caseView } from '@/lib/cases'
+import { X } from '@/lib/extra'
 import { folderKey, fmtWhen, fmtDay, clock, imgList, isListedMarker, canonical, DEFAULT_MARKERS, type Person, type Marker } from '@/lib/core'
 import type { Marking, Resp, MarkEntry } from '@/lib/useMarking'
 
@@ -108,21 +109,23 @@ export function MarkingView({ lang, m, roster, markers, onLeave }: { lang: Lang;
       bmap[key].people.push(f); bmap[key].answers += f.items.length; bmap[key].left += f.items.length - f.marked
     })
     const branches = Object.values(bmap).sort((a, b) => Number(a.key === '(none)') - Number(b.key === '(none)') || b.answers - a.answers)
-    // which cases the team gets wrong most often, by the multiple choice
+    return { fmap, folders, bmap, branches }
+  }, [m.resps, roster, lang, mk.noBranch])
+
+  const openB = openBranch && data.bmap[openBranch] ? data.bmap[openBranch] : null
+  const openF = openFolder && data.fmap[openFolder] ? data.fmap[openFolder] : null
+  // which cases this branch gets wrong most often, by the multiple choice
+  const weak = useMemo(() => {
+    if (!openB) return []
     const perCase: Record<string, { title: string; n: number; wrong: number }> = {}
-    m.resps.forEach(r => {
+    openB.people.flatMap(p => p.items).forEach(r => {
       const c = caseView(r.scenarioId, lang)
       if (!c || r.answers['q0:mc'] === undefined) return
       const p = perCase[r.scenarioId] || (perCase[r.scenarioId] = { title: c.title, n: 0, wrong: 0 })
       p.n++; if (String(r.answers['q0:mc']) !== String(c.questions[0].answer)) p.wrong++
     })
-    const weak = Object.values(perCase).filter(c => c.n >= 2 && c.wrong > 0).sort((a, b) => b.wrong / b.n - a.wrong / a.n).slice(0, 4)
-    return { fmap, folders, bmap, branches, weak }
-  }, [m.resps, roster, lang, mk.noBranch])
-
-  const openB = openBranch && data.bmap[openBranch] ? data.bmap[openBranch] : null
-  const openF = openFolder && data.fmap[openFolder] ? data.fmap[openFolder] : null
-  const peopleList = openB ? openB.people : data.folders
+    return Object.values(perCase).filter(c => c.n >= 2 && c.wrong > 0).sort((a, b) => b.wrong / b.n - a.wrong / a.n).slice(0, 4)
+  }, [openB, lang])
   const markersOf = (bk: string) => mkList.filter(x => folderKey(x.branch) === folderKey(bk)).map(x => canon(x.name))
 
   const personScore = (f: (typeof data.folders)[number]) => {
@@ -206,11 +209,16 @@ export function MarkingView({ lang, m, roster, markers, onLeave }: { lang: Lang;
                   </button>
                 ))}
               </div>
-              {data.weak.length > 0 && (
+            </>
+          )}
+
+          {openB && (
+            <>
+              {weak.length > 0 && (
                 <>
-                  <h2 className="mt-10 mb-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.1em] text-navy/60"><TrendingDown className="size-4" />{mk.weakest}</h2>
+                  <h2 className="mt-10 mb-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.1em] text-navy/60"><TrendingDown className="size-4" />{X[lang].branchWeakest}</h2>
                   <div className="grid gap-3 sm:grid-cols-2">
-                    {data.weak.map(w => (
+                    {weak.map(w => (
                       <div key={w.title} className="flex items-center gap-4 rounded-xl border border-border bg-white p-4">
                         <span className="text-2xl font-semibold text-red-600">{Math.round(w.wrong / w.n * 100)}%</span>
                         <div><div className="font-medium text-navy">{w.title}</div><div className="text-xs text-muted-foreground">{mk.wrongOf(w.wrong, w.n)}</div></div>
@@ -219,25 +227,24 @@ export function MarkingView({ lang, m, roster, markers, onLeave }: { lang: Lang;
                   </div>
                 </>
               )}
+              <h2 className="mt-10 mb-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.1em] text-navy/60"><Users className="size-4" />{X[lang].branchPeople}</h2>
+              <div className="overflow-hidden rounded-2xl border border-border bg-white">
+                {openB.people.map(f => ({ f, s: personScore(f) })).sort((a, b) => a.s.pct - b.s.pct).map(({ f, s }, i) => (
+                  <button key={f.key} type="button" onClick={() => setOpenFolder(f.key)}
+                    className={cn('flex w-full items-center gap-4 px-4 py-3.5 text-left transition-colors hover:bg-teal-soft/50', i > 0 && 'border-t border-border')}>
+                    <span className="w-12 text-right text-lg font-semibold text-navy">{Math.round(s.pct * 100)}%</span>
+                    <div className="min-w-0 flex-1">
+                      <div className="font-medium text-navy">{f.who}</div>
+                      <div className="truncate text-xs text-muted-foreground">{s.note}</div>
+                    </div>
+                    <span className={cn('shrink-0 rounded-full px-2.5 py-0.5 text-xs', f.items.length - f.marked ? 'bg-amber-100 text-amber-900' : 'bg-teal-soft text-teal-dark')}>
+                      {f.items.length - f.marked ? `${f.items.length - f.marked} ${mk.toMark}` : mk.allMarked}
+                    </span>
+                  </button>
+                ))}
+              </div>
             </>
           )}
-
-          <h2 className="mt-10 mb-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.1em] text-navy/60"><Users className="size-4" />{mk.byPerson}</h2>
-          <div className="overflow-hidden rounded-2xl border border-border bg-white">
-            {peopleList.map(f => ({ f, s: personScore(f) })).sort((a, b) => a.s.pct - b.s.pct).map(({ f, s }, i) => (
-              <button key={f.key} type="button" onClick={() => setOpenFolder(f.key)}
-                className={cn('flex w-full items-center gap-4 px-4 py-3.5 text-left transition-colors hover:bg-teal-soft/50', i > 0 && 'border-t border-border')}>
-                <span className="w-12 text-right text-lg font-semibold text-navy">{Math.round(s.pct * 100)}%</span>
-                <div className="min-w-0 flex-1">
-                  <div className="font-medium text-navy">{f.who}</div>
-                  <div className="truncate text-xs text-muted-foreground">{s.note}</div>
-                </div>
-                <span className={cn('shrink-0 rounded-full px-2.5 py-0.5 text-xs', f.items.length - f.marked ? 'bg-amber-100 text-amber-900' : 'bg-teal-soft text-teal-dark')}>
-                  {f.items.length - f.marked ? `${f.items.length - f.marked} ${mk.toMark}` : mk.allMarked}
-                </span>
-              </button>
-            ))}
-          </div>
 
           <div className="mt-8 flex flex-wrap gap-2">
             <Button variant="outline" className="h-10 rounded-full" onClick={exportCsv}><Download />{mk.expCsv}</Button>

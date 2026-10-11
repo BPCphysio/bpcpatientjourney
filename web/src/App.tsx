@@ -32,7 +32,7 @@ export default function App() {
       {tr.view !== 'take' && (
         <footer className="border-t border-border bg-white/60">
           <div className="mx-auto flex max-w-5xl flex-wrap items-center gap-3 px-4 py-4 text-xs text-muted-foreground sm:px-6">
-            <span>{mk.foot} · v2</span>
+            <span>{mk.foot}</span>
             {!staff && <button type="button" onClick={() => tr.setView('gate')} className="ml-auto rounded-full px-3 py-1.5 text-navy/70 hover:bg-muted">{x.staffLink}</button>}
           </div>
         </footer>

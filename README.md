@@ -10,7 +10,9 @@ pre-arrival, what three questions they'd ask on the call, and why.
 
 | File | Purpose |
 | --- | --- |
-| `index.html` | The application: HTML, CSS, JS, case data and fonts, inlined. |
+| `web/` | The trainer staff use (React + Tailwind + shadcn/ui). `cd web && npm run build` writes it to `trainer/`; the address `/` sends people to `/trainer/` (vercel.json). |
+| `trainer/` | The built trainer. Generated; rebuild from `web/`, never edit by hand. |
+| `index.html` | The first trainer, kept at `/index.html` as a fallback. The clinic API also reads the 45 cases from it. |
 | `grading/grader.js` | The auto-grader for the two written answers. Runs in the browser; no service, no key, no cost. |
 | `grading/answers.json` | What the grader compares against: for every case and written question, three key points with their Thai and English cue words, and ten full-marks reference answers (five Thai, five English). Edit this to change how a case is graded. |
 | `grading/testset.json` | Real staff answers (no names), marked point by point by a blind human marker. |
@@ -19,7 +21,7 @@ pre-arrival, what three questions they'd ask on the call, and why.
 | `apps-script/Code.gs` | The clinic's collection script, as deployed. |
 | `tools/preflight.py` | Run before every push. `python tools/preflight.py` |
 
-A static site: no build step. The page itself works offline; the marking view
+The page itself works offline; the marking view
 reads the grader from `grading/` beside it, and without it simply shows no
 auto-grade.
 

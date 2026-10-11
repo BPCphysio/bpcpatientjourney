@@ -3,13 +3,13 @@ import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 
-// The new trainer is built into ../v2 and served beside the current site at
-// /v2 until it replaces it. It talks to the same clinic API (/api/clinic).
+// The trainer is built into ../trainer and served at /trainer; the address
+// "/" sends people there (vercel.json). It talks to the clinic API (/api/clinic).
 export default defineConfig({
-  base: '/v2/',
+  base: '/trainer/',
   plugins: [react(), tailwindcss()],
   resolve: { alias: { '@': path.resolve(__dirname, './src') } },
-  build: { outDir: '../v2', emptyOutDir: true },
+  build: { outDir: '../trainer', emptyOutDir: true },
   // local preview: the live clinic API, or a test copy (API_TARGET=http://localhost:8125)
   server: {
     proxy: {

@@ -23,7 +23,9 @@ export const X = {
     typeOr: 'Type, dictate, or record your answer.',
     locked: 'Locked after the reveal',
     staffLink: 'Clinic staff',
-    difficulty: 'Difficulty'
+    difficulty: 'Difficulty',
+    branchWeakest: 'Cases this branch gets wrong most',
+    branchPeople: 'People in this branch — lowest score first'
   },
   th: {
     resumeNote: (name: string, n: number, total: number) => `ยินดีต้อนรับกลับ ${name} — คุณค้างอยู่ที่เคสที่ ${n} จาก ${total} คำตอบที่เขียนไว้ยังอยู่`,
@@ -44,6 +46,8 @@ export const X = {
     typeOr: 'พิมพ์ พูดแทนพิมพ์ หรืออัดเสียงคำตอบก็ได้',
     locked: 'ล็อกแล้วหลังเปิดเผยการโทร',
     staffLink: 'เจ้าหน้าที่คลินิก',
-    difficulty: 'ระดับความยาก'
+    difficulty: 'ระดับความยาก',
+    branchWeakest: 'เคสที่สาขานี้ตอบผิดบ่อยที่สุด',
+    branchPeople: 'คนในสาขานี้ — คะแนนน้อยที่สุดก่อน'
   }
 } satisfies Record<Lang, unknown>
