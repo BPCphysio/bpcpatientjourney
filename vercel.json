@@ -1,5 +1,7 @@
 {
   "functions": {
+    "api/clinic.js": { "maxDuration": 300, "includeFiles": "{index.html,grading/answers.json}" },
+    "api/migrate.js": { "maxDuration": 120 },
     "api/grade.js": { "maxDuration": 120 }
   }
 }

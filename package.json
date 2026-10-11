@@ -1,8 +1,10 @@
 {
   "name": "bpc-patient-journey",
   "private": true,
-  "description": "BPC Patient Journey trainer. A static page plus one serverless function (api/grade.js) that reads answers with Claude.",
+  "description": "BPC Patient Journey trainer. A static page plus serverless functions in api/: the clinic record in Neon (clinic.js) and Claude reading answers (_claude.js).",
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.133.0"
+    "@anthropic-ai/sdk": "^0.133.0",
+    "@neondatabase/serverless": "^1.2.0",
+    "@vercel/functions": "^3.9.11"
   }
 }
