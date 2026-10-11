@@ -1,0 +1,947 @@
+[
+ {
+  "id": "c16",
+  "level": 2,
+  "type": "Duration correction",
+  "title": "Seven or eight days",
+  "brief": "New patient, 48. Shoulder and arm.\nHow long: \"7 or 8 days.\"\nCause: \"I do not know.\"\nNothing else filled in.\nFirst appointment tomorrow at 11:00.",
+  "q1": {
+   "prompt": "What do you do before he arrives tomorrow?",
+   "opts": [
+    "Call him and find out how long this has really been going on, and what happened in the week that made him book.",
+    "A week old with no cause is a simple strain. Read the chart again in the morning and assess as usual.",
+    "Call him and take a very detailed pain history, so you can plan the examination in advance.",
+    "Ask reception to get the empty boxes filled in before tomorrow."
+   ],
+   "answer": 0,
+   "why": "Patients report the episode that made them book. They do not report the history behind it, because nobody asked. A number of days plus \"I do not know\" is almost always a flare with years underneath it — and treating it as a fresh strain means you plan the wrong session entirely. A detailed pain history is not wrong, but if it only covers this week it is a detailed history of the wrong thing. And getting reception to chase boxes gets you boxes, not the one question that matters: has this ever happened before?"
+  },
+  "reveal": "You make the call yourself, and this is what you find out.\n\nThis is not a week old. He has had neck and shoulder pain on and off for about six years, with pain running down the arm when it is bad. This week is one of the bad spells and it is the worst so far.\n\nHot showers help. Lying on that side is what wakes him, and he has been sleeping in a chair for three nights.\n\nHe has never had it looked at properly and has never been told what it is. Near the end of the call he asks you whether he is going to be stuck with this for good — and it is clear that is why he finally booked.",
+  "model": "1. Has anything like this ever happened before. One question, and it turns eight days into six years. Nothing else on this call matters as much.\n\n2. What makes it better. Nobody writes an easing factor on our form and he has one — hot showers — plus the fact that he has been sleeping in a chair, which tells you how bad this flare really is.\n\n3. What he needs from tomorrow. He is asking whether this is permanent. A six-year problem in its worst flare needs both things: something for this week, and a plan for the six years.",
+  "q5key": "He has never been told what this is and he is asking whether it is permanent. A good choice is the simple picture you would point at to name the problem and show him the part that can change."
+ },
+ {
+  "id": "c17",
+  "level": 2,
+  "type": "Modality demand",
+  "title": "Just taping",
+  "brief": "New patient, 22.\nRequest: \"Kinesio taping only, please. I know what I need.\"\nComplaint: \"Ankle.\"\nHow long: not answered.\nFirst appointment tomorrow at 16:30.",
+  "q1": {
+   "prompt": "What do you do before she arrives tomorrow?",
+   "opts": [
+    "Call her and explain that we do not do taping on request without an assessment.",
+    "Call her and tell her that tape is not a treatment for an ankle problem.",
+    "Call her and find out what the tape is for and what happens to the ankle without it.",
+    "She has told you what she wants and she is paying for it. Tape it and send her on her way."
+   ],
+   "answer": 2,
+   "why": "A request for one technique is a patient telling you what has worked for her before. It is not a history and it is not a diagnosis. Just taping it means an ankle nobody has ever assessed goes on being an ankle nobody has ever assessed. Refusing on the phone loses her — she has taped it herself for two years and can carry on doing that. Telling her tape does not work is both unkind and untrue: it holds, which is exactly why she has never come in. Ask what the tape is for, and the case appears."
+  },
+  "reveal": "You make the call yourself, and this is what you find out.\n\nShe rolled the ankle badly two years ago, playing badminton, and never had it looked at. It has given way four times since — twice in the last month, once on a flat floor.\n\nShe tapes it herself before every match and it holds. She plays three times a week and has never done a single rehabilitation exercise for it.\n\nShe wants the tape because she has a league match on Saturday. When you ask what happens if it gives way again, she says she has started avoiding the net because she does not trust it.",
+  "model": "1. What the tape is for, and what happens without it. That is the question that turns \"ankle\" into a two-year history of instability.\n\n2. How many times it has given way, and when. Four times, twice in the last month, once on a flat floor — that pattern is the case, and it is getting worse.\n\n3. What she needs on Saturday. Give her what she came for; it is reasonable and it earns the right to say the rest. Refusing means she tapes it herself and you never see her again.",
+  "q5key": "The ankle has given way four times and she has started avoiding the net. A good choice is the simple picture you would point at to show her why it keeps happening and what would change it."
+ },
+ {
+  "id": "c18",
+  "level": 3,
+  "type": "Pushback",
+  "title": "Half an hour is enough",
+  "brief": "New patient, 34.\nComplaint: lower back, \"2 months, from the gym.\"\nWorse: deadlifts, sitting after training.\nTreated before: \"no.\"\nA note from reception: he was offered the first assessment and asked for a shorter, cheaper session instead. He booked 30 minutes.\nFirst appointment tomorrow at 19:00.",
+  "q1": {
+   "prompt": "What do you do before he arrives tomorrow?",
+   "opts": [
+    "Let it run over. He booked thirty minutes but nobody is going to stop you at forty-five.",
+    "Call him, find out why he shortened it, and be honest about what does and does not fit in thirty minutes.",
+    "His time and his money, his choice. Do what you can in half an hour and say nothing.",
+    "Call him and tell him half an hour is not enough and that he needs to rebook the full assessment."
+   ],
+   "answer": 1,
+   "why": "Two patients in August negotiated the session down, and there is always a reason behind it — money, time, or not believing the assessment is worth paying for. Accepting it silently means you run out of time in the room and he leaves halfway through something. Telling him to rebook, before you know why he shortened it, sounds like the clinic upselling. And running over teaches him the price list is negotiable and puts you late for the next patient. Ask, then be straight about what fits."
+  },
+  "reveal": "You make the call yourself, and this is what you find out.\n\nTwo months of back pain from deadlifting, and he has kept training through all of it. He trains five days a week and sitting at his desk afterwards is the worst part of his day.\n\nHe shortened the session because he had physiotherapy abroad two years ago: assessed for a full hour, sent away with a leaflet, and charged for it. He says he felt nothing happened. He wants treatment, not talking.\n\nWhen you ask what he wants to walk out with tomorrow, he says nobody has ever asked him that.",
+  "model": "1. Why he chose the shorter session, and actually listen to the answer. He does not think assessment is worth paying for, and he has a reason.\n\n2. What thirty minutes can honestly cover and what it cannot, said out loud before he arrives rather than discovered at minute twenty-five.\n\n3. What he wants to walk out with. That is the question that changes his mind if anything does — he is not against assessment, he is against leaving with nothing. Tell him he will leave with an explanation and something to do, and the argument about time disappears.",
+  "q5key": "Deadlifting is the mechanism and sitting afterwards is the worst part of his day. A good choice shows the lift, so he can show you what his technique actually looks like."
+ },
+ {
+  "id": "c19",
+  "level": 4,
+  "type": "Pushback",
+  "title": "He will not give ID",
+  "brief": "New patient.\nComplaint: mid-back, \"a few weeks.\"\nA note from reception: he declined to give identification or a full name, and would give only a first name and a phone number. He asked whether he can be treated anyway.\nFirst appointment tomorrow at 12:30.",
+  "q1": {
+   "prompt": "What do you do before he arrives tomorrow?",
+   "opts": [
+    "Call him and make it clear that the appointment cannot go ahead without identification.",
+    "No ID, no treatment. Cancel it and let reception tell him.",
+    "Treat him tomorrow and say nothing about the paperwork at all.",
+    "Call him, be completely normal about it, take the clinical history, and find out what he is worried about being recorded."
+   ],
+   "answer": 3,
+   "why": "A refusal like this is almost never about you. It is privacy, an employer, an insurer, a family situation, or somewhere he has already been made to feel judged. Leading with the ID requirement makes the first thing he hears from a clinician a condition, and he will either lie or not come. Cancelling turns a man with a four-week back problem away over a form. Saying nothing leaves a real worry unspoken and unresolved, and it will come out at the worst moment. Your job on the call is the clinical picture; the identification rule belongs to reception, not to your first sentence."
+  },
+  "reveal": "On the call he is friendly and completely open about the back. Four weeks, no injury, worse by the end of the day, eases when he lies down. No leg symptoms, no numbness, nothing at night.\n\nHe goes quiet when the paperwork comes up. You leave it, finish the history, and come back to it gently at the end.\n\nThen he tells you: he does not want anything on record that his employer's insurance scheme can see, because he is convinced it would affect his job. He has been off work once before with something else and it was noticed. He asks whether coming here can be kept private.",
+  "model": "1. Take the history first, exactly as you would for anyone. The back is straightforward and he answers everything freely — which is itself the sign that the problem is not the clinical part.\n\n2. Ask, kindly and late in the call, what he is worried about being recorded. The answer is his employer's scheme, and a previous experience behind it.\n\n3. Answer the privacy question honestly, in two halves: what is in his clinical notes and who can see them, and what would only ever leave the clinic with his permission. Then hand the administrative decision to reception, whose job it is. Do not promise secrecy you cannot deliver, and do not make the paperwork the price of being heard.",
+  "q5key": "He is worried about his job and he has a four-week mid-back problem nobody has explained. A good choice is the picture you would use to explain what is going on in plain terms — the explanation is the thing he is actually short of."
+ },
+ {
+  "id": "c20",
+  "level": 4,
+  "type": "Pushback",
+  "title": "Massage only, no exercises",
+  "brief": "New patient, 39. Six weeks after shoulder surgery.\nComplaint: \"Stiff and sore. I want massage around the shoulder.\"\nA note from reception: he said he does not want exercises, he has had enough of them.\nNo operation report on file.\nFirst appointment tomorrow at 10:00.",
+  "q1": {
+   "prompt": "What do you do before he arrives tomorrow?",
+   "opts": [
+    "Call him and explain that massage alone six weeks after shoulder surgery is not appropriate.",
+    "Call him and say you cannot treat him until he sends the operation report.",
+    "Call him, find out what happened with the exercises before, and ask who operated, when and what was done.",
+    "Give him the massage he asked for. A happy patient comes back, and you can raise exercises later."
+   ],
+   "answer": 2,
+   "why": "\"I have had enough of exercises\" is a story you have not heard yet, and it is never really a refusal of rehabilitation. Meanwhile, six weeks after shoulder surgery you cannot safely plan anything without knowing what was done and what the surgeon has allowed — and you get that by asking him who operated, not by making a report a condition of treatment. Just massaging him leaves a post-surgical shoulder unassessed. Telling him on the phone that what he wants is inappropriate confirms exactly what he already believes about physiotherapists."
+  },
+  "reveal": "You make the call yourself, and this is what you find out.\n\nHe was handed a sheet of ten exercises at the hospital, told to do them three times a day, and given no explanation of any of them. They hurt. He decided he was damaging the repair and stopped after two weeks. He has told nobody that he stopped.\n\nNobody has told him what movements are allowed. He has been holding the arm against his body for a month and he is frightened of it.\n\nThe massage request is not stubbornness. It is the only thing that has ever felt safe to him since the operation.",
+  "model": "1. What the exercises actually were and what happened when he did them. Pain, no explanation, and a private decision that he was damaging the repair.\n\n2. What he was told he is allowed to do. The answer is nothing at all, and that single gap explains everything else on this chart.\n\n3. Who operated, when, and what was done. Ask him — he will usually know the hospital and the surgeon even if he has no paperwork. He is not refusing rehabilitation; he is refusing ten exercises that nobody explained, and tomorrow has to start where he is willing.",
+  "q5key": "He is afraid of damaging the repair and has held the arm still for a month. A good choice is the simple picture you would point at to show what is healed, what is protected, and why moving it is safe."
+ },
+ {
+  "id": "c21",
+  "level": 2,
+  "type": "Price",
+  "title": "Which package should I buy?",
+  "brief": "New patient, 46.\nComplaint: right elbow, \"3 months, from tennis.\"\nTreated before: \"rest, brace.\"\nGoal: \"play again without pain.\"\nLast line of the chart: \"Which package should I buy, and what does it cost? I want to sort it before I come.\"\nFirst appointment tomorrow at 17:30.",
+  "q1": {
+   "prompt": "What do you do before he arrives tomorrow?",
+   "opts": [
+    "Call him about the elbow, and hand the money question cleanly to reception.",
+    "Call him, work out which package fits and quote him the price so he can decide tonight.",
+    "Call him and explain that you are not allowed to discuss money.",
+    "Quote him the cheapest option so he is not put off before he has even been seen."
+   ],
+   "answer": 0,
+   "why": "Price questions are uncommon here — about three charts in a hundred — but this is the shape they take. You must not quote and you must not sell, because a number from a physiotherapist becomes a promise and you have not assessed him. \"I am not allowed\" makes the clinic sound like it is hiding something and leaves him with the question unanswered. Quoting cheap to keep him is selling with extra steps. But you cannot brush him off either: he is trying to be organised, and he has a reason. Say who handles it, then get to the elbow."
+  },
+  "reveal": "You make the call yourself, and this is what you find out.\n\nOutside of the elbow, three months, worst gripping — he cannot lift a full kettle with that hand. He plays tennis twice a week and has not stopped once. The brace was bought online without advice and he wears it only for tennis.\n\nHe asks the price question again, and this time he explains why. He went through a long, expensive course of treatment for a shoulder three years ago that did not help, and he stopped it halfway. He wants to know what he is committing to before he starts.\n\nThat is not a price question. That is a man asking whether this will be different.",
+  "model": "1. The elbow first: how long, what makes it worse, what he has actually tried, what he wants to get back to. Three months, unchanged, still playing twice a week is the case.\n\n2. Why he wants the number. The honest answer underneath it is a course of treatment that failed and cost a lot, and that is clinical information about how he will behave as a patient.\n\n3. What you can honestly offer instead of a price: that reception will explain the options properly, and that after tomorrow you will tell him how many sessions you actually think he needs. That is the answer to what he is really asking.",
+  "q5key": "It hurts gripping — he cannot lift a full kettle. A good choice shows that everyday grip, so he can point at exactly where it catches."
+ },
+ {
+  "id": "c22",
+  "level": 3,
+  "type": "Price",
+  "title": "Put the certificate fee on the insurance bill",
+  "brief": "New patient, 42.\nComplaint: lower back, \"5 days, lifted a box at work.\"\nRequest: a medical certificate and a report for a workplace claim.\nLast line: \"Can the certificate fee go on the insurance bill rather than me paying it?\"\nFirst appointment tomorrow at 09:00.",
+  "q1": {
+   "prompt": "What do you do before he arrives tomorrow?",
+   "opts": [
+    "Call him and settle the billing question first — it is the thing he actually asked about.",
+    "Call him and tell him the certificate fee cannot go on the insurance bill.",
+    "Call him and explain that you cannot promise a certificate until you have assessed him.",
+    "Call him about the injury. This is a work lifting injury five days old with a claim attached, and the billing goes to reception."
+   ],
+   "answer": 3,
+   "why": "The billing question is not yours to answer and reception will deal with it in a minute. What the chart is really telling you is that this is a lifting injury at work, five days old, with a claim attached — which means what you write tomorrow will be read by people who are not clinicians, and you need the mechanism exactly right before you write anything. Answering the billing question yourself invents a rule you do not know. Opening with what you cannot promise starts a fight nobody has picked."
+  },
+  "reveal": "You make the call yourself, and this is what you find out.\n\nHe lifted a box awkwardly, alone, at the end of a shift, felt immediate pain low in the back, and finished the shift anyway. It is slowly easing. No leg pain, no numbness, no problem walking.\n\nHe has not reported the injury to his employer yet, five days on, and he is not sure whether to. He is worried he will be blamed for lifting it alone when the rule is two people.\n\nHe asks about the fee again. It becomes clear the fee is not really the worry.",
+  "model": "1. The mechanism, exactly. What he lifted, how, whether he was alone, and what happened in the minutes afterwards. A claim will rest on it and a vague account helps nobody.\n\n2. The negatives — leg pain, numbness, weakness — because a five-day-old lifting injury is the case where those matter and our form never asks.\n\n3. What he needs the paperwork for, and what he is worried about. He has not reported the injury and thinks he will be blamed. Send the fee question to reception, and give him the thing you can actually promise: that the report will say exactly what you find.",
+  "q5key": "The mechanism is an awkward lift at work, done alone. A good choice shows that lift, so he can show you what he actually did rather than describe it."
+ },
+ {
+  "id": "c23",
+  "level": 3,
+  "type": "Price",
+  "title": "The discount that went wrong",
+  "brief": "New patient, 35.\nComplaint: neck and upper back, \"1 month, desk work.\"\nA note from reception: he used a promotional discount code when booking online, was charged the wrong amount, and there is an open dispute about the refund. He has messaged twice about it.\nFirst appointment tomorrow at 14:00.",
+  "q1": {
+   "prompt": "What do you do before he arrives tomorrow?",
+   "opts": [
+    "Say nothing about it. It is a reception matter and raising it only makes it bigger.",
+    "Call him, acknowledge the billing problem in one sentence, say who is fixing it and by when, then do the clinical call properly.",
+    "Call him and get the refund sorted out on the spot so he arrives happy.",
+    "Call him, apologise for the clinic and offer him a free session to make up for it."
+   ],
+   "answer": 1,
+   "why": "He has messaged twice, so it will be the first thing on his mind and pretending otherwise makes the whole call feel false. But fixing it yourself puts a physiotherapist inside a payment dispute, which is where these things get worse, and offering free treatment turns a clerical error into a clinical concession you cannot take back. One sentence to show he has been heard, a name and a timeframe, then the neck."
+  },
+  "reveal": "He is tense for the first minute. You tell him it is being handled, by whom, and that he will hear today — and he settles immediately and does not raise it again.\n\nThen the neck. One month, desk work, worse by mid-afternoon, eases when he walks. It wakes him if he sleeps on his front, which is how he always sleeps.\n\nHe has a heavy work period for the next three weeks — a deadline he cannot move — and he cannot take any time off inside it. He has already decided he will only come once.",
+  "model": "1. Name the billing issue once, say who is dealing with it and when he will hear, and move on. It costs fifteen seconds and it buys you the rest of the call.\n\n2. The ordinary questions: what makes it worse, what makes it better, what it does at night. Worse by mid-afternoon, eased by walking, and disturbed by sleeping on his front are three usable facts, none of them on the chart.\n\n3. What the next few weeks actually look like. Three weeks with no let-up and a plan to come only once is the constraint the whole session has to fit inside — and if you do not know it before he arrives, you will build a plan he was never going to follow.",
+  "q5key": "A month of desk-related neck pain with three immovable weeks ahead. A good choice shows his actual working set-up, so you can talk about what can realistically change inside those three weeks."
+ },
+ {
+  "id": "c24",
+  "level": 3,
+  "type": "Price",
+  "title": "Ask me before you use a machine",
+  "brief": "New patient, 50.\nComplaint: right shoulder, \"4 months, gradual, no injury.\"\nWorse: overhead, sleeping on that side.\nTreated before: \"physio elsewhere, 6 sessions, mostly machines.\"\nGoal: \"I want to know what is actually wrong.\"\nLast line: \"Please discuss the cost with me before using any machine or extra treatment. I do not want to be charged for things I did not agree to.\"\nFirst appointment tomorrow at 11:30.",
+  "q1": {
+   "prompt": "What do you do before he arrives tomorrow?",
+   "opts": [
+    "Plan to use no equipment at all tomorrow, so the question never comes up.",
+    "Call him and read that last line as history: find out what the six sessions were and what he was told.",
+    "Call him and reassure him that nothing at this clinic costs extra and he has nothing to worry about.",
+    "He is going to be difficult about money. Keep the call short and stick to the facts."
+   ],
+   "answer": 1,
+   "why": "This is the money question a physiotherapist is most likely to mishandle, because it does not look like one. He is not asking a price — he is telling you he was charged for things he did not understand somewhere else, which is a clinical fact about his last six sessions and explains exactly what he wants from you. Blanket reassurance about cost answers the wrong question and is not yours to give. Treating him as difficult before you have spoken to him guarantees he is. And quietly avoiding all equipment lets him decide your treatment plan by accident."
+  },
+  "reveal": "You make the call yourself, and this is what you find out.\n\nFour months, gradual, no injury. Worse reaching overhead and he can only sleep on his back now — he used to sleep on that side every night.\n\nThe six sessions elsewhere were ultrasound and a heat pack, every time, with items appearing on the bill that he did not recognise and did not feel able to question. He was never told what the problem was, not once.\n\nHis goal on the form — \"I want to know what is actually wrong\" — is exactly and literally what he means. He repeats the request about being asked first, and you realise he is expecting an argument about it.",
+  "model": "1. What the six sessions actually consisted of, and what he was told about his shoulder. Machines and no explanation, four months in.\n\n2. The ordinary history he has never been asked for: what makes it worse, and what he can and cannot do at night. Losing the side he always slept on is a real loss and it is nowhere on the chart.\n\n3. Then agree to his rule, plainly and without being asked twice. Saying what you are about to do and why, before you do it, is how you should work anyway — and meeting him on it is the fastest way to undo six sessions of being kept in the dark.",
+  "q5key": "He wants to know what is actually wrong, and nobody has ever told him. A good choice is the picture you would point at to name the problem and show him what you plan to change."
+ },
+ {
+  "id": "c25",
+  "level": 4,
+  "type": "Modality relayed",
+  "title": "The doctor said traction",
+  "brief": "New patient, 47.\nComplaint: neck, \"2 months, pain into the right shoulder blade.\"\nCause: \"I do not know. It got worse at work.\"\nTreated before: \"Painkillers from the doctor.\"\nImaging: \"X-ray at the hospital. The doctor said the neck is degenerated and I should have traction.\"\nGoal: \"Follow the doctor's advice.\"\nFirst appointment tomorrow at 15:30.",
+  "q1": {
+   "prompt": "What do you do before he arrives tomorrow?",
+   "opts": [
+    "A doctor prescribed traction after seeing an X-ray. Set the machine up and deliver the course.",
+    "Call him and explain that traction for a degenerative neck is out of date.",
+    "Ask him to bring the X-ray tomorrow and make the decision when you can see it.",
+    "Call him and find out what the doctor actually said, and what he understood by it."
+   ],
+   "answer": 3,
+   "why": "Machine requests arrive in two kinds that look identical on the page: the patient's own idea, and a doctor's instruction relayed second-hand. This one is relayed, so the only useful question is what was said and what he took away from it — and those are almost never the same thing. Delivering the traction unexamined skips your own assessment. Telling him his doctor is out of date puts him between two professionals and he will side with the doctor. Waiting for the X-ray sounds careful but delays the one conversation that actually matters here, which is not about imaging at all."
+  },
+  "reveal": "You make the call yourself, and this is what you find out.\n\nThe pain is in the neck and into the right shoulder blade, worse by the end of a day at a screen, easier lying down. No arm pain, no numbness, no weakness.\n\nWhat he took from the hospital appointment is that his neck is \"worn out\", that it is going to keep getting worse, and that traction will pull it back apart. He says the word degenerated as if it were a diagnosis of something terminal.\n\nHe has stopped going to the gym, which he had done twice a week for years, because he believes exercise will grind the neck down faster. He stopped six weeks ago and he has not told anyone why.",
+  "model": "1. What the doctor said, and separately, what he thinks it means. The gap between those two answers is the entire case.\n\n2. What he has stopped doing because of it. Two months of neck pain matters far less than a man who believes his spine is crumbling and has given up exercise over one word.\n\n3. The ordinary screening: arm symptoms, numbness, weakness — all negative here, which is worth knowing before you meet a frightened patient. Then plan to explain what that X-ray finding really is, in plain language, without ever undermining his doctor. You are adding the explanation nobody had time to give.",
+  "q5key": "He thinks his neck is crumbling and has stopped exercising because of it. A good choice is the picture you would point at to explain what those X-ray changes actually are — the one you use to show him his neck is not falling apart."
+ },
+ {
+  "id": "c26",
+  "level": 4,
+  "type": "Documentation-led",
+  "title": "The report has to look like this",
+  "brief": "New patient, 40.\nComplaint: right hand and forearm, \"6 months, worse with computer work.\"\nTreated before: \"splint at night, some physio last year.\"\nImaging: \"nerve test done, mild.\"\nGoal: \"keep working.\"\nThe chart also carries a requirement: a report in a specific format after every visit for an ongoing claim, with a sample layout attached.\nFirst appointment tomorrow at 08:00.",
+  "q1": {
+   "prompt": "What do you do before she arrives tomorrow?",
+   "opts": [
+    "Read the sample report before you call, then call her — the format decides what you must measure from the first minute.",
+    "Call her about the hand. Reports are admin and can be dealt with after the session.",
+    "Call her and explain that the clinic cannot commit to writing to somebody else's format.",
+    "Fill the report in from the chart tonight to save time tomorrow."
+   ],
+   "answer": 0,
+   "why": "If a form has to be completed after every visit, it decides what you measure and document from the start — grip, named movements, work capacity, dates. Read it first and your assessment produces the report as a by-product. Read it afterwards and you will be guessing at things you never tested, which is how a report becomes both useless to her and unsafe for you. Refusing the format, before knowing what it asks, refuses the thing her claim depends on. Filling it in from the chart is writing findings you do not have."
+  },
+  "reveal": "You read the sample first: it asks for grip strength, specific wrist and finger movements, hours worked, and any adjustment recommended. Then you call.\n\nSix months. Worse with typing, and numbness in two fingers at night that wakes her most nights. The splint helps a little. She has already dropped from full time to four days.\n\nLast year's physiotherapy was six sessions of ultrasound and she felt no different at the end of it.\n\nThe report goes to a claim that decides whether she keeps a workplace adjustment. She says, quite calmly, that she thinks she is going to be moved out of her role — and that is what she is really coming in about.",
+  "model": "1. What makes it worse, and what wakes her. Night numbness in two specific fingers is the piece the chart was missing and it is the most useful thing you will hear.\n\n2. What she has had to change at work already. Full time down to four days is the fact the claim rests on, and it is not on the form.\n\n3. What last year's treatment actually involved and what it achieved. Six sessions of ultrasound and no change tells you what not to repeat. You never shade a report — but knowing the format before the session is what lets you measure the things it asks for, which is the difference between a document that helps her and a vague one that does not.",
+  "q5key": "The numbness wakes her at night and typing makes it worse. A good choice shows the working position or the sleeping position — the two moments that define her problem."
+ },
+ {
+  "id": "c27",
+  "level": 5,
+  "type": "Privacy of record",
+  "title": "Keep it off the paperwork",
+  "brief": "New patient, 33.\nComplaint: lower back and left leg, \"3 months.\"\nWorse: sitting, driving.\nTreated before: \"no.\"\nGoal: \"get back to normal.\"\nLast line, added by the patient: \"Please do not put my other medical condition on any paperwork or report. My employer sees the reports.\"\nFirst appointment tomorrow at 13:30.",
+  "q1": {
+   "prompt": "What do you do before she arrives tomorrow?",
+   "opts": [
+    "Call her and explain that clinical records have to be complete, so the request cannot be met.",
+    "Leave it. What goes on paperwork is a reception matter, not a clinical one.",
+    "Call her, find out gently what the condition is and why she is worried, then be honest about what you can and cannot do.",
+    "Call her and agree to the request. Patient privacy comes first and it is her body and her record."
+   ],
+   "answer": 2,
+   "why": "You cannot answer this request until you know what she is asking you to leave out — and that is the whole point of the call. Agreeing sight unseen is a promise you may have to break in front of her tomorrow, which is far worse than never making it. Refusing sight unseen tells a frightened patient that the clinic will not protect her, and she will simply not tell you. Treating it as paperwork misses that the \"other condition\" may not be a separate matter at all. Ask kindly, and ask before you take the history, because everything after depends on the answer."
+  },
+  "reveal": "You ask gently what she does not want recorded, and after a pause she tells you.\n\nShe is being investigated for an inflammatory condition — a rheumatology referral, tests done, nothing confirmed yet — and there is a family history of it. She has told nobody at work.\n\nThen the back. Three months, coming and going rather than steadily improving, low back and into the left leg, worse sitting and driving. And morning stiffness that lasts well over an hour before she can move properly.\n\nShe is frightened that if her employer learns of the investigation she will be taken off her project. That fear is the reason for the line on the form, and the condition she wanted hidden is the most clinically important thing on the chart.",
+  "model": "1. Ask, kindly, what she does not want recorded and why — before the history, because it decides whether she tells you the truth in the next ten minutes.\n\n2. Then take the history properly, and notice that the two things are not separate. Three months of back and leg pain, coming and going, with over an hour of morning stiffness, in someone under investigation, changes what you are looking at tomorrow.\n\n3. Separate the two things she has muddled together, out loud: her clinical notes, which are confidential and where this has to be recorded, and any report to a third party, which contains only what is needed and which she will see before it is sent. That second promise is one you can keep, and it is the one she actually needs.",
+  "q5key": "Morning stiffness lasting over an hour, and an investigation underway. A good choice is the picture you would use to explain the difference between a mechanical back problem and an inflammatory one — carefully, without diagnosing anything."
+ },
+ {
+  "id": "c28",
+  "level": 5,
+  "type": "Red flag",
+  "title": "It got worse after the manipulation",
+  "brief": "New patient, 54.\nComplaint: neck and right arm, \"6 weeks.\"\nCause: \"worse after treatment somewhere else.\"\nTreated before: \"neck manipulation, 3 times.\"\nMedication: \"nerve pain tablets from the doctor.\"\nPast history: \"neck operation 5 years ago.\"\nGoal: \"stop the numbness spreading.\"\nFirst appointment tomorrow at 10:30.",
+  "q1": {
+   "prompt": "What do you do before he arrives tomorrow?",
+   "opts": [
+    "Call him and take a thorough neck and arm history so you can plan a careful assessment tomorrow.",
+    "Book a longer slot and assess it properly in the room tomorrow.",
+    "Call him and tell him to go back to whoever manipulated his neck.",
+    "Call him today and screen carefully — is the numbness spreading, and is there any weakness."
+   ],
+   "answer": 3,
+   "why": "Read the chart line by line and each item is ordinary. Read it together and it is not: numbness the patient himself describes as spreading, nerve-pain medication, previous neck surgery, and symptoms that worsened after three manipulations. \"Stop the numbness spreading\" is a patient telling you something is progressing. A thorough general history is the right instinct pointed at the wrong target — this call needs two specific screening questions in the first two minutes, today. A longer slot tomorrow is a decision to find out late. And sending him back to the other clinic is not a plan."
+  },
+  "reveal": "You call him today. Since the third manipulation, three weeks ago, the numbness has moved: it was two fingers, then the whole hand, and for the past week the forearm as well.\n\nHis grip has become weaker. He has dropped a cup twice, and yesterday he could not turn a key with that hand.\n\nHe had not told anyone about the weakness. He assumed it was part of the pain and that it would go when the pain went.\n\nNo bladder or bowel problems, no unsteadiness walking, no problems with the other arm.",
+  "model": "1. Is the numbness spreading, and over what timescale. Two fingers to the whole hand to the forearm in three weeks is the answer, and our form never asks the question.\n\n2. Is there any weakness. He has dropped a cup twice and cannot turn a key. He was never going to volunteer that, because he assumed it was part of the pain.\n\n3. The timeline against the three manipulations, plus the surgical history and the other screening negatives. This is the case where the call itself changes the plan: progressive neurological signs after cervical manipulation, in a man with previous neck surgery, is escalated today — senior physiotherapist and medical review — not assessed at 10:30 tomorrow.",
+  "q5key": "He needs to understand why his hand is involved and why you are asking someone else to look. A good choice is the simple nerve-pathway picture you would point at while explaining calmly what you are doing and why."
+ },
+ {
+  "id": "c29",
+  "level": 5,
+  "type": "Red flag",
+  "title": "An ordinary-looking back",
+  "brief": "New patient, 58.\nComplaint: mid-back and ribs on the right, \"2 months, no injury.\"\nWorse: at night, \"wakes me most nights.\"\nTreated before: \"massage, no change.\"\nPast history: \"surgery 3 years ago\" (no further detail).\nGoal: \"sleep through the night.\"\nFirst appointment tomorrow at 16:00.",
+  "q1": {
+   "prompt": "What do you do before he arrives tomorrow?",
+   "opts": [
+    "Call him and ask him to get a scan before he comes in.",
+    "Call him and find out what that surgery three years ago actually was, and what the pain does at night.",
+    "Two months of mid-back pain with no injury. Read it again tomorrow and assess as usual.",
+    "Massage did not help, so plan manual therapy plus exercise and call to confirm the time."
+   ],
+   "answer": 1,
+   "why": "Three things on this chart each deserve a question: pain with no mechanism, pain that wakes him most nights, and a surgery three years ago that has not been named. Any one of them alone is common. Together they mean you must know what that operation was before you plan a single thing. Treating it as an ordinary mid-back is exactly the trap — this chart is designed to look ordinary. Planning manual therapy commits you to a treatment before you have the history. And you do not send patients for imaging you have not assessed the need for."
+  },
+  "reveal": "You make the call yourself. You ask what the surgery three years ago was for, and the appointment changes.\n\nIt was for cancer. He is under yearly follow-up and his next review is in four months. He did not write it on the form because he thought it had nothing to do with his back.\n\nThen the pain. It is constant. It does not change with movement or position, it has not changed at all in two months, and it is worse at night — that is why he wants to sleep through the night.\n\nHe has also lost some weight, which he had put down to a busy period at work and had not mentioned to anyone.",
+  "model": "1. What the surgery was. One question, and it changes the entire appointment. He was not withholding it — he genuinely did not know his back and his history could be connected.\n\n2. Does anything make it better or worse, and is it constant. Pain that is unrelated to movement or position, unchanged in two months, is not a mechanical pattern.\n\n3. Does it wake him, and has his weight changed. Night pain and unexplained weight loss, on top of that history, is a screening conversation and a medical review today — not a treatment plan for tomorrow at 16:00.",
+  "q5key": "He needs to know what is happening and why you are asking someone else to look before you treat him. A good choice is whatever helps you explain that next step calmly — the priority here is the conversation, not the picture."
+ },
+ {
+  "id": "c30",
+  "level": 5,
+  "type": "Over-writer",
+  "title": "Eleven years, written out",
+  "brief": "New patient, 44. Left knee.\nShe has written a great deal — an eleven-year account in dated sections: the original injury playing sport, two arthroscopies, every physiotherapist she has seen, each exercise programme and why she stopped it, what a rheumatologist told her, the supplements she has tried, and a note that she now uses a stick on bad days.\nAt the end, one line: \"It has changed in the last month. It gives way now.\"\nFirst appointment tomorrow at 09:00.",
+  "q1": {
+   "prompt": "What do you do before she arrives tomorrow?",
+   "opts": [
+    "She has documented everything already. Read it tonight and start tomorrow on time.",
+    "Call her and ask her to bring the imaging and the rheumatology letters before you plan anything.",
+    "Call her, thank her and name one thing from what she sent, then spend the whole call on the last line.",
+    "Call her and work through the eleven years with her, so she knows you have read all of it."
+   ],
+   "answer": 2,
+   "why": "She has done the history for you. What she has not done — and cannot do — is separate the eleven years from the last month, and the last month is the only reason she is coming in. Working through the pages with her tells her you missed the point of everything she wrote, and this is the patient most likely to say so out loud. Not calling leaves \"it gives way now\" completely unexplored, which is the single most important sentence on the chart. Chasing paperwork first turns the call into an admin request and still leaves you knowing nothing about the change."
+  },
+  "reveal": "You thank her and name a detail from what she sent, so she knows you read it, and you tell her you only want to ask about the last month. She agrees immediately, and it comes out fast.\n\nThe knee has given way four times in four weeks. Twice on stairs. She fell once, in the street, and could not get up on her own.\n\nSince the fall she has stopped going out alone and she has cancelled a trip she had booked for next month.\n\nThen she says the thing that is not in the eleven pages: she thinks this means the knee is finally finished, and that she is going to end up unable to walk.",
+  "model": "1. Thank her and prove you read it by naming one specific detail. That takes ten seconds and it is what earns you the rest of the call with this patient.\n\n2. Go straight to what changed. What does \"gives way\" actually mean, how often, on what, and has she fallen. Four episodes in four weeks, two on stairs, one fall in the street.\n\n3. What she has stopped doing because of it, and what she is afraid of. She no longer goes out alone and she has cancelled a trip. That is tomorrow's session — not the eleven years, which she has already written down and does not need to repeat.",
+  "q5key": "She has fallen once and no longer goes out alone. A good choice supports the conversation about why the knee gives way and what can be done about it — she has had eleven years of pictures and no answers."
+ },
+ {
+  "id": "c01",
+  "level": 1,
+  "type": "One line",
+  "title": "Lower back",
+  "brief": "New patient, 29.\nReason for visit: \"Lower back.\"\nNothing else. No duration, no cause, no goal, no occupation.\nFirst appointment tomorrow at 10:00.",
+  "q1": {
+   "prompt": "What do you do before she arrives tomorrow?",
+   "opts": [
+    "Call her, to get to know her symptoms and to get to know her.",
+    "Call her and take the pain history properly, so you can plan the examination in advance.",
+    "Send her the intake form again and ask her to fill it in properly this time.",
+    "One line is normal. Take the history in the room tomorrow and book a longer slot to make up for it."
+   ],
+   "answer": 0,
+   "why": "All four are things physiotherapists here actually do, and three of them are not wrong — they are just not enough. A careful pain history gets you half: it tells you where it hurts, not why. Sending the form again puts the work back on a patient who has already told you as much as she intends to type, and it makes the clinic look like an office. Taking it all in the room means she pays for an hour and spends twenty minutes of it answering questions you could have asked for free. About one chart in ten is this thin — it is not a mistake and it is not rare, it is what a phone booking looks like. If the call does not build the picture, nobody does, and you walk in at 10:00 knowing one word."
+  },
+  "reveal": "You make the call yourself, and this is what you find out.\n\nAbout three months, no injury, it came on slowly. Worst when she stands up after sitting, and after a long day on her feet. Lying down settles it within minutes. The bad days are 6 out of 10.\n\nShe works in a nursery and lifts small children all day. She stopped carrying her own toddler on one hip about a month ago because it flares it, and she has not told anyone that.\n\nNobody has looked at it. She has taken nothing for it, because she is still breastfeeding and did not know what was safe.",
+  "model": "1. How long, and how it started. One word on the chart, three months in reality, and no injury — that alone changes what tomorrow is.\n\n2. What her day actually is. Not a symptom question, a person question. Lifting small children all day in a nursery is the load, and it is the reason it will not settle on its own.\n\n3. What she has stopped doing, and what she is taking. She has stopped carrying her own child, which is your treatment goal handed to you. And she is taking nothing because she is breastfeeding and nobody has told her what is safe — you would have found that halfway through tomorrow.",
+  "q5key": "She stands up from sitting and she lifts small children all day. A good choice shows one of those two real moments, so she sees you understood her day before you say a word. Not a picture of the spine."
+ },
+ {
+  "id": "c02",
+  "level": 2,
+  "type": "Corporate scheme",
+  "title": "Focus: shoulders",
+  "brief": "New patient, 41, booked through a company wellness scheme. Five staff booked back to back.\nThe chart holds a staff number, the scheme name, and one line: \"Focus: shoulders.\"\nNo complaint, no duration, no history. Nothing written by him.\nFirst appointment tomorrow at 09:00.",
+  "q1": {
+   "prompt": "What do you do before he arrives tomorrow?",
+   "opts": [
+    "Skip the call. The scheme booked it, not the patient, so treat whatever walks in.",
+    "Call the scheme coordinator and ask what the company wants from the five sessions.",
+    "Call him and find out whether he actually has a problem, and if so what it is.",
+    "Plan the same shoulder routine for all five staff — it is a wellness block, not a clinic list."
+   ],
+   "answer": 2,
+   "why": "\"Focus: shoulders\" is somebody in an office typing a word. It is not a complaint, it is not a diagnosis, and the man it describes has not been asked anything. The coordinator can tell you about the contract and nothing about his shoulder. One routine for five people is a massage list with a physiotherapist standing over it, and it is how a clinic loses a corporate account. Not calling is the most expensive option of the four: you find out at 09:00 that he has had a cortisone injection, and you have fifty minutes left."
+  },
+  "reveal": "You make the call yourself, and this is what you find out.\n\nHe does have pain, and he is surprised to be asked. Right shoulder, about eight months, worse reaching behind him. He cannot fasten a seatbelt without turning his whole body.\n\nHe assumed the company session was a massage and had not planned to mention any of it.\n\nThen, because you asked, he tells you he had a cortisone injection for it two years ago at a hospital, and that it helped for about four months.",
+  "model": "1. Whether he has a problem at all, and be genuinely ready for either answer. Some of these five will have nothing. He has eight months of it.\n\n2. Then treat him as a new patient, not a scheme slot: how long, what it stops him doing, what has been done before. The injection is the answer that changes tomorrow, and it only came because you asked what had been done before.\n\n3. What he thinks he is coming for. He thinks it is a massage. Fixing that on the call is the difference between a session he agrees to and a session he waits out.",
+  "q5key": "He cannot reach behind him or fasten a seatbelt. A good choice shows that exact movement, so you can point at it and ask whether this is the one."
+ },
+ {
+  "id": "c03",
+  "level": 2,
+  "type": "Third-party booking",
+  "title": "Booked by a friend",
+  "brief": "New patient. The booking was made by a friend, not the patient.\nThe chart says: \"Friend has knee pain. Wants to come tomorrow.\"\nThe contact number belongs to the friend. No age, no side, no duration.\nFirst appointment tomorrow at 16:00.",
+  "q1": {
+   "prompt": "What do you do before he arrives tomorrow?",
+   "opts": [
+    "Call the friend and take the history from her — she made the booking, so she knows the story.",
+    "Call the friend, ask for the patient's own number, and call him yourself.",
+    "Send the intake form to the friend and ask her to pass it on before tomorrow.",
+    "Wait for the patient to arrive. Second-hand history is not reliable, so there is nothing worth collecting."
+   ],
+   "answer": 1,
+   "why": "Nearly one booking in six here is made by somebody else, and the friend-booked ones are the thinnest of all. Taking the history from the friend feels efficient and produces a history of what she noticed, which is not the same thing and is often wrong. Passing the form along adds a day and a middleman. Waiting is the reasonable-sounding answer that costs you the most, because \"knee pain\" could be four different appointments. Asking politely for his number is one extra question, and it turns two words into a case."
+  },
+  "reveal": "You get his number from the friend and call him. It is the left knee. It swells the day after football, twice a week, and has done for about five months.\n\nIt locks sometimes, and he has to straighten it with his hand before he can walk on it. It has happened three times, once in the middle of a match.\n\nHe has kept playing throughout. The first thing he asks you is whether he needs a scan — and it turns out that is the real reason he agreed to come at all. The friend knew none of this.",
+  "model": "1. Get the patient on the phone. Everything after that is an ordinary history, and nothing before it is worth having.\n\n2. Which side, how long, and what the knee actually does. Locking and swelling are two mechanical facts that decide what you test tomorrow, and neither was ever going to reach you through the friend.\n\n3. What he wants from the visit. He wants to know whether he needs a scan. If you do not know that before he arrives, you will spend the session assessing while he waits to ask the only question he came with.",
+  "q5key": "He wants to know whether he needs a scan, and he cannot picture what locking means. A good choice is the simple picture you would point at to show what you are going to test for and why."
+ },
+ {
+  "id": "c04",
+  "level": 1,
+  "type": "No complaint",
+  "title": "Sports massage, please",
+  "brief": "New patient, 37.\nRequest: \"Sports massage, 60 minutes.\"\nNo complaint, no pain, no history. Nothing else on the chart.\nFirst appointment tomorrow at 18:00.",
+  "q1": {
+   "prompt": "What do you do before he arrives tomorrow?",
+   "opts": [
+    "He knows what he wants and he has paid for it. Book the room and do the hour.",
+    "Call him and explain that this is a physiotherapy clinic, not a massage shop.",
+    "Assess him fully tomorrow before agreeing to do anything at all.",
+    "Call him and find out what he wants the massage for, and whether anything actually hurts."
+   ],
+   "answer": 3,
+   "why": "About one chart in sixteen has no complaint written anywhere. Some of those people genuinely have nothing wrong and want an hour of hands. Others are asking for a massage because it is the only thing they know how to ask a clinic for. One call tells you which, and it takes three minutes. Just doing the hour means you never find out. Correcting him on the phone is a good way to lose a patient who was two questions away from being a case. And assessing him tomorrow without warning is the same problem in a different room — he booked hands on his legs and you will be asking him to stand on one foot."
+  },
+  "reveal": "You make the call yourself, and this is what you find out.\n\nHe runs about 40 km a week. His right calf has been tight for two months. He gets a massage when it gets bad and it settles for a day or two, then comes back.\n\nHe has a race in five weeks and he has already paid for it.\n\nHe did not think a \"tight calf\" was worth booking physiotherapy for — he said he would have felt silly. He booked the massage because it was the box that fitted.",
+  "model": "1. What he wants the massage for. That single question is the whole call, and it is the one nobody asks.\n\n2. How long the tightness has been there and what it does when he runs. Two months, 40 km a week, and relief that lasts two days is a pattern, not a niggle.\n\n3. Whether he has anything coming up. A race in five weeks turns this from an hour of hands into a plan with a deadline — and it gives you the reason he will accept a different session.",
+  "q5key": "He runs 40 km a week with a race in five weeks. A good choice shows the running load — the thing that is actually causing it — rather than a diagram of the calf muscle."
+ },
+ {
+  "id": "c05",
+  "level": 2,
+  "type": "Documentation-led",
+  "title": "I need a certificate",
+  "brief": "New patient, 45.\nReason for visit: \"Need medical certificate for work.\"\nHow long: \"1 week.\"\nBody region: \"Back.\"\nNothing else on the chart. First appointment tomorrow at 11:00.",
+  "q1": {
+   "prompt": "What do you do before he arrives tomorrow?",
+   "opts": [
+    "Call him and warn him that you cannot promise a certificate before you have seen him.",
+    "Call him and ask exactly what wording his employer needs, so the document is ready to sign tomorrow.",
+    "Call him and find the problem behind the paperwork.",
+    "A certificate is a reception matter. There is nothing clinical to plan."
+   ],
+   "answer": 2,
+   "why": "One chart in five in August asked for documentation, and in a good number of them the paperwork was the only thing written down. It reads like an admin job and it is not: there is a man with a back injury underneath it, and the certificate itself is telling you something — he has already missed work. Opening with what you cannot promise makes the call about a fight nobody has started yet. Getting the wording ready first is worse, because it treats the document as the product and the assessment as a formality that confirms it."
+  },
+  "reveal": "You make the call yourself, and this is what you find out.\n\nHe lifted a water tank at home eight days ago and felt it go. He has not been to work since.\n\nIt is easing slowly. Worst first thing in the morning, no pain down the leg, no numbness anywhere, and he can walk.\n\nHe drives a delivery van and is in and out of it about sixty times a day. He is worried about how much time he has already taken and whether he still has a job. That is really why he wants the certificate — and he tells you he would rather go back on Monday than take another week.",
+  "model": "1. What actually happened, and how it has changed since. Eight days, a single lifting incident, and slowly easing is a completely different session from a back that has been building for months.\n\n2. The negatives. Leg pain, numbness, weakness. Our form never asks and he would never volunteer them, and they are what decides how carefully you handle tomorrow.\n\n3. What he needs to be able to do, and when. In and out of a van sixty times a day is the target. Return to work is his goal, so it should be your plan, and the certificate becomes part of the plan instead of the point of it.",
+  "q5key": "He has to get back to a delivery van and in and out of it all day. A good choice shows that task — the thing he is returning to — not a picture of a spine."
+ },
+ {
+  "id": "c06",
+  "level": 4,
+  "type": "Third-party booking",
+  "title": "Booked by her employer",
+  "brief": "New patient, 38. Booked by the family she works for.\nOccupation on the chart: \"พี่เลี้ยง\" (nanny).\nComplaint: \"Wrist and lower back pain. Employer says it has been going on a while.\"\nBilling is to the employer. The contact number on the chart is the employer's.\nFirst appointment tomorrow at 13:00.",
+  "q1": {
+   "prompt": "What do you do before she arrives tomorrow?",
+   "opts": [
+    "Call the employer, ask to speak to the patient herself, and have that conversation privately.",
+    "Call the employer and confirm what the billing covers, then assess the patient tomorrow.",
+    "Leave it. Somebody else booked and somebody else is paying — this is too tangled for a phone call.",
+    "Call the employer for the history — she booked it and she has watched it happen."
+   ],
+   "answer": 0,
+   "why": "Somebody else booked it, somebody else is paying, and the only history you have is somebody else's summary. None of that changes who your patient is. The employer's version will be accurate about what she has seen and silent about everything that matters — how bad it is, how long, and what the patient is frightened of. Confirming billing is reception's call, not yours. And leaving it is how this case goes wrong, because the one thing she needs to hear before she arrives is that the conversation is hers. Expect to have to ask twice, politely, to be put through."
+  },
+  "reveal": "You ask to speak to her, and after a pause the employer hands the phone over. You can hear that she is not alone in the room.\n\nThe wrist is worst lifting the children — she lifts a two-year-old dozens of times a day, and a heavier four-year-old in and out of a car seat. The back has been there over a year, long before this job.\n\nShe has never told the family how bad it is, because she does not want to seem unable to work.\n\nThen she lowers her voice and asks you whether the family will be told what she says.",
+  "model": "1. Ask to speak to her, and mean it. Speak to her, not about her. If she is not free to talk, offer to call back at a time that suits her.\n\n2. Answer the privacy question before you ask anything else, plainly and yourself: nothing she tells you goes to the family without her permission. If she believes it does, she will give you a smaller version of the truth and you will spend tomorrow treating that smaller version.\n\n3. Then the ordinary history: what makes it worse, how long, what she has stopped doing. Dozens of lifts a day of a two-year-old is the load, and a year of back pain that predates the job is the thing the employer could never have told you.",
+  "q5key": "Her loading is lifting a small child dozens of times a day, and a child in and out of a car seat. A good choice shows that lift, so you can ask her to show you how she actually does it."
+ },
+ {
+  "id": "c07",
+  "level": 3,
+  "type": "No complaint",
+  "title": "Posture check, no pain",
+  "brief": "New patient, 26.\nReason for visit: \"Posture check. I do not have pain, but people say I am hunched.\"\nHow long: not answered.\nOccupation: \"working at desk.\"\nFirst appointment tomorrow at 15:00.",
+  "q1": {
+   "prompt": "What do you do before she arrives tomorrow?",
+   "opts": [
+    "No pain, no problem. Plan a short session, some advice and a set of exercises.",
+    "Plan a full postural assessment with photographs and a written report — that is what she has asked for.",
+    "Call her and explain that posture checks are not really physiotherapy.",
+    "Call her and ask what she means by hunched, who said it, and whether she has ever had pain."
+   ],
+   "answer": 3,
+   "why": "A patient with no pain is not a patient with no history. She may have had pain before, she may have a family worry sitting behind this, she may have quietly stopped doing something. It is also worth knowing what \"hunched\" means to her, because that word came out of somebody else's mouth. Planning a short advice session assumes the visible request is the real one. Planning the full assessment with photographs is the same assumption with more equipment, and it can make a frightened patient much more frightened. Telling her it is not physiotherapy answers a question she did not ask."
+  },
+  "reveal": "You make the call yourself, and this is what you find out.\n\nNo pain now. But she had bad neck pain for about a year in a previous job, bad enough that it frightened her, and it settled when she changed jobs.\n\nHer mother has a curved upper back and has lost height. She is afraid of ending up the same, and that is what \"hunched\" means to her — not the word a colleague used, the thing she sees at home.\n\nShe sits about ten hours a day. She asks you, before you have asked her anything else, whether her back is already damaged and whether it is too late.",
+  "model": "1. Whether she has ever had pain. The answer is a year of it, and nothing on the chart hinted at that.\n\n2. What she means by hunched, and who said it. The word came from a colleague. The fear came from her mother. Those are two different conversations and only one of them is the reason she booked.\n\n3. What she is actually afraid of, asked directly. She is afraid it is already too late. If you do not know that before she arrives, you will spend the session measuring her and she will leave with the worry she came in with.",
+  "q5key": "She is afraid of ending up like her mother and thinks damage may already be done. A good choice is the simple picture you would point at to show what changes and what does not — the one you use to answer \"is it too late\"."
+ },
+ {
+  "id": "c08",
+  "level": 3,
+  "type": "Doctor's prescription",
+  "title": "The doctor wrote the plan",
+  "brief": "New patient, 33. Referred by a doctor.\nThe chart holds the referral: a diagnosis of the lower back and a prescribed course — ten sessions, ultrasound and traction, twice a week.\nDuration: \"6 weeks.\"\nNothing from the patient. No goal, no aggravating factor, nothing in his own words.\nFirst appointment tomorrow at 10:30.",
+  "q1": {
+   "prompt": "What do you do before he arrives tomorrow?",
+   "opts": [
+    "Call the referring doctor first, to understand the reasoning behind ultrasound and traction.",
+    "Call him and get the patient's side of it — his day, his symptoms, what he wants and what he thinks is going to happen.",
+    "Follow the prescription. A doctor examined him and wrote the plan; your job is to deliver it.",
+    "Call him and explain that the referral is not how you work, and that you will do your own assessment instead."
+   ],
+   "answer": 1,
+   "why": "A referral tells you what somebody else decided in a ten-minute consultation. It does not tell you what this man does all day, what makes it worse, what he wants, or whether he understands any of it — that is an entire case still missing, and the call is where you get it. Delivering the prescription unexamined is not respect for the doctor, it is skipping your own assessment. Contradicting the referral to the patient is the fastest way to put him in the middle of a fight between two professionals. Calling the doctor is not wrong, but it is the second call, and it is a much better call once you know what the patient's day looks like."
+  },
+  "reveal": "You make the call yourself, and this is what you find out.\n\nHe rides a motorbike for deliveries, eight to ten hours a day, six days a week. The pain builds across a shift and is worst by the end of it. Standing up eases it, which is why he stops so often.\n\nHe does not know what the diagnosis on the referral means. He has not asked, because he did not want to look stupid.\n\nAnd he assumes the machines are the treatment — that he will lie down for ten sessions and it will be dealt with. He has no idea he has any part in it, and he is very clear that he cannot afford to stop working.",
+  "model": "1. What he does all day and what the pain does across it. Eight to ten hours on a motorbike, worse by the end of the shift, eased by standing, is the case. None of it is on the referral.\n\n2. What he understands the diagnosis to mean. The answer here is nothing at all, and he will not tell you that in the room in front of you unless you have already made it easy on the phone.\n\n3. What he expects to happen in the ten sessions. He expects machines and no effort. Say plainly on the call what the sessions involve and what his part is, while it is still an expectation and not a disagreement — and never contradict the referring doctor to the patient.",
+  "q5key": "He rides a motorbike eight to ten hours a day. A good choice shows that riding position, so he recognises his own shift on the screen before you explain anything."
+ },
+ {
+  "id": "c09",
+  "level": 3,
+  "type": "Modality demand",
+  "title": "I want shockwave",
+  "brief": "New patient, 44.\nRequest: \"I want shockwave for plantar fasciitis. I have read about it.\"\nHow long: \"4 months.\"\nTreated before: \"Insoles, stretching. Did not work.\"\nNo imaging. No goal written.\nFirst appointment tomorrow at 09:30.",
+  "q1": {
+   "prompt": "What do you do before he arrives tomorrow?",
+   "opts": [
+    "Say nothing on the phone and sort out the expectation in the room tomorrow.",
+    "Call him and find out where the request came from, and what he has actually already tried.",
+    "He has done his research and named the treatment. Book the shockwave and have the machine ready.",
+    "Call him and explain that choosing his own treatment is not how it works."
+   ],
+   "answer": 1,
+   "why": "About one chart in nine asks for a named treatment, and they split into two groups that look identical on paper: patients who read about it online, and patients relaying something a doctor said. You need to know which, because they need two different conversations. Booking the machine skips the assessment entirely and commits you before you have touched him. Correcting him on the phone turns a keen patient into a defensive one. And leaving it until the room means the first thing you do tomorrow is disappoint him. Note also that \"insoles and stretching did not work\" is a sentence that needs a lot of detail behind it before you believe it."
+  },
+  "reveal": "You make the call yourself, and this is what you find out.\n\nThe diagnosis is his own, from the internet. No doctor has ever said the words to him. The pain is under the heel, worst for the first ten minutes in the morning, easier once he is moving, and back again in the evening.\n\n\"Stretching\" was a few days, four months ago. The insoles were bought online without anyone measuring anything, and he stopped wearing them after a week because they were uncomfortable.\n\nThen the thing that matters: he has just gone back to running after two years off. Three times a week for the last three months, and he is training for a race.",
+  "model": "1. Who diagnosed it, and where shockwave came from. Here, nobody and the internet — which means the conversation tomorrow is about what he has, not just about what machine to use.\n\n2. What \"did not work\" actually means. A few days of stretching and one uncomfortable week of insoles is not a failed treatment, it is an untreated problem, and it changes everything you would otherwise have written off.\n\n3. What has changed recently. He went back to running after two years off, three months ago. That is the case and it was nowhere on the chart. Do not agree to shockwave and do not fight him about it — tell him when the decision gets made and that you will explain your reasoning.",
+  "q5key": "He has gone back to running after two years off and it hurts most in the first ten minutes of the morning. A good choice shows the load that changed, or that first-steps moment — not a foot anatomy poster."
+ },
+ {
+  "id": "c10",
+  "level": 2,
+  "type": "Unfamiliar occupation",
+  "title": "Competitive dodgeball",
+  "brief": "New patient, 24.\nOccupation: \"competitive dodgeball athlete.\"\nComplaint: right shoulder, \"about 2 months, worse when I throw.\"\nTreated before: \"no.\"\nGoal: \"Nationals in 6 weeks.\"\nFirst appointment tomorrow at 17:00.",
+  "q1": {
+   "prompt": "What do you do before he arrives tomorrow?",
+   "opts": [
+    "Call him and ask him to explain what competitive dodgeball involves — it is his sport, so he knows it best.",
+    "Write \"throwing sport\" in the chart and assess the shoulder as you would any other.",
+    "Call him and tell him that six weeks before a national event he should not be adding hard training.",
+    "Look the sport up yourself first, then call and ask about his training week and his deadline."
+   ],
+   "answer": 3,
+   "why": "Two minutes of looking it up changes the whole call: repeated hard overhead throwing, fast sideways movement, diving and landing on a hard floor. Then your questions can be about his week instead of about the rules of his sport. Making him explain the basics spends your one call on something you could have found yourself, and it starts the relationship with you knowing less about his life than he does. Treating it as a general shoulder ignores the only fact that shapes the plan — Nationals in six weeks. And leading with a training restriction, before you know anything, ends the conversation in the first minute."
+  },
+  "reveal": "You make the call yourself, and this is what you find out.\n\nHe trains four evenings a week and throws two to three hundred times a session. The pain came on during a tournament weekend two months ago and he has not reduced anything since.\n\nIt hurts at the moment of release, and it aches at night on that side. He can still throw, but not as hard, and he has started changing his action to protect it.\n\nNationals are in six weeks. He says, without being asked, that he is not going to stop — and that his coach does not know the shoulder is a problem.",
+  "model": "1. The load, now that you already understand the sport: how often, how many throws, and what changed just before it started. Two to three hundred throws, four evenings a week, is the answer.\n\n2. What it does at night, and whether his action has changed. A shoulder that aches at night and a throw he has started altering are two different problems arriving together.\n\n3. The constraint, out loud. Six weeks, unwilling to stop, and a coach who does not know. You are not going to rest him, so the plan has to be built inside that — and you need to know exactly what he is doing before he arrives.",
+  "q5key": "The pain comes at the moment of release in a hard overhead throw. A good choice shows that position, so you can point at it and ask him exactly where in the movement it catches."
+ },
+ {
+  "id": "c11",
+  "level": 4,
+  "type": "Insurance",
+  "title": "Approval first",
+  "brief": "New patient, 36.\nComplaint: neck pain, \"3 weeks, after a car accident.\"\nThe rest of the chart is insurance: policy details, a request for pre-authorisation, and a note that the insurer needs a report before the first visit is covered.\nNothing about symptoms beyond the region.\nFirst appointment tomorrow at 14:30.",
+  "q1": {
+   "prompt": "What do you do before he arrives tomorrow?",
+   "opts": [
+    "Call him. Reception handles the insurer; you have a neck three weeks after a car accident and no symptom detail at all.",
+    "Sort the approval out first. Without pre-authorisation there is no session to prepare for.",
+    "Call him and ask him to rebook once the insurer has confirmed cover.",
+    "Call the insurer and find out what they will pay for, then plan a course that fits inside it."
+   ],
+   "answer": 0,
+   "why": "The insurance is real, it matters, and it is reception's job. What the paperwork is hiding is that this is a neck injury three weeks after a car accident with no symptom detail whatsoever — and that is exactly the chart where the call has to check for things you do not want to discover in the room. Chasing approval first, or telling him to rebook, treats a possible neurological problem as a billing queue. Letting the insurer's cover decide the plan is how the plan stops being clinical."
+  },
+  "reveal": "You make the call yourself, and this is what you find out.\n\nHe was hit from behind at low speed while stationary at a light. No hospital, no imaging, no loss of consciousness. The neck has been stiff since.\n\nFor the last four or five days he has had pins and needles in the ring and little finger of the left hand, coming and going.\n\nHe has not mentioned it to anyone. He thought it was from sleeping badly. He is taking painkillers most days and he has not told the insurer about the hand either, because he did not think it was part of it.",
+  "model": "1. The accident itself. What hit what, how fast, and what happened straight afterwards. A low-speed rear-end while stationary, with no hospital attendance, is the frame for everything else.\n\n2. The negatives our form never asks for: numbness, pins and needles, weakness, dizziness, headache. He has pins and needles in two specific fingers and had not thought to report it. That is the entire reason to make this call.\n\n3. What he is taking, and how often. Painkillers most days will change what you see tomorrow. Two of these three change what you test, what you document, and what you may need to escalate — and none of them were on a chart that was mostly a policy number.",
+  "q5key": "He needs to understand why his hand is involved when the accident hurt his neck. A good choice is the simple picture you would point at to explain that link, and to explain what you are about to test."
+ },
+ {
+  "id": "c12",
+  "level": 3,
+  "type": "Occupation matters",
+  "title": "The yoga teacher",
+  "brief": "New patient, 31.\nOccupation: \"ครูสอนโยคะ\" (yoga teacher).\nComplaint: right hip, \"on and off for a year, worse in the last month.\"\nTreated before: \"I treat it myself.\"\nGoal: \"I need to keep teaching.\"\nFirst appointment tomorrow at 08:30.",
+  "q1": {
+   "prompt": "What do you do before she arrives tomorrow?",
+   "opts": [
+    "She knows her own body better than you will after one session. Follow her lead tomorrow.",
+    "Call her and tell her that a year of self-treatment is the reason it has not settled.",
+    "Call her and ask what she has already been doing for it and exactly what happens afterwards.",
+    "Call her, but keep it brief — she works with the body, so she will explain it all better in the room."
+   ],
+   "answer": 2,
+   "why": "\"I treat it myself\" is an entire history you cannot see, and a patient who works with the body has usually tried a great deal and stopped nothing. Ask what she has done and what happened after, or you will spend tomorrow suggesting things she abandoned months ago and losing her confidence in the first ten minutes. Keeping it brief because she is knowledgeable is the trap — knowledge is not the same as an accurate account of her own loading. Following her lead makes you a pair of hands. And opening with the verdict, before she has told you anything, means you will never hear what she actually does."
+  },
+  "reveal": "You make the call yourself, and this is what you find out.\n\nShe teaches six classes a week and demonstrates everything, every class. It is deep in the front of the hip, worst in deep lunges and worst of all after teaching two classes back to back.\n\nShe has been stretching it daily for a year. It feels better for about an hour afterwards and worse the following day. She has never put those two facts next to each other.\n\nShe has not stopped a single class and has not told her students. The last month got worse right after she added two classes — and she cannot drop them, because she is paid per class.",
+  "model": "1. What she has actually been doing for it, and what happens afterwards. An hour of relief and a worse day after is a clear pattern, and it tells you her main self-treatment is part of the problem.\n\n2. What changed a month ago. Two extra classes. That is the load question, and \"worse in the last month\" on the chart was never going to answer it.\n\n3. What she must be able to keep doing, and why. Six classes a week, paid per class, demonstrating everything. She is not going to stop, so the plan has to fit inside that — and knowing it before she arrives is what stops you proposing rest and wasting the session.",
+  "q5key": "It is worst in a deep lunge, demonstrated in front of a class. A good choice shows that position, so she can point out exactly where in the range it catches."
+ },
+ {
+  "id": "c13",
+  "level": 3,
+  "type": "The full chart",
+  "title": "The form answered everything",
+  "brief": "New patient, 30. Neck and right shoulder.\nHow long: \"About 5 months.\"\nCause: \"It started after I changed jobs. I am cabin crew now. Before that I worked in an office.\"\nTreated before: \"Massage, twice. It helped for a day.\"\nImaging: none.\nGoal: \"I want to sleep without waking up.\"\nAlso written: no numbness, no pins and needles.\nFirst appointment tomorrow at 14:00.",
+  "q1": {
+   "prompt": "What do you do before she arrives tomorrow?",
+   "opts": [
+    "The chart is complete. Call to confirm the appointment, add her to messaging and talk her through the packages.",
+    "There is nothing left to ask. Read it again in the morning and start on time.",
+    "Call her and ask her to get a scan before she comes in, since five months is a long time.",
+    "Call her and ask the things our form never asks."
+   ],
+   "answer": 3,
+   "why": "This is the most common chart in the clinic and the easiest one to waste. Our form asks four things: how long, what caused it, treated before, any imaging. It never asks what makes it easier, how bad it gets at worst, what she is taking, what she has stopped doing, or whether five months is really five months. Every one of those changes your session and only the call gets them. The booking call — messaging, packages, receipt — is what most of these calls actually turn into, and it leaves the chart exactly as thin as it was. Reading it again tomorrow is not preparation. And sending a patient for imaging before you have assessed her is not yours to do."
+  },
+  "reveal": "You make the call yourself, and this is what you find out.\n\nAt worst it is 7 out of 10, and the bad days are the long rotations. A hot shower helps, and resting the arm on a cushion helps — that is why she can sleep some nights and not others.\n\nShe takes painkillers before every long flight, which is three or four times a week. She stopped going to the gym three months ago and misses it.\n\nAnd the five months is not five months. She had the same neck pain on and off for about two years in the office job. Changing to cabin crew made it constant, not new.",
+  "model": "1. What makes it better. Nobody writes an easing factor on our form, and she has two — a hot shower and a cushion under the arm. That is where tomorrow starts.\n\n2. How bad it gets, and what she is taking for it. 7 out of 10 and painkillers before every long flight, three or four times a week, is a different patient from the one on the chart.\n\n3. What she has stopped doing, and whether she has ever had this before. She stopped the gym three months ago, and the five months is really two years. If your call ends with a package sold and none of this asked, you had a booking call, not a pre-arrival call.",
+  "q5key": "Her loading is overhead and repeated — reaching into bins, pushing a trolley down a narrow aisle. A good choice looks like her working day, not a neck anatomy poster."
+ },
+ {
+  "id": "c14",
+  "level": 3,
+  "type": "Time constraint",
+  "title": "Flying home on the 14th",
+  "brief": "New patient, 52, visiting.\nComplaint: right knee, \"6 weeks, started on a long hike.\"\nWorse: going downstairs, squatting.\nTreated before: \"ice and rest.\"\nImaging: none.\nGoal: \"I fly home on the 14th and I want to walk properly.\"\nFirst appointment tomorrow at 12:00. Today is the 2nd.",
+  "q1": {
+   "prompt": "What do you do before he arrives tomorrow?",
+   "opts": [
+    "Treat him normally and let him decide when to stop coming.",
+    "Call him and find out what he actually needs to do in those twelve days, then agree what is realistic.",
+    "Call him and book him in as often as he can manage while he is still here.",
+    "Twelve days is not enough to achieve anything. Give him advice tomorrow and tell him to be seen at home."
+   ],
+   "answer": 1,
+   "why": "About one chart in eleven carries a time limit, and it is a planning fact rather than a problem. Twelve days decides how many sessions there are, what can honestly be achieved, and what he has to be able to do himself once he lands. Filling the diary is selling, and he will feel it. Telling him it is hopeless sends a man with a treatable knee home untreated. Treating him normally and letting him decide means the deadline — the single most important fact on the chart — never gets planned for at all."
+  },
+  "reveal": "You make the call yourself, and this is what you find out.\n\nIt is at the front of the knee. No swelling, no giving way, no locking. Downstairs is the worst thing by far — and his hotel room is on the fourth floor with no lift, so he does it several times a day.\n\nHe walks five or six hours a day sightseeing and he is not going to stop, because this is his holiday and he has twelve days of it left.\n\nHe has been taking anti-inflammatories every day for two weeks. And he has a hike booked for the 9th that he has not mentioned to anyone, which is the real question behind the appointment.",
+  "model": "1. What he needs to be able to do, and when. Four flights of stairs a day now, and a booked hike on the 9th. That is the plan, and neither fact was on the chart.\n\n2. What he is taking. Two weeks of daily anti-inflammatories changes what you will see tomorrow, and our form never asks.\n\n3. What twelve days can realistically deliver, agreed out loud before he arrives. On the hike, do not promise and do not forbid — he will decide either way, so the useful thing is an honest picture of the trade-off and a plan that works whichever he chooses.",
+  "q5key": "His worst movement is going downstairs, four floors of it several times a day. A good choice shows that, so you can point at it and agree what the twelve days are aiming at."
+ },
+ {
+  "id": "c15",
+  "level": 5,
+  "type": "Over-writer",
+  "title": "The patient who brought a plan",
+  "brief": "New patient, 27. Right knee. Four and a half months after meniscus surgery.\nNew pain at the front of the knee and swelling around the thigh muscle.\nThey have written a great deal. In the box they have pasted their surgeon's rehabilitation programme in full — the loading stages, the pool work, the weeks at which running, jumping and changing direction are allowed, and when the surgeon reviews them next.\nThey add that they are only in town briefly, want one session, and want the new pain explained.\nReception asked for the operation report; they replied that it does not matter now the surgery is done.\nFirst appointment tomorrow at 15:00.",
+  "q1": {
+   "prompt": "What do you do before they arrive tomorrow?",
+   "opts": [
+    "They have done your work for you. Read it tonight and start treating tomorrow.",
+    "Call them and explain that you cannot treat a post-surgical knee without the operation report.",
+    "Call them, thank them for what they sent, say the call is short, and ask only what the plan does not cover.",
+    "Call them and go through the programme with them, so they can hear that you have read all of it."
+   ],
+   "answer": 2,
+   "why": "Going through the plan with them is the answer most physiotherapists pick and it is the one that gets them cut off mid-sentence — they sent it precisely so they would not have to go through it again, so a recap proves you did not read it. Not calling looks sensible with several pages in front of you, but a pasted programme tells you what should be happening, not what they have actually been doing, why there is new pain, or what one session is supposed to achieve. And the operation report is worth asking for, never as a condition of being seen. Thank them, be specific enough that they know you read it, and keep the call small."
+  },
+  "reveal": "You open by thanking them and naming one thing from the programme, so they know you read it. You say the call will be short because you only have two questions. They relax, and you get both answers.\n\nThey have been ahead of the programme for weeks — back to running early, on their own judgement, and now running on the road three times a week. The new pain came on after a long day of walking, and the knee is stiff for the first hour every morning.\n\nNobody has looked at the knee since the operation.\n\nThen they tell you the thing they never wrote down: they think something has gone wrong with the repair, and that nobody has told them.",
+  "model": "1. Open by thanking them and naming something specific from what they sent, before any question at all. \"Thank you — that is the clearest history I have had all week. I have read all of it. This call will be very short, I only have one or two questions.\" That is what makes them believe you read it.\n\n2. What they have actually been doing, against what the programme says. Pages of plan and not one line about running on the road three times a week on their own decision.\n\n3. What they need from one session. The answer is not treatment. It is to be told whether the repair has failed — and if you do not know that before they arrive, the session will be about something else entirely.",
+  "q5key": "They believe the repair has failed and nobody has told them otherwise. A good choice is the simple picture you would point at to show where the new pain is coming from and how that differs from the part that was repaired — the picture that answers the question they never wrote down."
+ },
+ {
+  "id": "c31",
+  "level": 1,
+  "type": "Walk-in",
+  "title": "Walked in yesterday",
+  "brief": "New patient. He came to the front desk yesterday and booked in person.\nThe chart says: \"Walk-in. Knee. Booked for tomorrow.\"\nReception took his details on paper at the desk. Nothing else has reached the system.\nFirst appointment tomorrow at 11:00.",
+  "q1": {
+   "prompt": "What do you do before he arrives tomorrow?",
+   "opts": [
+    "Ask reception for the paper sheet they filled in at the desk, read it, and then call him.",
+    "Call him and take the whole history from the beginning — the chart is one line, so start from nothing.",
+    "Send him the online form so the details are in the system before tomorrow.",
+    "Walk-ins are always thin. Take the history in the room tomorrow."
+   ],
+   "answer": 0,
+   "why": "About one chart in eleven is a walk-in with nothing written, but the information usually does exist — it is on a sheet at the front desk and nobody typed it in. Two minutes of asking gets you three answers free. Starting the call from nothing means asking him things he already answered standing at the desk, which makes the clinic look disorganised and wastes the part of the call that should go further. Sending the form is worth trying once, but you do not yet know that he has already failed to use it twice. And waiting for the room is a choice to arrive knowing one word."
+  },
+  "reveal": "The desk sheet has his age, the side, and \"6 weeks, no injury\" — three answers you did not have to ask for.\n\nSo the call goes further. It is the right knee, front and inside, worse going up stairs and worse after a long drive. No swelling, no locking, no giving way.\n\nHe is a taxi driver, ten hours a day, six days a week, and he cannot afford to stop working — he is very clear about that.\n\nAnd he tells you he came to the desk because he tried to book online twice and gave up both times.",
+  "model": "1. Get the desk sheet before you dial. Three of your questions are already answered on it, and reading it first is what turns a repeat interview into a real call.\n\n2. Then ask what the sheet cannot tell you: what makes it worse, and what he does all day. Ten hours in a driving seat is the load and stairs are the symptom.\n\n3. What happens if he stops working. The answer is that he cannot, which is the main constraint on any plan you make. His two failed attempts to book online also tell you something useful — his chart will stay thin unless somebody asks him directly, so do not send him forms.",
+  "q5key": "Ten hours a day in a driving seat, and worse going up stairs. A good choice shows the driving position or the stair step, so he recognises his own day on the screen."
+ },
+ {
+  "id": "c32",
+  "level": 2,
+  "type": "Failed contact",
+  "title": "The number is withheld",
+  "brief": "New patient. Booked by phone.\nComplaint: lower back, \"2 weeks, lifted something heavy.\"\nWorse: bending.\nThe caller withheld their number and gave no other contact detail. Reception has no way to call back.\nFirst appointment tomorrow at 14:00.",
+  "q1": {
+   "prompt": "You cannot make the call. What do you do before he arrives tomorrow?",
+   "opts": [
+    "Cancel the appointment until he gives the clinic a contact number.",
+    "Ask reception to keep trying, in case the number turns up somewhere.",
+    "Write out the questions the call would have asked, and plan the session so the first ten minutes do that job.",
+    "Nothing can be done. No number, no call — take the history tomorrow as normal."
+   ],
+   "answer": 2,
+   "why": "Some charts can never be improved before the visit, and this is one of them. That is not a reason to shrug — it is a reason to move the call into the start of the session deliberately, on paper, tonight. \"Take the history as normal\" is what everyone says they will do and it is how the first twenty minutes get eaten by questions in no particular order. Cancelling punishes a man with a two-week lifting injury for a phone setting. Chasing a withheld number gets you nothing and takes reception's time."
+  },
+  "reveal": "He arrives on time, and because you decided in advance what the first ten minutes were for, you get everything.\n\nHe lifted a sack of cement two weeks ago and felt immediate pain. He is a builder and he has kept working every day since. No leg pain, no numbness, no problem walking.\n\nAt worst it is 8 out of 10. He has been taking painkillers bought from a shop, several a day, and does not know what they are.\n\nAt the end he explains why the number was withheld: he is between contracts and worried about being chased for money.",
+  "model": "1. Plan the call's questions and ask them before you touch him: mechanism, negatives, how bad, what he is taking, what he needs to be able to do.\n\n2. Say out loud at the start what the shape of the session is. A patient who has had no call does not know it begins with talking, and may be expecting hands on his back from the first minute.\n\n3. Accept that you have lost the preparation time and not the information — but only if you decided in advance not to skip it. Shop-bought painkillers several times a day, name unknown, is the piece you would have missed if you had rushed to the plinth.",
+  "q5key": "The mechanism is lifting a cement sack, and he is still doing it every day. A good choice shows that lift, so he can show you how he is doing it now rather than describe it."
+ },
+ {
+  "id": "c33",
+  "level": 3,
+  "type": "Third-party booking",
+  "title": "His wife booked it",
+  "brief": "New patient, 46. Booked by his wife.\nComplaint, in her words: \"My husband has had back pain for years and will not do anything about it. It is affecting his sleep and his mood. He needs to be seen.\"\nDuration: \"years.\"\nContact number: hers.\nFirst appointment tomorrow at 18:00.",
+  "q1": {
+   "prompt": "What do you do before he arrives tomorrow?",
+   "opts": [
+    "Call her back and say that he needs to book his own appointment.",
+    "Call, ask to speak to him, and find out whether he actually wants to be there.",
+    "Call his wife and take the history from her — she has watched it for years and she booked it.",
+    "Plan the session from her description. It is detailed enough to work from."
+   ],
+   "answer": 1,
+   "why": "A spouse-booked appointment carries a history in the third person and a motivation nobody has checked. A patient who has been sent behaves completely differently from one who chose to come, and if you do not know which you have, you will build a plan for the wrong man. Her account will be accurate about his mood and silent about his back. Refusing the booking punishes the one person in this who is trying. Expect him to be polite and slightly reluctant on the phone — that is the point of calling."
+  },
+  "reveal": "You ask to speak to him and his wife puts him on. He is polite and a little reluctant, and clearly does not think this is necessary.\n\nAbout eight years, on and off. Worse in the mornings and after long drives — he drives two hours a day. He sleeps badly during the bad weeks, which is what his wife has been watching.\n\nHe says he is coming because she arranged it, and that he had assumed years ago that nothing could be done about it.\n\nThen, almost as an afterthought as the call is ending, he mentions that he stopped playing football with his son about a year ago.",
+  "model": "1. Get him on the phone, and establish whether he wants to be there. Everything about tomorrow depends on that answer, and his wife cannot give it to you.\n\n2. The ordinary history: how long, what makes it worse, what it does to his sleep. Eight years, worse in the mornings, two hours of driving a day.\n\n3. Ask what he has stopped doing. The line that matters is the one he almost did not say — he stopped playing football with his son. That is his own reason to come back, as opposed to his wife's, and it is the whole difference between one session and a course.",
+  "q5key": "He has stopped playing football with his son. A good choice shows that, not a spine — putting his own goal on the screen is what makes the session his rather than his wife's."
+ },
+ {
+  "id": "c34",
+  "level": 4,
+  "type": "Third-party booking",
+  "title": "Her mother filled in the form",
+  "brief": "New patient, age 14. Booked by her mother, who filled in the form.\nOccupation: \"a dancer.\"\nComplaint: \"Pain in the front of both hips for about 3 months. She says it is fine but I can see her limping after class.\"\nTraining: \"ballet 5 days a week, plus a competition group on Saturdays.\"\nGoal, in the mother's words: \"She has an audition in 8 weeks.\"\nFirst appointment tomorrow at 17:00.",
+  "q1": {
+   "prompt": "What do you do before she arrives tomorrow?",
+   "opts": [
+    "Call and take the history from the mother. She is the one who notices, and the patient is a minor.",
+    "Wait until tomorrow and ask them both together in the room.",
+    "Call the mother and explain that a 14-year-old training six days a week should reduce her load before she is seen.",
+    "Call and speak to the girl herself, with her mother present, and hear her own version."
+   ],
+   "answer": 3,
+   "why": "The mother says one thing and the daughter says another — the form itself records the gap, and that gap is the most useful thing on the chart. A young dancer who tells her mother she is \"fine\" is usually protecting her audition, and she will not correct the record with only her mother speaking. Waiting until the room means the first version you hear is still the mother's, in front of the daughter, which makes it harder for her to disagree. And giving load advice before you have heard from the patient sets the whole thing up as a fight about the audition."
+  },
+  "reveal": "You speak to them both, and you make a point of asking the daughter directly.\n\nIt is deep in the front of both hips, worse in high kicks and worst after Saturday competition work. And it has been about five months, not three — she corrects her mother on the call.\n\nShe has not told her ballet teacher, because she does not want to lose her place in the competition group.\n\nThen the piece her mother did not know: she has been taking painkillers before class, most classes, for several weeks. And she says plainly that she is not missing the audition in eight weeks whatever anyone tells her.",
+  "model": "1. Hear the daughter's own version, asked of her directly. Three months becomes five, and that only happened because the question went to the patient.\n\n2. What she has not told anyone, and why. Her teacher does not know, because her place in the competition group depends on it — that is the pressure the whole case sits inside.\n\n3. What she is taking. Painkillers before most classes means she has been training on hips whose warning signals are switched off, and it means your tests tomorrow may look better than the truth. Our form never asks about medication, and her mother could not have told you.",
+  "q5key": "The pain comes in high kicks and after Saturday competition work. A good choice shows that movement, so she can point to exactly where in the range it hurts."
+ },
+ {
+  "id": "c35",
+  "level": 3,
+  "type": "Occupation matters",
+  "title": "The photographer and the gear",
+  "brief": "New patient, 37.\nOccupation: \"i'm a photographer.\"\nComplaint: right side of the neck and shoulder, \"4 months.\"\nCause, in his words: \"carrying gear — my bag is about 12 kg and I have it on one shoulder all day at events.\"\nWorse: end of a shoot day, holding the camera up.\nTreated before: \"massage every few weeks.\"\nGoal: \"get through a wedding season.\"\nFirst appointment tomorrow at 12:00.",
+  "q1": {
+   "prompt": "What do you do before he arrives tomorrow?",
+   "opts": [
+    "He has diagnosed his own mechanism and it is plainly right. Plan manual therapy for a four-month neck.",
+    "Call him to confirm the appointment. The chart already has the cause, the side and the aggravating factor.",
+    "Call him and find out what a shoot day and the coming season actually demand of him.",
+    "He has named the load himself. Tell him on the call to carry the bag on the other shoulder and reduce the weight."
+   ],
+   "answer": 2,
+   "why": "It is rare and valuable that a patient names his own loading — only 18 charts in 345 recorded an occupation at all, and this one gives you the weight, the side and the aggravating position. Do not spend that by jumping straight to advice: telling him to swap shoulders before you know what a shoot day is will be politely ignored. Planning manual therapy treats the four months and not the four months ahead. And a confirmation call throws away the one chart where the person has already done half your work."
+  },
+  "reveal": "You make the call yourself, and this is what you find out.\n\nShoot days are ten to twelve hours, three days a week in season. He holds a heavy camera at eye level for long stretches and carries the bag on the right shoulder between every shot.\n\nThe massage helps for about two days each time, and he has been going every few weeks for a year.\n\nThe last month has been worse. And when you ask, he tells you he has started getting numbness in the right hand at the end of long days — new, in the last few weeks. He mentioned it in passing because he assumed it was normal for the job.\n\nWedding season runs for the next four months and he cannot turn work down.",
+  "model": "1. What a shoot day actually is. Hours, how the camera is held, how the bag is carried, how often. Ten to twelve hours, three days a week, is a very different problem from \"carrying gear\".\n\n2. What the massage achieves and how long it lasts. Two days of relief, every few weeks, for a year, tells you what has been happening instead of treatment.\n\n3. The screening question our form never asks: any numbness or pins and needles. There is, new, in the right hand at the end of long days. That single answer moves this from a tight neck to a case that needs a neurological screen — and it is the reason the call was worth making.",
+  "q5key": "He holds a heavy camera at eye level and carries 12 kg on one shoulder all day. A good choice shows one of those two positions, so he recognises his own shoot day."
+ },
+ {
+  "id": "c36",
+  "level": 4,
+  "type": "Occupation matters",
+  "title": "The professional fighter",
+  "brief": "New patient, 26.\nOccupation: \"professional fighter.\"\nComplaint: left knee, \"on and off 2 years, bad for 3 weeks.\"\nWorse: kicking, changing direction.\nTreated before: \"strapping, painkillers, I manage it.\"\nImaging: \"MRI last year, was told it was fine.\"\nGoal: \"fight in 5 weeks.\"\nFirst appointment tomorrow at 08:30.",
+  "q1": {
+   "prompt": "What do you do before he arrives tomorrow?",
+   "opts": [
+    "Call him, take the fight as a fixed fact, and find out exactly what \"I manage it\" means and what his training week does to the knee.",
+    "Call him and advise him to withdraw from the fight — five weeks is not enough with a knee like that.",
+    "A knee is a knee. Assess it tomorrow as you would any other and let the sport look after itself.",
+    "Ask him to send the MRI report before you speak, so you know what you are dealing with."
+   ],
+   "answer": 0,
+   "why": "A professional with a date on the calendar will not withdraw because a physiotherapist he has never met suggested it, and leading with that ends the conversation in the first thirty seconds. Take the fight as a fact and work inside it. Treating it as an ordinary knee ignores that his training load is about to double when camp starts. And an MRI from last year that was \"fine\" tells you about last year — the useful history is what two years of self-management has actually involved, and what has changed in the last three weeks."
+  },
+  "reveal": "You make the call yourself, and this is what you find out.\n\nTwo years of intermittent pain, but the last three weeks are different. It has swollen twice after sparring, and it caught once when he turned — enough that he had to stop the round.\n\n\"I manage it\" means strapping it for every single session and taking painkillers before sparring. He has been doing that for most of a year.\n\nHe trains twice a day, six days a week. Camp for this fight starts next week and the load goes up from there.\n\nAnd he has not told his coach how bad it is, because he thinks he would be pulled from the card.",
+  "model": "1. What \"I manage it\" actually involves. Strapping every session and pre-sparring painkillers is a year-long system for hiding a knee, and it is the reason nobody has looked at it.\n\n2. What is different about these three weeks. Swelling twice and catching once are new mechanical events, not a worse ache, and they are the clinical heart of the call.\n\n3. What camp will demand, and who knows. The load rises next week and his coach has no idea. Plan for the fight rather than against it, but say plainly on the call that new swelling and catching need assessing properly before the load goes up.",
+  "q5key": "It swells after sparring and caught when he turned. A good choice shows the kicking or turning movement, so he can show you the exact moment it happened."
+ },
+ {
+  "id": "c37",
+  "level": 3,
+  "type": "Time constraint",
+  "title": "The golfer with a date",
+  "brief": "New patient, 43.\nOccupation: \"I am a golfer.\"\nComplaint: left lower back, \"6 weeks, came on during a tournament.\"\nWorse: driving the ball, sitting in the car afterwards.\nTreated before: \"physio at my club, 4 sessions, some improvement.\"\nImaging: none.\nGoal: \"a tournament in 3 weeks, and I do not want to lose distance.\"\nFirst appointment tomorrow at 07:30.",
+  "q1": {
+   "prompt": "What do you do before he arrives tomorrow?",
+   "opts": [
+    "Call him and find out exactly what the club physiotherapist did in those four sessions.",
+    "Three weeks is plenty. Plan a standard course and confirm the appointment.",
+    "Call him and advise skipping the tournament to protect the back.",
+    "Call him and get at both halves of that goal line: what the three weeks needs, and what \"losing distance\" means to him."
+   ],
+   "answer": 3,
+   "why": "He has given you a deadline and a fear in the same sentence. The deadline shapes the plan; the fear shapes what he will actually accept and do. A golfer who believes treatment will cost him distance will nod at everything you say and quietly stop doing any of it. The previous treatment is worth asking about, but it is the second question, not the first. A standard course ignores the only date that matters. And advising him to skip the tournament, before he has told you anything, is advice he will not take from a stranger."
+  },
+  "reveal": "You make the call yourself, and this is what you find out.\n\nThe pain is on the left, at the very end of the swing, and it is worse the day after a round than during it. He plays three rounds a week plus range work and has not reduced anything.\n\nThe club physiotherapist's four sessions were massage and heat, which helped for about a day each time.\n\nThen the fear, once you ask about it directly. Two years ago he was told to \"swing less hard\" by someone treating a different problem. He did it, lost distance, and says it ruined his season. He tells you plainly he would rather play in pain than shorten his swing again.",
+  "model": "1. Exactly where in the swing it hurts, and what the day after is like. End of the swing, worse the following day, is a loading pattern rather than an incident.\n\n2. What the previous treatment consisted of and what it achieved. Massage and heat, a day of relief each time, four times — that tells you what tomorrow must not be.\n\n3. What \"losing distance\" means to him, asked directly. It is not a preference, it is a season he believes he lost. Name it on the call, take it off the table, and be clear that the plan is about how much and how often he loads, not about making him swing softer.",
+  "q5key": "It hurts at the very end of the swing. A good choice shows that finish position, so he can show you exactly where in it the pain arrives."
+ },
+ {
+  "id": "c38",
+  "level": 5,
+  "type": "Second complaint",
+  "title": "One joint on the form",
+  "brief": "New patient, 41.\nComplaint: right wrist, \"6 weeks, swollen and stiff in the mornings.\"\nCause: \"I do not know.\"\nTreated before: \"no.\"\nPast history: \"waiting for hospital tests.\"\nGoal: \"get the swelling down.\"\nFirst appointment tomorrow at 13:00.",
+  "q1": {
+   "prompt": "What do you do before she arrives tomorrow?",
+   "opts": [
+    "Call her and ask her to bring whatever the hospital has given her so far.",
+    "Call her, find out what the hospital tests are for, and ask whether any other joint is involved.",
+    "A swollen, stiff wrist with no cause. Assess and treat it tomorrow as planned.",
+    "Call her and postpone the appointment until the hospital results are back."
+   ],
+   "answer": 1,
+   "why": "Our form asks about one region, so patients answer about one region — that is the trap in this chart, not the wrist. Swelling with an hour of morning stiffness, in someone already under investigation, is precisely the situation where you must ask whether anything else is affected, and the form will never prompt it. Treating it as a wrist means you never ask. Postponing leaves her with a swollen joint and no contact for weeks. Asking for paperwork is reasonable and gets you a letter, not the two questions that change the appointment."
+  },
+  "reveal": "You make the call yourself. The wrist has been swollen for six weeks with about an hour of stiffness every morning before she can use it properly.\n\nThen you ask whether anything else is involved, and the case changes. Both her hands have been stiff in the mornings for months. Her left knee has swollen twice, once badly enough that she could not kneel for a week.\n\nShe had not mentioned any of it because she booked about the wrist and thought the rest was separate.\n\nThe hospital tests are blood tests for an inflammatory condition, taken last week, with results due in a few days.",
+  "model": "1. What the tests are for, and when the results come. Blood tests for an inflammatory condition, due within days, is the frame for everything else.\n\n2. The question our form does not ask: is anything else involved. Two hands and a knee, on top of the wrist, is a completely different appointment from a six-week wrist strain.\n\n3. How long the morning stiffness lasts. Over an hour, in multiple joints, with an active investigation, is a picture that has to be raised with a senior physiotherapist today — so that what you do tomorrow fits alongside the medical work rather than cutting across it.",
+  "q5key": "She came in thinking she has a wrist problem. A good choice supports explaining why you asked about her other joints — the priority here is the conversation, not the picture."
+ },
+ {
+  "id": "c39",
+  "level": 5,
+  "type": "Hidden medical course",
+  "title": "Shoulder, one word",
+  "brief": "New patient, 49.\nComplaint: left shoulder.\nHow long: \"about 3 weeks.\"\nCause: \"not sure.\"\nTreated before: \"went to the hospital.\"\nGoal: \"get my arm up again.\"\nFirst appointment tomorrow at 15:00.",
+  "q1": {
+   "prompt": "What do you do before he arrives tomorrow?",
+   "opts": [
+    "Assume it was an X-ray that showed nothing and plan shoulder rehabilitation.",
+    "Call him and find out exactly what happened at the hospital, in order.",
+    "A three-week shoulder that has already been to hospital. Plan the assessment and confirm the time.",
+    "Call him and ask him to bring all his hospital paperwork tomorrow."
+   ],
+   "answer": 1,
+   "why": "Patients compress whole medical episodes into three words. \"Went to the hospital\" can mean a five-minute X-ray or a week of treatment, and until you know which, you do not know what you are treating. Planning the assessment assumes the shoulder is the problem. Asking for paperwork is sensible and still leaves you a day away from the answer — and many patients arrive with nothing. Assuming an X-ray is the most dangerous option on the list, because it is the assumption everybody makes."
+  },
+  "reveal": "You call and ask him to take you through it in order: why he went, what they did, what he was given, what happened after.\n\nHe went to hospital three weeks ago with a shoulder that was hot and very painful. They gave him three days of antibiotics. He had a fever for three days.\n\nSince the fever settled the pain has changed — it is much less intense, but he cannot lift the arm above shoulder height at all.\n\nHe has had no follow-up of any kind. He assumed the hospital had dealt with it and that physiotherapy was simply the next step.",
+  "model": "1. What happened at the hospital, in order. Why he went, what they did, what they gave him, what happened next. Nothing else on this call comes close in importance.\n\n2. What has changed since. Less pain but no elevation at all is a change in the picture, not an improvement you can build on.\n\n3. Whether anyone has followed it up. Nobody has. A shoulder treated with antibiotics is a shoulder somebody was worried about, and before any treatment you need to know what for and whether it is resolved — senior physiotherapist and medical review today, which is not the same thing as sending him away.",
+  "q5key": "He wants his arm to lift again and does not understand what happened to him. A good choice supports the explanation of the next step — the conversation matters more than the picture here."
+ },
+ {
+  "id": "c40",
+  "level": 3,
+  "type": "Interviewing the clinic",
+  "title": "What methods do you use?",
+  "brief": "New patient, 39.\nComplaint: right hip and groin, \"8 months, gradual.\"\nWorse: sitting cross-legged, getting out of the car.\nTreated before: \"3 physios, 2 chiropractors, an osteopath.\"\nImaging: \"MRI and X-ray, told nothing serious.\"\nBefore booking she asked reception a list of questions: what methods we use, whether the physiotherapist has a masters degree, what equipment we have, and whether we do dry needling and shockwave.\nFirst appointment tomorrow at 10:00.",
+  "q1": {
+   "prompt": "What do you do before she arrives tomorrow?",
+   "opts": [
+    "Call her and answer her questions properly — methods, qualifications, equipment — since that is what she asked.",
+    "She has interviewed the clinic and will be hard work. Keep the call short and factual.",
+    "Tell reception to let her know all her questions will be answered at the appointment.",
+    "Call her and find out what has actually happened to her across six practitioners and eight months."
+   ],
+   "answer": 3,
+   "why": "A patient who checks credentials and equipment before booking has usually been let down repeatedly, and the questionnaire is the symptom rather than the request. Eight months, six practitioners, imaging that showed nothing. Answering the list politely gives her a seventh set of claims to compare and tells her nothing she can use. Writing her off as difficult before you have spoken guarantees it. Deferring everything to the appointment leaves her doing the only thing she knows how to do — comparing techniques on the internet tonight."
+  },
+  "reveal": "You make the call yourself, and this is what you find out.\n\nEight months, deep in the front of the hip and groin, worse sitting cross-legged and getting out of the car. It has not changed at all in that time.\n\nEach of the six gave her a different explanation and a different set of exercises. She has done all of them, properly, and she can list them. Two of the explanations directly contradicted each other.\n\nWhen you ask what she wants, she says she wants one person to tell her what it is and stay with it. She asked about methods because she genuinely cannot tell the difference between them, and she has run out of ways to choose.",
+  "model": "1. What each of the six told her, and what she was given. She is carrying six contradictory explanations and that is the real presenting problem.\n\n2. What has and has not changed in eight months. Nothing has, through six courses of treatment — which is information about the problem, not about her.\n\n3. What she needs from you. The list of questions to reception was never a test of your credentials; it was a person with no remaining way to choose. What she has not had is a clear process: assess her properly, say what you think it is, and agree the next step together.",
+  "q5key": "She has had six explanations and believes none of them. A good choice is the one clear picture you would use to give her a single explanation she can hold on to."
+ },
+ {
+  "id": "c41",
+  "level": 4,
+  "type": "Pushback",
+  "title": "Skip the assessment",
+  "brief": "New patient, 25. Ten weeks after knee surgery.\nComplaint: \"stiff, weak, need to get back to sport.\"\nA note from reception: he asked to skip the assessment and go straight to exercises, saying he has already been assessed twice and does not want to pay to be assessed again.\nNo operation report. Imaging: \"at the hospital.\"\nFirst appointment tomorrow at 09:30.",
+  "q1": {
+   "prompt": "What do you do before he arrives tomorrow?",
+   "opts": [
+    "Call him, find out what the two previous assessments found and what he has been doing since, then explain what you cannot safely do without your own.",
+    "Call him and explain that there is no treatment without an assessment. That is how the clinic works.",
+    "He has been assessed twice in ten weeks. Respect that and go straight to exercises tomorrow.",
+    "Call him and ask him to bring both previous reports and the operation note before you plan anything."
+   ],
+   "answer": 0,
+   "why": "His request is not unreasonable on its face — he has paid to be assessed twice already, and being asked a third time feels like being charged for the same thing. But ten weeks after knee surgery, prescribing load without knowing what was repaired or where the knee is now is not something you can safely do. Refusing on policy grounds gives him a rule instead of a reason and he will argue with it. Skipping the assessment gambles with a repair. And asking for paperwork first makes documents the condition of being treated, when the fastest route is simply to ask him what happened."
+  },
+  "reveal": "You make the call yourself, and this is what you find out.\n\nThe two assessments were both at the hospital, at five weeks and nine weeks. He was told the knee was progressing and handed a sheet each time.\n\nHe cannot tell you what was actually repaired. He knows the surgeon's name and nothing else.\n\nHe has been doing the exercises from the second sheet. And last week, on his own initiative, he started jogging — since when the knee has been swelling every evening.\n\nHe wants to be back playing five-a-side football in a month.",
+  "model": "1. What the two assessments actually said, and what he was given. Two sheets and \"it is progressing\" is not the same as having been assessed for the load he now wants.\n\n2. What he has been doing. He started jogging last week on his own decision and the knee has swelled every evening since. That is the single most useful sentence on this call.\n\n3. What he wants and by when. Five-a-side in a month. Then use his own information to answer his objection: the swelling after new jogging is exactly what twenty minutes of assessment is for, and it is the thing that will otherwise cost him the month.",
+  "q5key": "He wants to be back playing in a month and does not know what was repaired. A good choice is the picture you would point at to show what the knee is ready for and what comes next."
+ },
+ {
+  "id": "c42",
+  "level": 5,
+  "type": "Red flag",
+  "title": "Both sides, and slowly worse",
+  "brief": "New patient, 74.\nComplaint: \"Pins and needles in both hands and both feet. Getting slowly worse.\"\nHow long: \"years — maybe 10, but worse in the last year.\"\nWorse: \"walking any distance.\"\nTreated before: \"massage, and a chiropractor a long time ago.\"\nGoal: \"walk to the market again.\"\nFirst appointment tomorrow at 11:30.",
+  "q1": {
+   "prompt": "What do you do before he arrives tomorrow?",
+   "opts": [
+    "Book a double session so there is time to assess all four limbs properly.",
+    "Refer him straight back to his doctor without calling.",
+    "Call him today and screen it carefully: both sides, weakness, unsteadiness, falls, bladder and bowel.",
+    "Long-standing pins and needles in an older man. Call to confirm and assess tomorrow as usual."
+   ],
+   "answer": 2,
+   "why": "Symptoms on both sides, in arms and legs, progressive over years, with walking distance falling away, is not an ordinary presentation — and it arrived on the chart looking exactly like ordinary numbness in an older patient, which is why it is dangerous. A confirmation call finds nothing. A double session is a decision to find out tomorrow what you could know today. And referring him back without speaking to him leaves a man who has stopped walking to the market with no contact and no plan. This is the case where the call itself changes what happens."
+  },
+  "reveal": "You call him today. The pins and needles are constant in both hands and both feet, and they have been getting steadily worse over the last year.\n\nHe can manage about five minutes of walking before his legs feel heavy, and it eases when he sits down. It used to be twenty minutes.\n\nOver the last year he has become unsteady, especially in the dark, and he has had two near-falls at home — one on the stairs. He has not told his doctor about the unsteadiness because he assumed it was his age.\n\nNo bladder or bowel changes. No problems with his hands beyond the numbness.",
+  "model": "1. The screening our form never asks for: both sides, getting worse, any weakness, any unsteadiness, any bladder or bowel change, any falls. Two of those are positive and he has told nobody.\n\n2. The walking distance and what eases it. Five minutes, heavy legs, eased by sitting, down from twenty minutes over a year.\n\n3. Then two things happen today, not tomorrow: escalation to a senior physiotherapist and medical review, and the immediate practical matter of a man at real risk of falling at home. \"Normal at my age\" is what he has been telling himself for a year.",
+  "q5key": "He wants to walk to the market and he is frightened of falling. A good choice supports the conversation about why you are asking a doctor to look first — keep it calm and plain."
+ },
+ {
+  "id": "c43",
+  "level": 4,
+  "type": "Complex history",
+  "title": "After the head injury",
+  "brief": "New patient, 32.\nComplaint: right arm and leg, \"weak, and numb all the time.\"\nHow long: \"since the accident 2 years ago.\"\nPast history: \"head injury, surgery, 3 weeks in hospital.\"\nTreated before: \"rehab at the hospital, stopped a year ago.\"\nGoal: \"use my right hand for work again.\"\nFirst appointment tomorrow at 14:30.",
+  "q1": {
+   "prompt": "What do you do before he arrives tomorrow?",
+   "opts": [
+    "Two years on, the picture is settled. Plan a strengthening programme for the right side.",
+    "Call him and explain that this needs a neurological specialist rather than our clinic.",
+    "Call him and ask him to bring his hospital discharge summary and imaging tomorrow.",
+    "Call him and find out what the injury was, what the rehabilitation achieved, and why it stopped."
+   ],
+   "answer": 3,
+   "why": "Constant numbness and one-sided weakness after a head injury and surgery is a different case from anything else on this list, and the chart gives you almost none of it. What was damaged, what came back, when it stopped improving, and why the rehabilitation ended are four things you need before you plan a single exercise. Strengthening assumes the problem is strength. Turning him away is both wrong and, after a year of nothing, cruel. Paperwork is useful and secondary — the reason his rehabilitation stopped is not written on any discharge summary."
+  },
+  "reveal": "You make the call yourself, and this is what you find out.\n\nThe weakness affects his right hand most. He cannot grip small objects, and he cannot hold a pen for more than a minute. The numbness is constant and has not changed for about a year.\n\nThe hospital rehabilitation stopped a year ago because his funding ran out, not because he had finished or plateaued. He has done nothing since and he feels he has gone backwards.\n\nHe wants to go back to work that needs that hand. And in two years nobody has ever told him whether that is possible — which is, in the end, the actual reason he booked.",
+  "model": "1. What the injury and the surgery involved, in his own account. Two years of history that is nowhere on our form.\n\n2. What the rehabilitation achieved, and why it stopped. Funding, not recovery — which means the last year of decline was not inevitable and he does not know that.\n\n3. What he wants, and what he has been told about it. He wants to work with that hand and nobody has answered him. Do not promise recovery and do not close the door: say when you can answer, promise honesty, and name what you would work towards either way.",
+  "q5key": "His goal is gripping with the right hand for work. A good choice shows a real gripping task from his job, so the session is aimed at that from the first minute."
+ },
+ {
+  "id": "c44",
+  "level": 5,
+  "type": "Over-writer",
+  "title": "Nothing has ever worked",
+  "brief": "New patient, 52. Neck, shoulders and upper back.\nShe has written at length: a numbered list of everything she has tried over seven years — three physiotherapy courses, acupuncture, dry needling, cupping, two chiropractors, a posture course, an ergonomic chair, injections, three types of pillow — each with a note on why it failed.\nThe last line: \"I have accepted this is just how I am. My husband made me book.\"\nFirst appointment tomorrow at 16:30.",
+  "q1": {
+   "prompt": "What do you do before she arrives tomorrow?",
+   "opts": [
+    "Call her and point out gently that the list shows she never stayed with anything long enough.",
+    "Call her, thank her and name one item from the list, then ask what came closest to helping and how long she gave each thing.",
+    "Call her and go through the list with her, so she knows you have read every item.",
+    "She has tried everything and expects nothing. Keep the plan small and manage her expectations tomorrow."
+   ],
+   "answer": 1,
+   "why": "That list is not a treatment history, it is a belief — nothing works and this is permanent — and she has also told you she did not choose to come. Both matter more tomorrow than any of the nine treatments named on it. Reading the list back is what this patient will interrupt, and she will be right to. Managing expectations before you have spoken to her accepts her belief as a diagnosis. And telling her she never stuck with anything, in the first conversation, is true and completely unusable — she will hear that seven years of trying were her own fault."
+  },
+  "reveal": "You thank her, name one item from the list so she knows you read it, and ask what came closest to helping.\n\nThe answer arrives immediately. A period of swimming, about three years ago, twice a week for four months. It was the only thing that ever made a real difference, and she stopped because the pool closed. She has never put it back.\n\nThen, as you ask how long she gave the others, a pattern appears: two or three weeks each, nine times over.\n\nAnd she says something that is not on the pages. She is not really in pain all the time. What has happened is that she has stopped expecting anything better.",
+  "model": "1. Thank her and name one specific item, then do not recap. With this patient, ten seconds of proof that you read it buys you the whole call.\n\n2. What came closest to helping. In a list of nine failures, the swimming is the most useful sentence in the chart — and it only appears because you asked the question in that direction.\n\n3. How long she gave each thing. Two or three weeks, nine times, is not a woman who never tried; it is a pattern nobody has ever shown her. That, plus one thing that demonstrably worked, is the first reason she has had in seven years to expect something.",
+  "q5key": "She believes this is permanent and expects nothing. A good choice is whatever helps you show her one thing that can change — the point is to interrupt the belief, not to explain the anatomy."
+ },
+ {
+  "id": "c45",
+  "level": 4,
+  "type": "Over-writer, no complaint",
+  "title": "A full history and no pain",
+  "brief": "New patient, 47.\nReason for visit: \"Full body screening. I have no pain.\"\nShe has written three pages anyway: her exercise week in detail, her diet, her sleep hours, a list of every injury since school with dates, her family history of arthritis, two sets of blood results, and a printed summary from a smart watch.\nGoal: \"I want to know if anything is developing before it becomes a problem.\"\nFirst appointment tomorrow at 09:00.",
+  "q1": {
+   "prompt": "What do you do before she arrives tomorrow?",
+   "opts": [
+    "No pain and no complaint. A short screening session and some general advice will do.",
+    "Call her and explain that we treat problems rather than screen people who are well.",
+    "Call her, thank her for the pages, and ask the one question they do not answer: what made her book now.",
+    "Call her to confirm, then plan a full assessment of every region she has listed."
+   ],
+   "answer": 2,
+   "why": "Nobody writes three pages, prints two sets of blood results and attaches watch data because they feel relaxed. There is a specific worry behind this and the chart does not say what it is — the volume of paper is what is hiding it. Assessing every region she listed is a way of spending an hour without ever finding it. A short advice session takes the stated request at face value. And telling her the clinic does not screen well people turns away someone who is, on this evidence, quite frightened."
+  },
+  "reveal": "You start to go through her history and she cuts in: \"It is all in the document I sent.\"\n\nSo you thank her, name one thing from it, and ask what made her book now rather than last year. That is when it comes out.\n\nHer mother was diagnosed with arthritis at the age she is now, and lost her independence early. She has read that it is hereditary.\n\nAnd she has noticed that her hands feel stiff for a few minutes each morning. She has been watching them for months, every morning, and she has told nobody — not her husband, not her doctor. That is why she booked, and it is the one thing that is not in the three pages.",
+  "model": "1. Thank her and name something specific from the pages, then stop reading them back. This patient will interrupt you, and the interruption is the warning.\n\n2. What made her book now. Not the diet, not the watch data — a family history and months of quiet watching.\n\n3. What she has actually noticed herself. A few minutes of morning stiffness in her hands, unreported to anyone. She asked for a screening because \"I am frightened of getting my mother's arthritis\" is very hard to say to a stranger. Once she has said it, tomorrow has an obvious job — and a general screening hour would have missed it entirely.",
+  "q5key": "She is comparing herself to her mother and watching her own hands every morning. A good choice is the simple picture you would use to explain what her morning stiffness means and what she can influence."
+ }
+]
