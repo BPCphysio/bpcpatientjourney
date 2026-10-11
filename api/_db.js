@@ -17,6 +17,9 @@ async function ready() {
   if (_ready) return _ready;
   const db = module.exports.sql();
   _ready = (async () => {
+    // one round trip when the tables are already there (every time but the first)
+    const have = await db`SELECT to_regclass('public.google_outbox') IS NOT NULL AS ok`;
+    if (have.length && have[0].ok) return;
     await db`CREATE TABLE IF NOT EXISTS responses (
       id text PRIMARY KEY,
       scenario_id text,
