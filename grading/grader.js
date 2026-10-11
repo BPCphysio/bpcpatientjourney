@@ -328,6 +328,24 @@
     return { graded: true, pct: pct, suggested: Math.round(pct / 20), points: points, source: 'model' };
   }
 
+  // Claude's reading (api/grade.js, asked by the marking view when a senior
+  // opens an answer), stored beside the answer as ai.cq1 / ai.cq2 / ai.cq3.
+  // It is calibrated on the answers seniors have already marked for the same
+  // case, so where it exists it leads and the older readers become the
+  // second opinion. Its mark is the senior's own scale, out of 5.
+  function fromClaude(caseId, q, c) {
+    if (!c || typeof c.score !== 'number') return null;
+    var b = data && data.cases[caseId] && data.cases[caseId][q];
+    var labels = b ? b.points : [];
+    var points = (c.credits || []).map(function (cr, i) {
+      var p = labels[i];
+      return { credit: Number(cr) || 0, how: 'model', evidence: p ? (c.notes || [])[i] || '' : '', sim: 0,
+               label: p ? { en: p.en, th: p.th } : { en: (c.notes || [])[i] || '', th: (c.notes || [])[i] || '' } };
+    });
+    return { graded: true, pct: c.score * 20, suggested: c.score, points: points, source: 'claude',
+             comment: c.comment || '', examples: c.examples || 0 };
+  }
+
   function addExtras(g, ai) {
     var list = ai && Array.isArray(ai.extras) ? ai.extras.filter(Boolean) : [];
     if (!g.graded || !list.length) return g;
@@ -357,9 +375,14 @@
       if (m && MODEL_LEADS[q]) { m.second = g.graded ? g : null; g = m; }
       else if (m && g.graded) g.second = m;
       if (EXTRAS_COUNT[q]) g = addExtras(g, ai);
+      var c = fromClaude(r.scenarioId, q, r.ai && r.ai['c' + q]);
+      if (c) { c.second = g.graded ? g : null; g = c; }
       if (g.graded) { out[q] = g; parts.push(g.pct); }
       else if (a[q + ':audiosec'] || (r.media || []).indexOf(q + ':audio') > -1) out.spoken.push(q);
     });
+    // the picture and its reason: only Claude reads it
+    var c3 = fromClaude(r.scenarioId, 'q3', r.ai && r.ai.cq3);
+    if (c3) out.q3 = c3;
     out.pct = parts.length ? Math.round(parts.reduce(function (s, x) { return s + x; }, 0) / parts.length) : null;
     return out;
   }
@@ -371,7 +394,7 @@
   }
 
   var api = {
-    load: load, ready: ready, grade: grade, gradeResponse: gradeResponse, points: points, fromModel: fromModel, withExtras: withExtras,
+    load: load, ready: ready, grade: grade, gradeResponse: gradeResponse, points: points, fromModel: fromModel, fromClaude: fromClaude, withExtras: withExtras,
     norm: norm, pieces: pieces,
     set: function (p) {
       var rebuild = p.n !== undefined && p.n !== params.n;

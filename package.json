@@ -1,0 +1,8 @@
+{
+  "name": "bpc-patient-journey",
+  "private": true,
+  "description": "BPC Patient Journey trainer. A static page plus one serverless function (api/grade.js) that reads answers with Claude.",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.133.0"
+  }
+}

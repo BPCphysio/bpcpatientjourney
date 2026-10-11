@@ -476,6 +476,32 @@ except FileNotFoundError:
 except subprocess.TimeoutExpired:
     fail('grader test took over three minutes')
 
+# Claude reads answers through api/grade.js, calibrated on the seniors' own
+# marks. The key stays in Vercel's settings; the function refuses anyone
+# without the staff passcode, so the page never carries the key and nobody
+# else can spend the clinic's credit.
+grade_js = ROOT / 'api' / 'grade.js'
+if not grade_js.exists():
+    fail('api/grade.js is missing — the marking view has no Claude reader')
+else:
+    g = grade_js.read_text(encoding='utf-8')
+    if 'sk-ant' in g or 'sk-ant' in tpl:
+        fail('an Anthropic API key is written into the code — it belongs in Vercel settings only')
+    elif 'STAFF_PASSCODE_SHA256' not in g or 'process.env.ANTHROPIC_API_KEY' not in g:
+        fail('api/grade.js no longer checks the passcode or reads the key from the environment')
+    else:
+        ok('Claude reader: key from the environment, staff passcode required')
+if 'examplesFor(r, qk)' not in tpl or "fetch('/api/grade'" not in tpl:
+    fail('the marking view no longer sends senior-marked examples to Claude')
+elif "mk.commentBy = 'claude'" not in tpl or "m.commentBy === 'claude'" not in tpl:
+    fail("comments saved as Claude drafted them would teach Claude its own words")
+else:
+    ok('Claude learns from senior marks, never from its own drafts')
+if 'fromClaude' not in gjs:
+    fail('grader.js no longer shows the Claude reading')
+else:
+    ok('grader.js leads with the Claude reading where there is one')
+
 # ------------------------------------------------------------------- report
 print()
 for n in notes:

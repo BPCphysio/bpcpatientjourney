@@ -53,6 +53,23 @@ Staff taking cases never see it.
 
 Spoken answers are marked by the physiotherapist, not auto-graded.
 
+### Claude, learning from the seniors
+
+When a senior opens an answer in the marking view, the page sends it to
+`api/grade.js` (a Vercel function) with the case, the question, and up to ten
+answers to the same case that seniors have already marked, with their scores
+and comments. Claude (`claude-opus-5-5`) suggests a mark out of 5, a note per
+key point and a comment to the junior, in the junior's language. It leads; the
+older readers stay as a second opinion. The reading is stored beside the
+answer (`ai.cq1`, `ai.cq2`, `ai.cq3` for the picture) and read again when the
+case gets a new senior-marked example. A comment saved exactly as Claude
+drafted it is flagged (`commentBy: 'claude'`) and never used as an example.
+
+What BPC expects (the patient journey, how seniors mark) is in `api/_guide.js`.
+The key is the Vercel environment variable `ANTHROPIC_API_KEY`, paid from the
+monthly API credit of the clinic's Claude plan; without it the function
+answers "not configured" and the page carries on with the other readers.
+
 ## Deploying
 
 ### Vercel (connected to this repo)

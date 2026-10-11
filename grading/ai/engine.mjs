@@ -12,7 +12,8 @@ export const REPO = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '
 // The cases live inside index.html, compressed. Read them the way the page
 // does, so the prompt always shows the case exactly as staff saw it.
 export function loadCases() {
-  const html = fs.readFileSync(path.join(REPO, 'index.html'), 'utf8');
+  // a Windows checkout may carry CRLF line ends; the markers below expect LF
+  const html = fs.readFileSync(path.join(REPO, 'index.html'), 'utf8').replace(/\r\n/g, '\n');
   const man = JSON.parse(html.match(/<script type="__bundler\/manifest">\n([\s\S]*?)\n {2}<\/script>/)[1]);
   const ctx = { window: {} };
   ctx.window.window = ctx.window;
