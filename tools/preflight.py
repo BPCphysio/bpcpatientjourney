@@ -476,27 +476,44 @@ except FileNotFoundError:
 except subprocess.TimeoutExpired:
     fail('grader test took over three minutes')
 
-# Claude reads answers through api/grade.js, calibrated on the seniors' own
-# marks. The key stays in Vercel's settings; the function refuses anyone
-# without the staff passcode, so the page never carries the key and nobody
-# else can spend the clinic's credit.
-grade_js = ROOT / 'api' / 'grade.js'
-if not grade_js.exists():
-    fail('api/grade.js is missing — the marking view has no Claude reader')
+# The clinic record is in Neon behind api/clinic.js, which answers the page
+# exactly as the old Google script did. Claude reads answers on the server
+# (api/_claude.js), calibrated on the seniors' own marks. The key and the
+# database address stay in Vercel's settings, never in the code.
+api = ROOT / 'api'
+need = ['clinic.js', '_claude.js', '_db.js', '_clinic.js', '_cases.js', '_guide.js', 'migrate.js']
+missing = [n for n in need if not (api / n).exists()]
+if missing:
+    fail('api files missing: ' + ', '.join(missing))
 else:
-    g = grade_js.read_text(encoding='utf-8')
-    if 'sk-ant' in g or 'sk-ant' in tpl:
-        fail('an Anthropic API key is written into the code — it belongs in Vercel settings only')
-    elif 'STAFF_PASSCODE_SHA256' not in g or 'process.env.ANTHROPIC_API_KEY' not in g:
-        fail('api/grade.js no longer checks the passcode or reads the key from the environment')
+    srcs = {n: (api / n).read_text(encoding='utf-8') for n in need}
+    allsrc = ' '.join(srcs.values())
+    if 'sk-ant' in allsrc or 'sk-ant' in tpl or 'postgresql://' in allsrc or 'postgres://' in allsrc:
+        fail('a key or database address is written into the code — it belongs in Vercel settings only')
+    elif 'process.env.ANTHROPIC_API_KEY' not in srcs['_claude.js'] or 'process.env.DATABASE_URL' not in srcs['_db.js']:
+        fail('the API no longer reads its key and database from the environment')
+    elif srcs['clinic.js'].count('keyOk(') < 6 or 'keyOk(b.key)' not in srcs['migrate.js']:
+        fail('a clinic API action no longer checks the staff passcode')
     else:
-        ok('Claude reader: key from the environment, staff passcode required')
-if 'examplesFor(r, qk)' not in tpl or "fetch('/api/grade'" not in tpl:
-    fail('the marking view no longer sends senior-marked examples to Claude')
-elif "mk.commentBy = 'claude'" not in tpl or "m.commentBy === 'claude'" not in tpl:
-    fail("comments saved as Claude drafted them would teach Claude its own words")
+        ok('clinic API: passcode on every staff action, key and database from the environment')
+    if "commentBy === 'claude'" not in srcs['_claude.js'] or 'examplesFor(' not in srcs['_claude.js']:
+        fail("Claude no longer learns from senior marks, or learns from its own drafts")
+    elif "mk.commentBy = 'claude'" not in tpl:
+        fail("the page no longer flags comments saved as Claude drafted them")
+    else:
+        ok('Claude learns from senior marks, never from its own drafts')
+    if "readStored(r.id)" not in srcs['clinic.js']:
+        fail('new answers are no longer read by Claude on arrival')
+    else:
+        ok('Claude reads every new answer as it arrives')
+    if 'C.queue(' not in srcs['clinic.js'] or 'drain(' not in srcs['_clinic.js']:
+        fail('writes are no longer copied to the Google backup')
+    else:
+        ok('every write is also queued for the Google backup')
+if "const ENDPOINT = '/api/clinic'" not in tpl:
+    fail('the page no longer talks to the clinic API at /api/clinic')
 else:
-    ok('Claude learns from senior marks, never from its own drafts')
+    ok('the page talks to the clinic API on this site')
 if 'fromClaude' not in gjs:
     fail('grader.js no longer shows the Claude reading')
 else:

@@ -123,7 +123,10 @@ async function drain(budget) {
       });
       const d = JSON.parse(await res.text());
       if (!d || !d.ok) throw new Error((d && d.error) || 'refused');
-      await sql()`UPDATE google_outbox SET done_at = now(), last_error = NULL WHERE id = ${item.id}`;
+      // Google has it: drop the copy (a submission carries its pictures and
+      // recordings), keeping only the row that says it was sent
+      await sql()`UPDATE google_outbox SET done_at = now(), last_error = NULL, body = '{}'::jsonb WHERE id = ${item.id}`;
+      await sql()`DELETE FROM google_outbox WHERE done_at < now() - interval '30 days'`;
       sent++;
     } catch (e) {
       await sql()`UPDATE google_outbox SET last_error = ${String(e && e.message || e).slice(0, 300)} WHERE id = ${item.id}`;
