@@ -12,7 +12,13 @@ const { sql, isMedia } = require('./_db.js');
 const { questionFor } = require('./_cases.js');
 
 const Anthropic = sdk.default || sdk;
-const MODEL = 'claude-opus-5-5';
+// The clinic chose the cheapest model to start with. To change it, set
+// CLAUDE_MODEL in Vercel (e.g. claude-sonnet-5-5 or claude-opus-5-5) and
+// redeploy; answers are read again with the new model when next opened.
+const MODEL = process.env.CLAUDE_MODEL || 'claude-haiku-5-5';
+// Opus and Sonnet can hand a declined request to another model on the
+// server; Haiku has no such fallback and rejects the parameter.
+const FALLBACKS = !/haiku/.test(MODEL);
 const QKEYS = ['q1', 'q2', 'q3'];
 
 const SCHEMA = {
@@ -83,7 +89,7 @@ async function examplesFor(id, caseId, qk) {
 // Which answer, pictures and same-case examples a reading belongs to. A
 // senior marking another answer to the case changes it; the guide too.
 function fingerprint(qk, text, nImg, examples) {
-  const s = GUIDE_VERSION + '|' + qk + '|' + text + '|' + nImg + '|' +
+  const s = GUIDE_VERSION + '|' + MODEL + '|' + qk + '|' + text + '|' + nImg + '|' +
     examples.filter(x => x.same).map(x => x.score + ':' + x.answer.length).join(',');
   let h = 5381;
   for (let i = 0; i < s.length; i++) h = ((h << 5) + h + s.charCodeAt(i)) | 0;
@@ -102,11 +108,9 @@ async function callClaude(q, examples, text, images, lang) {
       ` Write the comment in ${lang === 'th' ? 'Thai' : 'English'}.`
   });
   const client = new Anthropic();
-  const msg = await client.beta.messages.create({
+  const params = {
     model: MODEL,
     max_tokens: 16000,
-    betas: ['server-side-fallback-2026-07-01'],
-    fallbacks: 'default',
     output_config: { effort: 'medium', format: { type: 'json_schema', schema: SCHEMA } },
     system: [{ type: 'text', text: GUIDE }],
     messages: [{
@@ -118,7 +122,10 @@ async function callClaude(q, examples, text, images, lang) {
         ...content
       ]
     }]
-  });
+  };
+  const msg = FALLBACKS
+    ? await client.beta.messages.create(Object.assign({ betas: ['server-side-fallback-2026-07-01'], fallbacks: 'default' }, params))
+    : await client.messages.create(params);
   if (msg.stop_reason === 'refusal') throw Object.assign(new Error('declined'), { code: 'DECLINED' });
   const out = msg.content.find(x => x.type === 'text');
   const got = JSON.parse(out ? out.text : '');

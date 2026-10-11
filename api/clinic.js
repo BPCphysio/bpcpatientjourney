@@ -144,7 +144,7 @@ async function post(req, res) {
       const ai = await readStored(String(body.id));
       return ok(res, { ai: ai || {} });
     } catch (e) {
-      return no(res, /credit balance/i.test(String(e && e.message)) ? 'credit' : 'claude: ' + String(e && e.message || e).slice(0, 160));
+      return no(res, /credit balance|usage limit|spend limit/i.test(String(e && e.message)) ? 'credit' : 'claude: ' + String(e && e.message || e).slice(0, 160));
     }
   }
 

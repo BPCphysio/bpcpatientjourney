@@ -55,7 +55,7 @@ Spoken answers are marked by the physiotherapist, not auto-graded.
 
 ### Claude, learning from the seniors
 
-Every new answer is read by Claude (`claude-opus-5-5`) on the server the
+Every new answer is read by Claude (`claude-haiku-5-5` by default; set `CLAUDE_MODEL` in Vercel to change it) on the server the
 moment it arrives (`api/_claude.js`). With it go the case, the question, and
 up to ten answers to the same case that seniors have already marked, with
 their scores and comments, so every mark a senior saves becomes an example
