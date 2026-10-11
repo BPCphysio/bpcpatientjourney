@@ -13,18 +13,23 @@
   },
   "redirects": [
     {
+      "source": "/",
+      "destination": "/trainer/",
+      "permanent": false
+    },
+    {
       "source": "/v2",
-      "destination": "/",
+      "destination": "/trainer/",
       "permanent": false
     },
     {
       "source": "/v2/",
-      "destination": "/",
+      "destination": "/trainer/",
       "permanent": false
     },
     {
       "source": "/v2/:path*",
-      "destination": "/",
+      "destination": "/trainer/",
       "permanent": false
     }
   ]
