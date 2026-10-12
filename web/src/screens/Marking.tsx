@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react'
-import { ArrowLeft, ChevronDown, Download, FileJson, KeyRound, Loader2, LogOut, RefreshCw, Sparkles, Trash2, Users, Building2, TrendingDown, CheckCircle2, Circle, Volume2, Wand2 } from 'lucide-react'
+import { ArrowLeft, ChevronDown, FlaskConical, Download, FileJson, KeyRound, Loader2, LogOut, RefreshCw, Sparkles, Trash2, Users, Building2, TrendingDown, CheckCircle2, Circle, Volume2, Wand2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
@@ -7,6 +7,7 @@ import { cn } from '@/lib/utils'
 import { MK, type Lang } from '@/lib/strings'
 import { caseView } from '@/lib/cases'
 import { X } from '@/lib/extra'
+import { isV2, v2View, V2X } from '@/lib/v2'
 import { folderKey, fmtWhen, fmtDay, clock, imgList, isListedMarker, canonical, DEFAULT_MARKERS, type Person, type Marker } from '@/lib/core'
 import type { Marking, Resp, MarkEntry } from '@/lib/useMarking'
 
@@ -81,17 +82,53 @@ function download(name: string, text: string, type: string) {
   setTimeout(() => URL.revokeObjectURL(a.href), 2000)
 }
 
+// One case, either version, the way the marking view needs it.
+type MQ = { qk: string; type: 'mc' | 'long' | 'short' | 'image'; prompt: string; stage?: string; options?: string[]; answer?: number }
+type MV = { title: string; brief: string; reveal: string; questions: MQ[]; v2: boolean }
+function viewOf(id: string, lang: Lang): MV | null {
+  if (isV2(id)) {
+    const c = v2View(id, lang)
+    if (!c) return null
+    const text = (from: number, to: number) => c.steps.filter(st => st.t !== 'q' && st.phase >= from && st.phase <= to).map(st =>
+      st.t === 'chat' ? st.label + ' · ' + st.meta + '\n' + st.msgs.map(m => (m.name ? m.name + ': ' : '') + m.text).join('\n')
+        : st.t === 'q' ? '' : st.label + '\n' + st.body).join('\n\n')
+    return {
+      title: c.title, brief: text(0, 0), reveal: text(1, 99), v2: true,
+      questions: c.questions.map(q => ({ qk: q.qk, type: q.type, prompt: q.prompt, stage: q.stage, options: q.options, answer: q.answer }))
+    }
+  }
+  const c = caseView(id, lang)
+  if (!c) return null
+  return { title: c.title, brief: c.brief, reveal: c.reveal, v2: false,
+    questions: c.questions.map((q, i) => ({ qk: 'q' + i, type: q.type, prompt: q.prompt, options: q.options, answer: q.answer })) }
+}
+function mcScore(r: Resp, v: MV | null) {
+  let right = 0, total = 0
+  ;(v ? v.questions : []).forEach(q => {
+    if (q.type !== 'mc' || r.answers[q.qk + ':mc'] === undefined) return
+    total++; if (String(r.answers[q.qk + ':mc']) === String(q.answer)) right++
+  })
+  return { right, total }
+}
+
 // ---------------------------------------------------------------- the view
-export function MarkingView({ lang, m, roster, markers, onLeave }: { lang: Lang; m: Marking; roster: Person[]; markers: Marker[]; onLeave: () => void }) {
+export function MarkingView({ lang, m, roster, markers, onLeave, onTryV2 }: { lang: Lang; m: Marking; roster: Person[]; markers: Marker[]; onLeave: () => void; onTryV2: () => void }) {
   const mk = MK[lang]
   const [openBranch, setOpenBranch] = useState<string | null>(null)
   const [openFolder, setOpenFolder] = useState<string | null>(null)
   const canon = (n: string) => canonical(n, roster)
   const mkList = markers.length ? markers : DEFAULT_MARKERS
+  const vx = V2X[lang]
+  const [ver, setVer] = useState<1 | 2>(1)
+  const resps = useMemo(() => m.resps.filter(r => (ver === 2) === isV2(r.scenarioId)), [m.resps, ver])
+  // version 2 answers are marked by the senior physiotherapists of the
+  // answerer's branch (or someone listed for all branches)
+  const myBranches = mkList.filter(x => folderKey(canon(x.name)) === folderKey(canon(m.markerName))).map(x => folderKey(x.branch))
+  const canMark = (r: Resp) => !isV2(r.scenarioId) || !r.branch || myBranches.indexOf(folderKey(r.branch)) > -1 || myBranches.indexOf(folderKey('All branches')) > -1
 
   const data = useMemo(() => {
     const fmap: Record<string, { key: string; who: string; items: Resp[]; marked: number; last: number; cases: Record<string, 1>; branch?: string }> = {}
-    m.resps.forEach(r => {
+    resps.forEach(r => {
       const k = folderKey(r.person || r.who) || '(no name)'
       if (!fmap[k]) fmap[k] = { key: k, who: canonical(r.person || r.who, roster) || '(no name)', items: [], marked: 0, last: 0, cases: {} }
       const f = fmap[k]
@@ -110,7 +147,7 @@ export function MarkingView({ lang, m, roster, markers, onLeave }: { lang: Lang;
     })
     const branches = Object.values(bmap).sort((a, b) => Number(a.key === '(none)') - Number(b.key === '(none)') || b.answers - a.answers)
     return { fmap, folders, bmap, branches }
-  }, [m.resps, roster, lang, mk.noBranch])
+  }, [resps, roster, lang, mk.noBranch])
 
   const openB = openBranch && data.bmap[openBranch] ? data.bmap[openBranch] : null
   const openF = openFolder && data.fmap[openFolder] ? data.fmap[openFolder] : null
@@ -119,10 +156,11 @@ export function MarkingView({ lang, m, roster, markers, onLeave }: { lang: Lang;
     if (!openB) return []
     const perCase: Record<string, { title: string; n: number; wrong: number }> = {}
     openB.people.flatMap(p => p.items).forEach(r => {
-      const c = caseView(r.scenarioId, lang)
-      if (!c || r.answers['q0:mc'] === undefined) return
+      const c = viewOf(r.scenarioId, lang)
+      const sc = mcScore(r, c)
+      if (!c || !sc.total) return
       const p = perCase[r.scenarioId] || (perCase[r.scenarioId] = { title: c.title, n: 0, wrong: 0 })
-      p.n++; if (String(r.answers['q0:mc']) !== String(c.questions[0].answer)) p.wrong++
+      p.n += sc.total; p.wrong += sc.total - sc.right
     })
     return Object.values(perCase).filter(c => c.n >= 2 && c.wrong > 0).sort((a, b) => b.wrong / b.n - a.wrong / a.n).slice(0, 4)
   }, [openB, lang])
@@ -131,39 +169,40 @@ export function MarkingView({ lang, m, roster, markers, onLeave }: { lang: Lang;
   const personScore = (f: (typeof data.folders)[number]) => {
     let right = 0, total = 0, wSum = 0, wN = 0, wMarked = 0, autoN = 0
     f.items.forEach(r => {
-      const c = caseView(r.scenarioId, 'en')
+      const c = viewOf(r.scenarioId, 'en')
       if (!c) return
-      if (r.answers['q0:mc'] !== undefined) { total++; if (String(r.answers['q0:mc']) === String(c.questions[0].answer)) right++ }
-      const auto = m.graderOn ? m.autoFor(r, c.questions[0].answer) : null
-      ;['q1', 'q2'].forEach(qk => {
+      const sc = mcScore(r, c)
+      right += sc.right; total += sc.total
+      const auto = m.graderOn || c.v2 ? m.autoFor(r, c.questions[0].answer) : null
+      ;(c.v2 ? c.questions.filter(q => q.type !== 'mc').map(q => q.qk) : ['q1', 'q2']).forEach(qk => {
         const e = (r.marks || {})[qk]
         if (scoredMark(e)) { wSum += Number(e.score) * 20; wN++; wMarked++ } else if (auto && auto[qk]) { wSum += auto[qk].pct; wN++; autoN++ }
       })
     })
     const pct = wN ? (right + wSum / 100) / (total + wN) : total ? right / total : 1
-    return { right, total, pct, note: mk.scoreOf(right, total) + ' · ' + (wN ? mk.writtenAvg(Math.round(wSum / wN), wMarked, autoN) : mk.noMarksYet) }
+    return { right, total, pct, note: (ver === 2 ? vx.scoreOf(right, total) : mk.scoreOf(right, total)) + ' · ' + (wN ? mk.writtenAvg(Math.round(wSum / wN), wMarked, autoN) : mk.noMarksYet) }
   }
 
   const exportCsv = () => {
     const rows: (string | number)[][] = [['Name', 'Submitted', 'Case', 'Track', 'Level', 'Language', 'Question', 'Type', 'Answer', 'Score /5', 'Marker comment', 'Auto %', 'Auto suggests /5', 'Key points found', 'Auto read by', 'Marked by', 'Marked at (day/month/year)']]
-    m.resps.forEach(r => {
-      const c = caseView(r.scenarioId, 'en')
-      const auto = m.graderOn && c ? m.autoFor(r, c.questions[0].answer) : null
-      ;(c ? c.questions : []).forEach((qq, i) => {
-        const e = { ...((r.marks || {})['q' + i] || {}), ...((m.pending[r.id] || {})['q' + i] || {}) }
-        const ans = qq.type === 'mc' ? ((qq.options || [])[r.answers['q' + i + ':mc']] || '') : (r.answers['q' + i + ':text'] || '')
-        const a = auto && auto['q' + i]
+    resps.forEach(r => {
+      const c = viewOf(r.scenarioId, 'en')
+      const auto = c && (m.graderOn || c.v2) ? m.autoFor(r, c.questions[0].answer) : null
+      ;(c ? c.questions : []).forEach(qq => {
+        const e = { ...((r.marks || {})[qq.qk] || {}), ...((m.pending[r.id] || {})[qq.qk] || {}) }
+        const ans = qq.type === 'mc' ? ((qq.options || [])[r.answers[qq.qk + ':mc']] || '') : (r.answers[qq.qk + ':text'] || '')
+        const a = auto && auto[qq.qk]
         rows.push([r.who, fmtWhen(r.when), r.scenarioTitle, r.track || '', r.level || '', r.language || 'en', qq.prompt, qq.type, ans,
-          qq.type === 'mc' ? (String(r.answers['q' + i + ':mc']) === String(qq.answer) ? '1' : '0') : (e.score === undefined ? '' : e.score),
+          qq.type === 'mc' ? (String(r.answers[qq.qk + ':mc']) === String(qq.answer) ? '1' : '0') : (e.score === undefined ? '' : e.score),
           e.comment || '', a ? a.pct : '', a ? a.suggested : '',
           a ? a.points.filter((p: { credit: number }) => p.credit).map((p: { credit: number; label: { en: string } }) => p.label.en + (p.credit < 1 ? ' (half)' : '')).join('; ') : '',
           a ? (a.source === 'claude' ? 'Claude' : a.source === 'model' ? 'language model' : 'wording') : '', r.markedBy || '', r.markedAt ? fmtWhen(r.markedAt) : ''])
       })
     })
-    download('bpc-marks.csv', rows.map(r => r.map(c => '"' + String(c).replace(/"/g, '""') + '"').join(',')).join('\n'), 'text/csv')
+    download(ver === 2 ? 'bpc-marks-v2.csv' : 'bpc-marks.csv', rows.map(r => r.map(c => '"' + String(c).replace(/"/g, '""') + '"').join(',')).join('\n'), 'text/csv')
   }
 
-  const unmarked = m.resps.filter(r => !isMarked(r)).length
+  const unmarked = resps.filter(r => !isMarked(r)).length
   const title = openF ? openF.who : openB ? openB.name : mk.submitted
 
   return (
@@ -180,6 +219,17 @@ export function MarkingView({ lang, m, roster, markers, onLeave }: { lang: Lang;
         </Button>
         <Button variant="ghost" size="sm" className="h-9 text-navy/70" onClick={() => { m.leave(); onLeave() }}><LogOut />{mk.leave}</Button>
       </div>
+      {!openB && !openF && (
+        <div className="mb-5 flex flex-wrap items-center gap-2">
+          <div role="tablist" className="inline-flex rounded-full border border-border bg-white p-1">
+            {([1, 2] as const).map(n => (
+              <button key={n} type="button" role="tab" aria-selected={ver === n} onClick={() => setVer(n)}
+                className={cn('rounded-full px-4 py-1.5 text-sm font-medium transition-colors', ver === n ? 'bg-navy text-white' : 'text-navy/70 hover:bg-muted')}>{n === 1 ? vx.v1 : vx.v2}</button>
+            ))}
+          </div>
+          <Button variant="outline" className="h-9 rounded-full border-teal text-teal-dark" onClick={onTryV2}><FlaskConical />{vx.tryV2}</Button>
+        </div>
+      )}
       <h1 className="text-3xl font-semibold text-navy sm:text-4xl">{title}</h1>
       {m.error && <p className="mt-4 rounded-lg bg-amber-50 p-3 text-sm text-amber-900">{m.error}</p>}
 
@@ -187,9 +237,9 @@ export function MarkingView({ lang, m, roster, markers, onLeave }: { lang: Lang;
         <>
           <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
             <Stat n={(openB ? openB.people : data.folders).length} label={mk.statPeople} />
-            <Stat n={openB ? openB.answers : m.resps.length} label={mk.statIn} />
+            <Stat n={openB ? openB.answers : resps.length} label={mk.statIn} />
             <Stat n={openB ? openB.left : unmarked} label={mk.statToMark} />
-            <Stat n={new Set((openB ? openB.people.flatMap(p => p.items) : m.resps).map((r: Resp) => r.scenarioId)).size} label={mk.statCases} />
+            <Stat n={new Set((openB ? openB.people.flatMap(p => p.items) : resps).map((r: Resp) => r.scenarioId)).size} label={mk.statCases} />
           </div>
 
           {!openB && (
@@ -221,7 +271,7 @@ export function MarkingView({ lang, m, roster, markers, onLeave }: { lang: Lang;
                     {weak.map(w => (
                       <div key={w.title} className="flex items-center gap-4 rounded-xl border border-border bg-white p-4">
                         <span className="text-2xl font-semibold text-red-600">{Math.round(w.wrong / w.n * 100)}%</span>
-                        <div><div className="font-medium text-navy">{w.title}</div><div className="text-xs text-muted-foreground">{mk.wrongOf(w.wrong, w.n)}</div></div>
+                        <div><div className="font-medium text-navy">{w.title}</div><div className="text-xs text-muted-foreground">{ver === 2 ? vx.wrongOf(w.wrong, w.n) : mk.wrongOf(w.wrong, w.n)}</div></div>
                       </div>
                     ))}
                   </div>
@@ -248,7 +298,7 @@ export function MarkingView({ lang, m, roster, markers, onLeave }: { lang: Lang;
 
           <div className="mt-8 flex flex-wrap gap-2">
             <Button variant="outline" className="h-10 rounded-full" onClick={exportCsv}><Download />{mk.expCsv}</Button>
-            <Button variant="outline" className="h-10 rounded-full" onClick={() => download('bpc-responses.json', JSON.stringify({ responses: m.resps }, null, 2), 'application/json')}><FileJson />{mk.expAll}</Button>
+            <Button variant="outline" className="h-10 rounded-full" onClick={() => download(ver === 2 ? 'bpc-responses-v2.json' : 'bpc-responses.json', JSON.stringify({ responses: resps }, null, 2), 'application/json')}><FileJson />{mk.expAll}</Button>
           </div>
         </>
       )}
@@ -256,7 +306,7 @@ export function MarkingView({ lang, m, roster, markers, onLeave }: { lang: Lang;
       {openF && (
         <div className="mt-6 space-y-4">
           <p className="text-sm text-muted-foreground">{openF.items.length} {openF.items.length === 1 ? mk.answer1 : mk.answerN} · {openF.items.length - openF.marked} {mk.toMark}</p>
-          {openF.items.map(r => <AnswerCard key={r.id} lang={lang} m={m} r={r} />)}
+          {openF.items.map(r => <AnswerCard key={r.id} lang={lang} m={m} r={r} canMark={canMark(r)} />)}
         </div>
       )}
     </div>
@@ -264,15 +314,17 @@ export function MarkingView({ lang, m, roster, markers, onLeave }: { lang: Lang;
 }
 
 // ---------------------------------------------------------------- one answer
-function AnswerCard({ lang, m, r }: { lang: Lang; m: Marking; r: Resp }) {
+function AnswerCard({ lang, m, r, canMark }: { lang: Lang; m: Marking; r: Resp; canMark: boolean }) {
   const mk = MK[lang]
   const [open, setOpen] = useState(false)
   const [confirmDel, setConfirmDel] = useState(false)
-  const c = caseView(r.scenarioId, lang)
+  const c = viewOf(r.scenarioId, lang)
+  const vx = V2X[lang]
   const mcAnswer = c ? c.questions[0].answer : undefined
-  const auto = m.graderOn ? m.autoFor(r, mcAnswer) : null
+  const auto = c && (m.graderOn || c.v2) ? m.autoFor(r, mcAnswer) : null
   const marked = isMarked(r)
-  const okMc = c && r.answers['q0:mc'] !== undefined && String(r.answers['q0:mc']) === String(c.questions[0].answer)
+  const sc = mcScore(r, c)
+  const okMc = sc.total > 0 && sc.right === sc.total
   const toggle = () => { const will = !open; setOpen(will); if (will) { m.hydrate(r); m.askClaude(r) } }
 
   return (
@@ -284,7 +336,8 @@ function AnswerCard({ lang, m, r }: { lang: Lang; m: Marking; r: Resp }) {
           <div className="mt-0.5 flex flex-wrap gap-x-3 text-xs text-muted-foreground">
             <span>{fmtWhen(r.when)}</span>
             <span>{marked ? mk.marked : mk.unmarked}</span>
-            {c && <span className={okMc ? 'text-teal-dark' : 'text-red-600'}>{okMc ? mk.correct : mk.incorrect}{mk.mcShort}</span>}
+            {c && !c.v2 && sc.total > 0 && <span className={okMc ? 'text-teal-dark' : 'text-red-600'}>{okMc ? mk.correct : mk.incorrect}{mk.mcShort}</span>}
+            {c && c.v2 && sc.total > 0 && <span className={okMc ? 'text-teal-dark' : 'text-amber-700'}>{vx.choicesRight(sc.right, sc.total)}</span>}
             {r.language === 'th' && <span>{mk.inThai.replace(' · ', '')}</span>}
             {auto && auto.pct != null && <span>{mk.autoShort(auto.pct)}</span>}
           </div>
@@ -296,14 +349,15 @@ function AnswerCard({ lang, m, r }: { lang: Lang; m: Marking; r: Resp }) {
         <div className="space-y-5 border-t border-border p-4 sm:p-6">
           {r.markedAt && <p className="text-xs text-teal-dark">{r.markedBy ? mk.markedBy(r.markedBy, fmtWhen(r.markedAt)) : mk.markedWhen(fmtWhen(r.markedAt))}</p>}
           <details className="rounded-xl bg-muted/40 p-4">
-            <summary className="cursor-pointer text-sm font-medium text-navy">{mk.theCase}</summary>
+            <summary className="cursor-pointer text-sm font-medium text-navy">{c.v2 ? vx.theCase : mk.theCase}</summary>
             <p className="mt-3 whitespace-pre-wrap text-sm leading-relaxed text-navy/85">{c.brief}</p>
-            <p className="mt-4 text-xs font-semibold uppercase tracking-[0.1em] text-teal-dark">{mk.theCall}</p>
+            {!c.v2 && <p className="mt-4 text-xs font-semibold uppercase tracking-[0.1em] text-teal-dark">{mk.theCall}</p>}
             <p className="mt-1 whitespace-pre-wrap text-sm leading-relaxed text-navy/85">{c.reveal}</p>
           </details>
 
           {c.questions.map((qq, i) => {
-            const qk = 'q' + i
+            const qk = qq.qk
+            const okQ = qq.type === 'mc' && r.answers[qk + ':mc'] !== undefined && String(r.answers[qk + ':mc']) === String(qq.answer)
             const e: MarkEntry = { ...((r.marks || {})[qk] || {}), ...((m.pending[r.id] || {})[qk] || {}) }
             const a = qq.type !== 'mc' && auto ? auto[qk] : null
             const imgs = imgList(r.answers, qk)
@@ -315,7 +369,7 @@ function AnswerCard({ lang, m, r }: { lang: Lang; m: Marking; r: Resp }) {
               <div key={qk} className="rounded-xl border border-border p-4">
                 <div className="mb-2 flex items-center gap-2 text-xs">
                   <span className="rounded-full bg-navy px-2 py-0.5 font-medium text-white">{String(i + 1).padStart(2, '0')}</span>
-                  <span className="text-muted-foreground">{qq.type === 'mc' ? mk.kMc : qq.type === 'long' ? mk.kLong : mk.kImage}</span>
+                  <span className="text-muted-foreground">{qq.stage ? qq.stage + ' · ' : ''}{qq.type === 'mc' ? mk.kMc : qq.type === 'image' ? mk.kImage : mk.kLong}</span>
                 </div>
                 <p className="text-[15px] font-medium leading-snug text-navy">{qq.prompt}</p>
                 <div className="mt-3 rounded-lg bg-muted/40 p-3 text-[15px] leading-relaxed whitespace-pre-wrap text-navy">
@@ -323,7 +377,7 @@ function AnswerCard({ lang, m, r }: { lang: Lang; m: Marking; r: Resp }) {
                     : (r.answers[qk + ':text'] || (audio ? mk.spokenOnly : imgs.length ? mk.imageOnly
                       : (r.media || []).some((k: string) => k.indexOf(qk) === 0) && !r.full ? (r.mediaErr ? mk.mediaErr : mk.loading) : mk.noAnswer))}
                 </div>
-                {qq.type === 'mc' && <p className={cn('mt-2 text-sm', okMc ? 'text-teal-dark' : 'text-red-600')}>{okMc ? mk.correct : mk.incorrect}{!okMc && <span className="text-navy/70"> · {mk.bestAnswer}{(qq.options || [])[qq.answer!]}</span>}</p>}
+                {qq.type === 'mc' && <p className={cn('mt-2 text-sm', okQ ? 'text-teal-dark' : 'text-red-600')}>{okQ ? mk.correct : mk.incorrect}{!okQ && <span className="text-navy/70"> · {mk.bestAnswer}{(qq.options || [])[qq.answer!]}</span>}</p>}
                 {audio && <div className="mt-3 flex items-center gap-2"><Volume2 className="size-4 text-teal-dark" /><audio controls src={String(audio)} className="h-10 max-w-full" />{r.answers[qk + ':audiosec'] && <span className="text-xs text-muted-foreground">{clock(Number(r.answers[qk + ':audiosec']))}</span>}</div>}
                 {imgs.length > 0 && <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-3">{imgs.map((u, n) => <img key={n} src={u} alt={'submitted visual ' + (n + 1)} className="w-full rounded-lg border border-border object-cover" />)}</div>}
 
@@ -379,8 +433,9 @@ function AnswerCard({ lang, m, r }: { lang: Lang; m: Marking; r: Resp }) {
             )
           })}
 
+          {c.v2 && <p className={cn('rounded-lg p-3 text-sm', canMark ? 'bg-teal-soft/60 text-teal-dark' : 'bg-amber-50 text-amber-900')}>{canMark ? vx.branchOnly(r.branch || '—') : vx.notYourBranch(r.branch || '—')}</p>}
           <div className="flex flex-wrap items-center gap-3">
-            <Button onClick={() => m.saveMarks(r, mcAnswer)} disabled={m.busy} className="h-11 rounded-xl px-6 font-semibold">{m.busy ? mk.saving : mk.saveMarks}</Button>
+            <Button onClick={() => m.saveMarks(r, mcAnswer)} disabled={m.busy || !canMark} className="h-11 rounded-xl px-6 font-semibold">{m.busy ? mk.saving : mk.saveMarks}</Button>
             <span className="text-sm text-teal-dark">{m.saved[r.id] || <span className="text-muted-foreground">{mk.onlyStaff}</span>}</span>
             <Button variant="ghost" className={cn('ml-auto h-9', confirmDel ? 'text-red-700' : 'text-navy/50')}
               onClick={() => { if (confirmDel) m.deleteResp(r.id); else { setConfirmDel(true); setTimeout(() => setConfirmDel(false), 4000) } }}>

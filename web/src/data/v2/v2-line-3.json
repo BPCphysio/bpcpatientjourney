@@ -1,0 +1,170 @@
+{
+ "id": "v2-line-3",
+ "kind": "line",
+ "title": {
+  "en": "Insurance and a trek",
+  "th": "ประกันกับทริปเดินป่า"
+ },
+ "steps": [
+  {
+   "t": "note",
+   "label": {
+    "en": "Your notes from the first visit",
+    "th": "บันทึกของคุณจากการมาครั้งแรก"
+   },
+   "body": {
+    "en": "Sarah, 45, Australian, teaches at an international school. Speaks English.\n\nRolled her right ankle hiking at Khao Yai 10 days ago. Lateral ligament sprain (ATFL), grade 2. Moderate swelling, walking with a slight limp.\n\nBefore treatment: walking pain 4/10, single-leg balance 5 s (left 30 s). After: walking 2/10.\nPlan: twice a week for two weeks, then weekly.\nShe has booked a three-day trek near Chiang Mai in four weeks.",
+    "th": "Sarah อายุ 45 ชาวออสเตรเลีย เป็นครูโรงเรียนนานาชาติ สื่อสารภาษาอังกฤษ\n\nข้อเท้าขวาพลิกตอนเดินป่าที่เขาใหญ่เมื่อ 10 วันก่อน Lateral ligament sprain (ATFL) grade 2 บวมปานกลาง เดินกะเผลกเล็กน้อย\n\nก่อนรักษา: เดินเจ็บ 4/10 ยืนขาเดียวได้ 5 วินาที (ข้างซ้าย 30 วินาที) หลังรักษา: เดินเจ็บ 2/10\nแผน: อาทิตย์ละ 2 ครั้ง 2 อาทิตย์ แล้วอาทิตย์ละครั้ง\nคนไข้จองทริปเดินป่า 3 วันแถวเชียงใหม่ไว้อีก 4 อาทิตย์"
+   }
+  },
+  {
+   "t": "q",
+   "q": "q0",
+   "type": "mc",
+   "stage": {
+    "en": "Before you write",
+    "th": "ก่อนเขียน"
+   },
+   "prompt": {
+    "en": "How do you write her first-visit summary?",
+    "th": "คุณจะเขียนสรุปหลังมาครั้งแรกให้ Sarah ยังไง"
+   },
+   "options": [
+    {
+     "en": "In Thai, with the clinic's usual template.",
+     "th": "เป็นภาษาไทย ตามเทมเพลตปกติของคลินิก"
+    },
+    {
+     "en": "In English, in short sections, with the exercises as photos or short videos from today.",
+     "th": "เป็นภาษาอังกฤษ แบ่งเป็นหัวข้อสั้นๆ แนบท่าบริหารเป็นรูปหรือคลิปสั้นจากวันนี้"
+    },
+    {
+     "en": "A voice message, so it feels personal.",
+     "th": "ส่งเป็นข้อความเสียง จะได้ดูเป็นกันเอง"
+    },
+    {
+     "en": "In English, copying your clinical notes so she has everything.",
+     "th": "เป็นภาษาอังกฤษ ก๊อปบันทึกทางคลินิกไปให้ครบทุกอย่าง"
+    }
+   ],
+   "answer": 1,
+   "why": {
+    "en": "Her language, and a format she can scan and re-read. Exercises are easier to follow from a picture or clip than from words. Clinical notes are written for physiotherapists, not patients, and a voice message cannot be skimmed when she is standing on one leg trying to remember the next step.",
+    "th": "ใช้ภาษาของคนไข้ และรูปแบบที่อ่านไล่ได้และกลับมาอ่านซ้ำได้ ท่าบริหารดูจากรูปหรือคลิปทำตามง่ายกว่าอ่านเป็นตัวหนังสือ บันทึกทางคลินิกเขียนไว้ให้นักกายภาพบำบัดอ่าน ไม่ใช่คนไข้ ส่วนข้อความเสียงอ่านไล่ไม่ได้ ตอนคนไข้ยืนขาเดียวแล้วนึกไม่ออกว่าท่าต่อไปคืออะไร"
+   }
+  },
+  {
+   "t": "q",
+   "q": "q1",
+   "type": "long",
+   "stage": {
+    "en": "Your message",
+    "th": "ข้อความของคุณ"
+   },
+   "prompt": {
+    "en": "Write her first-visit summary, in English, exactly as you would send it on LINE.",
+    "th": "เขียนสรุปหลังมาครั้งแรกเป็นภาษาอังกฤษ (คนไข้ใช้ภาษาอังกฤษ) ให้เหมือนที่จะส่งจริงใน LINE"
+   },
+   "model": {
+    "en": "Hi Sarah, it's [your name] from BPC. Thanks for coming in today!\n\nWhat's going on: a grade 2 sprain of the ligament on the outside of your right ankle. It's healing, and today's numbers were good (walking pain 4 → 2).\n\nYour exercises (videos attached): ankle circles, 2 × 20 a day; single-leg balance near a wall, 3 × 30 s a day.\nFor now: no running or uneven ground; ice for 15 min after a long day.\nNext visit: Thursday 17:00.\nAny questions, just message me here.",
+    "th": "Hi Sarah, it's [your name] from BPC. Thanks for coming in today!\n\nWhat's going on: a grade 2 sprain of the ligament on the outside of your right ankle. It's healing, and today's numbers were good (walking pain 4 → 2).\n\nYour exercises (videos attached): ankle circles, 2 × 20 a day; single-leg balance near a wall, 3 × 30 s a day.\nFor now: no running or uneven ground; ice for 15 min after a long day.\nNext visit: Thursday 17:00.\nAny questions, just message me here."
+   },
+   "points": [
+    {
+     "en": "In clear English, short sections, easy to scan.",
+     "th": "ภาษาอังกฤษที่ชัด แบ่งหัวข้อสั้นๆ อ่านไล่ง่าย"
+    },
+    {
+     "en": "What the injury is and how it went today, with numbers.",
+     "th": "บอกว่าบาดเจ็บอะไร และวันนี้เป็นยังไงพร้อมตัวเลข"
+    },
+    {
+     "en": "Exercises with how many and how often, and what to avoid.",
+     "th": "ท่าบริหารพร้อมจำนวนและความถี่ และสิ่งที่ต้องเลี่ยง"
+    },
+    {
+     "en": "The next appointment and how to reach you.",
+     "th": "นัดครั้งถัดไป และช่องทางติดต่อ"
+    }
+   ]
+  },
+  {
+   "t": "reveal",
+   "label": {
+    "en": "What happened next",
+    "th": "หลังจากนั้น"
+   },
+   "body": {
+    "en": "She replies an hour later (in English):\n\n\"Thanks so much, this is great! Two quick questions: my insurance covers 6 sessions — how many will I need? And will I be OK for the Chiang Mai trek in 4 weeks? It's 3 days and quite steep.\"",
+    "th": "Sarah ตอบกลับมาหลังจากนั้นหนึ่งชั่วโมง (เป็นภาษาอังกฤษ):\n\n\"Thanks so much, this is great! Two quick questions: my insurance covers 6 sessions — how many will I need? And will I be OK for the Chiang Mai trek in 4 weeks? It's 3 days and quite steep.\""
+   }
+  },
+  {
+   "t": "q",
+   "q": "q2",
+   "type": "long",
+   "stage": {
+    "en": "Your reply",
+    "th": "คำตอบของคุณ"
+   },
+   "prompt": {
+    "en": "Write your reply, in English, exactly as you would send it on LINE.",
+    "th": "เขียนข้อความตอบกลับเป็นภาษาอังกฤษ ให้เหมือนที่จะส่งจริงใน LINE"
+   },
+   "model": {
+    "en": "Sessions: the plan (twice a week for two weeks, then weekly) is about 5–6 sessions in four weeks, so it should fit, and keeping one in reserve is sensible. The trek: honestly, it depends on how the ankle progresses, so set clear checks (balancing 30 s on one leg, hopping and walking downhill without pain), test them in week 3, and decide together. Give her the trek plan if she is ready: taping or a brace, poles, ankle-high boots. No promise either way, but a realistic, encouraging picture.",
+    "th": "เรื่องจำนวนครั้ง: แผน (อาทิตย์ละ 2 ครั้ง 2 อาทิตย์ แล้วอาทิตย์ละครั้ง) รวมประมาณ 5–6 ครั้งใน 4 อาทิตย์ น่าจะพอดีกับประกัน และเก็บไว้สักครั้งเผื่อก็ดี เรื่องเดินป่า: บอกตามจริงว่าขึ้นกับการฟื้นตัว ตั้งเกณฑ์ให้ชัด (ยืนขาเดียว 30 วินาที กระโดดขาเดียวและเดินลงเนินไม่เจ็บ) ทดสอบในอาทิตย์ที่ 3 แล้วตัดสินใจด้วยกัน ถ้าพร้อมก็ให้แผนสำหรับทริป: เทปหรือ Brace ไม้เท้าเดินป่า รองเท้าหุ้มข้อ ไม่รับปากทั้งไปได้หรือไปไม่ได้ แต่ให้ภาพที่เป็นจริงและให้กำลังใจ"
+   },
+   "points": [
+    {
+     "en": "Answers the sessions question with the actual plan and numbers.",
+     "th": "ตอบเรื่องจำนวนครั้งด้วยแผนจริงและตัวเลข"
+    },
+    {
+     "en": "Honest about the trek: no promise, clear criteria and a date to decide together.",
+     "th": "ตอบเรื่องเดินป่าตามจริง ไม่รับปาก มีเกณฑ์ชัดเจนและวันที่จะตัดสินใจด้วยกัน"
+    },
+    {
+     "en": "Practical preparation for the trek, and an encouraging tone.",
+     "th": "มีคำแนะนำการเตรียมตัวสำหรับทริป และน้ำเสียงให้กำลังใจ"
+    }
+   ]
+  },
+  {
+   "t": "q",
+   "q": "q3",
+   "type": "mc",
+   "stage": {
+    "en": "Your call",
+    "th": "คุณจะทำยังไง"
+   },
+   "prompt": {
+    "en": "Before the trek, she asks you to write \"12 sessions needed\" in her insurance report, \"just in case\". What do you do?",
+    "th": "ก่อนทริป Sarah ขอให้เขียนในรายงานประกันว่า \"ต้องรักษา 12 ครั้ง\" เผื่อไว้ก่อน คุณจะทำยังไง"
+   },
+   "options": [
+    {
+     "en": "Write it. It helps her, and the insurer will not check.",
+     "th": "เขียนให้ ช่วยคนไข้ได้ ยังไงประกันก็ไม่ตรวจ"
+    },
+    {
+     "en": "Write 8 as a compromise.",
+     "th": "เขียน 8 ครั้งเป็นการประนีประนอม"
+    },
+    {
+     "en": "Say kindly that you can only write what is clinically needed, and that you will update the report straight away if she needs more.",
+     "th": "บอกอย่างสุภาพว่าเขียนได้เฉพาะสิ่งที่จำเป็นทางคลินิกจริง และถ้าต้องรักษาเพิ่มจะอัปเดตรายงานให้ทันที"
+    },
+    {
+     "en": "Pass it to reception to deal with.",
+     "th": "ส่งต่อให้ RC จัดการ"
+    }
+   ],
+   "answer": 2,
+   "why": {
+    "en": "A report is a clinical document with your name on it; writing more than she needs is dishonest whatever the amount, and it puts you and the clinic at risk. Say no kindly, explain what you can do, and keep the door open. Reception cannot change a clinical report.",
+    "th": "รายงานทางคลินิกเป็นเอกสารที่มีชื่อเรากำกับ การเขียนเกินความจำเป็นไม่ซื่อตรงไม่ว่าจะเกินกี่ครั้ง และทำให้ทั้งเราและคลินิกเสี่ยง ปฏิเสธอย่างสุภาพ อธิบายว่าเราทำอะไรให้ได้ แล้วเปิดประตูไว้ ส่วน RC ไม่มีสิทธิ์แก้รายงานทางคลินิก"
+   }
+  }
+ ]
+}

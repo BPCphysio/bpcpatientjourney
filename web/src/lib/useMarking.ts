@@ -5,6 +5,25 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { LS, load, loadStr, save, drop, passcodeKnown, clinicGet, clinicPost, q, isListedMarker, canonical, type Json, type Person, type Marker } from './core'
 import { MK, type Lang } from './strings'
+import { isV2, v2View, writtenKeys } from './v2'
+
+// Version 2 has no wording grader: the suggestion on each written answer is
+// Claude's reading, in the same shape the grader gives.
+function fromClaude(r: Resp) {
+  const en = v2View(r.scenarioId, 'en'), th = v2View(r.scenarioId, 'th')
+  if (!en || !th) return null
+  const out: Record<string, Json> = {}
+  en.questions.forEach((q, i) => {
+    const c = r.ai && r.ai['c' + q.qk]
+    if (q.type === 'mc' || !c) return
+    const labels = (q.points || []).map((p, n) => ({ en: p, th: (th.questions[i].points || [])[n] || p }))
+    out[q.qk] = {
+      source: 'claude', pct: Number(c.score) * 20, suggested: Number(c.score), comment: c.comment || '', examples: c.examples || 0,
+      points: (c.credits || []).map((credit: number, n: number) => ({ credit, label: labels[n] || { en: (c.notes || [])[n] || '', th: (c.notes || [])[n] || '' }, how: 'model', evidence: (c.notes || [])[n] || '' }))
+    }
+  })
+  return out
+}
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 declare global { interface Window { BPCGrader?: any } }
@@ -101,8 +120,10 @@ export function useMarking(lang: Lang, roster: Person[], markers: Marker[]) {
   const askClaude = useCallback(async (r: Resp) => {
     if (claudeOff.current) return
     const scored = (m: MarkEntry | undefined) => m && m.score !== undefined && m.score !== '' && m.score !== null
-    const parts = ['q1', 'q2', 'q3'].filter(qk => !scored((r.marks || {})[qk]) &&
-      (String(r.answers[qk + ':text'] || '').trim().length > 2 || (qk === 'q3' && (r.media || []).some((k: string) => k.indexOf('q3:img') === 0))))
+    const v2 = isV2(r.scenarioId) ? v2View(r.scenarioId, 'en') : null
+    const keys = v2 ? writtenKeys(v2) : ['q1', 'q2', 'q3']
+    const parts = keys.filter(qk => !scored((r.marks || {})[qk]) &&
+      (String(r.answers[qk + ':text'] || '').trim().length > 2 || (r.media || []).some((k: string) => k.indexOf(qk + ':img') === 0)))
     if (!parts.length) return
     const note = (v: string) => setClaude(c => { const n = { ...c }; parts.forEach(qk => { n[r.id + qk] = v }); return n })
     if (parts.some(qk => !(r.ai && r.ai['c' + qk]))) note('reading')
@@ -121,6 +142,7 @@ export function useMarking(lang: Lang, roster: Person[], markers: Marker[]) {
 
   // ---- the suggestion on each written answer ----
   const autoFor = useCallback((r: Resp, mcAnswer?: number) => {
+    if (r && isV2(r.scenarioId)) return fromClaude(r)
     const G = window.BPCGrader
     if (!r || !G || !G.loaded()) return null
     const cacheKey = r.id + JSON.stringify(r.ai || {}).length
@@ -150,7 +172,7 @@ export function useMarking(lang: Lang, roster: Person[], markers: Marker[]) {
     const pend = pending[r.id] || {}
     Object.keys(pend).forEach(k => { marks[k] = { ...(marks[k] || {}), ...pend[k] } })
     const auto = autoFor(r, mcAnswer)
-    if (auto) ['q1', 'q2', 'q3'].forEach(k => {
+    if (auto) Object.keys(auto).filter(k => /^q\d+$/.test(k)).forEach(k => {
       const g = auto[k]
       if (!g) return
       const m = { ...(marks[k] || {}) }
@@ -168,7 +190,7 @@ export function useMarking(lang: Lang, roster: Person[], markers: Marker[]) {
       try {
         const d = await clinicPost({ action: 'mark', key: adminKey, id: r.id, marks, by, saveId }, 45000)
         if (d && d.ok) ok = true
-        else { last = (d && d.error) || 'refused'; if (/bad key|not found|not a marker/.test(last)) break }
+        else { last = (d && d.error) || 'refused'; if (/bad key|not found|not a marker|not your branch/.test(last)) break }
       } catch { last = 'timed out' }
       if (!ok && await saveLanded(r.id, saveId)) ok = true
       if (!ok) await new Promise(res => setTimeout(res, 3000 * (i + 1)))

@@ -9,8 +9,18 @@ import { X } from '@/lib/extra'
 import { BUCKETS } from '@/lib/cases'
 import { clock, imgList, withImages, MAX_IMAGES, readFile, shrinkImage } from '@/lib/core'
 import type { Trainer } from '@/lib/useTrainer'
+import type { Answers } from '@/lib/core'
+import type { Lang } from '@/lib/strings'
 
-function Section({ n, icon: Icon, title, children, tone = 'plain', locked }: {
+// What the answer boxes need from whoever holds the answers (version 1's
+// trainer, or version 2).
+export type AnswerHost = {
+  lang: Lang; answers: Answers; setError: (s: string) => void
+  setAnswer: (k: string, v: string | number | null) => void
+  setAnswers: (f: (a: Answers) => Answers) => void
+}
+
+export function Section({ n, icon: Icon, title, children, tone = 'plain', locked }: {
   n?: number | string; icon: React.ElementType; title: string; children: React.ReactNode; tone?: 'plain' | 'reveal'; locked?: string
 }) {
   return (
@@ -31,12 +41,12 @@ function Section({ n, icon: Icon, title, children, tone = 'plain', locked }: {
   )
 }
 
-function Prompt({ children }: { children: React.ReactNode }) {
+export function Prompt({ children }: { children: React.ReactNode }) {
   return <p className="mb-4 max-w-[62ch] text-[18px] font-medium leading-snug text-navy text-pretty">{children}</p>
 }
 
 // ---------------------------------------------------------------- answers
-function LongAnswer({ tr, qid, locked }: { tr: Trainer; qid: string; locked: boolean }) {
+export function LongAnswer({ tr, qid, locked, ph, small }: { tr: AnswerHost; qid: string; locked: boolean; ph?: string; small?: boolean }) {
   const t = UI[tr.lang], x = X[tr.lang]
   const text = String(tr.answers[qid + ':text'] || '')
   const audio = tr.answers[qid + ':audio'] as string | undefined
@@ -93,8 +103,8 @@ function LongAnswer({ tr, qid, locked }: { tr: Trainer; qid: string; locked: boo
 
   return (
     <div className="space-y-3">
-      <Textarea value={text} disabled={locked} onChange={e => tr.setAnswer(qid + ':text', e.target.value)} placeholder={t.longPh}
-        className="min-h-44 rounded-xl bg-white text-base leading-relaxed" />
+      <Textarea value={text} disabled={locked} onChange={e => tr.setAnswer(qid + ':text', e.target.value)} placeholder={ph || t.longPh}
+        className={cn('rounded-xl bg-white text-base leading-relaxed', small ? 'min-h-24' : 'min-h-44')} />
       {!locked && (
         <div className="flex flex-wrap items-center gap-2">
           <Button type="button" variant="outline" onClick={toggleDictation} disabled={!SR}
@@ -119,7 +129,7 @@ function LongAnswer({ tr, qid, locked }: { tr: Trainer; qid: string; locked: boo
   )
 }
 
-function ImageAnswer({ tr, qid }: { tr: Trainer; qid: string }) {
+export function ImageAnswer({ tr, qid, locked }: { tr: AnswerHost; qid: string; locked?: boolean }) {
   const t = UI[tr.lang]
   const imgs = imgList(tr.answers, qid)
   const [drag, setDrag] = useState(false)
@@ -150,6 +160,12 @@ function ImageAnswer({ tr, qid }: { tr: Trainer; qid: string }) {
     const txt = (e.clipboardData.getData('text/plain') || '').trim()
     if (/^https?:\/\//i.test(txt) || txt.indexOf('data:image') === 0) { e.preventDefault(); useUrl(txt) }
   }
+  if (locked) return (
+    <div className="space-y-3">
+      {imgs.length > 0 && <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">{imgs.map((u, n) => <img key={n} src={u} alt={'image ' + (n + 1)} className="aspect-[4/3] w-full rounded-xl border border-border object-cover" />)}</div>}
+      <p className="whitespace-pre-wrap rounded-xl bg-muted/40 p-3 text-[15px] text-navy">{String(tr.answers[qid + ':text'] || '')}</p>
+    </div>
+  )
   return (
     <div className="space-y-4">
       <div tabIndex={0} onPaste={onPaste}

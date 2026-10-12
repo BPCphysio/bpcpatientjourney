@@ -1,0 +1,174 @@
+{
+ "id": "v2-line-1",
+ "kind": "line",
+ "title": {
+  "en": "Stiffer the next morning",
+  "th": "ตื่นมาตึงกว่าเดิม"
+ },
+ "steps": [
+  {
+   "t": "note",
+   "label": {
+    "en": "Your notes from the first visit",
+    "th": "บันทึกของคุณจากการมาครั้งแรก"
+   },
+   "body": {
+    "en": "Khun Tor, 38, civil engineer (site work and a desk). Neck pain and a right-sided headache for 3 weeks.\n\nUpper neck stiff on the right (C1–2). Turning his head to the right 6/10 before treatment, 3/10 after mobilisation and soft tissue work. Neurological and vascular screen clear.\n\nHome exercises: chin tucks 10 × 3 a day; rotation with a towel 10 × 2 a day.\nNext visit: Thursday 18:00. He mentioned driving to Hua Hin with his family on Friday.",
+    "th": "คุณต่อ อายุ 38 วิศวกรโยธา (ลงไซต์ + นั่งโต๊ะ) ปวดคอและปวดศีรษะข้างขวามา 3 อาทิตย์\n\nคอส่วนบนข้างขวาติด (C1–2) หันหน้าไปขวาเจ็บ 6/10 ก่อนรักษา หลัง Mobilization และ Soft tissue เหลือ 3/10 Neuro และ Vascular screen ปกติ\n\nท่าบริหารที่บ้าน: Chin tuck 10 ครั้ง × วันละ 3 รอบ, หมุนคอโดยใช้ผ้าช่วย 10 ครั้ง × วันละ 2 รอบ\nนัดครั้งถัดไป: วันพฤหัส 18:00 คนไข้เล่าว่าวันศุกร์จะขับรถพาครอบครัวไปหัวหิน"
+   }
+  },
+  {
+   "t": "q",
+   "q": "q0",
+   "type": "mc",
+   "stage": {
+    "en": "Before you write",
+    "th": "ก่อนเขียน"
+   },
+   "prompt": {
+    "en": "When do you send his first-visit summary?",
+    "th": "คุณจะส่งข้อความสรุปหลังมาครั้งแรกเมื่อไหร่"
+   },
+   "options": [
+    {
+     "en": "On day three: it is still inside the 72 hours.",
+     "th": "วันที่ 3 ยังอยู่ใน 72 ชั่วโมง"
+    },
+    {
+     "en": "Tonight, or first thing tomorrow morning.",
+     "th": "คืนนี้ หรือเช้าพรุ่งนี้"
+    },
+    {
+     "en": "Only if he messages with a question.",
+     "th": "ส่งเฉพาะถ้าคนไข้ทักมาถาม"
+    },
+    {
+     "en": "After the second visit, when you know more.",
+     "th": "หลังมาครั้งที่ 2 ตอนที่รู้อะไรมากขึ้น"
+    }
+   ],
+   "answer": 1,
+   "why": {
+    "en": "Seventy-two hours is the limit, not the target. Patients keep 10–20% of what you said, and they forget fastest in the first evening, which is also when they try the exercises for the first time. A message that arrives on hour 70 every time tells the patient they are at the bottom of your list.",
+    "th": "72 ชั่วโมงคือเส้นตาย ไม่ใช่เป้าหมาย คนไข้จำสิ่งที่เราพูดได้แค่ 10–20% และลืมเร็วที่สุดในคืนแรก ซึ่งเป็นคืนแรกที่เขาลองทำท่าบริหารเองด้วย ถ้าข้อความไปถึงตอนชั่วโมงที่ 70 ทุกครั้ง คนไข้จะรู้สึกว่าเขาอยู่ท้ายลิสต์ของเรา"
+   }
+  },
+  {
+   "t": "q",
+   "q": "q1",
+   "type": "long",
+   "stage": {
+    "en": "Your message",
+    "th": "ข้อความของคุณ"
+   },
+   "prompt": {
+    "en": "Write his first-visit summary, exactly as you would send it on LINE.",
+    "th": "เขียนข้อความสรุปหลังมาครั้งแรก ให้เหมือนที่จะส่งจริงใน LINE"
+   },
+   "model": {
+    "en": "A warm greeting by name; what the problem is in plain words (the top of the neck on the right is stiff and is causing the headache); the two exercises with how many and how often (a photo or short video from today helps); that some soreness for a day or two after the first session is common; what to do if something worries him; and Thursday 18:00.",
+    "th": "ทักทายด้วยชื่อ บอกปัญหาด้วยภาษาง่ายๆ (คอส่วนบนข้างขวาติด เป็นต้นเหตุของปวดหัว) ท่าบริหาร 2 ท่า พร้อมจำนวนครั้งและความถี่ (แนบรูปหรือคลิปจากวันนี้ยิ่งดี) บอกว่าหลังรักษาครั้งแรกอาจตึงๆ ได้วันสองวันเป็นเรื่องปกติ ถ้ามีอะไรกังวลให้ทำยังไง และนัดวันพฤหัส 18:00"
+   },
+   "points": [
+    {
+     "en": "Explains the problem in plain words he can re-read.",
+     "th": "อธิบายปัญหาด้วยภาษาง่ายๆ ที่อ่านซ้ำแล้วเข้าใจ"
+    },
+    {
+     "en": "The two exercises with how many and how often.",
+     "th": "ท่าบริหาร 2 ท่า พร้อมจำนวนและความถี่"
+    },
+    {
+     "en": "Prepares him for normal soreness after a first session, and says how to reach you.",
+     "th": "บอกไว้ก่อนว่าอาจตึงหลังรักษาครั้งแรก และติดต่อเราได้ยังไง"
+    },
+    {
+     "en": "The next appointment.",
+     "th": "นัดครั้งถัดไป"
+    }
+   ]
+  },
+  {
+   "t": "reveal",
+   "label": {
+    "en": "What happened next",
+    "th": "หลังจากนั้น"
+   },
+   "body": {
+    "en": "You sent it that evening. At 07:10 the next morning he replies:\n\n\"Morning. Woke up with my neck stiffer than yesterday and a bit of a headache on the right. Is that normal? Should I stop the exercises? I'm driving to Hua Hin on Friday.\"",
+    "th": "คุณส่งไปเย็นวันนั้น เช้าวันรุ่งขึ้น 07:10 คุณต่อตอบกลับมาว่า\n\n\"อรุณสวัสดิ์ครับ ตื่นมาคอตึงกว่าเมื่อวาน แล้วปวดหัวข้างขวานิดๆ ด้วย แบบนี้ปกติไหมครับ ต้องหยุดท่าบริหารไหม วันศุกร์ผมต้องขับรถไปหัวหินด้วย\""
+   }
+  },
+  {
+   "t": "q",
+   "q": "q2",
+   "type": "long",
+   "stage": {
+    "en": "Your reply",
+    "th": "คำตอบของคุณ"
+   },
+   "prompt": {
+    "en": "Write your reply, exactly as you would send it on LINE.",
+    "th": "เขียนข้อความตอบกลับ ให้เหมือนที่จะส่งจริงใน LINE"
+   },
+   "model": {
+    "en": "Reply this morning. Thank him for telling you; soreness and a mild headache for 24–48 hours after a first session on a stiff neck is common and usually settles. Ask, calmly, about anything unusual: dizziness, double vision, numbness or weakness, difficulty speaking, or a headache that is the worst he has had; if any of those, see a doctor straight away. For now: keep the chin tucks gently, halve the rotations, warmth on the neck. Offer to move Thursday earlier or to call him. For Friday: a break every hour on the drive.",
+    "th": "ตอบเช้านี้เลย ขอบคุณที่บอก หลังรักษาครั้งแรกในคอที่ติดมาก อาจตึงและปวดหัวเล็กน้อยได้ 24–48 ชั่วโมง ส่วนใหญ่จะดีขึ้นเอง ถามแบบไม่ให้ตกใจว่ามีอาการแปลกๆ ไหม เช่น เวียนหัว ตาพร่าหรือเห็นภาพซ้อน ชาหรืออ่อนแรง พูดไม่ชัด หรือปวดหัวรุนแรงที่สุดในชีวิต ถ้ามีให้ไปพบแพทย์ทันที ระหว่างนี้ทำ Chin tuck เบาๆ ต่อได้ ลดท่าหมุนคอลงครึ่งนึง ประคบอุ่น เสนอเลื่อนนัดวันพฤหัสให้เร็วขึ้นหรือโทรคุยได้ เรื่องวันศุกร์ ขับรถให้แวะพักทุกชั่วโมง"
+   },
+   "points": [
+    {
+     "en": "Replies quickly, warmly, and does not dismiss it.",
+     "th": "ตอบเร็ว อบอุ่น และไม่มองข้ามอาการ"
+    },
+    {
+     "en": "Explains that short-lived soreness after a first session is common.",
+     "th": "อธิบายว่าอาการตึงช่วงสั้นๆ หลังรักษาครั้งแรกพบได้บ่อย"
+    },
+    {
+     "en": "Checks the warning signs calmly and says what to do if any are present.",
+     "th": "เช็กอาการเตือนแบบไม่ให้ตกใจ และบอกว่าถ้ามีต้องทำยังไง"
+    },
+    {
+     "en": "Adjusts the exercises and offers an earlier visit or a call; advice for the drive.",
+     "th": "ปรับท่าบริหาร เสนอนัดเร็วขึ้นหรือโทรคุย และแนะนำเรื่องขับรถ"
+    }
+   ]
+  },
+  {
+   "t": "q",
+   "q": "q3",
+   "type": "mc",
+   "stage": {
+    "en": "Your call",
+    "th": "คุณจะทำยังไง"
+   },
+   "prompt": {
+    "en": "Which of these should never be in your reply?",
+    "th": "ข้อไหนไม่ควรอยู่ในข้อความตอบกลับเลย"
+   },
+   "options": [
+    {
+     "en": "\"If you notice any of these, please see a doctor straight away.\"",
+     "th": "\"ถ้ามีอาการเหล่านี้ ไปพบแพทย์ทันทีนะครับ\""
+    },
+    {
+     "en": "\"I'm happy to see you earlier if that helps.\"",
+     "th": "\"ถ้าสะดวก มาก่อนวันพฤหัสได้นะครับ\""
+    },
+    {
+     "en": "\"Don't worry, this is 100% normal.\"",
+     "th": "\"ไม่ต้องห่วงครับ แบบนี้ปกติ 100%\""
+    },
+    {
+     "en": "\"Keep doing the chin tucks gently.\"",
+     "th": "\"Chin tuck ทำต่อเบาๆ ได้ครับ\""
+    }
+   ],
+   "answer": 2,
+   "why": {
+    "en": "You can't know it is 100% normal from a message, and a headache after neck treatment is exactly when you check rather than promise. Reassure with what is common, then check. If something is wrong, the earlier promise is what he remembers.",
+    "th": "จากข้อความใน LINE เราไม่มีทางรู้ได้ว่าปกติ 100% และปวดหัวหลังรักษาคอคือสถานการณ์ที่ต้องเช็ก ไม่ใช่รับปาก ให้ความมั่นใจด้วยสิ่งที่พบบ่อย แล้วค่อยเช็ก ถ้ามีอะไรผิดปกติขึ้นมา คำว่า \"ปกติ 100%\" คือสิ่งที่คนไข้จะจำ"
+   }
+  }
+ ]
+}

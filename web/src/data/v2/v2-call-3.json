@@ -1,0 +1,247 @@
+{
+ "id": "v2-call-3",
+ "kind": "call",
+ "title": {
+  "en": "Thirty-two weeks",
+  "th": "ท้อง 32 สัปดาห์"
+ },
+ "steps": [
+  {
+   "t": "chat",
+   "label": {
+    "en": "Booking chat on LINE",
+    "th": "แชตจองคิวใน LINE"
+   },
+   "meta": {
+    "en": "Khun Prae, 34 · Sanam Pao · first visit tomorrow 13:00",
+    "th": "คุณแพร อายุ 34 · สาขาสนามเป้า · มาครั้งแรก พรุ่งนี้ 13:00"
+   },
+   "msgs": [
+    {
+     "from": "pt",
+     "name": {
+      "en": "Khun Prae",
+      "th": "คุณแพร"
+     },
+     "text": {
+      "en": "Hello, I'm seven months pregnant and the pain at the front of my pelvis and my hips is really bad. Getting out of bed makes me cry out. Do you treat pregnant women?",
+      "th": "สวัสดีค่ะ ท้อง 7 เดือนค่ะ ปวดหัวหน่าวกับสะโพกมาก ลุกจากเตียงทีร้องเลยค่ะ ที่นี่ทำกายภาพให้คนท้องได้ไหมคะ"
+     }
+    },
+    {
+     "from": "rc",
+     "name": {
+      "en": "BPC reception",
+      "th": "BPC (แอดมิน)"
+     },
+     "text": {
+      "en": "Hello Khun Prae, yes we do 🙏 May we ask whether your obstetrician knows you're coming for physiotherapy?",
+      "th": "สวัสดีค่ะคุณแพร ทำได้ค่ะ 🙏 ขอสอบถามนิดนึงนะคะ คุณหมอสูติฯ ทราบไหมคะว่าจะมาทำกายภาพ"
+     }
+    },
+    {
+     "from": "pt",
+     "name": {
+      "en": "Khun Prae",
+      "th": "คุณแพร"
+     },
+     "text": {
+      "en": "Yes, the doctor said it's fine. She said it's normal in pregnancy.",
+      "th": "ทราบค่ะ หมอบอกทำได้ ไม่มีปัญหา หมอบอกว่าเป็นปกติของคนท้อง"
+     }
+    },
+    {
+     "from": "pt",
+     "name": {
+      "en": "Khun Prae",
+      "th": "คุณแพร"
+     },
+     "text": {
+      "en": "I had this in my first pregnancy too. Someone told me to just rest. It was awful, I don't want to go through that again.",
+      "th": "ท้องแรกก็เป็นแบบนี้ค่ะ ตอนนั้นมีคนบอกให้นอนพักอย่างเดียว ทรมานมาก ไม่อยากเป็นแบบนั้นอีกแล้ว"
+     }
+    },
+    {
+     "from": "rc",
+     "name": {
+      "en": "BPC reception",
+      "th": "BPC (แอดมิน)"
+     },
+     "text": {
+      "en": "We understand. You're booked for tomorrow 13:00 at Sanam Pao.",
+      "th": "เข้าใจเลยค่ะ ได้คิวพรุ่งนี้ 13:00 ที่สาขาสนามเป้านะคะ"
+     }
+    },
+    {
+     "from": "pt",
+     "name": {
+      "en": "Khun Prae",
+      "th": "คุณแพร"
+     },
+     "text": {
+      "en": "Could I have a female physiotherapist please?",
+      "th": "ขอเป็นนักกายภาพบำบัดผู้หญิงได้ไหมคะ"
+     }
+    },
+    {
+     "from": "rc",
+     "name": {
+      "en": "BPC reception",
+      "th": "BPC (แอดมิน)"
+     },
+     "text": {
+      "en": "Of course, that's arranged 🙏",
+      "th": "ได้เลยค่ะ จัดให้เรียบร้อยแล้วนะคะ 🙏"
+     }
+    }
+   ]
+  },
+  {
+   "t": "note",
+   "label": {
+    "en": "Reception's summary in your schedule",
+    "th": "สรุปที่ RC ใส่ไว้ในตาราง"
+   },
+   "body": {
+    "en": "Pregnant 32 weeks, pubic and hip pain. Obstetrician has cleared her. Asked for a female physiotherapist.",
+    "th": "ตั้งครรภ์ 32 สัปดาห์ ปวดหัวหน่าวและสะโพก สูติแพทย์อนุญาตแล้ว ขอนักกายภาพบำบัดผู้หญิง"
+   }
+  },
+  {
+   "t": "q",
+   "q": "q0",
+   "type": "mc",
+   "stage": {
+    "en": "Before you call",
+    "th": "ก่อนโทร"
+   },
+   "prompt": {
+    "en": "What do you get ready before you call her?",
+    "th": "ก่อนโทรหาคุณแพร คุณต้องเตรียมอะไร"
+   },
+   "options": [
+    {
+     "en": "A full pelvic floor assessment for tomorrow, since that is the usual cause.",
+     "th": "เตรียมตรวจ Pelvic floor แบบเต็มสำหรับพรุ่งนี้ เพราะเป็นสาเหตุที่พบบ่อย"
+    },
+    {
+     "en": "A few safety questions for the call (bleeding, contractions, swelling, how the baby is moving), and a plan for positioning her tomorrow without lying flat on her back.",
+     "th": "เตรียมคำถามเช็กความปลอดภัยไว้ถามในสาย (เลือดออก ท้องแข็ง บวม ลูกดิ้นปกติไหม) และคิดไว้ว่าพรุ่งนี้จะจัดท่าคนไข้ยังไงโดยไม่ให้นอนหงายนานๆ"
+    },
+    {
+     "en": "Nothing special. Her obstetrician has cleared her, so treat it like any pelvic pain.",
+     "th": "ไม่ต้องเตรียมอะไรพิเศษ สูติแพทย์อนุญาตแล้ว ดูแลเหมือนปวดเชิงกรานทั่วไป"
+    },
+    {
+     "en": "Ask reception to cancel. Pregnant patients should be seen in hospital.",
+     "th": "ให้ RC ยกเลิกนัด คนท้องควรไปทำที่โรงพยาบาล"
+    }
+   ],
+   "answer": 1,
+   "why": {
+    "en": "Clearance from her obstetrician does not replace a quick safety check on the call: things change week to week at 32 weeks. Knowing she should not lie flat on her back for long, that she needs pillows and side-lying, and that turning in bed is her worst movement lets you set up the room before she arrives. A full pelvic floor assessment is not where you start with this story, and she has every right to be treated here.",
+    "th": "การที่สูติแพทย์อนุญาตแล้วไม่ได้แทนการเช็กความปลอดภัยสั้นๆ ในสาย เพราะที่ 32 สัปดาห์อะไรก็เปลี่ยนได้ทุกอาทิตย์ แล้วถ้าเรารู้ว่าคนไข้ไม่ควรนอนหงายนาน ต้องใช้หมอนและท่านอนตะแคง และท่าพลิกตัวบนเตียงคือท่าที่ปวดที่สุด เราก็จัดห้องไว้ก่อนคนไข้มาถึงได้ ส่วน Pelvic floor แบบเต็มยังไม่ใช่จุดเริ่มต้นของเรื่องนี้ และคนไข้ก็มีสิทธิ์มารักษาที่นี่ได้เต็มที่"
+   }
+  },
+  {
+   "t": "q",
+   "q": "q1",
+   "type": "long",
+   "stage": {
+    "en": "The call",
+    "th": "โทรหาคนไข้"
+   },
+   "prompt": {
+    "en": "Write how you open the call, then the three most important questions you will ask. The whole call should take 2–3 minutes.",
+    "th": "เขียนประโยคเปิดสายของคุณ แล้วตามด้วยคำถาม 3 ข้อที่สำคัญที่สุดที่จะถาม ทั้งสายไม่ควรเกิน 2–3 นาที"
+   },
+   "model": {
+    "en": "Open: \"Hello Khun Prae, this is [your name], the physiotherapist who'll see you tomorrow at Sanam Pao. I understand you're 32 weeks, with pain at the front of the pelvis and the hips, worst getting out of bed, and your doctor is happy for you to have physiotherapy. Is that right?\"\n\n1. Where exactly, and which movements are hardest (turning in bed, stairs, getting dressed standing on one leg, getting in the car).\n2. How the pregnancy is going: anything the doctor is watching, any bleeding or tightening.\n3. What she most needs to keep doing day to day, and what helped or didn't last time.",
+    "th": "เปิดสาย: \"สวัสดีค่ะคุณแพร [ชื่อคุณ] นะคะ เป็นนักกายภาพบำบัดที่จะดูแลคุณแพรพรุ่งนี้ที่สนามเป้าค่ะ ทราบมาว่าตอนนี้ท้อง 32 สัปดาห์ ปวดหัวหน่าวกับสะโพก ปวดสุดตอนลุกจากเตียง แล้วคุณหมอโอเคให้ทำกายภาพได้ ถูกไหมคะ\"\n\n1. ปวดตรงไหนชัดๆ ท่าไหนทำแล้วปวดที่สุด (พลิกตัวบนเตียง ขึ้นลงบันได ยืนขาเดียวใส่กางเกง ขึ้นรถ)\n2. การตั้งครรภ์เป็นยังไงบ้าง คุณหมอเฝ้าระวังอะไรอยู่ไหม มีเลือดออกหรือท้องแข็งบ้างไหม\n3. ชีวิตประจำวันตอนนี้อะไรที่ยังต้องทำให้ได้ แล้วท้องแรกอะไรช่วยหรือไม่ช่วย"
+   },
+   "points": [
+    {
+     "en": "Recaps and confirms rather than asking her to explain again.",
+     "th": "รีแคปและคอนเฟิร์ม ไม่ให้คนไข้เล่าซ้ำ"
+    },
+    {
+     "en": "Checks safety in the pregnancy without alarming her.",
+     "th": "เช็กความปลอดภัยของการตั้งครรภ์โดยไม่ทำให้คนไข้ตกใจ"
+    },
+    {
+     "en": "Finds the hardest movements and what she needs to keep doing (her toddler, walking), and her experience last time.",
+     "th": "หาท่าที่ทำแล้วปวดที่สุด สิ่งที่ยังต้องทำได้ (ลูกคนโต การเดิน) และประสบการณ์ท้องแรก"
+    }
+   ]
+  },
+  {
+   "t": "q",
+   "q": "q2",
+   "type": "long",
+   "stage": {
+    "en": "Why those three",
+    "th": "ทำไมต้อง 3 ข้อนี้"
+   },
+   "prompt": {
+    "en": "Why those three? For each one, say what the answer would change about how you prepare for tomorrow.",
+    "th": "ทำไมถึงเลือก 3 ข้อนี้ บอกทีละข้อว่าคำตอบที่ได้จะเปลี่ยนการเตรียมตัวสำหรับพรุ่งนี้ยังไง"
+   },
+   "points": [
+    {
+     "en": "The hardest movements: tells you what to test gently and what to teach first (rolling in bed, a support belt).",
+     "th": "ท่าที่ปวดที่สุด: รู้ว่าจะตรวจอะไรอย่างระวัง และสอนอะไรก่อน (การพลิกตัว เข็มขัดพยุง)"
+    },
+    {
+     "en": "Safety: decides whether tomorrow goes ahead as planned or she needs her doctor first; prepares the positioning.",
+     "th": "ความปลอดภัย: ตัดสินว่าพรุ่งนี้ทำตามแผนได้ไหม หรือต้องให้พบแพทย์ก่อน และเตรียมท่าจัดวาง"
+    },
+    {
+     "en": "Last time: she was told to \"just rest\" and suffered; the plan must show her how to stay active.",
+     "th": "ท้องแรก: ถูกบอกให้นอนพักอย่างเดียวแล้วทรมาน แผนรอบนี้ต้องทำให้เห็นว่ายังขยับและใช้ชีวิตได้"
+    }
+   ]
+  },
+  {
+   "t": "reveal",
+   "label": {
+    "en": "What the call found",
+    "th": "สิ่งที่ได้จากการโทร"
+   },
+   "body": {
+    "en": "The pain is right at the front, over the pubic bone, and sometimes in the right buttock. Turning over in bed and putting her trousers on standing up are the worst. She has started sleeping on the sofa.\n\nThe pregnancy is going well: no bleeding or tightening, blood pressure normal at last week's check.\n\nShe has a two-year-old who still wants to be carried, and she is on leave from her job as a flight attendant. Last time she was told to rest and ended up hardly walking for two months. This time she wants to keep taking her son to the park.",
+    "th": "ปวดตรงหัวหน่าวเลย บางทีปวดก้นขวาด้วย ท่าที่ปวดที่สุดคือพลิกตัวบนเตียง กับยืนใส่กางเกง ช่วงนี้เลยย้ายไปนอนโซฟา\n\nการตั้งครรภ์ปกติดี ไม่มีเลือดออก ไม่มีท้องแข็ง ความดันปกติตอนไปฝากครรภ์เมื่ออาทิตย์ก่อน\n\nมีลูกคนโตอายุ 2 ขวบที่ยังชอบให้อุ้ม ตอนนี้ลางานอยู่ (เป็นแอร์โฮสเตส) ท้องแรกถูกบอกให้นอนพักอย่างเดียว สุดท้ายแทบเดินไม่ได้ไป 2 เดือน รอบนี้อยากยังพาลูกไปเดินเล่นที่สวนได้"
+   }
+  },
+  {
+   "t": "q",
+   "q": "q3",
+   "type": "image",
+   "stage": {
+    "en": "The picture on the screen",
+    "th": "รูปที่จะเปิดให้คนไข้ดู"
+   },
+   "prompt": {
+    "en": "Add the picture (or pictures) you will have ready on the iPad when the patient walks in, and say why you chose it.",
+    "th": "ใส่รูป (หรือหลายรูป) ที่จะเตรียมเปิดไว้ใน iPad ตอนคนไข้เดินเข้ามา แล้วบอกว่าทำไมถึงเลือกรูปนี้"
+   },
+   "model": {
+    "en": "A simple picture of the pelvis as a ring, with the joint at the front (where she hurts) highlighted, next to a picture of rolling in bed with the knees together. It explains why turning over hurts, shows something she can do tonight, and supports her wish to keep moving rather than \"just rest\".",
+    "th": "รูปเชิงกรานแบบง่ายๆ เป็นวงแหวน ไฮไลต์ข้อต่อด้านหน้าตรงหัวหน่าว (จุดที่ปวด) คู่กับรูปการพลิกตัวบนเตียงแบบหนีบเข่าไว้ด้วยกัน อธิบายว่าทำไมพลิกตัวแล้วปวด ให้มีสิ่งที่ทำได้เลยคืนนี้ และสนับสนุนที่คนไข้อยากยังขยับตัวได้ ไม่ใช่นอนพักอย่างเดียว"
+   },
+   "points": [
+    {
+     "en": "About her pain: the front of the pelvis, or the movement that hurts (turning in bed).",
+     "th": "เกี่ยวกับอาการของคนไข้ ข้อต่อด้านหน้าเชิงกราน หรือท่าที่ปวด (พลิกตัว)"
+    },
+    {
+     "en": "Calm and simple; nothing frightening about the pregnancy.",
+     "th": "ดูสบายใจและเข้าใจง่าย ไม่มีอะไรน่ากลัวเกี่ยวกับการตั้งครรภ์"
+    },
+    {
+     "en": "Links to staying active with her son, not only resting.",
+     "th": "เชื่อมกับการยังได้ใช้ชีวิตกับลูก ไม่ใช่นอนพักอย่างเดียว"
+    }
+   ]
+  }
+ ]
+}

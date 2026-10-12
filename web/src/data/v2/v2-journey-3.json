@@ -1,0 +1,398 @@
+{
+ "id": "v2-journey-3",
+ "kind": "journey",
+ "title": {
+  "en": "Lifting the baby",
+  "th": "อุ้มลูกแล้วเจ็บข้อมือ"
+ },
+ "steps": [
+  {
+   "t": "chat",
+   "label": {
+    "en": "Booking chat on LINE",
+    "th": "แชตจองคิวใน LINE"
+   },
+   "meta": {
+    "en": "Khun Mint, 31 · Sanam Pao · first visit tomorrow 14:00",
+    "th": "คุณมิ้นท์ อายุ 31 · สาขาสนามเป้า · มาครั้งแรก พรุ่งนี้ 14:00"
+   },
+   "msgs": [
+    {
+     "from": "pt",
+     "name": {
+      "en": "Khun Mint",
+      "th": "คุณมิ้นท์"
+     },
+     "text": {
+      "en": "Hello, the thumb side of my right wrist hurts a lot when I pick up my baby. Can physiotherapy help?",
+      "th": "สวัสดีค่ะ เจ็บข้อมือขวาฝั่งนิ้วโป้งมากเวลาอุ้มลูก ทำกายภาพช่วยได้ไหมคะ"
+     }
+    },
+    {
+     "from": "rc",
+     "name": {
+      "en": "BPC reception",
+      "th": "BPC (แอดมิน)"
+     },
+     "text": {
+      "en": "Hello Khun Mint 🙏 Yes, we see this often. How old is your baby, and how long has it hurt?",
+      "th": "สวัสดีค่ะคุณมิ้นท์ 🙏 ช่วยได้ค่ะ เจอบ่อยเลยค่ะ น้องอายุเท่าไหร่แล้ว แล้วเจ็บมานานแค่ไหนคะ"
+     }
+    },
+    {
+     "from": "pt",
+     "name": {
+      "en": "Khun Mint",
+      "th": "คุณมิ้นท์"
+     },
+     "text": {
+      "en": "Four months. It started about six weeks ago and it's getting worse.",
+      "th": "น้อง 4 เดือนค่ะ เริ่มเจ็บประมาณ 6 อาทิตย์แล้ว เป็นหนักขึ้นเรื่อยๆ"
+     }
+    },
+    {
+     "from": "pt",
+     "name": {
+      "en": "Khun Mint",
+      "th": "คุณมิ้นท์"
+     },
+     "text": {
+      "en": "Can I bring my baby? There's nobody to look after him on weekdays 😢",
+      "th": "พาลูกไปด้วยได้ไหมคะ วันธรรมดาไม่มีใครช่วยเลี้ยงเลย 😢"
+     }
+    },
+    {
+     "from": "rc",
+     "name": {
+      "en": "BPC reception",
+      "th": "BPC (แอดมิน)"
+     },
+     "text": {
+      "en": "Of course, you're welcome to bring him. Tomorrow 14:00 at Sanam Pao.",
+      "th": "ได้เลยค่ะ พาน้องมาได้นะคะ พรุ่งนี้ 14:00 ที่สาขาสนามเป้านะคะ"
+     }
+    }
+   ]
+  },
+  {
+   "t": "q",
+   "q": "q0",
+   "type": "mc",
+   "stage": {
+    "en": "Before you call",
+    "th": "ก่อนโทร"
+   },
+   "prompt": {
+    "en": "What do you plan for the first 30 seconds of the call?",
+    "th": "คุณวางแผน 30 วินาทีแรกของสายไว้ยังไง"
+   },
+   "options": [
+    {
+     "en": "Recap \"right wrist, thumb side, worse lifting your four-month-old, six weeks\", confirm, and tell her you have set the room up so she can bring the baby.",
+     "th": "รีแคปว่า \"เจ็บข้อมือขวาฝั่งนิ้วโป้ง เป็นหนักตอนอุ้มน้อง 4 เดือน มา 6 อาทิตย์แล้ว\" ให้คนไข้คอนเฟิร์ม แล้วบอกว่าเตรียมห้องไว้ให้พาน้องมาได้เลย"
+    },
+    {
+     "en": "Ask whether someone else could look after the baby tomorrow, so you can focus.",
+     "th": "ถามว่าพรุ่งนี้มีใครช่วยดูลูกได้ไหม จะได้โฟกัสการรักษา"
+    },
+    {
+     "en": "Ask her to describe the pain from the start: when, where, what she has tried.",
+     "th": "ให้เล่าอาการตั้งแต่ต้น เจ็บเมื่อไหร่ ตรงไหน ลองทำอะไรมาแล้วบ้าง"
+    },
+    {
+     "en": "Text her instead of calling; she will be busy with the baby.",
+     "th": "ส่งข้อความแทนการโทร คนไข้คงยุ่งกับลูก"
+    }
+   ],
+   "answer": 0,
+   "why": {
+    "en": "She already said she has no help on weekdays; asking again makes her feel she is a problem. Telling her you've prepared for the baby removes her biggest worry about coming. Re-asking her story wastes her short call. A call still matters: she needs to hear a person who has thought about her day.",
+    "th": "คนไข้บอกแล้วว่าวันธรรมดาไม่มีคนช่วย ถ้าถามอีกจะรู้สึกว่าตัวเองเป็นภาระ การบอกว่าเตรียมห้องไว้สำหรับน้องแล้วช่วยตัดความกังวลที่สุดของเขาเรื่องการมา การให้เล่าซ้ำก็เสียเวลาในสายสั้นๆ ส่วนการโทรยังสำคัญ เพราะคนไข้ต้องได้ยินเสียงคนที่คิดถึงชีวิตประจำวันของเขาจริงๆ"
+   }
+  },
+  {
+   "t": "q",
+   "q": "q1",
+   "type": "long",
+   "stage": {
+    "en": "The call",
+    "th": "โทรหาคนไข้"
+   },
+   "prompt": {
+    "en": "Write how you open the call and the two or three questions you ask. 2–3 minutes in all.",
+    "th": "เขียนประโยคเปิดสาย และคำถาม 2–3 ข้อที่จะถาม ทั้งสายไม่เกิน 2–3 นาที"
+   },
+   "model": {
+    "en": "\"Hello Khun Mint, this is [your name], the physiotherapist seeing you tomorrow at 14:00 at Sanam Pao. I understand the thumb side of your right wrist hurts when you lift your four-month-old, for about six weeks. We've got a room ready so you can bring him.\"\n\n1. Which baby tasks hurt most: lifting from the cot, feeding, bathing?\n2. What has she tried (splint, painkillers, anything from a doctor)?\n3. What does she need it to do soon (return to work, carrying him alone)?",
+    "th": "\"สวัสดีค่ะคุณมิ้นท์ [ชื่อคุณ] นะคะ เป็นนักกายภาพบำบัดที่จะดูแลคุณมิ้นท์พรุ่งนี้บ่ายสองที่สนามเป้าค่ะ ทราบมาว่าเจ็บข้อมือขวาฝั่งนิ้วโป้งเวลาอุ้มน้อง 4 เดือน มาประมาณ 6 อาทิตย์ พรุ่งนี้เตรียมห้องไว้ให้พาน้องมาได้เลยนะคะ\"\n\n1. ทำอะไรกับน้องแล้วเจ็บที่สุด อุ้มขึ้นจากเปล ให้นม หรืออาบน้ำ\n2. ลองทำอะไรมาแล้วบ้าง ใส่ที่ดามข้อมือ กินยา หรือไปหาหมอมาไหม\n3. เร็วๆ นี้ต้องใช้ข้อมือทำอะไร (กลับไปทำงาน อุ้มลูกคนเดียว)"
+   },
+   "points": [
+    {
+     "en": "Recaps and makes it easy for her to bring the baby.",
+     "th": "รีแคป และทำให้คนไข้พาลูกมาได้สบายใจ"
+    },
+    {
+     "en": "Finds the hardest baby tasks (severity in her real life).",
+     "th": "หาว่ากิจกรรมกับลูกอันไหนเจ็บที่สุด (Severity ในชีวิตจริง)"
+    },
+    {
+     "en": "Finds what she has tried and what she needs soon.",
+     "th": "รู้ว่าลองอะไรมาแล้ว และเร็วๆ นี้ต้องใช้ข้อมือทำอะไร"
+    }
+   ]
+  },
+  {
+   "t": "reveal",
+   "label": {
+    "en": "What the call found",
+    "th": "สิ่งที่ได้จากการโทร"
+   },
+   "body": {
+    "en": "Lifting him from under the arms and the last feed at night hurt most. She has worn a soft wrist splint from the pharmacy, which helped a little. A friend had a steroid injection for the same thing and Mint is frightened of needles.\n\nShe goes back to work as an accountant in two months, typing all day. Her mother-in-law helps on Saturdays.",
+    "th": "ท่าที่เจ็บที่สุดคืออุ้มน้องขึ้นแบบช้อนใต้รักแร้ และตอนให้นมมื้อดึก เคยใส่ที่ดามข้อมือแบบนิ่มที่ซื้อจากร้านขายยา ช่วยได้นิดหน่อย เพื่อนเป็นแบบเดียวกันแล้วไปฉีดสเตียรอยด์ คุณมิ้นท์กลัวเข็มมาก\n\nอีก 2 เดือนต้องกลับไปทำงานเป็นนักบัญชี พิมพ์งานทั้งวัน วันเสาร์แม่สามีมาช่วยเลี้ยง"
+   }
+  },
+  {
+   "t": "q",
+   "q": "q2",
+   "type": "image",
+   "stage": {
+    "en": "Prepare",
+    "th": "เตรียมตัว"
+   },
+   "prompt": {
+    "en": "Add the picture you will have ready on the iPad tomorrow for this patient, and say why.",
+    "th": "ใส่รูปที่จะเตรียมไว้ใน iPad สำหรับคนไข้คนนี้พรุ่งนี้ แล้วบอกว่าทำไม"
+   },
+   "model": {
+    "en": "A simple picture of the two thumb tendons running through their tunnel at the wrist, next to a picture of her lifting the baby with the thumb spread wide, and the \"scoop\" lift with the thumb tucked in. It shows her why lifting hurts and something she can change today.",
+    "th": "รูปเส้นเอ็นนิ้วโป้ง 2 เส้นที่วิ่งผ่านอุโมงค์ตรงข้อมือแบบง่ายๆ คู่กับรูปท่าอุ้มลูกแบบกางนิ้วโป้ง เทียบกับท่าอุ้มแบบช้อนตัวที่หุบนิ้วโป้ง ให้เห็นว่าทำไมอุ้มแล้วเจ็บ และมีสิ่งที่เปลี่ยนได้ตั้งแต่วันนี้"
+   },
+   "points": [
+    {
+     "en": "About her: the thumb tendons at the wrist, or how she lifts the baby.",
+     "th": "เกี่ยวกับคนไข้ เส้นเอ็นนิ้วโป้งที่ข้อมือ หรือท่าอุ้มลูก"
+    },
+    {
+     "en": "Gives her something she can change straight away.",
+     "th": "มีสิ่งที่คนไข้นำไปเปลี่ยนได้ทันที"
+    }
+   ]
+  },
+  {
+   "t": "q",
+   "q": "q3",
+   "type": "short",
+   "stage": {
+    "en": "The golden minute",
+    "th": "Golden minute"
+   },
+   "prompt": {
+    "en": "The patient walks in. What is the first thing you say?",
+    "th": "คนไข้เดินเข้ามา ประโยคแรกที่คุณจะพูดคืออะไร"
+   },
+   "model": {
+    "en": "\"Hello Khun Mint, I'm [your name], we spoke yesterday. And this must be your little one! Let's get you both comfortable; the mat's ready for him right here.\"",
+    "th": "\"สวัสดีค่ะคุณมิ้นท์ [ชื่อคุณ] นะคะ ที่คุยกันเมื่อวานค่ะ นี่น้องใช่ไหมคะ น่ารักจัง เดี๋ยวจัดที่ให้สบายๆ ทั้งแม่ทั้งลูกเลยนะคะ ปูเบาะไว้ให้น้องตรงนี้แล้วค่ะ\""
+   },
+   "points": [
+    {
+     "en": "Greets the patient by name and reminds them who you are from the call.",
+     "th": "ทักชื่อคนไข้ และให้คนไข้จำได้ว่าเราคือคนที่โทรไป"
+    },
+    {
+     "en": "Picks up something specific from the call, so the patient feels remembered.",
+     "th": "หยิบเรื่องที่คุยกันในสายขึ้นมา ให้คนไข้รู้สึกว่าเราจำเขาได้"
+    },
+    {
+     "en": "Short and warm, with no wall between you; no form-filling first.",
+     "th": "สั้น อบอุ่น ไม่มีกำแพง ไม่ใช่เริ่มด้วยการกรอกฟอร์ม"
+    }
+   ]
+  },
+  {
+   "t": "q",
+   "q": "q4",
+   "type": "long",
+   "stage": {
+    "en": "History and examination",
+    "th": "ซักประวัติและตรวจร่างกาย"
+   },
+   "prompt": {
+    "en": "What do you still need to find out about how this started, what are your three differential diagnoses, and what baseline will you measure before you treat?",
+    "th": "ยังต้องซักอะไรเพิ่มเกี่ยวกับกลไกการบาดเจ็บ Differential diagnosis 3 ข้อของคุณคืออะไร และจะวัด Baseline อะไรก่อนรักษา"
+   },
+   "model": {
+    "en": "Mechanism: how she lifts and feeds, how often, which hand does what; any swelling or catching; sleep and night feeds.\nDifferentials: De Quervain's tenosynovitis, thumb base (CMC) joint irritation, intersection syndrome; with a neck or superficial radial nerve cause to rule out.\nBaseline: pain lifting a weighted doll or her baby (0–10), Finkelstein test pain, pinch and grip strength or pain.",
+    "th": "กลไก: อุ้มยังไง ให้นมท่าไหน บ่อยแค่ไหน มือไหนทำอะไร มีบวมหรือสะดุดไหม การนอนและการให้นมมื้อดึก\nDifferential: De Quervain's tenosynovitis, Thumb CMC joint irritation, Intersection syndrome และต้องแยกจากคอหรือ Superficial radial nerve\nBaseline: Pain score ตอนอุ้มลูก (หรือตุ๊กตาถ่วงน้ำหนัก) (0–10) ความเจ็บตอนทำ Finkelstein test และแรงบีบ/หยิบหรือความเจ็บตอนออกแรง"
+   },
+   "points": [
+    {
+     "en": "Pins down the mechanism in her day: how she lifts and feeds.",
+     "th": "หากลไกจากชีวิตประจำวัน อุ้มและให้นมยังไง"
+    },
+    {
+     "en": "Three sensible differentials for thumb-side wrist pain in a new mother.",
+     "th": "Differential 3 ข้อที่สมเหตุสมผลสำหรับเจ็บข้อมือฝั่งนิ้วโป้งในคุณแม่หลังคลอด"
+    },
+    {
+     "en": "A numerical baseline tied to lifting the baby.",
+     "th": "Baseline เป็นตัวเลขที่ผูกกับการอุ้มลูก"
+    }
+   ]
+  },
+  {
+   "t": "reveal",
+   "label": {
+    "en": "What you found",
+    "th": "ผลการซักประวัติและตรวจร่างกาย"
+   },
+   "body": {
+    "en": "Finkelstein test strongly positive on the right. Tender and slightly swollen over the thumb tendons at the wrist. Thumb base grind test negative, wrist movement full, neck screen clear.\n\nBefore treatment: lifting the baby 7/10. After treatment, with taping and the new lift: 3/10.",
+    "th": "Finkelstein test ข้างขวา positive ชัดเจน กดเจ็บและบวมเล็กน้อยบริเวณเส้นเอ็นนิ้วโป้งที่ข้อมือ CMC grind test negative ขยับข้อมือได้สุด Screen คอปกติ\n\nก่อนรักษา: อุ้มลูกเจ็บ 7/10 หลังรักษา พร้อมเทปและท่าอุ้มใหม่: 3/10"
+   }
+  },
+  {
+   "t": "q",
+   "q": "q5",
+   "type": "long",
+   "stage": {
+    "en": "Visual presentation",
+    "th": "Visual presentation"
+   },
+   "prompt": {
+    "en": "Tell the patient their story in four or five sentences, the way you would say it in the room with the picture on the screen.",
+    "th": "เล่าเรื่องของคนไข้ให้คนไข้ฟังใน 4–5 ประโยค แบบที่จะพูดจริงในห้องตอนเปิดรูปบนจอ"
+   },
+   "model": {
+    "en": "\"These two tendons [picture] run through a small tunnel here. Every time you lift him with your thumb spread wide, they rub in the tunnel, and with a four-month-old that's many times a day, so it got inflamed. It's very common in new mums and it does settle. We don't need any needles: the tape, this scoop lift and two exercises took it from 7 to 3 today. If we keep it calm now, you'll be typing comfortably when you go back to work.\"",
+    "th": "\"เส้นเอ็นสองเส้นนี้ [รูป] วิ่งผ่านอุโมงค์เล็กๆ ตรงนี้ค่ะ ทุกครั้งที่อุ้มน้องแบบกางนิ้วโป้ง เอ็นจะเสียดสีในอุโมงค์ น้อง 4 เดือนต้องอุ้มวันละหลายสิบรอบ เลยอักเสบขึ้นมา เป็นเรื่องที่คุณแม่หลังคลอดเป็นกันบ่อยมาก และหายได้ค่ะ ไม่ต้องฉีดยานะคะ วันนี้แค่เทป ท่าอุ้มแบบช้อน กับท่าบริหาร 2 ท่า จาก 7 ลดเหลือ 3 แล้ว ถ้าช่วงนี้เราดูแลไม่ให้มันอักเสบ กลับไปทำงานพิมพ์งานได้สบายแน่นอนค่ะ\""
+   },
+   "points": [
+    {
+     "en": "Explains the tendons and the tunnel with the picture, simply.",
+     "th": "อธิบายเส้นเอ็นกับอุโมงค์ด้วยรูปแบบง่ายๆ"
+    },
+    {
+     "en": "Links the cause to how she lifts the baby, without blame.",
+     "th": "เชื่อมสาเหตุกับท่าอุ้มลูก โดยไม่ทำให้รู้สึกผิด"
+    },
+    {
+     "en": "Answers her fear of the injection with the findings and today's result.",
+     "th": "ตอบเรื่องที่กลัวเข็มด้วยผลตรวจและผลวันนี้"
+    },
+    {
+     "en": "Links to her goal (going back to work) with a realistic timeline.",
+     "th": "เชื่อมกับเป้าหมาย (กลับไปทำงาน) ด้วยไทม์ไลน์ที่เป็นจริง"
+    }
+   ]
+  },
+  {
+   "t": "q",
+   "q": "q6",
+   "type": "mc",
+   "stage": {
+    "en": "Re-assess and the next visit",
+    "th": "Re-assess และนัดครั้งถัดไป"
+   },
+   "prompt": {
+    "en": "Treatment is done. What do you say?",
+    "th": "รักษาเสร็จแล้ว คุณจะพูดว่าอะไร"
+   },
+   "options": [
+    {
+     "en": "\"Lifting went from 7 to 3. I recommend once a week for the next four weeks. Your mother-in-law helps on Saturdays, so shall we do Saturday mornings?\"",
+     "th": "\"อุ้มน้องจาก 7 เหลือ 3 แล้วนะคะ แนะนำมาอาทิตย์ละครั้ง 4 อาทิตย์ค่ะ วันเสาร์คุณแม่สามีมาช่วยเลี้ยงใช่ไหมคะ ครั้งหน้าเป็นเสาร์เช้าดีไหมคะ\""
+    },
+    {
+     "en": "\"Better? Great. Come back when you can.\"",
+     "th": "\"ดีขึ้นไหมคะ ดีค่ะ ว่างเมื่อไหร่ค่อยมานะคะ\""
+    },
+    {
+     "en": "\"Come three times a week until it's gone.\"",
+     "th": "\"มาอาทิตย์ละ 3 ครั้งจนกว่าจะหายนะคะ\""
+    },
+    {
+     "en": "\"When are you free next week?\"",
+     "th": "\"อาทิตย์หน้าว่างวันไหนคะ\""
+    }
+   ],
+   "answer": 0,
+   "why": {
+    "en": "Numbers she can see and a recommendation that fits her life: she told you on the call who helps and when. That is personalisation; she will feel remembered. Three times a week with a newborn is not realistic.",
+    "th": "มีตัวเลขให้เห็น และคำแนะนำที่เข้ากับชีวิตคนไข้ เพราะคนไข้บอกเราแล้วในสายว่าใครช่วยเลี้ยงวันไหน นี่คือ Personalization คนไข้จะรู้สึกว่าเราจำเขาได้ ส่วนอาทิตย์ละ 3 ครั้งกับลูกอ่อนไม่ใช่เรื่องที่ทำได้จริง"
+   }
+  },
+  {
+   "t": "q",
+   "q": "q7",
+   "type": "mc",
+   "stage": {
+    "en": "Package",
+    "th": "แพ็กเกจ"
+   },
+   "prompt": {
+    "en": "How do you bring up the package?",
+    "th": "คุณจะพูดเรื่องแพ็กเกจยังไง"
+   },
+   "options": [
+    {
+     "en": "Leave it this time; she has a lot on her plate.",
+     "th": "ครั้งนี้ข้ามไปก่อน คนไข้มีเรื่องให้คิดเยอะแล้ว"
+    },
+    {
+     "en": "Tell her most mums buy the ten-session package.",
+     "th": "บอกว่าคุณแม่ส่วนใหญ่ซื้อแพ็กเกจ 10 ครั้ง"
+    },
+    {
+     "en": "Offer to hold the baby while she pays for a package at the desk.",
+     "th": "อาสาอุ้มน้องให้ระหว่างที่คนไข้ไปจ่ายแพ็กเกจที่เคาน์เตอร์"
+    },
+    {
+     "en": "Explain why four sessions, what it costs, that reception can help, and that there is no rush to decide; then leave.",
+     "th": "อธิบายว่าทำไม 4 ครั้ง ราคาเท่าไหร่ ติดต่อ RC ได้ ไม่ต้องรีบตัดสินใจ แล้วเดินออก"
+    }
+   ],
+   "answer": 3,
+   "why": {
+    "en": "Explaining on day one means she never finds out later and feels misled. \"Most mums buy\" is social pressure, and helping with the baby so she can pay is a kindness used as a sales tool.",
+    "th": "อธิบายตั้งแต่วันแรก คนไข้จะไม่มารู้ทีหลังแล้วรู้สึกว่าไม่ได้บอก ส่วน \"คุณแม่ส่วนใหญ่ซื้อ\" คือแรงกดดันทางสังคม และการช่วยอุ้มลูกเพื่อให้ไปจ่ายเงินคือการใช้ความใส่ใจเป็นเครื่องมือขาย"
+   }
+  },
+  {
+   "t": "q",
+   "q": "q8",
+   "type": "long",
+   "stage": {
+    "en": "LINE follow-up",
+    "th": "สรุปทาง LINE"
+   },
+   "prompt": {
+    "en": "Write the first-visit summary you send on LINE, exactly as you would send it.",
+    "th": "เขียนข้อความสรุปหลังมาครั้งแรกที่จะส่งทาง LINE ให้เหมือนที่จะส่งจริง"
+   },
+   "model": {
+    "en": "Sent that evening: what it is (De Quervain's, the thumb tendons rubbing in their tunnel), the scoop lift (a photo or short video from the session), the two exercises, when to wear the splint and how to care for the tape, what to avoid for now, and Saturday's appointment.",
+    "th": "ส่งเย็นวันนั้น: เป็นอะไร (De Quervain's เส้นเอ็นนิ้วโป้งเสียดสีในอุโมงค์) ท่าอุ้มแบบช้อน (รูปหรือคลิปสั้นจากในห้อง) ท่าบริหาร 2 ท่า ใส่ที่ดามตอนไหน ดูแลเทปยังไง สิ่งที่ต้องเลี่ยงช่วงนี้ และนัดวันเสาร์"
+   },
+   "points": [
+    {
+     "en": "Sent the same day or the next morning, never left to the 72-hour limit.",
+     "th": "ส่งวันเดียวกันหรือเช้าวันรุ่งขึ้น ไม่รอจนใกล้ 72 ชั่วโมง"
+    },
+    {
+     "en": "Explains the problem in words the patient will understand when they read it again.",
+     "th": "อธิบายปัญหาด้วยภาษาที่คนไข้อ่านซ้ำแล้วเข้าใจ"
+    },
+    {
+     "en": "The new way to lift the baby, ideally with a photo or video.",
+     "th": "ท่าอุ้มลูกแบบใหม่ ถ้ามีรูปหรือคลิปยิ่งดี"
+    },
+    {
+     "en": "Splint and tape care, and the Saturday appointment.",
+     "th": "การใส่ที่ดาม การดูแลเทป และนัดวันเสาร์"
+    }
+   ]
+  }
+ ]
+}

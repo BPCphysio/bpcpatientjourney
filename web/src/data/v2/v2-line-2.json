@@ -1,0 +1,170 @@
+{
+ "id": "v2-line-2",
+ "kind": "line",
+ "title": {
+  "en": "Gone quiet",
+  "th": "หายเงียบไป"
+ },
+ "steps": [
+  {
+   "t": "note",
+   "label": {
+    "en": "Your notes from the first visit",
+    "th": "บันทึกของคุณจากการมาครั้งแรก"
+   },
+   "body": {
+    "en": "Khun Joy, 50, office manager. Left frozen shoulder. Goal: tie her hair up herself again, and reach the top shelf at work.\n\nCame three times in two weeks. Lifting the arm forward 100° → 125°. Night pain 7/10 → 4/10. Doing her exercises most days.\n\nShe cancelled the fourth visit through reception (\"busy at work\") and has not rebooked. That was three weeks ago. Your last LINE message to her was the first-visit summary, five weeks ago.",
+    "th": "คุณจอย อายุ 50 ผู้จัดการออฟฟิศ ไหล่ติดข้างซ้าย เป้าหมาย: มัดผมเองได้อีกครั้ง และหยิบของบนชั้นบนสุดที่ออฟฟิศได้\n\nมา 3 ครั้งใน 2 อาทิตย์ ยกแขนไปด้านหน้าได้จาก 100° เป็น 125° ปวดตอนกลางคืนจาก 7/10 เหลือ 4/10 ทำท่าบริหารเกือบทุกวัน\n\nครั้งที่ 4 ยกเลิกผ่าน RC (\"งานยุ่ง\") แล้วไม่ได้จองใหม่ ผ่านมา 3 อาทิตย์แล้ว ข้อความ LINE ล่าสุดที่คุณส่งคือสรุปหลังมาครั้งแรกเมื่อ 5 อาทิตย์ก่อน"
+   }
+  },
+  {
+   "t": "q",
+   "q": "q0",
+   "type": "mc",
+   "stage": {
+    "en": "Before you write",
+    "th": "ก่อนเขียน"
+   },
+   "prompt": {
+    "en": "What is the right move now?",
+    "th": "ตอนนี้ควรทำยังไง"
+   },
+   "options": [
+    {
+     "en": "Ask reception to call her with a 10% discount on her next visit.",
+     "th": "ให้ RC โทรไปเสนอส่วนลด 10% สำหรับครั้งถัดไป"
+    },
+    {
+     "en": "Leave it. Chasing her will feel like sales.",
+     "th": "ปล่อยไว้ก่อน ทักไปจะดูเหมือนตามขาย"
+    },
+    {
+     "en": "Send her the package price again in case she forgot.",
+     "th": "ส่งราคาแพ็กเกจไปให้อีกรอบ เผื่อคนไข้ลืม"
+    },
+    {
+     "en": "Send a short personal message yourself: ask how the shoulder is, remind her of her progress and her goal, and leave the door open.",
+     "th": "ส่งข้อความสั้นๆ ด้วยตัวเอง ถามว่าไหล่เป็นยังไงบ้าง ทวนความก้าวหน้าและเป้าหมายของเขา แล้วเปิดประตูไว้"
+    }
+   ],
+   "answer": 3,
+   "why": {
+    "en": "A message from the physiotherapist who treated her, about her shoulder and her goal, is care. A discount or a price list from reception is sales, and she will feel it. Saying nothing leaves a patient halfway through a frozen shoulder with no plan.",
+    "th": "ข้อความจากนักกายภาพบำบัดที่รักษาเขาเอง ถามเรื่องไหล่และเป้าหมายของเขา คือการดูแล แต่ส่วนลดหรือราคาจาก RC คือการขาย และคนไข้รู้สึกได้ ส่วนการเงียบไปเลยคือปล่อยให้คนไข้ไหล่ติดที่รักษาไปได้ครึ่งทางไม่มีแผนต่อ"
+   }
+  },
+  {
+   "t": "q",
+   "q": "q1",
+   "type": "long",
+   "stage": {
+    "en": "Your message",
+    "th": "ข้อความของคุณ"
+   },
+   "prompt": {
+    "en": "Write the message, exactly as you would send it on LINE.",
+    "th": "เขียนข้อความ ให้เหมือนที่จะส่งจริงใน LINE"
+   },
+   "model": {
+    "en": "\"Hello Khun Joy, it's [your name] from BPC. I was thinking of you and wanted to ask how the left shoulder is doing. When we last saw each other you'd gone from 100° to 125° and the nights were much better, so I'd love to know if you're getting closer to tying your hair up. No pressure at all about coming in; if it's useful, I'm happy to check your exercises over LINE.\"",
+    "th": "\"สวัสดีค่ะคุณจอย [ชื่อคุณ] จาก BPC นะคะ คิดถึงเลยทักมาถามว่าไหล่ซ้ายเป็นยังไงบ้างคะ ครั้งล่าสุดที่เจอกันยกแขนได้จาก 100° เป็น 125° แล้ว ตอนกลางคืนก็ปวดน้อยลงเยอะ อยากรู้ว่าตอนนี้ใกล้จะมัดผมเองได้หรือยังคะ ไม่ต้องกังวลเรื่องนัดนะคะ ถ้าอยากให้ช่วยดูท่าบริหารทาง LINE ก็ส่งคลิปมาได้เลยค่ะ\""
+   },
+   "points": [
+    {
+     "en": "Personal and from you, not a template.",
+     "th": "เป็นข้อความส่วนตัวจากเรา ไม่ใช่ข้อความสำเร็จรูป"
+    },
+    {
+     "en": "Mentions her real progress (numbers) and her goal.",
+     "th": "พูดถึงความก้าวหน้าจริง (ตัวเลข) และเป้าหมายของคนไข้"
+    },
+    {
+     "en": "Leaves the door open with no pressure, no price, no discount.",
+     "th": "เปิดประตูไว้โดยไม่กดดัน ไม่พูดเรื่องราคาหรือส่วนลด"
+    }
+   ]
+  },
+  {
+   "t": "reveal",
+   "label": {
+    "en": "What happened next",
+    "th": "หลังจากนั้น"
+   },
+   "body": {
+    "en": "Two days later she replies:\n\n\"Sorry, work has been crazy 🙏 And honestly the cost adds up. It's a bit better anyway. Is it OK if I just do the exercises at home?\"",
+    "th": "อีก 2 วันคุณจอยตอบกลับมาว่า\n\n\"ขอโทษนะคะ ช่วงนี้งานยุ่งมาก 🙏 แล้วพูดตรงๆ ค่าใช้จ่ายก็เริ่มเยอะ ตอนนี้ก็ดีขึ้นบ้างแล้ว ถ้าทำท่าบริหารที่บ้านอย่างเดียวได้ไหมคะ\""
+   }
+  },
+  {
+   "t": "q",
+   "q": "q2",
+   "type": "long",
+   "stage": {
+    "en": "Your reply",
+    "th": "คำตอบของคุณ"
+   },
+   "prompt": {
+    "en": "Write your reply, exactly as you would send it on LINE.",
+    "th": "เขียนข้อความตอบกลับ ให้เหมือนที่จะส่งจริงใน LINE"
+   },
+   "model": {
+    "en": "Thank her for being honest. Yes, the exercises at home matter most with a frozen shoulder, and she has been doing well. Be honest that it usually takes months, and that the exercises need to change as the shoulder frees up. Offer a plan that fits: a visit every two to three weeks to measure and move the exercises on, with LINE check-ins in between. Say it is completely her choice, and send the next step of her exercises either way.",
+    "th": "ขอบคุณที่บอกตรงๆ ได้ค่ะ ไหล่ติดสิ่งที่สำคัญที่สุดคือท่าบริหารที่บ้าน และคุณจอยทำได้ดีมาก บอกตามจริงว่าไหล่ติดมักใช้เวลาเป็นเดือนๆ และท่าบริหารต้องปรับตามไหล่ที่ขยับได้มากขึ้น เสนอแผนที่เข้ากับคนไข้ เช่น มาทุก 2–3 อาทิตย์เพื่อวัดผลและปรับท่า ระหว่างนั้นเช็กกันทาง LINE บอกว่าตัดสินใจได้เต็มที่ และไม่ว่าจะเลือกแบบไหน ส่งท่าบริหารขั้นต่อไปให้เลย"
+   },
+   "points": [
+    {
+     "en": "Thanks her and respects her honesty about cost.",
+     "th": "ขอบคุณ และให้เกียรติที่คนไข้บอกตรงๆ เรื่องค่าใช้จ่าย"
+    },
+    {
+     "en": "Honest about the timeline of a frozen shoulder and why the exercises must progress.",
+     "th": "บอกตามจริงเรื่องระยะเวลาของไหล่ติด และทำไมท่าบริหารต้องปรับขึ้น"
+    },
+    {
+     "en": "Offers a plan that fits her budget, with no pressure.",
+     "th": "เสนอแผนที่เข้ากับงบของคนไข้ โดยไม่กดดัน"
+    },
+    {
+     "en": "Gives her something useful now (the next exercises).",
+     "th": "ให้สิ่งที่มีประโยชน์เลยตอนนี้ (ท่าบริหารขั้นต่อไป)"
+    }
+   ]
+  },
+  {
+   "t": "q",
+   "q": "q3",
+   "type": "mc",
+   "stage": {
+    "en": "Your call",
+    "th": "คุณจะทำยังไง"
+   },
+   "prompt": {
+    "en": "Your manager suggests offering her 20% off to bring her back. What do you do?",
+    "th": "หัวหน้าแนะนำให้เสนอส่วนลด 20% เพื่อดึงคนไข้กลับมา คุณจะทำยังไง"
+   },
+   "options": [
+    {
+     "en": "Send the discount straight away; it removes her reason not to come.",
+     "th": "ส่งส่วนลดไปเลย จะได้ไม่มีเหตุผลที่ไม่มา"
+    },
+    {
+     "en": "Offer a plan that fits her budget first: fewer visits spaced out, a strong home programme, LINE check-ins. Talk to your manager about the discount separately.",
+     "th": "เสนอแผนที่เข้ากับงบก่อน มาห่างขึ้น ท่าบริหารที่บ้านแน่นๆ เช็กกันทาง LINE ส่วนเรื่องส่วนลดไปคุยกับหัวหน้าแยกต่างหาก"
+    },
+    {
+     "en": "Tell her a frozen shoulder gets worse without treatment, so she should come weekly.",
+     "th": "บอกว่าไหล่ติดถ้าไม่รักษาจะแย่ลง ควรมาทุกอาทิตย์"
+    },
+    {
+     "en": "Don't reply. She has made her choice.",
+     "th": "ไม่ต้องตอบ คนไข้ตัดสินใจแล้ว"
+    }
+   ],
+   "answer": 1,
+   "why": {
+    "en": "She told you the truth about money; answer with a plan that respects it. A discount answers the price but not the value, and it turns a care conversation into a sales one. Scaring her is not honest: a frozen shoulder usually recovers, slowly. The discount is a clinic decision to raise with your manager, not something to lead with.",
+    "th": "คนไข้บอกเราตรงๆ เรื่องเงิน ก็ตอบด้วยแผนที่เคารพเรื่องนั้น ส่วนลดตอบเรื่องราคา แต่ไม่ได้ตอบเรื่องคุณค่า และเปลี่ยนบทสนทนาเรื่องการดูแลให้กลายเป็นการขาย การขู่ให้กลัวก็ไม่ซื่อตรง เพราะไหล่ติดส่วนใหญ่หายได้ แค่ใช้เวลา ส่วนเรื่องส่วนลดเป็นการตัดสินใจของคลินิก ให้คุยกับหัวหน้า ไม่ใช่เอามาเปิดเรื่อง"
+   }
+  }
+ ]
+}

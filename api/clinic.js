@@ -16,6 +16,7 @@ const { waitUntil } = require('@vercel/functions');
 const { sql, ready, keyOk, isMedia } = require('./_db.js');
 const C = require('./_clinic.js');
 const { readStored } = require('./_claude.js');
+const V2 = require('./_v2.js');
 
 const ok = (res, o) => res.status(200).json(Object.assign({ ok: true }, o));
 const no = (res, error) => res.status(200).json({ ok: false, error });
@@ -97,6 +98,14 @@ async function post(req, res) {
     const rows = await sql()`SELECT id, rec, save_id, marked_at, marked_by, mark_history FROM responses WHERE id = ${String(body.id)}`;
     if (!rows.length) return no(res, 'not found');
     const row = rows[0];
+    // Version 2 answers are marked by the senior physiotherapists of the
+    // answerer's branch, or by someone listed for all branches.
+    if (V2.isV2(row.rec && row.rec.scenarioId)) {
+      const branch = C.branchOf(C.resolve(row.rec.who, r.people), r.people);
+      const me = C.nameKey(C.resolve(body.by, r.people));
+      const mine = (r.markers || []).filter(x => C.nameKey(C.resolve(x.name, r.people)) === me).map(x => C.nameKey(x.branch));
+      if (branch && mine.length && mine.indexOf(C.nameKey(branch)) < 0 && mine.indexOf('all branches') < 0) return no(res, 'not your branch');
+    }
     // A repeat of a save that already landed is answered as done.
     if (body.saveId && row.save_id === body.saveId) {
       return ok(res, { markedAt: Number(row.marked_at), markedBy: row.marked_by, repeat: true });

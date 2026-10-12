@@ -1,0 +1,247 @@
+{
+ "id": "v2-call-1",
+ "kind": "call",
+ "title": {
+  "en": "Tingling after the deadline",
+  "th": "นิ้วชาหลังปั่นงาน"
+ },
+ "steps": [
+  {
+   "t": "chat",
+   "label": {
+    "en": "Booking chat on LINE",
+    "th": "แชตจองคิวใน LINE"
+   },
+   "meta": {
+    "en": "Khun Mind, 29 · Sukhumvit · first visit tomorrow 18:30",
+    "th": "คุณมายด์ อายุ 29 · สาขาสุขุมวิท · มาครั้งแรก พรุ่งนี้ 18:30"
+   },
+   "msgs": [
+    {
+     "from": "pt",
+     "name": {
+      "en": "Khun Mind",
+      "th": "คุณมายด์"
+     },
+     "text": {
+      "en": "Hi, I'd like to book a session please. My neck and right shoulder have been hurting for about a month.",
+      "th": "สวัสดีค่ะ อยากจองคิวทำกายภาพค่ะ ปวดคอกับบ่าขวามาเดือนนึงแล้วค่ะ"
+     }
+    },
+    {
+     "from": "rc",
+     "name": {
+      "en": "BPC reception",
+      "th": "BPC (แอดมิน)"
+     },
+     "text": {
+      "en": "Hello Khun Mind, thank you for contacting Bangkok Physiotherapy Center 🙏 Could you tell us a little more? How long has it been, and is there anything else with it?",
+      "th": "สวัสดีค่ะคุณมายด์ ขอบคุณที่ติดต่อ Bangkok Physiotherapy Center นะคะ 🙏 ขอสอบถามอาการเพิ่มนิดนึงนะคะ ปวดมานานเท่าไหร่แล้ว แล้วมีอาการอื่นร่วมด้วยไหมคะ"
+     }
+    },
+    {
+     "from": "pt",
+     "name": {
+      "en": "Khun Mind",
+      "th": "คุณมายด์"
+     },
+     "text": {
+      "en": "I just said, about a month 😅",
+      "th": "เพิ่งบอกไปเลยค่ะ เดือนนึง 😅"
+     }
+    },
+    {
+     "from": "pt",
+     "name": {
+      "en": "Khun Mind",
+      "th": "คุณมายด์"
+     },
+     "text": {
+      "en": "I'm a graphic designer, at the computer all day, and work is crazy right now. I've had office syndrome massage five times. It's fine for a day or two and then it's back. I want something that actually fixes it.",
+      "th": "เป็นกราฟิกค่ะ นั่งหน้าคอมทั้งวัน ช่วงนี้งานเยอะมาก ไปนวดออฟฟิศซินโดรมมา 5 รอบแล้ว ดีขึ้นแป๊บเดียวก็กลับมาปวดอีก อยากได้แบบที่หายจริงๆ ค่ะ"
+     }
+    },
+    {
+     "from": "pt",
+     "name": {
+      "en": "Khun Mind",
+      "th": "คุณมายด์"
+     },
+     "text": {
+      "en": "Sometimes my right thumb goes a bit numb too. Not sure if that's related.",
+      "th": "แล้วบางทีนิ้วโป้งขวาก็ชาๆ ด้วยค่ะ ไม่รู้เกี่ยวกันไหม"
+     }
+    },
+    {
+     "from": "rc",
+     "name": {
+      "en": "BPC reception",
+      "th": "BPC (แอดมิน)"
+     },
+     "text": {
+      "en": "Noted, thank you. You're booked for tomorrow 18:30 at Sukhumvit. Don't worry, the physiotherapist looking after you specialises in neck and shoulder problems 🙏",
+      "th": "รับทราบค่ะ ขอบคุณมากนะคะ ได้คิวพรุ่งนี้ 18:30 ที่สาขาสุขุมวิทนะคะ ไม่ต้องกังวลนะคะ นักกายภาพบำบัดที่ดูแลเชี่ยวชาญเรื่องคอบ่าไหล่โดยตรงเลยค่ะ 🙏"
+     }
+    },
+    {
+     "from": "pt",
+     "name": {
+      "en": "Khun Mind",
+      "th": "คุณมายด์"
+     },
+     "text": {
+      "en": "Ok thanks",
+      "th": "โอเคค่ะ ขอบคุณค่ะ"
+     }
+    }
+   ]
+  },
+  {
+   "t": "note",
+   "label": {
+    "en": "Reception's summary in your schedule",
+    "th": "สรุปที่ RC ใส่ไว้ในตาราง"
+   },
+   "body": {
+    "en": "Neck and right shoulder pain, 1 month. Office worker. Had massage before.",
+    "th": "ปวดคอ บ่าขวา 1 เดือน ทำงานออฟฟิศ เคยนวดมาก่อน"
+   }
+  },
+  {
+   "t": "q",
+   "q": "q0",
+   "type": "mc",
+   "stage": {
+    "en": "Before you call",
+    "th": "ก่อนโทร"
+   },
+   "prompt": {
+    "en": "You have reception's summary. Before you pick up the phone, what matters most?",
+    "th": "คุณเห็นสรุปของ RC แล้ว ก่อนกดโทรหาคนไข้ อะไรสำคัญที่สุด"
+   },
+   "options": [
+    {
+     "en": "The summary is enough. Call her and take a full history over the phone so nothing is missed tomorrow.",
+     "th": "สรุปของ RC ก็พอแล้ว โทรไปซักประวัติให้ครบทางโทรศัพท์เลย พรุ่งนี้จะได้ไม่ตกหล่น"
+    },
+    {
+     "en": "Prepare an office syndrome session from the summary. The call is only to confirm she is coming.",
+     "th": "เตรียมเคสออฟฟิศซินโดรมจากสรุปได้เลย โทรไปแค่คอนเฟิร์มว่ามาจริง"
+    },
+    {
+     "en": "Read the whole chat yourself first. She was already annoyed at repeating herself, and she mentioned a numb thumb almost in passing. Neither is in the summary.",
+     "th": "กลับไปอ่านแชตทั้งหมดเองก่อน คนไข้เริ่มหงุดหงิดที่ต้องตอบซ้ำ แล้วยังพูดถึงนิ้วโป้งชาแบบผ่านๆ ซึ่งไม่มีในสรุปของ RC เลย"
+    },
+    {
+     "en": "Send her a form on LINE to fill in before the visit, so the call is not needed.",
+     "th": "ส่งแบบฟอร์มให้กรอกทาง LINE ก่อนมา จะได้ไม่ต้องโทร"
+    }
+   ],
+   "answer": 2,
+   "why": {
+    "en": "Reception's summary dropped the two things that matter most for this call. She has already told her story twice, so asking \"how long has it hurt?\" again will cost you her trust before you meet. And a numb thumb in someone at a laptop all day could be a nerve from the neck: that changes what you screen on the call and what you prepare. A form is one more thing to fill in for a patient who is tired of repeating herself.",
+    "th": "สรุปของ RC ตกสองเรื่องที่สำคัญที่สุดของสายนี้ไป หนึ่ง คนไข้เล่าซ้ำมาสองรอบแล้ว ถ้าเราโทรไปถามอีกว่า \"ปวดมานานแค่ไหนคะ\" เท่ากับเสีย Trust ตั้งแต่ยังไม่เจอกัน สอง นิ้วโป้งชาในคนที่นั่งหน้าคอมทั้งวันอาจมาจากเส้นประสาทที่คอ เรื่องนี้เปลี่ยนทั้งสิ่งที่ต้อง Screen ในสายและสิ่งที่ต้องเตรียม ส่วนการส่งฟอร์มก็คือให้คนไข้ที่เบื่อการตอบซ้ำต้องกรอกอีกรอบ"
+   }
+  },
+  {
+   "t": "q",
+   "q": "q1",
+   "type": "long",
+   "stage": {
+    "en": "The call",
+    "th": "โทรหาคนไข้"
+   },
+   "prompt": {
+    "en": "Write how you open the call, then the three most important questions you will ask. The whole call should take 2–3 minutes.",
+    "th": "เขียนประโยคเปิดสายของคุณ แล้วตามด้วยคำถาม 3 ข้อที่สำคัญที่สุดที่จะถาม ทั้งสายไม่ควรเกิน 2–3 นาที"
+   },
+   "model": {
+    "en": "Open: \"Hello Khun Mind, this is [your name], the physiotherapist looking after you tomorrow evening at Sukhumvit. I've read your messages: neck and right shoulder for about a month, worse with long days at the computer, and the massage only helped for a day or two. Is that right?\"\n\n1. The numb thumb: exactly which fingers, when it comes on, and whether she has any weakness or has been dropping things.\n2. What \"actually fixed\" means to her, and what is coming up at work.\n3. Whether anything worries her about it, or anyone has checked it before.",
+    "th": "เปิดสาย: \"สวัสดีค่ะคุณมายด์ [ชื่อคุณ] นะคะ เป็นนักกายภาพบำบัดที่จะดูแลคุณมายด์พรุ่งนี้เย็นที่สุขุมวิทค่ะ ได้อ่านข้อความแล้วนะคะ ปวดคอกับบ่าขวามาประมาณเดือนนึง เป็นหนักตอนนั่งหน้าคอมนานๆ แล้วนวดแล้วดีขึ้นแค่วันสองวัน ถูกไหมคะ\"\n\n1. นิ้วโป้งชา: ชานิ้วไหนบ้าง ชาตอนไหน มีแรงมือลดลงหรือทำของหล่นบ้างไหม\n2. \"หายจริงๆ\" ที่คุณมายด์อยากได้หน้าตาเป็นยังไง ช่วงนี้มีงานอะไรรออยู่\n3. มีอะไรที่กังวลเป็นพิเศษไหม เคยไปตรวจที่ไหนมาก่อนหรือยัง"
+   },
+   "points": [
+    {
+     "en": "Recaps what she already said and asks her to confirm, instead of asking again how long or where it hurts.",
+     "th": "รีแคปสิ่งที่คนไข้บอกไว้แล้วให้คอนเฟิร์ม ไม่ถามซ้ำว่าปวดมานานแค่ไหนหรือปวดตรงไหน"
+    },
+    {
+     "en": "Follows up the numb thumb: which fingers, when, any weakness or dropping things.",
+     "th": "ถามต่อเรื่องนิ้วโป้งชา ชานิ้วไหน ชาตอนไหน มีแรงลดหรือของหล่นไหม"
+    },
+    {
+     "en": "Finds what she wants from it (\"something that lasts\"), her work pressure, and anything she is worried about.",
+     "th": "หาว่าคนไข้ต้องการอะไรจริงๆ (อยากหายแบบยั่งยืน) งานที่กดดันอยู่ และเรื่องที่กังวล"
+    }
+   ]
+  },
+  {
+   "t": "q",
+   "q": "q2",
+   "type": "long",
+   "stage": {
+    "en": "Why those three",
+    "th": "ทำไมต้อง 3 ข้อนี้"
+   },
+   "prompt": {
+    "en": "Why those three? For each one, say what the answer would change about how you prepare for tomorrow.",
+    "th": "ทำไมถึงเลือก 3 ข้อนี้ บอกทีละข้อว่าคำตอบที่ได้จะเปลี่ยนการเตรียมตัวสำหรับพรุ่งนี้ยังไง"
+   },
+   "points": [
+    {
+     "en": "The thumb: decides whether tomorrow starts with a nerve screen (sensation, reflexes, strength, neural tension) and whether anything needs a doctor first.",
+     "th": "เรื่องนิ้วชา: ตัดสินว่าพรุ่งนี้ต้องเริ่มด้วย Neuro screen (sensation, reflex, กำลัง, neural tension) ไหม และมีอะไรต้องส่งพบแพทย์ก่อนหรือเปล่า"
+    },
+    {
+     "en": "Her goal: she has had five massages that did not last, so the plan has to show her what will be different (her set-up, exercises, why it keeps coming back).",
+     "th": "เป้าหมาย: นวดมา 5 รอบแล้วไม่หาย แผนต้องทำให้เห็นว่ารอบนี้ต่างยังไง (การจัดท่าทำงาน ท่าบริหาร ทำไมถึงกลับมาเป็นซ้ำ)"
+    },
+    {
+     "en": "Her worry: knowing it lets you answer it in the visual presentation instead of leaving her scared.",
+     "th": "เรื่องที่กังวล: ถ้ารู้ก่อนก็ตอบได้ตรงจุดตอน Visual presentation ไม่ปล่อยให้คนไข้กลัวต่อ"
+    }
+   ]
+  },
+  {
+   "t": "reveal",
+   "label": {
+    "en": "What the call found",
+    "th": "สิ่งที่ได้จากการโทร"
+   },
+   "body": {
+    "en": "The numbness is in her right thumb and index finger, mostly after two or three hours at the laptop. It goes when she shakes her hand and stands up. No weakness, she has not dropped anything.\n\nShe moved to a new agency three months ago and works on a 14-inch laptop, on the sofa or in a café. She has a big pitch in two weeks.\n\nNear the end she says quietly that a friend had a slipped disc in the neck and needed surgery, and she has been scared this is the same thing.",
+    "th": "อาการชาเป็นที่นิ้วโป้งกับนิ้วชี้ขวา ส่วนใหญ่ชาหลังนั่งทำงานกับโน้ตบุ๊กติดกัน 2–3 ชั่วโมง สะบัดมือแล้วลุกเดินก็หาย ไม่มีแรงลด ไม่เคยทำของหล่น\n\nเพิ่งย้ายมาอยู่เอเจนซีใหม่ได้ 3 เดือน ใช้โน้ตบุ๊ก 14 นิ้ว นั่งทำงานบนโซฟาบ้าง ร้านกาแฟบ้าง อีก 2 อาทิตย์มี Pitch งานใหญ่\n\nก่อนวางสาย คุณมายด์พูดเบาๆ ว่ามีเพื่อนเป็นหมอนรองกระดูกคอทับเส้นจนต้องผ่าตัด กลัวมากว่าตัวเองจะเป็นแบบเดียวกัน"
+   }
+  },
+  {
+   "t": "q",
+   "q": "q3",
+   "type": "image",
+   "stage": {
+    "en": "The picture on the screen",
+    "th": "รูปที่จะเปิดให้คนไข้ดู"
+   },
+   "prompt": {
+    "en": "Add the picture (or pictures) you will have ready on the iPad when the patient walks in, and say why you chose it.",
+    "th": "ใส่รูป (หรือหลายรูป) ที่จะเตรียมเปิดไว้ใน iPad ตอนคนไข้เดินเข้ามา แล้วบอกว่าทำไมถึงเลือกรูปนี้"
+   },
+   "model": {
+    "en": "A simple picture of the nerve running from the neck down to the thumb and index finger, beside her own set-up (a laptop on the sofa) and a simple better one. It shows her where the numbness comes from, answers the fear of a \"slipped disc like my friend\" honestly, and shows the part she can change before the pitch.",
+    "th": "รูปง่ายๆ ของเส้นประสาทที่วิ่งจากคอลงมาที่นิ้วโป้งกับนิ้วชี้ คู่กับรูปท่านั่งของคนไข้เอง (โน้ตบุ๊กบนโซฟา) เทียบกับการจัดท่าที่ดีกว่า ทำให้เห็นว่าอาการชามาจากไหน ตอบเรื่องที่กลัวว่าจะเป็นแบบเพื่อนอย่างตรงไปตรงมา และเห็นส่วนที่ตัวเองแก้ได้ก่อนวัน Pitch"
+   },
+   "points": [
+    {
+     "en": "The picture is about her: the nerve path to her thumb and index finger, or her own laptop posture.",
+     "th": "รูปเกี่ยวกับคนไข้คนนี้จริงๆ เส้นประสาทที่ไปนิ้วโป้งกับนิ้วชี้ หรือท่านั่งกับโน้ตบุ๊กของเขาเอง"
+    },
+    {
+     "en": "Simple enough to explain in a minute; one or two pictures, not an anatomy chart.",
+     "th": "ง่ายพอที่จะอธิบายได้ในหนึ่งนาที รูปเดียวหรือสองรูป ไม่ใช่แผ่นกายวิภาคเต็มๆ"
+    },
+    {
+     "en": "The reason links it to her fear and to what she can change.",
+     "th": "เหตุผลเชื่อมกับเรื่องที่คนไข้กลัว และสิ่งที่คนไข้แก้ได้เอง"
+    }
+   ]
+  }
+ ]
+}

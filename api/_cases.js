@@ -6,6 +6,7 @@ const fs = require('fs');
 const path = require('path');
 const vm = require('vm');
 const zlib = require('zlib');
+const V2 = require('./_v2.js');
 
 const ROOT = path.join(__dirname, '..');
 let _cases = null, _answers = null;
@@ -45,6 +46,7 @@ const PROMPTS = {
 
 // Everything Claude needs about one case and question.
 function questionFor(caseId, qk) {
+  if (V2.isV2(caseId)) return V2.questionFor(caseId, qk);
   const c = cases()[caseId];
   if (!c) return null;
   const block = (answers().cases[caseId] || {})[qk];

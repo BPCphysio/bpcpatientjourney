@@ -1,0 +1,402 @@
+{
+ "id": "v2-journey-2",
+ "kind": "journey",
+ "title": {
+  "en": "Back pain on the backswing",
+  "th": "ปวดหลังตอนแบ็กสวิง"
+ },
+ "steps": [
+  {
+   "t": "chat",
+   "label": {
+    "en": "Booking chat on LINE",
+    "th": "แชตจองคิวใน LINE"
+   },
+   "meta": {
+    "en": "Khun Wichai, 55 · Sukhumvit · first visit tomorrow 07:30",
+    "th": "คุณวิชัย อายุ 55 · สาขาสุขุมวิท · มาครั้งแรก พรุ่งนี้ 07:30"
+   },
+   "msgs": [
+    {
+     "from": "pt",
+     "name": {
+      "en": "Khun Wichai",
+      "th": "คุณวิชัย"
+     },
+     "text": {
+      "en": "Lower back pain after golf. Do you have anything early in the morning? I can only come before work.",
+      "th": "ปวดหลังล่างหลังตีกอล์ฟครับ มีคิวเช้าๆ ไหม ผมมาได้แค่ก่อนเข้างาน"
+     }
+    },
+    {
+     "from": "rc",
+     "name": {
+      "en": "BPC reception",
+      "th": "BPC (แอดมิน)"
+     },
+     "text": {
+      "en": "Hello Khun Wichai, thank you for contacting Bangkok Physiotherapy Center 🙏 We have 07:30 tomorrow at Sukhumvit. Could you tell us a little about the pain?",
+      "th": "สวัสดีค่ะคุณวิชัย ขอบคุณที่ติดต่อ Bangkok Physiotherapy Center นะคะ 🙏 พรุ่งนี้มีคิว 07:30 ที่สาขาสุขุมวิทค่ะ ขอสอบถามอาการเพิ่มนิดนึงนะคะ"
+     }
+    },
+    {
+     "from": "pt",
+     "name": {
+      "en": "Khun Wichai",
+      "th": "คุณวิชัย"
+     },
+     "text": {
+      "en": "Right side, low down. Mostly the day after golf. I play every Saturday with clients and there's a client tournament next month.",
+      "th": "ข้างขวา ต่ำๆ ครับ ปวดหนักวันรุ่งขึ้นหลังตีกอล์ฟ ตีทุกเสาร์กับลูกค้า เดือนหน้ามีทัวร์นาเมนต์กับลูกค้าด้วย"
+     }
+    },
+    {
+     "from": "pt",
+     "name": {
+      "en": "Khun Wichai",
+      "th": "คุณวิชัย"
+     },
+     "text": {
+      "en": "A friend of mine had an injection and it fixed his back. Can you tell me tomorrow if I need one? I don't have time for a long course.",
+      "th": "เพื่อนผมไปฉีดยาแล้วหายเลย พรุ่งนี้บอกผมได้ไหมว่าต้องฉีดหรือเปล่า ผมไม่ค่อยมีเวลามาบ่อยๆ"
+     }
+    },
+    {
+     "from": "rc",
+     "name": {
+      "en": "BPC reception",
+      "th": "BPC (แอดมิน)"
+     },
+     "text": {
+      "en": "Noted 🙏 Tomorrow 07:30 at Sukhumvit. Your physiotherapist specialises in back pain and sports injuries.",
+      "th": "รับทราบค่ะ 🙏 พรุ่งนี้ 07:30 ที่สาขาสุขุมวิทนะคะ นักกายภาพบำบัดที่ดูแลเชี่ยวชาญเรื่องปวดหลังและการบาดเจ็บจากกีฬาค่ะ"
+     }
+    }
+   ]
+  },
+  {
+   "t": "q",
+   "q": "q0",
+   "type": "mc",
+   "stage": {
+    "en": "Before you call",
+    "th": "ก่อนโทร"
+   },
+   "prompt": {
+    "en": "What do you plan for the first 30 seconds of the call?",
+    "th": "คุณวางแผน 30 วินาทีแรกของสายไว้ยังไง"
+   },
+   "options": [
+    {
+     "en": "Tell him straight away that injections are a doctor's decision, so he knows where he stands.",
+     "th": "บอกเลยว่าเรื่องฉีดยาเป็นการตัดสินใจของแพทย์ คนไข้จะได้รู้ตั้งแต่แรก"
+    },
+    {
+     "en": "Keep it to one minute: confirm the time and hang up. He is busy.",
+     "th": "คุยแค่นาทีเดียว คอนเฟิร์มเวลาแล้ววาง คนไข้ยุ่ง"
+    },
+    {
+     "en": "Ask him to describe his golf swing in detail so you can analyse it before he arrives.",
+     "th": "ให้คนไข้อธิบายวงสวิงอย่างละเอียด จะได้วิเคราะห์ก่อนมา"
+    },
+    {
+     "en": "Introduce yourself, recap \"right low back, worse the day after golf, tournament next month\", and say you will answer the injection question properly tomorrow once you have examined him.",
+     "th": "แนะนำตัว รีแคปว่า \"ปวดหลังล่างขวา หนักวันรุ่งขึ้นหลังตีกอล์ฟ เดือนหน้ามีทัวร์นาเมนต์\" แล้วบอกว่าเรื่องฉีดยาจะตอบให้ชัดพรุ่งนี้หลังตรวจ"
+    }
+   ],
+   "answer": 3,
+   "why": {
+    "en": "He asked a direct question; acknowledging it on the call shows you read his message and builds trust, without promising anything before the examination. A busy patient still deserves the recap; it costs 20 seconds and he will remember your name. Swing analysis belongs in the clinic, not on the phone.",
+    "th": "คนไข้ถามตรงๆ การรับรู้คำถามในสายแสดงว่าเราอ่านข้อความเขาจริงและสร้าง Trust โดยไม่สัญญาอะไรก่อนตรวจ คนไข้ยุ่งก็ยังควรได้การรีแคป ใช้เวลาแค่ 20 วินาที แล้วคนไข้จะจำชื่อเราได้ ส่วนวิเคราะห์วงสวิงทำที่คลินิก ไม่ใช่ทางโทรศัพท์"
+   }
+  },
+  {
+   "t": "q",
+   "q": "q1",
+   "type": "long",
+   "stage": {
+    "en": "The call",
+    "th": "โทรหาคนไข้"
+   },
+   "prompt": {
+    "en": "Write how you open the call and the two or three questions you ask. 2–3 minutes in all.",
+    "th": "เขียนประโยคเปิดสาย และคำถาม 2–3 ข้อที่จะถาม ทั้งสายไม่เกิน 2–3 นาที"
+   },
+   "model": {
+    "en": "\"Good evening Khun Wichai, this is [your name], your physiotherapist for 07:30 tomorrow at Sukhumvit. I've read your messages: right low back, worse the day after golf, and a client tournament next month. About the injection, I'll give you a proper answer tomorrow once I've examined you.\"\n\n1. Which part of the swing hurts, and is there any pain, numbness or tingling down the leg?\n2. How is it the rest of the week: mornings, sitting at work, driving?\n3. What would make the tournament a success for him?",
+    "th": "\"สวัสดีครับคุณวิชัย [ชื่อคุณ] นะครับ นักกายภาพบำบัดที่จะดูแลคุณวิชัยพรุ่งนี้ 07:30 ที่สุขุมวิทครับ อ่านข้อความแล้วนะครับ ปวดหลังล่างขวา หนักวันรุ่งขึ้นหลังตีกอล์ฟ แล้วเดือนหน้ามีทัวร์นาเมนต์กับลูกค้า เรื่องฉีดยาพรุ่งนี้ตรวจแล้วจะตอบให้ชัดเจนนะครับ\"\n\n1. ช่วงไหนของวงสวิงที่เจ็บ มีปวดร้าว ชา หรือเสียวลงขาบ้างไหม\n2. วันอื่นๆ เป็นยังไง ตอนเช้า ตอนนั่งทำงาน ตอนขับรถ\n3. ทัวร์นาเมนต์นี้ ถ้าจะให้ออกมาดี สำหรับคุณวิชัยคือแบบไหน"
+   },
+   "points": [
+    {
+     "en": "Recaps his message, including the tournament.",
+     "th": "รีแคปข้อความของคนไข้ รวมถึงเรื่องทัวร์นาเมนต์"
+    },
+    {
+     "en": "Acknowledges the injection question without promising anything.",
+     "th": "รับรู้คำถามเรื่องฉีดยา โดยไม่สัญญาอะไร"
+    },
+    {
+     "en": "Screens severity: leg symptoms, mornings, sitting.",
+     "th": "Screen severity อาการลงขา ตอนเช้า การนั่ง"
+    },
+    {
+     "en": "Finds his real goal for the tournament.",
+     "th": "หาเป้าหมายจริงของคนไข้สำหรับทัวร์นาเมนต์"
+    }
+   ]
+  },
+  {
+   "t": "reveal",
+   "label": {
+    "en": "What the call found",
+    "th": "สิ่งที่ได้จากการโทร"
+   },
+   "body": {
+    "en": "It hurts at the top of the backswing and when he bends to tee up. No leg pain, no numbness. Mornings are stiff for about ten minutes, then fine. Sitting is fine.\n\nHe is the chief financial officer of a trading company; golf is where he meets clients. He doesn't care about his score: \"I just don't want to be limping round the course in front of my clients.\" He has hit 200 balls at the driving range twice a week this month to get ready.",
+    "th": "เจ็บตอนขึ้นแบ็กสวิงสุด กับตอนก้มตัวปักทีออฟ ไม่ร้าวลงขา ไม่ชา ตอนเช้าตึงประมาณ 10 นาทีแล้วหาย นั่งทำงานได้ปกติ\n\nคุณวิชัยเป็น CFO บริษัทเทรดดิ้ง สนามกอล์ฟคือที่เจอลูกค้า เขาไม่ได้สนใจสกอร์ \"ผมแค่ไม่อยากเดินกะเผลกให้ลูกค้าเห็น\" เดือนนี้ไปไดรฟ์กอล์ฟ 200 ลูก อาทิตย์ละ 2 ครั้งเพื่อเตรียมตัว"
+   }
+  },
+  {
+   "t": "q",
+   "q": "q2",
+   "type": "image",
+   "stage": {
+    "en": "Prepare",
+    "th": "เตรียมตัว"
+   },
+   "prompt": {
+    "en": "Add the picture you will have ready on the iPad tomorrow for this patient, and say why.",
+    "th": "ใส่รูปที่จะเตรียมไว้ใน iPad สำหรับคนไข้คนนี้พรุ่งนี้ แล้วบอกว่าทำไม"
+   },
+   "model": {
+    "en": "A simple picture of the top of the golf swing showing the hips and the lower back: when the hips can't turn, the lower back turns instead. It is about his swing, not anatomy, and it lets him see why 200 balls twice a week made it worse.",
+    "th": "รูปจังหวะแบ็กสวิงสุดแบบง่ายๆ ให้เห็นสะโพกกับหลังล่าง ถ้าสะโพกหมุนไม่ได้ หลังล่างต้องหมุนแทน เป็นรูปเกี่ยวกับวงสวิงของเขา ไม่ใช่กายวิภาคทั่วไป และทำให้เห็นว่าทำไมการตี 200 ลูกอาทิตย์ละ 2 ครั้งถึงทำให้แย่ลง"
+   },
+   "points": [
+    {
+     "en": "About his golf swing, not a general spine picture.",
+     "th": "เกี่ยวกับวงสวิงของคนไข้ ไม่ใช่รูปกระดูกสันหลังทั่วไป"
+    },
+    {
+     "en": "Simple enough for a busy executive to get in one look.",
+     "th": "ง่ายพอที่ผู้บริหารที่ยุ่งจะเข้าใจในทีเดียว"
+    }
+   ]
+  },
+  {
+   "t": "q",
+   "q": "q3",
+   "type": "short",
+   "stage": {
+    "en": "The golden minute",
+    "th": "Golden minute"
+   },
+   "prompt": {
+    "en": "The patient walks in. What is the first thing you say?",
+    "th": "คนไข้เดินเข้ามา ประโยคแรกที่คุณจะพูดคืออะไร"
+   },
+   "model": {
+    "en": "\"Good morning Khun Wichai, I'm [your name], we spoke last night. Thanks for coming in so early. Let's get you ready to walk that course in front of your clients.\"",
+    "th": "\"สวัสดีครับคุณวิชัย [ชื่อคุณ] ครับ ที่คุยกันเมื่อคืน ขอบคุณที่มาแต่เช้านะครับ วันนี้เรามาเตรียมให้คุณวิชัยเดินสนามต่อหน้าลูกค้าได้สบายๆ กันครับ\""
+   },
+   "points": [
+    {
+     "en": "Greets the patient by name and reminds them who you are from the call.",
+     "th": "ทักชื่อคนไข้ และให้คนไข้จำได้ว่าเราคือคนที่โทรไป"
+    },
+    {
+     "en": "Picks up something specific from the call, so the patient feels remembered.",
+     "th": "หยิบเรื่องที่คุยกันในสายขึ้นมา ให้คนไข้รู้สึกว่าเราจำเขาได้"
+    },
+    {
+     "en": "Short and warm, with no wall between you; no form-filling first.",
+     "th": "สั้น อบอุ่น ไม่มีกำแพง ไม่ใช่เริ่มด้วยการกรอกฟอร์ม"
+    }
+   ]
+  },
+  {
+   "t": "q",
+   "q": "q4",
+   "type": "long",
+   "stage": {
+    "en": "History and examination",
+    "th": "ซักประวัติและตรวจร่างกาย"
+   },
+   "prompt": {
+    "en": "What do you still need to find out about how this started, what are your three differential diagnoses, and what baseline will you measure before you treat?",
+    "th": "ยังต้องซักอะไรเพิ่มเกี่ยวกับกลไกการบาดเจ็บ Differential diagnosis 3 ข้อของคุณคืออะไร และจะวัด Baseline อะไรก่อนรักษา"
+   },
+   "model": {
+    "en": "Mechanism: which club and which part of the swing, how many balls, what changed this month (the range sessions).\nDifferentials: lumbar facet joint irritation, a muscle strain (quadratus lumborum or erector spinae), sacroiliac joint pain; limited hip rotation as the contributing factor.\nBaseline: pain in a standing extension-rotation to the right and in a mimed backswing (0–10), forward bend fingertip-to-floor distance, hip internal rotation both sides.",
+    "th": "กลไก: ไม้ไหน ช่วงไหนของวงสวิง ตีกี่ลูก เดือนนี้มีอะไรเปลี่ยน (ไปไดรฟ์บ่อยขึ้น)\nDifferential: Lumbar facet joint irritation, Muscle strain (QL หรือ Erector spinae), SIJ pain โดยมี Hip rotation ที่จำกัดเป็น Contributing factor\nBaseline: Pain score ตอนยืนแอ่น-บิดไปขวา และตอนทำท่าแบ็กสวิง (0–10) ระยะปลายนิ้วถึงพื้นตอนก้ม และ Hip internal rotation ทั้งสองข้าง"
+   },
+   "points": [
+    {
+     "en": "Pins down the mechanism, including the change in load (the range sessions).",
+     "th": "หากลไกให้ชัด รวมถึงโหลดที่เปลี่ยน (การไปไดรฟ์)"
+    },
+    {
+     "en": "Three sensible differentials for one-sided low back pain on rotation, and the hip as a contributing factor.",
+     "th": "Differential 3 ข้อที่สมเหตุสมผลสำหรับปวดหลังข้างเดียวตอนบิด และสะโพกเป็น Contributing factor"
+    },
+    {
+     "en": "A numerical baseline related to his swing.",
+     "th": "Baseline เป็นตัวเลขที่เกี่ยวกับวงสวิง"
+    }
+   ]
+  },
+  {
+   "t": "reveal",
+   "label": {
+    "en": "What you found",
+    "th": "ผลการซักประวัติและตรวจร่างกาย"
+   },
+   "body": {
+    "en": "Standing extension with rotation to the right reproduces his pain. Bending forward is stiff but not painful. Hip internal rotation is limited on both sides, more on the right. Straight leg raise negative, neurological examination normal.\n\nBefore treatment: mimed backswing 6/10, fingertips 30 cm from the floor. After treatment: 3/10, 18 cm.",
+    "th": "ยืนแอ่นหลังร่วมกับบิดไปขวาแล้วเจ็บแบบเดียวกับที่เป็น ก้มตัวตึงแต่ไม่เจ็บ Hip internal rotation จำกัดทั้งสองข้าง ข้างขวามากกว่า SLR negative ตรวจระบบประสาทปกติ\n\nก่อนรักษา: ท่าแบ็กสวิงเจ็บ 6/10 ก้มแล้วปลายนิ้วห่างพื้น 30 ซม. หลังรักษา: 3/10 ห่างพื้น 18 ซม."
+   }
+  },
+  {
+   "t": "q",
+   "q": "q5",
+   "type": "long",
+   "stage": {
+    "en": "Visual presentation",
+    "th": "Visual presentation"
+   },
+   "prompt": {
+    "en": "Tell the patient their story in four or five sentences, the way you would say it in the room with the picture on the screen.",
+    "th": "เล่าเรื่องของคนไข้ให้คนไข้ฟังใน 4–5 ประโยค แบบที่จะพูดจริงในห้องตอนเปิดรูปบนจอ"
+   },
+   "model": {
+    "en": "\"Look at your backswing here [picture]. Your hips hardly turn, especially the right, so every swing your lower back does the turning for them. 200 balls twice a week was too much for those small joints, which is why it hurts at the top of the swing. You don't need an injection: your nerves are fine and it improved by half today. Two weeks of freeing the hips, three exercises at home and fewer range balls, and you'll walk that tournament comfortably.\"",
+    "th": "\"ดูแบ็กสวิงของคุณวิชัยตรงนี้นะครับ [รูป] สะโพกแทบไม่หมุนเลย โดยเฉพาะข้างขวา ทุกครั้งที่สวิงหลังล่างเลยต้องหมุนแทน ตี 200 ลูกอาทิตย์ละ 2 ครั้งมันเยอะเกินสำหรับข้อต่อเล็กๆ ตรงนี้ เลยเจ็บตอนขึ้นแบ็กสวิงสุด เรื่องฉีดยายังไม่จำเป็นครับ เส้นประสาทปกติดี แล้ววันนี้ก็ดีขึ้นครึ่งนึงแล้ว 2 อาทิตย์นี้เราคลายสะโพก ทำท่าบริหาร 3 ท่าที่บ้าน ลดลูกที่ไดรฟ์ลงหน่อย ทัวร์นาเมนต์เดินสนามสบายแน่นอนครับ\""
+   },
+   "points": [
+    {
+     "en": "Explains the cause through his swing and the picture.",
+     "th": "อธิบายสาเหตุผ่านวงสวิงและรูป"
+    },
+    {
+     "en": "Answers the injection question honestly with the findings.",
+     "th": "ตอบเรื่องฉีดยาอย่างตรงไปตรงมาด้วยผลตรวจ"
+    },
+    {
+     "en": "Says what he must change (range load) and do (exercises).",
+     "th": "บอกสิ่งที่ต้องเปลี่ยน (ปริมาณการซ้อม) และต้องทำ (ท่าบริหาร)"
+    },
+    {
+     "en": "Links to his goal: walking the tournament in front of his clients.",
+     "th": "เชื่อมกับเป้าหมาย เดินสนามต่อหน้าลูกค้าได้"
+    }
+   ]
+  },
+  {
+   "t": "q",
+   "q": "q6",
+   "type": "mc",
+   "stage": {
+    "en": "Re-assess and the next visit",
+    "th": "Re-assess และนัดครั้งถัดไป"
+   },
+   "prompt": {
+    "en": "Treatment is done. What do you say?",
+    "th": "รักษาเสร็จแล้ว คุณจะพูดว่าอะไร"
+   },
+   "options": [
+    {
+     "en": "\"Feeling better? Great. Book whenever suits you.\"",
+     "th": "\"ดีขึ้นไหมครับ ดีครับ สะดวกเมื่อไหร่จองได้เลย\""
+    },
+    {
+     "en": "\"The backswing went from 6 to 3, and you bend 12 cm further. I recommend twice a week for two weeks, then once before the tournament. Same time, 07:30 on Tuesday and Friday?\"",
+     "th": "\"แบ็กสวิงจาก 6 เหลือ 3 ก้มลงได้ลึกขึ้น 12 ซม. แนะนำมาอาทิตย์ละ 2 ครั้ง 2 อาทิตย์ แล้วมาอีกครั้งก่อนทัวร์นาเมนต์ เวลาเดิม 07:30 วันอังคารกับศุกร์สะดวกไหมครับ\""
+    },
+    {
+     "en": "\"You'll need ten sessions minimum. Shall I book them all now?\"",
+     "th": "\"ต้องมาอย่างน้อย 10 ครั้งนะครับ จองให้ทั้งหมดเลยไหมครับ\""
+    },
+    {
+     "en": "\"Come back if it still hurts after the tournament.\"",
+     "th": "\"ถ้าหลังทัวร์นาเมนต์ยังเจ็บค่อยกลับมานะครับ\""
+    }
+   ],
+   "answer": 1,
+   "why": {
+    "en": "He measures everything at work: give him the numbers. A specific plan fitted to his 07:30 slot and his tournament respects his time. Ten sessions up front sounds like a sales order; \"come back after\" sends him to the tournament unprepared.",
+    "th": "คนไข้เป็นคนที่วัดผลทุกอย่างในงาน ให้ตัวเลขเขา แผนที่ชัดและเข้ากับเวลา 07:30 กับวันทัวร์นาเมนต์แสดงว่าเราเคารพเวลาเขา บอก 10 ครั้งตั้งแต่แรกฟังเหมือนการขาย ส่วน \"ค่อยกลับมา\" คือปล่อยให้ไปแข่งโดยไม่ได้เตรียม"
+   }
+  },
+  {
+   "t": "q",
+   "q": "q7",
+   "type": "mc",
+   "stage": {
+    "en": "Package",
+    "th": "แพ็กเกจ"
+   },
+   "prompt": {
+    "en": "How do you bring up the package?",
+    "th": "คุณจะพูดเรื่องแพ็กเกจยังไง"
+   },
+   "options": [
+    {
+     "en": "Tell him the package is only available today, so he should decide now.",
+     "th": "บอกว่าแพ็กเกจมีถึงวันนี้เท่านั้น ให้ตัดสินใจเลย"
+    },
+    {
+     "en": "Skip it; he's an executive and will ask if he wants one.",
+     "th": "ไม่ต้องพูด เป็นผู้บริหาร ถ้าอยากได้เขาจะถามเอง"
+    },
+    {
+     "en": "Explain why five sessions fit the plan to the tournament, give the price, say reception can book them, and leave him to it.",
+     "th": "อธิบายว่าทำไม 5 ครั้งถึงพอดีกับแผนก่อนทัวร์นาเมนต์ บอกราคา บอกว่า RC จองให้ได้ แล้วปล่อยให้ตัดสินใจเอง"
+    },
+    {
+     "en": "Ask reception to call him later today about the package.",
+     "th": "ให้ RC โทรหาคนไข้ตอนบ่ายเรื่องแพ็กเกจ"
+    }
+   ],
+   "answer": 2,
+   "why": {
+    "en": "Same rule for everyone: explain why, give the price, step back. A deadline invented to push a sale breaks trust, and a phone call later is pressure he did not ask for.",
+    "th": "กฎเดียวกันกับทุกคน อธิบายเหตุผล บอกราคา แล้วถอยออกมา การสร้างเดดไลน์เพื่อเร่งขายทำลาย Trust และการโทรตามทีหลังก็คือการกดดันที่คนไข้ไม่ได้ขอ"
+   }
+  },
+  {
+   "t": "q",
+   "q": "q8",
+   "type": "long",
+   "stage": {
+    "en": "LINE follow-up",
+    "th": "สรุปทาง LINE"
+   },
+   "prompt": {
+    "en": "Write the first-visit summary you send on LINE, exactly as you would send it.",
+    "th": "เขียนข้อความสรุปหลังมาครั้งแรกที่จะส่งทาง LINE ให้เหมือนที่จะส่งจริง"
+   },
+   "model": {
+    "en": "Short and organised for a busy reader: the problem (hips not turning, the back turning instead), three exercises with how often, a range limit for now (for example 50 balls, no driver), the plan to the tournament, and the next appointment.",
+    "th": "สั้นและเป็นข้อๆ สำหรับคนยุ่ง: ปัญหาคืออะไร (สะโพกไม่หมุน หลังเลยหมุนแทน) ท่าบริหาร 3 ท่าพร้อมจำนวน ลิมิตการซ้อมช่วงนี้ (เช่น ไม่เกิน 50 ลูก งดไดรเวอร์) แผนถึงวันทัวร์นาเมนต์ และนัดครั้งถัดไป"
+   },
+   "points": [
+    {
+     "en": "Sent the same day or the next morning, never left to the 72-hour limit.",
+     "th": "ส่งวันเดียวกันหรือเช้าวันรุ่งขึ้น ไม่รอจนใกล้ 72 ชั่วโมง"
+    },
+    {
+     "en": "Explains the problem in words the patient will understand when they read it again.",
+     "th": "อธิบายปัญหาด้วยภาษาที่คนไข้อ่านซ้ำแล้วเข้าใจ"
+    },
+    {
+     "en": "Clear limits on practice until the next visit.",
+     "th": "บอกลิมิตการซ้อมให้ชัดจนถึงนัดครั้งหน้า"
+    },
+    {
+     "en": "Short and easy to scan for a busy executive.",
+     "th": "สั้น อ่านง่าย เหมาะกับผู้บริหารที่ยุ่ง"
+    }
+   ]
+  }
+ ]
+}

@@ -10,6 +10,7 @@ const sdk = require('@anthropic-ai/sdk');
 const { GUIDE, GUIDE_VERSION } = require('./_guide.js');
 const { sql, isMedia } = require('./_db.js');
 const { questionFor } = require('./_cases.js');
+const V2 = require('./_v2.js');
 
 const Anthropic = sdk.default || sdk;
 // The clinic chose the cheapest model to start with. To change it, set
@@ -55,8 +56,8 @@ function caseBlock(q, examples) {
   ].join('\n');
   return [
     `CASE: ${clip(c.title, 120)}`,
-    `What reception received (the chart before the call):\n${clip(c.brief, 3000)}`,
-    c.reveal ? `What the call actually found (shown to the junior only after they answered):\n${clip(c.reveal, 3000)}` : '',
+    `${c.briefLabel || 'What reception received (the chart before the call)'}:\n${clip(c.brief, 5000)}`,
+    c.reveal ? `${c.revealLabel || 'What the call actually found (shown to the junior only after they answered)'}:\n${clip(c.reveal, 5000)}` : '',
     `QUESTION THE JUNIOR ANSWERED: ${clip(qq.prompt, 600)}`,
     qq.model ? `The clinic's model answer:\n${clip(qq.model, 2000)}` : '',
     pts ? `Key points (a guide, not a checklist):\n${pts}` : '',
@@ -81,7 +82,10 @@ async function examplesFor(id, caseId, qk) {
   });
   const ok = rows.filter(r => scored(r.m));
   const same = ok.filter(r => r.scenario_id === caseId).slice(0, 10).map(r => one(r, true));
-  const other = ok.filter(r => r.scenario_id !== caseId && String(r.m.comment || '').trim() && r.m.commentBy !== 'claude')
+  // other cases of the same kind only: version 1 with version 1, a version 2
+  // call with version 2 calls, and so on (their questions line up)
+  const family = x => V2.isV2(x) ? V2.kindOf(x) : 'v1';
+  const other = ok.filter(r => r.scenario_id !== caseId && family(r.scenario_id) === family(caseId) && String(r.m.comment || '').trim() && r.m.commentBy !== 'claude')
     .slice(0, 6).map(r => one(r, false));
   return same.concat(other);
 }
@@ -146,10 +150,10 @@ async function callClaude(q, examples, text, images, lang) {
 // and that has no up-to-date reading. Returns the answer's ai object.
 async function readStored(id, opts) {
   if (!process.env.ANTHROPIC_API_KEY) return null;
-  const only = (opts && opts.only) || QKEYS;
   const rows = await sql()`SELECT id, scenario_id, rec, marks, ai FROM responses WHERE id = ${id}`;
   if (!rows.length) return null;
   const r = rows[0];
+  const only = (opts && opts.only) || (V2.isV2(r.scenario_id) ? V2.writtenKeys(r.scenario_id) : QKEYS);
   const answers = (r.rec && r.rec.answers) || {};
   const ai = Object.assign({}, r.ai || {});
   let changed = false;
@@ -159,7 +163,7 @@ async function readStored(id, opts) {
     const q = questionFor(r.scenario_id, qk);
     if (!q) return;
     const text = String(answers[qk + ':text'] || '').trim();
-    const imgKeys = qk === 'q3' ? ((r.rec.media || []).filter(k => k.indexOf('q3:img') === 0 && isMedia(k))) : [];
+    const imgKeys = (r.rec.media || []).filter(k => k.indexOf(qk + ':img') === 0 && isMedia(k));
     if (text.replace(/\s/g, '').length < 3 && !imgKeys.length) return;
     const examples = await examplesFor(id, r.scenario_id, qk);
     const fp = fingerprint(qk, text, imgKeys.length, examples);

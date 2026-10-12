@@ -1,0 +1,402 @@
+{
+ "id": "v2-journey-1",
+ "kind": "journey",
+ "title": {
+  "en": "The yoga teacher",
+  "th": "ครูโยคะ"
+ },
+ "steps": [
+  {
+   "t": "chat",
+   "label": {
+    "en": "Booking chat on LINE",
+    "th": "แชตจองคิวใน LINE"
+   },
+   "meta": {
+    "en": "Khun Nan, 34 · Sathorn · first visit tomorrow 10:00",
+    "th": "คุณแนน อายุ 34 · สาขาสาทร · มาครั้งแรก พรุ่งนี้ 10:00"
+   },
+   "msgs": [
+    {
+     "from": "pt",
+     "name": {
+      "en": "Khun Nan",
+      "th": "คุณแนน"
+     },
+     "text": {
+      "en": "Hi, I'd like to book for my right knee please. It's been hurting since yoga last week.",
+      "th": "สวัสดีค่ะ อยากจองคิวเรื่องเข่าขวาค่ะ เจ็บตั้งแต่เล่นโยคะเมื่ออาทิตย์ที่แล้ว"
+     }
+    },
+    {
+     "from": "rc",
+     "name": {
+      "en": "BPC reception",
+      "th": "BPC (แอดมิน)"
+     },
+     "text": {
+      "en": "Hello Khun Nan, thank you for contacting Bangkok Physiotherapy Center 🙏 Could you tell us a little more about the pain?",
+      "th": "สวัสดีค่ะคุณแนน ขอบคุณที่ติดต่อ Bangkok Physiotherapy Center นะคะ 🙏 ขอสอบถามอาการเพิ่มเติมนิดนึงนะคะ"
+     }
+    },
+    {
+     "from": "pt",
+     "name": {
+      "en": "Khun Nan",
+      "th": "คุณแนน"
+     },
+     "text": {
+      "en": "Inside of the right knee. I already put all this in the form on your website 😅",
+      "th": "ด้านในเข่าขวาค่ะ กรอกไปในฟอร์มบนเว็บแล้วนะคะ 😅"
+     }
+    },
+    {
+     "from": "pt",
+     "name": {
+      "en": "Khun Nan",
+      "th": "คุณแนน"
+     },
+     "text": {
+      "en": "I teach yoga, so I need to get back on the mat soon. Can I see someone who knows knees?",
+      "th": "แนนเป็นครูโยคะ ต้องกลับไปสอนให้ได้เร็วๆ ขอคนที่เก่งเรื่องเข่าได้ไหมคะ"
+     }
+    },
+    {
+     "from": "rc",
+     "name": {
+      "en": "BPC reception",
+      "th": "BPC (แอดมิน)"
+     },
+     "text": {
+      "en": "Of course. Tomorrow 10:00 at Sathorn. Don't worry, your physiotherapist specialises in knee pain 🙏",
+      "th": "ได้เลยค่ะ พรุ่งนี้ 10:00 ที่สาขาสาทรนะคะ ไม่ต้องกังวลนะคะ นักกายภาพบำบัดที่ดูแลเชี่ยวชาญเรื่องเข่าโดยตรงค่ะ 🙏"
+     }
+    }
+   ]
+  },
+  {
+   "t": "q",
+   "q": "q0",
+   "type": "mc",
+   "stage": {
+    "en": "Before you call",
+    "th": "ก่อนโทร"
+   },
+   "prompt": {
+    "en": "What do you plan for the first 30 seconds of the call?",
+    "th": "คุณวางแผน 30 วินาทีแรกของสายไว้ยังไง"
+   },
+   "options": [
+    {
+     "en": "Ask her to describe where it hurts and how it started, so you hear it in her own words.",
+     "th": "ให้คนไข้เล่าว่าเจ็บตรงไหน เริ่มยังไง จะได้ฟังจากปากคนไข้เอง"
+    },
+    {
+     "en": "Introduce yourself as her physiotherapist for tomorrow, recap \"inside of the right knee, since yoga last week\", and check that is the only area.",
+     "th": "แนะนำตัวว่าเป็นนักกายภาพบำบัดที่จะดูแลพรุ่งนี้ รีแคปว่า \"เข่าขวาด้านใน เจ็บตั้งแต่โยคะเมื่ออาทิตย์ก่อน\" แล้วเช็กว่าเจ็บที่เดียวใช่ไหม"
+    },
+    {
+     "en": "Explain the 75-minute first visit and the prices before anything else.",
+     "th": "อธิบายเรื่องเวลา 75 นาทีและราคาก่อนเรื่องอื่น"
+    },
+    {
+     "en": "Skip the call; she seemed tired of repeating herself.",
+     "th": "ไม่ต้องโทร คนไข้ดูเบื่อที่ต้องเล่าซ้ำแล้ว"
+    }
+   ],
+   "answer": 1,
+   "why": {
+    "en": "She has told the website form and reception already. Asking again tells her nobody read it, and she was promised a knee specialist. A recap shows you did your homework, so she starts trusting you before she arrives. Skipping the call throws away the golden minute.",
+    "th": "คนไข้กรอกฟอร์มบนเว็บและเล่าให้ RC ฟังไปแล้ว ถ้าถามซ้ำเท่ากับบอกว่าไม่มีใครอ่าน ทั้งที่ RC บอกว่าจะได้คนที่เชี่ยวชาญเรื่องเข่า การรีแคปแสดงว่าเราทำการบ้านมา คนไข้เริ่มไว้ใจตั้งแต่ยังไม่มาถึง ส่วนการไม่โทรเลยก็คือทิ้ง Golden minute ไป"
+   }
+  },
+  {
+   "t": "q",
+   "q": "q1",
+   "type": "long",
+   "stage": {
+    "en": "The call",
+    "th": "โทรหาคนไข้"
+   },
+   "prompt": {
+    "en": "Write how you open the call and the two or three questions you ask. 2–3 minutes in all.",
+    "th": "เขียนประโยคเปิดสาย และคำถาม 2–3 ข้อที่จะถาม ทั้งสายไม่เกิน 2–3 นาที"
+   },
+   "model": {
+    "en": "\"Hello Khun Nan, this is [your name], the physiotherapist looking after you tomorrow at Sathorn. I've read your form: inside of the right knee since yoga last week. Is it only the right knee?\"\n\n1. Which poses hurt now, and can she teach at the moment?\n2. Any swelling, clicking or locking?\n3. When does she need to be back, and is anything coming up?",
+    "th": "\"สวัสดีค่ะคุณแนน [ชื่อคุณ] นะคะ เป็นนักกายภาพบำบัดที่จะดูแลคุณแนนพรุ่งนี้ที่สาทรค่ะ อ่านฟอร์มแล้วนะคะ เจ็บเข่าขวาด้านในตั้งแต่เล่นโยคะเมื่ออาทิตย์ก่อน เจ็บแค่ข้างขวาใช่ไหมคะ\"\n\n1. ตอนนี้ท่าไหนที่ทำแล้วเจ็บ ยังสอนได้อยู่ไหม\n2. มีบวม มีเสียงคลิก หรือเข่าล็อกบ้างไหม\n3. ต้องกลับไปสอนเต็มที่เมื่อไหร่ มีงานอะไรรออยู่ไหม"
+   },
+   "points": [
+    {
+     "en": "Says her name and their own, \"your physiotherapist for tomorrow\".",
+     "th": "เรียกชื่อคนไข้ บอกชื่อตัวเองว่าเป็นนักกายภาพบำบัดที่จะดูแลพรุ่งนี้"
+    },
+    {
+     "en": "Recaps instead of re-asking, and confirms it is only the right knee.",
+     "th": "รีแคปแทนการถามซ้ำ และคอนเฟิร์มว่าเจ็บแค่เข่าขวา"
+    },
+    {
+     "en": "Finds the severity: which poses hurt, swelling, clicking or locking.",
+     "th": "หา Severity ท่าไหนเจ็บ บวมไหม มีคลิกหรือล็อกไหม"
+    },
+    {
+     "en": "Finds her goal and deadline.",
+     "th": "หาเป้าหมายและเดดไลน์ของคนไข้"
+    }
+   ]
+  },
+  {
+   "t": "reveal",
+   "label": {
+    "en": "What the call found",
+    "th": "สิ่งที่ได้จากการโทร"
+   },
+   "body": {
+    "en": "The pain is on the inside of the right knee and only in deep bends: lotus and pigeon pose. It clicked once in pigeon pose last Tuesday. No swelling, and walking is fine.\n\nShe leads a yoga teacher training in three weeks and is scared she will have to cancel it.",
+    "th": "เจ็บเข่าขวาด้านใน เฉพาะตอนงอเข่าลึกๆ ท่าดอกบัว (Lotus) กับท่านกพิราบ (Pigeon) เมื่อวันอังคารที่แล้วมีเสียงคลิกหนึ่งครั้งตอนอยู่ในท่า Pigeon ไม่บวม เดินปกติ\n\nอีก 3 อาทิตย์คุณแนนต้องนำคอร์ส Yoga teacher training แล้วกลัวมากว่าจะต้องยกเลิก"
+   }
+  },
+  {
+   "t": "q",
+   "q": "q2",
+   "type": "image",
+   "stage": {
+    "en": "Prepare",
+    "th": "เตรียมตัว"
+   },
+   "prompt": {
+    "en": "Add the picture you will have ready on the iPad tomorrow for this patient, and say why.",
+    "th": "ใส่รูปที่จะเตรียมไว้ใน iPad สำหรับคนไข้คนนี้พรุ่งนี้ แล้วบอกว่าทำไม"
+   },
+   "model": {
+    "en": "Pictures of lotus and pigeon pose, so she can point to the one that hurt (\"which pose was it that day?\"). You both look at the same picture from the first minute, and she sees you prepared for her.",
+    "th": "รูปท่า Lotus กับท่า Pigeon ให้คนไข้ชี้ได้เลยว่าวันนั้นเจ็บท่าไหน ทั้งเราและคนไข้ดูรูปเดียวกันตั้งแต่นาทีแรก และคนไข้เห็นว่าเราเตรียมมาเพื่อเขา"
+   },
+   "points": [
+    {
+     "en": "Specific to her: the yoga poses, or the inside of the knee in a deep bend.",
+     "th": "เฉพาะคนไข้คนนี้ ท่าโยคะ หรือเข่าด้านในตอนงอลึก"
+    },
+    {
+     "en": "Something she can point at and talk about.",
+     "th": "เป็นรูปที่คนไข้ชี้และคุยด้วยได้"
+    }
+   ]
+  },
+  {
+   "t": "q",
+   "q": "q3",
+   "type": "short",
+   "stage": {
+    "en": "The golden minute",
+    "th": "Golden minute"
+   },
+   "prompt": {
+    "en": "The patient walks in. What is the first thing you say?",
+    "th": "คนไข้เดินเข้ามา ประโยคแรกที่คุณจะพูดคืออะไร"
+   },
+   "model": {
+    "en": "\"Hello Khun Nan, I'm [your name], we spoke yesterday. Have you managed any classes since? I've got pigeon and lotus pose ready to show you.\"",
+    "th": "\"สวัสดีค่ะคุณแนน [ชื่อคุณ] นะคะ ที่คุยกันเมื่อวานค่ะ ตั้งแต่เมื่อวานได้สอนบ้างไหมคะ วันนี้เตรียมรูปท่า Pigeon กับ Lotus มาให้ดูด้วยนะคะ\""
+   },
+   "points": [
+    {
+     "en": "Greets the patient by name and reminds them who you are from the call.",
+     "th": "ทักชื่อคนไข้ และให้คนไข้จำได้ว่าเราคือคนที่โทรไป"
+    },
+    {
+     "en": "Picks up something specific from the call, so the patient feels remembered.",
+     "th": "หยิบเรื่องที่คุยกันในสายขึ้นมา ให้คนไข้รู้สึกว่าเราจำเขาได้"
+    },
+    {
+     "en": "Short and warm, with no wall between you; no form-filling first.",
+     "th": "สั้น อบอุ่น ไม่มีกำแพง ไม่ใช่เริ่มด้วยการกรอกฟอร์ม"
+    }
+   ]
+  },
+  {
+   "t": "q",
+   "q": "q4",
+   "type": "long",
+   "stage": {
+    "en": "History and examination",
+    "th": "ซักประวัติและตรวจร่างกาย"
+   },
+   "prompt": {
+    "en": "What do you still need to find out about how this started, what are your three differential diagnoses, and what baseline will you measure before you treat?",
+    "th": "ยังต้องซักอะไรเพิ่มเกี่ยวกับกลไกการบาดเจ็บ Differential diagnosis 3 ข้อของคุณคืออะไร และจะวัด Baseline อะไรก่อนรักษา"
+   },
+   "model": {
+    "en": "Mechanism: the exact pose and angle, and what changed (more classes, a new sequence, preparing for the training).\nDifferentials: medial meniscus irritation, MCL sprain, pes anserine irritation; with stiff hips as a likely contributing factor.\nBaseline: pain in a deep knee bend (0–10), the deepest pain-free bend, and a photo of her pigeon pose.",
+    "th": "กลไก: ท่าไหน องศาไหน แล้วช่วงนี้มีอะไรเปลี่ยน (สอนเยอะขึ้น เปลี่ยน Sequence เตรียมคอร์ส)\nDifferential: Medial meniscus irritation, MCL sprain, Pes anserine irritation และน่าจะมีสะโพกตึงเป็น Contributing factor\nBaseline: Pain score ตอนงอเข่าลึก (0–10) องศางอเข่าที่ไม่เจ็บ และถ่ายรูปท่า Pigeon ไว้เทียบ"
+   },
+   "points": [
+    {
+     "en": "Pins down the mechanism: which pose, which angle, what changed recently.",
+     "th": "หากลไกให้ชัด ท่าไหน องศาไหน ช่วงนี้มีอะไรเปลี่ยน"
+    },
+    {
+     "en": "Three sensible differentials for the inside of the knee in deep bending, plus contributing factors.",
+     "th": "Differential 3 ข้อที่สมเหตุสมผลสำหรับเจ็บเข่าด้านในตอนงอลึก และ Contributing factor"
+    },
+    {
+     "en": "A baseline she can see again after treatment, with numbers.",
+     "th": "Baseline ที่วัดซ้ำหลังรักษาได้ และเป็นตัวเลข"
+    }
+   ]
+  },
+  {
+   "t": "reveal",
+   "label": {
+    "en": "What you found",
+    "th": "ผลการซักประวัติและตรวจร่างกาย"
+   },
+   "body": {
+    "en": "Medial joint line tender. McMurray: a medial click with pain. MCL stress test negative. Right hip internal rotation clearly limited.\n\nBefore treatment: deep knee bend pain 7/10. After treatment: 3/10.",
+    "th": "กดเจ็บที่ Medial joint line, McMurray test มีเสียงคลิกด้านในร่วมกับเจ็บ, MCL stress test negative, Hip internal rotation ขวาจำกัดชัดเจน\n\nก่อนรักษา: Pain score ตอนงอเข่าลึก 7/10 หลังรักษา: 3/10"
+   }
+  },
+  {
+   "t": "q",
+   "q": "q5",
+   "type": "long",
+   "stage": {
+    "en": "Visual presentation",
+    "th": "Visual presentation"
+   },
+   "prompt": {
+    "en": "Tell the patient their story in four or five sentences, the way you would say it in the room with the picture on the screen.",
+    "th": "เล่าเรื่องของคนไข้ให้คนไข้ฟังใน 4–5 ประโยค แบบที่จะพูดจริงในห้องตอนเปิดรูปบนจอ"
+   },
+   "model": {
+    "en": "\"This is your knee from the inside [picture]. The pad here, the meniscus, gets pinched when the knee twists in a deep bend. Your right hip doesn't turn as much as the left, so in pigeon pose the knee twists to make up for it. For the next two weeks we keep you out of deep bends while we free up the hip, and you do these three exercises. If you do, you'll be leading your training in three weeks.\"",
+    "th": "\"นี่คือเข่าของคุณแนนจากด้านในนะคะ [รูป] หมอนรองข้อเข่าตรงนี้ถูกบีบตอนเข่าบิดในท่างอลึก ที่บิดเพราะสะโพกขวาหมุนได้น้อยกว่าข้างซ้าย พอเข้าท่า Pigeon เข่าเลยต้องบิดแทน 2 อาทิตย์นี้เราจะเลี่ยงท่างอลึกไปก่อน ระหว่างนี้คลายสะโพกให้หมุนได้มากขึ้น แล้วคุณแนนทำท่าบริหาร 3 ท่านี้ ถ้าทำได้ตามนี้ อีก 3 อาทิตย์นำคอร์สได้แน่นอนค่ะ\""
+   },
+   "points": [
+    {
+     "en": "Uses the picture and names the problem simply.",
+     "th": "ใช้รูปประกอบ และบอกชื่อปัญหาแบบเข้าใจง่าย"
+    },
+    {
+     "en": "Explains the cause in her terms (the stiff hip makes the knee twist in pigeon pose).",
+     "th": "อธิบายสาเหตุด้วยภาษาของคนไข้ (สะโพกตึงทำให้เข่าบิดในท่า Pigeon)"
+    },
+    {
+     "en": "Says what she must avoid for now and what her part is (the exercises).",
+     "th": "บอกสิ่งที่ต้องเลี่ยงตอนนี้ และหน้าที่ของคนไข้ (ท่าบริหาร)"
+    },
+    {
+     "en": "Links to her goal and timeline honestly.",
+     "th": "เชื่อมกับเป้าหมายและไทม์ไลน์อย่างตรงไปตรงมา"
+    }
+   ]
+  },
+  {
+   "t": "q",
+   "q": "q6",
+   "type": "mc",
+   "stage": {
+    "en": "Re-assess and the next visit",
+    "th": "Re-assess และนัดครั้งถัดไป"
+   },
+   "prompt": {
+    "en": "Treatment is done. What do you say?",
+    "th": "รักษาเสร็จแล้ว คุณจะพูดว่าอะไร"
+   },
+   "options": [
+    {
+     "en": "\"How does it feel, better?\"",
+     "th": "\"เป็นยังไงบ้างคะ ดีขึ้นไหม\""
+    },
+    {
+     "en": "\"You'll need about ten sessions. When are you free next?\"",
+     "th": "\"ต้องมาประมาณ 10 ครั้งนะคะ สะดวกมาอีกวันไหนคะ\""
+    },
+    {
+     "en": "\"Before, the deep bend was 7 out of 10. Now it's 3, so it's more than half better. To keep that going before your training, I recommend twice a week for two weeks. Monday afternoon for the next one?\"",
+     "th": "\"ก่อนรักษางอเข่าลึกเจ็บ 7 เต็ม 10 ตอนนี้เหลือ 3 ดีขึ้นเกินครึ่งแล้วนะคะ เพื่อให้ทันคอร์ส แนะนำมาอาทิตย์ละ 2 ครั้ง 2 อาทิตย์ ครั้งหน้าเป็นวันจันทร์บ่ายสะดวกไหมคะ\""
+    },
+    {
+     "en": "\"Let's see how it goes. Book again if it still hurts.\"",
+     "th": "\"ลองดูอาการก่อนนะคะ ถ้ายังเจ็บค่อยจองมาใหม่\""
+    }
+   ],
+   "answer": 2,
+   "why": {
+    "en": "Numbers she can see, the plan given after she has felt the change, and a specific day tied to her deadline. \"Better?\" gets a polite yes; \"when are you free?\" leaves the decision to chance.",
+    "th": "มีตัวเลขให้คนไข้เห็น บอกแผนหลังคนไข้รู้สึกถึงความเปลี่ยนแปลงแล้ว และเสนอวันที่ชัดเจนผูกกับเดดไลน์ ถาม \"ดีขึ้นไหม\" ได้แค่คำตอบว่าดีขึ้นแบบเกรงใจ ส่วน \"สะดวกวันไหน\" คือปล่อยให้การนัดขึ้นอยู่กับโชค"
+   }
+  },
+  {
+   "t": "q",
+   "q": "q7",
+   "type": "mc",
+   "stage": {
+    "en": "Package",
+    "th": "แพ็กเกจ"
+   },
+   "prompt": {
+    "en": "How do you bring up the package?",
+    "th": "คุณจะพูดเรื่องแพ็กเกจยังไง"
+   },
+   "options": [
+    {
+     "en": "Explain why four sessions (the first ones settle the pain, the later ones get her back into the poses), give the price, say reception can help, then leave the room.",
+     "th": "อธิบายว่าทำไมต้อง 4 ครั้ง (ช่วงแรกลดปวด ช่วงหลังพากลับเข้าท่า) บอกราคา บอกว่าติดต่อ RC ได้ แล้วเดินออกจากห้อง"
+    },
+    {
+     "en": "Wait in the room until she decides.",
+     "th": "รออยู่ในห้องจนกว่าคนไข้จะตัดสินใจ"
+    },
+    {
+     "en": "Don't mention it. Let reception offer it at the desk.",
+     "th": "ไม่ต้องพูดถึง ให้ RC เสนอที่เคาน์เตอร์"
+    },
+    {
+     "en": "Add the package to her bill and explain it next time.",
+     "th": "ใส่แพ็กเกจในบิลไปก่อน แล้วค่อยอธิบายครั้งหน้า"
+    }
+   ],
+   "answer": 0,
+   "why": {
+    "en": "A package is recommended because it is the right plan, so explain why, give the price and leave her the space to decide. Waiting in the room is pressure. Not mentioning it means she may find out later and feel cheated. Never add anything to a bill without consent.",
+    "th": "เราแนะนำแพ็กเกจเพราะเป็นแผนที่เหมาะกับคนไข้ ก็ต้องอธิบายเหตุผล บอกราคา แล้วให้พื้นที่คนไข้ตัดสินใจ การยืนรอในห้องคือการกดดัน การไม่พูดเลยอาจทำให้คนไข้มารู้ทีหลังแล้วรู้สึกว่าโดนหลอก และห้ามเพิ่มอะไรในบิลโดยไม่ได้ขออนุญาต"
+   }
+  },
+  {
+   "t": "q",
+   "q": "q8",
+   "type": "long",
+   "stage": {
+    "en": "LINE follow-up",
+    "th": "สรุปทาง LINE"
+   },
+   "prompt": {
+    "en": "Write the first-visit summary you send on LINE, exactly as you would send it.",
+    "th": "เขียนข้อความสรุปหลังมาครั้งแรกที่จะส่งทาง LINE ให้เหมือนที่จะส่งจริง"
+   },
+   "model": {
+    "en": "Sent that evening: what the problem is in her words, the three exercises with how often, what to avoid in class for now (deep bends, pigeon, lotus), the plan to the training date, and the next appointment.",
+    "th": "ส่งเย็นวันนั้นเลย: ปัญหาคืออะไรด้วยภาษาที่คนไข้เข้าใจ ท่าบริหาร 3 ท่าพร้อมจำนวนครั้ง สิ่งที่ต้องเลี่ยงตอนสอน (ท่างอเข่าลึก Pigeon Lotus) แผนจนถึงวันคอร์ส และนัดครั้งถัดไป"
+   },
+   "points": [
+    {
+     "en": "Sent the same day or the next morning, never left to the 72-hour limit.",
+     "th": "ส่งวันเดียวกันหรือเช้าวันรุ่งขึ้น ไม่รอจนใกล้ 72 ชั่วโมง"
+    },
+    {
+     "en": "Explains the problem in words the patient will understand when they read it again.",
+     "th": "อธิบายปัญหาด้วยภาษาที่คนไข้อ่านซ้ำแล้วเข้าใจ"
+    },
+    {
+     "en": "The exercises with how often, and what to avoid in her classes for now.",
+     "th": "ท่าบริหารพร้อมความถี่ และสิ่งที่ต้องเลี่ยงตอนสอนช่วงนี้"
+    },
+    {
+     "en": "The plan to her training date and the next appointment.",
+     "th": "แผนจนถึงวันคอร์ส และนัดครั้งถัดไป"
+    }
+   ]
+  }
+ ]
+}

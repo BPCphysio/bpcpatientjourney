@@ -11,6 +11,7 @@ pre-arrival, what three questions they'd ask on the call, and why.
 | File | Purpose |
 | --- | --- |
 | `web/` | The trainer staff use (React + Tailwind + shadcn/ui). `cd web && npm run build` writes it to `trainer/`; the address `/` sends people to `/trainer/` (vercel.json). |
+| `web/src/data/v2/` | Version 2 cases (being tested by the seniors, from the clinic staff area): 3 "before the visit", 3 "whole journey", 3 "LINE after the visit", each in English and Thai. A set is two of each kind. The clinic API reads the same files, so Claude marks against what was shown. Version 2 answers are marked by the seniors of the answerer's branch (or someone listed for all branches). |
 | `trainer/` | The built trainer. Generated; rebuild from `web/`, never edit by hand. |
 | `index.html` | The first trainer, kept at `/index.html` as a fallback. The clinic API also reads the 45 cases from it. |
 | `grading/grader.js` | The auto-grader for the two written answers. Runs in the browser; no service, no key, no cost. |

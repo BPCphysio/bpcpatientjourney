@@ -1,0 +1,243 @@
+{
+ "id": "v2-call-2",
+ "kind": "call",
+ "title": {
+  "en": "Booked by his daughter",
+  "th": "ลูกสาวจองให้"
+ },
+ "steps": [
+  {
+   "t": "chat",
+   "label": {
+    "en": "Booking chat on LINE",
+    "th": "แชตจองคิวใน LINE"
+   },
+   "meta": {
+    "en": "Khun Prasert, 67 (booked by his daughter Fern) · Sathorn · first visit tomorrow 10:00",
+    "th": "คุณประเสริฐ อายุ 67 (ลูกสาวคุณเฟิร์นจองให้) · สาขาสาทร · มาครั้งแรก พรุ่งนี้ 10:00"
+   },
+   "msgs": [
+    {
+     "from": "pt",
+     "name": {
+      "en": "Khun Fern",
+      "th": "คุณเฟิร์น"
+     },
+     "text": {
+      "en": "Hello, I'd like to book for my father. He had his right knee replaced three weeks ago and the surgeon said he should continue physiotherapy.",
+      "th": "สวัสดีค่ะ จะจองให้คุณพ่อค่ะ พ่อเพิ่งผ่าตัดเปลี่ยนข้อเข่าขวามาได้ 3 อาทิตย์ หมอบอกให้มาทำกายภาพต่อค่ะ"
+     }
+    },
+    {
+     "from": "rc",
+     "name": {
+      "en": "BPC reception",
+      "th": "BPC (แอดมิน)"
+     },
+     "text": {
+      "en": "Hello Khun Fern, thank you for contacting Bangkok Physiotherapy Center 🙏 May we have your father's name, age and a contact number?",
+      "th": "สวัสดีค่ะคุณเฟิร์น ขอบคุณที่ติดต่อ Bangkok Physiotherapy Center นะคะ 🙏 ขอทราบชื่อคุณพ่อ อายุ แล้วก็เบอร์ติดต่อด้วยนะคะ"
+     }
+    },
+    {
+     "from": "pt",
+     "name": {
+      "en": "Khun Fern",
+      "th": "คุณเฟิร์น"
+     },
+     "text": {
+      "en": "Prasert, 67. Please call me rather than him, he doesn't pick up numbers he doesn't know.",
+      "th": "ประเสริฐค่ะ 67 ปี โทรหาเฟิร์นได้เลยนะคะ พ่อไม่ค่อยรับเบอร์แปลก"
+     }
+    },
+    {
+     "from": "sys",
+     "text": {
+      "en": "[Photo: the surgeon's referral letter]",
+      "th": "[รูป: ใบส่งตัวจากคุณหมอ]"
+     }
+    },
+    {
+     "from": "pt",
+     "name": {
+      "en": "Khun Fern",
+      "th": "คุณเฟิร์น"
+     },
+     "text": {
+      "en": "One more thing. Dad doesn't really like doing the exercises. He did them at home for two or three days and then stopped, says they hurt. He'd rather have a massage 😅",
+      "th": "อีกอย่างค่ะ พ่อไม่ค่อยชอบทำท่าบริหาร ทำที่บ้านได้สองสามวันก็เลิก บ่นว่าเจ็บ อยากให้นวดมากกว่า 😅"
+     }
+    },
+    {
+     "from": "rc",
+     "name": {
+      "en": "BPC reception",
+      "th": "BPC (แอดมิน)"
+     },
+     "text": {
+      "en": "Noted, thank you. You're booked for tomorrow 10:00 at Sathorn. There is parking right in front of the clinic.",
+      "th": "รับทราบค่ะ ได้คิวพรุ่งนี้ 10:00 ที่สาขาสาทรนะคะ มีที่จอดรถหน้าคลินิกเลยค่ะ"
+     }
+    },
+    {
+     "from": "pt",
+     "name": {
+      "en": "Khun Fern",
+      "th": "คุณเฟิร์น"
+     },
+     "text": {
+      "en": "Thank you, I'll bring him myself.",
+      "th": "ขอบคุณค่ะ เดี๋ยวเฟิร์นพาพ่อไปเองค่ะ"
+     }
+    }
+   ]
+  },
+  {
+   "t": "note",
+   "label": {
+    "en": "Reception's summary in your schedule",
+    "th": "สรุปที่ RC ใส่ไว้ในตาราง"
+   },
+   "body": {
+    "en": "R total knee replacement 3 weeks ago, referred by surgeon. Call the daughter, Khun Fern.",
+    "th": "Post-op TKR ขวา 3 สัปดาห์ หมอส่งตัวมา ให้โทรหาลูกสาว คุณเฟิร์น"
+   }
+  },
+  {
+   "t": "q",
+   "q": "q0",
+   "type": "mc",
+   "stage": {
+    "en": "Before you call",
+    "th": "ก่อนโทร"
+   },
+   "prompt": {
+    "en": "Reception has written \"call the daughter\". How do you handle the call?",
+    "th": "RC เขียนไว้ว่า \"ให้โทรหาลูกสาว\" คุณจะโทรยังไง"
+   },
+   "options": [
+    {
+     "en": "Call his father directly. He is the patient, and he should hear it from you.",
+     "th": "โทรหาคุณพ่อโดยตรง เพราะเขาเป็นคนไข้ ควรได้คุยกับเราเอง"
+    },
+    {
+     "en": "Call Fern only. She has every detail and her father will not pick up.",
+     "th": "โทรหาคุณเฟิร์นอย่างเดียวพอ ลูกสาวรู้ข้อมูลครบอยู่แล้ว ยังไงพ่อก็ไม่รับสาย"
+    },
+    {
+     "en": "Skip the call. The surgeon's letter tells you everything you need.",
+     "th": "ไม่ต้องโทร ใบส่งตัวของหมอมีข้อมูลครบแล้ว"
+    },
+    {
+     "en": "Call Fern, recap, then ask whether you could say hello to her father too, so he knows who you are before tomorrow.",
+     "th": "โทรหาคุณเฟิร์น รีแคปข้อมูล แล้วขอคุยกับคุณพ่อสักนิด ให้คุณพ่อรู้จักเราก่อนพรุ่งนี้"
+    }
+   ],
+   "answer": 3,
+   "why": {
+    "en": "Fern booked and asked to be called, so going around her loses her trust. But the patient is her father, and his motivation is the problem here: he stopped the exercises and wants a massage. The golden minute tomorrow only works if he has already heard your voice. Asking through Fern respects both of them. The surgeon's letter tells you about the knee, not about him.",
+    "th": "คุณเฟิร์นเป็นคนจองและขอให้โทรหาเธอ ถ้าเราข้ามไปโทรหาพ่อเลยก็เสีย Trust กับลูกสาว แต่คนไข้คือคุณพ่อ และปัญหาของเคสนี้คือแรงจูงใจของคุณพ่อเอง (เลิกทำท่าบริหาร อยากให้นวด) Golden minute พรุ่งนี้จะเกิดได้ก็ต่อเมื่อคุณพ่อเคยได้ยินเสียงเรามาก่อน ขอคุยผ่านคุณเฟิร์นจึงให้เกียรติทั้งสองคน ส่วนใบส่งตัวบอกเรื่องเข่า แต่ไม่ได้บอกว่าคุณพ่อเป็นคนแบบไหน"
+   }
+  },
+  {
+   "t": "q",
+   "q": "q1",
+   "type": "long",
+   "stage": {
+    "en": "The call",
+    "th": "โทรหาคนไข้"
+   },
+   "prompt": {
+    "en": "Write how you open the call, then the three most important questions you will ask. The whole call should take 2–3 minutes.",
+    "th": "เขียนประโยคเปิดสายของคุณ แล้วตามด้วยคำถาม 3 ข้อที่สำคัญที่สุดที่จะถาม ทั้งสายไม่ควรเกิน 2–3 นาที"
+   },
+   "model": {
+    "en": "Open: \"Hello Khun Fern, this is [your name], the physiotherapist looking after your father tomorrow at Sathorn. I've seen the surgeon's letter: right knee replacement three weeks ago, and the home exercises have been painful for him. Is that right? Would he be happy to say hello for a minute?\"\n\nThen, with Khun Prasert:\n1. What he wants to get back to, in his own words.\n2. How he is managing now: walker or stick, stairs at home, sleep, and when he takes his pain tablets.\n3. What happened with the exercises: which one hurt, and what the hospital told him.",
+    "th": "เปิดสาย: \"สวัสดีค่ะคุณเฟิร์น [ชื่อคุณ] นะคะ เป็นนักกายภาพบำบัดที่จะดูแลคุณพ่อพรุ่งนี้ที่สาขาสาทรค่ะ ได้ดูใบส่งตัวของคุณหมอแล้ว คุณพ่อผ่าตัดเปลี่ยนข้อเข่าขวามา 3 อาทิตย์ แล้วทำท่าบริหารที่บ้านแล้วเจ็บใช่ไหมคะ ขออนุญาตทักทายคุณพ่อสักนาทีได้ไหมคะ\"\n\nคุยกับคุณประเสริฐ:\n1. อยากกลับไปทำอะไรได้เหมือนเดิม ให้คุณพ่อเล่าเอง\n2. ตอนนี้ใช้ชีวิตยังไง ใช้ walker หรือไม้เท้า ที่บ้านมีบันไดไหม นอนหลับไหม กินยาแก้ปวดตอนไหน\n3. ท่าบริหารที่เลิกทำ ท่าไหนที่เจ็บ แล้วที่โรงพยาบาลสอนอะไรไว้"
+   },
+   "points": [
+    {
+     "en": "Respects Fern's request and recaps from the letter and chat, then asks to speak with her father.",
+     "th": "ทำตามที่คุณเฟิร์นขอ รีแคปจากใบส่งตัวและแชต แล้วขอคุยกับคุณพ่อ"
+    },
+    {
+     "en": "Finds his own goal, the thing that will motivate him.",
+     "th": "หาเป้าหมายของคุณพ่อเอง ซึ่งจะเป็นแรงจูงใจ"
+    },
+    {
+     "en": "Finds how he is managing (walking aid, stairs, sleep, pain tablets) and what made him stop the exercises.",
+     "th": "รู้ว่าตอนนี้ใช้ชีวิตยังไง (อุปกรณ์ช่วยเดิน บันได การนอน ยาแก้ปวด) และอะไรทำให้เลิกทำท่าบริหาร"
+    }
+   ]
+  },
+  {
+   "t": "q",
+   "q": "q2",
+   "type": "long",
+   "stage": {
+    "en": "Why those three",
+    "th": "ทำไมต้อง 3 ข้อนี้"
+   },
+   "prompt": {
+    "en": "Why those three? For each one, say what the answer would change about how you prepare for tomorrow.",
+    "th": "ทำไมถึงเลือก 3 ข้อนี้ บอกทีละข้อว่าคำตอบที่ได้จะเปลี่ยนการเตรียมตัวสำหรับพรุ่งนี้ยังไง"
+   },
+   "points": [
+    {
+     "en": "His goal: lets you use reward rather than pressure, and pick exercises that lead to it.",
+     "th": "เป้าหมาย: ใช้เป็นรางวัลแทนการบังคับ และเลือกท่าที่พาไปสู่เป้าหมายนั้น"
+    },
+    {
+     "en": "How he manages: you prepare the room and the session (walker, chair height, drop-off at the door, pain tablet taken before the session).",
+     "th": "การใช้ชีวิตตอนนี้: เตรียมห้องและเซสชันได้ถูก (walker ความสูงเก้าอี้ จุดส่งรถหน้าประตู กินยาแก้ปวดก่อนมา)"
+    },
+    {
+     "en": "The exercise that hurt: you plan fewer, gentler exercises and explain the pain, so he does not stop again.",
+     "th": "ท่าที่เจ็บ: วางแผนท่าน้อยลงและเบาลง อธิบายเรื่องความเจ็บ เพื่อไม่ให้คนไข้เลิกทำอีก"
+    }
+   ]
+  },
+  {
+   "t": "reveal",
+   "label": {
+    "en": "What the call found",
+    "th": "สิ่งที่ได้จากการโทร"
+   },
+   "body": {
+    "en": "Fern hands the phone to her father. Khun Prasert is polite but short: \"The doctor says it's fine, it just hurts.\"\n\nHe walks with a walker at home, sleeps badly because he can't get comfortable, and takes his pain tablet only when it gets very bad. He stopped the exercises after the bending one hurt \"like it was tearing\".\n\nWhen you ask what he misses most, he goes quiet. Then he says he used to walk his grandson to school every morning, about 500 metres, and the boy keeps asking when grandpa is coming back. Fern adds that the hospital measured about 80 degrees of bend two weeks ago.",
+    "th": "คุณเฟิร์นส่งโทรศัพท์ให้คุณพ่อ คุณประเสริฐพูดสุภาพแต่ตอบสั้นๆ ว่า \"หมอบอกว่าไม่เป็นไร แค่มันเจ็บ\"\n\nที่บ้านเดินกับ walker นอนไม่ค่อยหลับเพราะหาท่าสบายไม่ได้ ยาแก้ปวดกินเฉพาะตอนปวดมากๆ ที่เลิกทำท่าบริหารเพราะท่างอเข่าเจ็บ \"เหมือนอะไรจะฉีก\"\n\nพอถามว่าคิดถึงอะไรมากที่สุด คุณพ่อเงียบไปพักนึง แล้วบอกว่าเมื่อก่อนเดินไปส่งหลานที่โรงเรียนทุกเช้า ประมาณ 500 เมตร หลานถามทุกวันว่าเมื่อไหร่คุณตาจะมาส่งอีก คุณเฟิร์นเสริมว่าที่โรงพยาบาลวัดองศางอเข่าได้ประมาณ 80 องศาเมื่อ 2 อาทิตย์ก่อน"
+   }
+  },
+  {
+   "t": "q",
+   "q": "q3",
+   "type": "image",
+   "stage": {
+    "en": "The picture on the screen",
+    "th": "รูปที่จะเปิดให้คนไข้ดู"
+   },
+   "prompt": {
+    "en": "Add the picture (or pictures) you will have ready on the iPad when the patient walks in, and say why you chose it.",
+    "th": "ใส่รูป (หรือหลายรูป) ที่จะเตรียมเปิดไว้ใน iPad ตอนคนไข้เดินเข้ามา แล้วบอกว่าทำไมถึงเลือกรูปนี้"
+   },
+   "model": {
+    "en": "A simple recovery timeline after a knee replacement, in large print: week 3 (where he is now), the weeks when bending and walking come back, and at the end, walking his grandson to school. It turns \"it just hurts\" into a road with an end he cares about, and makes the exercises the way there.",
+    "th": "รูปไทม์ไลน์การฟื้นตัวหลังเปลี่ยนข้อเข่าแบบง่ายๆ ตัวใหญ่อ่านง่าย มีจุดสัปดาห์ที่ 3 (ตอนนี้) ช่วงที่การงอเข่าและการเดินจะกลับมา และปลายทางคือเดินไปส่งหลานที่โรงเรียน เปลี่ยนคำว่า \"แค่มันเจ็บ\" ให้เป็นเส้นทางที่มีปลายทางที่คุณพ่อแคร์ และให้ท่าบริหารเป็นทางไปถึง"
+   },
+   "points": [
+    {
+     "en": "Tied to his goal (walking his grandson to school), not a general knee diagram.",
+     "th": "ผูกกับเป้าหมายของคุณพ่อ (เดินไปส่งหลาน) ไม่ใช่รูปข้อเข่าทั่วไป"
+    },
+    {
+     "en": "Simple and large enough for a 67-year-old to follow.",
+     "th": "ง่ายและตัวใหญ่พอที่ผู้สูงอายุ 67 ปีจะดูตามได้"
+    },
+    {
+     "en": "Shows where he is now and that the pain is part of a normal road, so the exercises make sense.",
+     "th": "แสดงว่าตอนนี้อยู่ตรงไหน และความเจ็บเป็นส่วนหนึ่งของการฟื้นตัวปกติ ท่าบริหารจึงมีความหมาย"
+    }
+   ]
+  }
+ ]
+}

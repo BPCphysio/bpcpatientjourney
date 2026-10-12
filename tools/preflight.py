@@ -519,6 +519,42 @@ if 'fromClaude' not in gjs:
 else:
     ok('grader.js leads with the Claude reading where there is one')
 
+# ------------------------------------------------------------------- version 2
+V2DIR = ROOT / 'web' / 'src' / 'data' / 'v2'
+v2files = sorted(V2DIR.glob('v2-*.json')) if V2DIR.exists() else []
+if v2files:
+    kinds = {}
+    v2bad = []
+    for f in v2files:
+        c = json.loads(f.read_text(encoding='utf-8'))
+        kinds[c['kind']] = kinds.get(c['kind'], 0) + 1
+        qs = [s for s in c['steps'] if s['t'] == 'q']
+        if [s['q'] for s in qs] != ['q%d' % i for i in range(len(qs))]:
+            v2bad.append(f.name + ': questions not numbered q0, q1, ...')
+
+        def walk(o):
+            if isinstance(o, dict):
+                if set(o) == {'en', 'th'} and not (o['en'].strip() and o['th'].strip()):
+                    v2bad.append(f.name + ': a text with an empty language half')
+                for v in o.values():
+                    walk(v)
+            elif isinstance(o, list):
+                for v in o:
+                    walk(v)
+            elif isinstance(o, str) and re.search(r'\bphysio\b', o, re.I):
+                v2bad.append(f.name + ': says "physio"')
+        walk(c)
+    if any(kinds.get(k, 0) < 2 for k in ('call', 'journey', 'line')):
+        v2bad.append('a set needs at least two cases of each kind: ' + str(kinds))
+    vj = json.loads((ROOT / 'vercel.json').read_text(encoding='utf-8'))
+    if 'web/src/data/v2' not in vj['functions']['api/clinic.js'].get('includeFiles', ''):
+        v2bad.append('vercel.json does not ship the version 2 cases with the clinic API')
+    if v2bad:
+        for b in v2bad:
+            fail('version 2: ' + b)
+    else:
+        ok(f'version 2: {len(v2files)} cases ' + ', '.join(f'{v} {k}' for k, v in sorted(kinds.items())) + ', English and Thai, shipped with the API')
+
 # ------------------------------------------------------------------- report
 print()
 for n in notes:

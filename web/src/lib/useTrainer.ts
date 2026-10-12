@@ -10,7 +10,7 @@ import {
 import { buildQueue, caseView, BUCKETS } from './cases'
 import type { Lang } from './strings'
 
-export type View = 'start' | 'take' | 'between' | 'done' | 'gate' | 'marker'
+export type View = 'start' | 'take' | 'between' | 'done' | 'gate' | 'marker' | 'v2'
 
 type Session = {
   taker: string; queue: string[]; qi: number; answers: Answers
@@ -106,7 +106,7 @@ export function useTrainer() {
     setChecking(true); setError('')
     try {
       const d = await clinicGet(q({ who: canon(name) }), 20000)
-      if (d && d.ok && Array.isArray(d.done)) doneList = d.done
+      if (d && d.ok && Array.isArray(d.done)) doneList = d.done.filter((id: string) => id.indexOf('v2-') !== 0)
     } catch { /* the device's own list stands */ }
     setChecking(false)
     setDone(doneList)
