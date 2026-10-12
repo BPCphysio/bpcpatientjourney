@@ -102,11 +102,18 @@ function viewOf(id: string, lang: Lang): MV | null {
   return { title: c.title, brief: c.brief, reveal: c.reveal, v2: false,
     questions: c.questions.map((q, i) => ({ qk: 'q' + i, type: q.type, prompt: q.prompt, options: q.options, answer: q.answer })) }
 }
-function mcScore(r: Resp, v: MV | null) {
+// Right or wrong: the answer key, unless a senior has overruled it.
+function mcRight(r: Resp, q: MQ, pending?: MarkEntry) {
+  const ruling = (pending && pending.mc) || ((r.marks || {})[q.qk] || {}).mc
+  if (ruling === 'right') return true
+  if (ruling === 'wrong') return false
+  return r.answers[q.qk + ':mc'] !== undefined && String(r.answers[q.qk + ':mc']) === String(q.answer)
+}
+function mcScore(r: Resp, v: MV | null, pending?: Record<string, MarkEntry>) {
   let right = 0, total = 0
   ;(v ? v.questions : []).forEach(q => {
     if (q.type !== 'mc' || r.answers[q.qk + ':mc'] === undefined) return
-    total++; if (String(r.answers[q.qk + ':mc']) === String(q.answer)) right++
+    total++; if (mcRight(r, q, pending && pending[q.qk])) right++
   })
   return { right, total }
 }
@@ -193,7 +200,7 @@ export function MarkingView({ lang, m, roster, markers, onLeave, onTryV2 }: { la
         const ans = qq.type === 'mc' ? ((qq.options || [])[r.answers[qq.qk + ':mc']] || '') : (r.answers[qq.qk + ':text'] || '')
         const a = auto && auto[qq.qk]
         rows.push([r.who, fmtWhen(r.when), r.scenarioTitle, r.track || '', r.level || '', r.language || 'en', qq.prompt, qq.type, ans,
-          qq.type === 'mc' ? (String(r.answers[qq.qk + ':mc']) === String(qq.answer) ? '1' : '0') : (e.score === undefined ? '' : e.score),
+          qq.type === 'mc' ? (mcRight(r, qq, (m.pending[r.id] || {})[qq.qk]) ? '1' : '0') : (e.score === undefined ? '' : e.score),
           e.comment || '', a ? a.pct : '', a ? a.suggested : '',
           a ? a.points.filter((p: { credit: number }) => p.credit).map((p: { credit: number; label: { en: string } }) => p.label.en + (p.credit < 1 ? ' (half)' : '')).join('; ') : '',
           a ? (a.source === 'claude' ? 'Claude' : a.source === 'model' ? 'language model' : 'wording') : '', r.markedBy || '', r.markedAt ? fmtWhen(r.markedAt) : ''])
@@ -323,7 +330,7 @@ function AnswerCard({ lang, m, r, canMark }: { lang: Lang; m: Marking; r: Resp; 
   const mcAnswer = c ? c.questions[0].answer : undefined
   const auto = c && (m.graderOn || c.v2) ? m.autoFor(r, mcAnswer) : null
   const marked = isMarked(r)
-  const sc = mcScore(r, c)
+  const sc = mcScore(r, c, m.pending[r.id])
   const okMc = sc.total > 0 && sc.right === sc.total
   const toggle = () => { const will = !open; setOpen(will); if (will) { m.hydrate(r); m.askClaude(r) } }
 
@@ -357,7 +364,8 @@ function AnswerCard({ lang, m, r, canMark }: { lang: Lang; m: Marking; r: Resp; 
 
           {c.questions.map((qq, i) => {
             const qk = qq.qk
-            const okQ = qq.type === 'mc' && r.answers[qk + ':mc'] !== undefined && String(r.answers[qk + ':mc']) === String(qq.answer)
+            const okQ = qq.type === 'mc' && mcRight(r, qq, (m.pending[r.id] || {})[qk])
+            const keyRight = qq.type === 'mc' && r.answers[qk + ':mc'] !== undefined && String(r.answers[qk + ':mc']) === String(qq.answer)
             const e: MarkEntry = { ...((r.marks || {})[qk] || {}), ...((m.pending[r.id] || {})[qk] || {}) }
             const a = qq.type !== 'mc' && auto ? auto[qk] : null
             const imgs = imgList(r.answers, qk)
@@ -377,7 +385,22 @@ function AnswerCard({ lang, m, r, canMark }: { lang: Lang; m: Marking; r: Resp; 
                     : (r.answers[qk + ':text'] || (audio ? mk.spokenOnly : imgs.length ? mk.imageOnly
                       : (r.media || []).some((k: string) => k.indexOf(qk) === 0) && !r.full ? (r.mediaErr ? mk.mediaErr : mk.loading) : mk.noAnswer))}
                 </div>
-                {qq.type === 'mc' && <p className={cn('mt-2 text-sm', okQ ? 'text-teal-dark' : 'text-red-600')}>{okQ ? mk.correct : mk.incorrect}{!okQ && <span className="text-navy/70"> · {mk.bestAnswer}{(qq.options || [])[qq.answer!]}</span>}</p>}
+                {qq.type === 'mc' && (
+                  <>
+                    <p className={cn('mt-2 text-sm', okQ ? 'text-teal-dark' : 'text-red-600')}>{okQ ? mk.correct : mk.incorrect}{!keyRight && <span className="text-navy/70"> · {mk.bestAnswer}{(qq.options || [])[qq.answer!]}</span>}{e.mc && <span className="ml-1 rounded-full bg-amber-100 px-2 py-0.5 text-xs text-amber-900">{vx.overruled}</span>}</p>
+                    {r.answers[qk + ':mc'] !== undefined && (
+                      <div className="mt-2 flex flex-wrap items-center gap-1.5">
+                        <span className="text-xs text-muted-foreground">{vx.overrule}</span>
+                        {(['right', 'wrong', ''] as const).map(v => (
+                          <button key={v || 'key'} type="button" onClick={() => m.setMark(r.id, qk, 'mc', v)}
+                            className={cn('rounded-full border px-3 py-1 text-xs transition-colors', (e.mc || '') === v ? 'border-navy bg-navy text-white' : 'border-border bg-white text-navy hover:border-teal')}>
+                            {v === 'right' ? vx.countRight : v === 'wrong' ? vx.countWrong : vx.useKey}
+                          </button>
+                        ))}
+                      </div>
+                    )}
+                  </>
+                )}
                 {audio && <div className="mt-3 flex items-center gap-2"><Volume2 className="size-4 text-teal-dark" /><audio controls src={String(audio)} className="h-10 max-w-full" />{r.answers[qk + ':audiosec'] && <span className="text-xs text-muted-foreground">{clock(Number(r.answers[qk + ':audiosec']))}</span>}</div>}
                 {imgs.length > 0 && <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-3">{imgs.map((u, n) => <img key={n} src={u} alt={'submitted visual ' + (n + 1)} className="w-full rounded-lg border border-border object-cover" />)}</div>}
 

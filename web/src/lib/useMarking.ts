@@ -29,7 +29,9 @@ function fromClaude(r: Resp) {
 declare global { interface Window { BPCGrader?: any } }
 
 export type Resp = Json
-export type MarkEntry = { score?: string; comment?: string; auto?: number; autoBy?: string; commentBy?: string }
+// mc: a senior's ruling on a multiple-choice answer ('right' or 'wrong'),
+// which overrules the answer key for this one answer
+export type MarkEntry = { score?: string; comment?: string; auto?: number; autoBy?: string; commentBy?: string; mc?: string }
 
 // The wording grader (grading/grader.js) sits beside the site; it turns the
 // stored readings into the suggestion shown on each written answer.
