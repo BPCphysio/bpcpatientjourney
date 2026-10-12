@@ -14,6 +14,39 @@ const { sql } = require('./_db.js');
 const V2 = require('./_v2.js');
 const { questionFor } = require('./_cases.js');
 
+// The starting summaries for version 1, written on 13/10/2026 by reading all
+// 48 senior comments then in the record (20 on the call questions, 12 on
+// "why", 16 on the picture). They stand until five more comments arrive on
+// that question; then Claude writes the summary again from every comment.
+const SEED = {
+  'v1:q1': { n: 20, text: [
+    '- Recap and confirm what the chart or the patient already said before asking anything new ("confirm the symptoms they already reported"). Asking again what is on the chart loses marks.',
+    '- Ask about work and daily life: occupation, working posture or ergonomics, other activities and hobbies, and what the problem stops them doing. Seniors add this to almost every answer that missed it.',
+    '- Ask the goal and what they expect from treatment.',
+    '- Previous treatment: what they had, whether it helped, when the last session was, and WHY they stopped. Asking about past treatment without the reason it stopped is marked down.',
+    '- Ask for reports, scans or blood results from the hospital when the chart mentions them.',
+    '- Pin down the problem: exactly where it hurts (e.g. which part of the knee), timeline and severity, what makes it worse AND what eases it, and numbness or weakness when relevant.',
+    '- Empathy: ask what the patient is worried about, and respond to it ("may lack empathy" is a common comment). If the patient asked something in the chat (price, how many sessions), answer it on the call.',
+    '- If someone else booked, try to speak to the patient directly.',
+    'A 5: specific to this patient, covers their life and goal, and nothing important missing. A 3–4: sensible and patient-centred but missing occupation, the reason treatment stopped, the pain area or the patient\'s worry. A 2 or below: a generic history list, or the patient\'s main concern is left unaddressed.'
+  ].join('\n') },
+  'v1:q2': { n: 12, text: [
+    '- Seniors reward a clear reason for EACH question that says what it changes in preparing tomorrow\'s session (the examination plan, the hypotheses, the treatment plan).',
+    '- Practical preparation earns credit: the right room or a wheelchair, timing the visit after pending blood results, asking the patient to skip a painkiller so the real pain can be assessed, the post-operative protocol.',
+    '- Generic reasons ("to know the goal", "to assess severity") without saying what changes are marked down to 2–3.',
+    '- Missing reasons tied to the patient\'s work, timeline or goal are the most common addition.',
+    'A 5: each question has its own reason linked to how tomorrow is prepared. A 3–4: reasons are sound but general. A 2 or below: reasons only restate the questions.'
+  ].join('\n') },
+  'v1:q3': { n: 16, text: [
+    '- The picture must match THIS patient: their mechanism of injury, the activity or posture that brings it on, and where it hurts. "Matches the mechanism and is clear" is the comment on a 5.',
+    '- Function beats anatomy: pictures of the activity (driving, using the hands at work, the sport) help more than a plain anatomy chart. Anatomy alone, especially if not about the patient, scores low (1–2).',
+    '- Keep it to one or a few: several pictures at once "may reduce understanding", and too many is marked down. Offering 2–3 similar postures for the patient to pick the closest is liked.',
+    '- Leave out what the patient does not need yet: machine pictures (ultrasound, shockwave) and anything that could frighten them.',
+    '- For post-operative or healing cases, a simple healing timeline showing where they are is credited.',
+    'A 5: one clear picture tied to the mechanism and the patient\'s activity, with a reason. A 3–4: relevant but generic, too many, or missing the whole-body or activity view. 0–1: the wrong picture, nothing to do with this patient, or a missing reason.'
+  ].join('\n') }
+};
+
 const clip = (s, n) => String(s == null ? '' : s).slice(0, n);
 const scored = m => m && m.score !== undefined && m.score !== null && m.score !== '';
 const fresh = (c, m) => String(c || '').trim() && m && m.commentBy !== 'claude';
@@ -82,7 +115,7 @@ async function standardsFor(caseId, qk, opts) {
     version = nComments;
   } else {
     const got = await sql()`SELECT v FROM kv WHERE k = ${'lessons:' + fam}`;
-    const kept = got.length ? got[0].v : null;
+    const kept = got.length ? got[0].v : (SEED[fam] || null);
     if (kept && kept.n + 5 > nComments) { summary = kept.text; version = kept.n; }
     else if (opts.client && nComments >= 3) {
       summary = await writeSummary(fam, rows, opts.client, opts.model);
