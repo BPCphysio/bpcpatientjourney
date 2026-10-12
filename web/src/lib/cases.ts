@@ -46,7 +46,14 @@ export function caseView(id: string, lang: Lang): Case | null {
   }
 }
 
-export const ALL_IDS = RAW.map(c => c.id)
+// Taken out of new sets on 13/10/2026: the clinic wants the basics, where you
+// call the patient yourself. These were booked by someone else (a friend, an
+// employer, a wife, a mother) or could not be called at all. Answers already
+// given to them stay in the record and can still be opened and marked.
+const RETIRED = ['c03', 'c06', 'c32', 'c33', 'c34']
+const LIVE = RAW.filter(c => RETIRED.indexOf(c.id) < 0)
+
+export const ALL_IDS = LIVE.map(c => c.id)
 export const levelOf = (id: string) => (RAW.find(x => x.id === id) || { level: 0 }).level
 
 // One set of four that still climbs to a level-5 case. Every progress label
@@ -57,8 +64,8 @@ export function buildQueue(offset: number, done: string[]): string[] {
   const picked: string[] = []
   BUCKETS.slice(offset || 0).forEach(levels => {
     const inBand = (c: RawCase) => levels.indexOf(c.level) > -1 && picked.indexOf(c.id) < 0
-    let pool = RAW.filter(c => inBand(c) && done.indexOf(c.id) < 0)
-    if (!pool.length) pool = RAW.filter(inBand)
+    let pool = LIVE.filter(c => inBand(c) && done.indexOf(c.id) < 0)
+    if (!pool.length) pool = LIVE.filter(inBand)
     if (pool.length) picked.push(pool[Math.floor(Math.random() * pool.length)].id)
   })
   return picked

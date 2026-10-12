@@ -527,7 +527,8 @@ if v2files:
     v2bad = []
     for f in v2files:
         c = json.loads(f.read_text(encoding='utf-8'))
-        kinds[c['kind']] = kinds.get(c['kind'], 0) + 1
+        if not c.get('retired'):
+            kinds[c['kind']] = kinds.get(c['kind'], 0) + 1
         qs = [s for s in c['steps'] if s['t'] == 'q']
         if [s['q'] for s in qs] != ['q%d' % i for i in range(len(qs))]:
             v2bad.append(f.name + ': questions not numbered q0, q1, ...')
@@ -553,7 +554,7 @@ if v2files:
         for b in v2bad:
             fail('version 2: ' + b)
     else:
-        ok(f'version 2: {len(v2files)} cases ' + ', '.join(f'{v} {k}' for k, v in sorted(kinds.items())) + ', English and Thai, shipped with the API')
+        ok(f'version 2: {sum(kinds.values())} cases in use ' + ', '.join(f'{v} {k}' for k, v in sorted(kinds.items())) + ', English and Thai, shipped with the API')
 
 # ------------------------------------------------------------------- report
 print()

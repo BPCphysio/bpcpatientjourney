@@ -3,7 +3,7 @@
 // @ts-nocheck -- carried over as plain JS from the first version
 export const UI = {
   en: {
-    kicker: '45 cases · the call before the patient arrives · written from real charts',
+    kicker: '40 cases · the call before the patient arrives · written from real charts',
     startTitle: 'The call before the patient arrives.',
     startBody: 'You get four cases, one at a time, rising from difficulty 1 to difficulty 5. Each one is a real kind of chart — some almost empty, some half filled in, some written at length. You answer using only what the chart gives you. Then the call is revealed and your answers lock.',
     startNote: 'Your answers go to the clinic and a senior physiotherapist reads them and replies. After the reveal you also see what the call should have found — so you can mark yourself before anyone else does.',
@@ -41,7 +41,7 @@ export const UI = {
     resume: 'Carry on where I left off', startFresh: 'Start a new set'
   },
   th: {
-    kicker: '45 เคส · การโทรก่อนคนไข้มาถึง · เขียนจากชาร์ตจริง',
+    kicker: '40 เคส · การโทรก่อนคนไข้มาถึง · เขียนจากชาร์ตจริง',
     startTitle: 'การโทรก่อนคนไข้มาถึง',
     startBody: 'คุณจะได้ 4 เคส ทีละเคส ความยากไต่จากระดับ 1 ถึงระดับ 5 แต่ละเคสคือชาร์ตแบบที่เจอจริง บางเคสแทบไม่มีข้อมูล บางเคสกรอกมาครึ่งเดียว บางเคสคนไข้เขียนมายาว คุณตอบจากข้อมูลในชาร์ตเท่านั้น แล้วระบบจะเปิดเผยสิ่งที่ได้จากการโทร และคำตอบของคุณจะถูกล็อก',
     startNote: 'คำตอบของคุณจะถูกส่งให้คลินิก และนักกายภาพบำบัดอาวุโสจะอ่านแล้วตอบกลับ หลังเปิดเผยการโทร คุณจะได้เห็นด้วยว่าการโทรควรได้ข้อมูลอะไร เพื่อให้คุณตรวจตัวเองได้ก่อนที่คนอื่นจะตรวจ',

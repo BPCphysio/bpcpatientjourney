@@ -12,7 +12,8 @@ type RawStep =
   | { t: 'reveal'; label: T; body: T }
   | { t: 'q'; q: string; type: 'mc' | 'long' | 'short' | 'image'; stage: T; prompt: T; options?: T[]; answer?: number; why?: T; model?: T; points?: T[] }
 export type Kind = 'call' | 'journey' | 'line'
-type RawCase = { id: string; kind: Kind; title: T; steps: RawStep[] }
+// retired: no longer drawn into sets; answers already given can still be marked
+type RawCase = { id: string; kind: Kind; title: T; steps: RawStep[]; retired?: string }
 
 const FILES = import.meta.glob('../data/v2/*.json', { eager: true, import: 'default' }) as Record<string, RawCase>
 const RAW: RawCase[] = Object.values(FILES).sort((a, b) => a.id.localeCompare(b.id))
@@ -59,7 +60,7 @@ export const writtenKeys = (c: V2Case) => c.questions.filter(q => q.type !== 'mc
 export function buildV2Set(done: string[]): string[] {
   const out: string[] = []
   KINDS.forEach(k => {
-    const all = RAW.filter(c => c.kind === k).map(c => c.id)
+    const all = RAW.filter(c => c.kind === k && !c.retired).map(c => c.id)
     const fresh = shuffle(all.filter(id => done.indexOf(id) < 0))
     const old = shuffle(all.filter(id => done.indexOf(id) > -1))
     out.push(...fresh.concat(old).slice(0, 2))

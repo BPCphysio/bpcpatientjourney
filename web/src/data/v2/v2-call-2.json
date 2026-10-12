@@ -1,6 +1,7 @@
 {
  "id": "v2-call-2",
  "kind": "call",
+ "retired": "13/10/2026: the clinic wants plain cases where you call the patient yourself",
  "title": {
   "en": "Booked by his daughter",
   "th": "ลูกสาวจองให้"

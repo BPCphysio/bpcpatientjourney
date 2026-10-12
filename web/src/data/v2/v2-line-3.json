@@ -139,31 +139,31 @@
     "th": "คุณจะทำยังไง"
    },
    "prompt": {
-    "en": "Before the trek, she asks you to write \"12 sessions needed\" in her insurance report, \"just in case\". What do you do?",
-    "th": "ก่อนทริป Sarah ขอให้เขียนในรายงานประกันว่า \"ต้องรักษา 12 ครั้ง\" เผื่อไว้ก่อน คุณจะทำยังไง"
+    "en": "Three weeks later she still can't balance 30 seconds on the right leg, and the trek is in four days. What do you tell her?",
+    "th": "ผ่านไป 3 อาทิตย์ Sarah ยังยืนขาขวาได้ไม่ถึง 30 วินาที อีก 4 วันจะไปเดินป่าแล้ว คุณจะบอกเขาว่ายังไง"
    },
    "options": [
     {
-     "en": "Write it. It helps her, and the insurer will not check.",
-     "th": "เขียนให้ ช่วยคนไข้ได้ ยังไงประกันก็ไม่ตรวจ"
+     "en": "\"You'll be fine, just go.\"",
+     "th": "\"ไปได้เลย ไม่เป็นไรหรอก\""
     },
     {
-     "en": "Write 8 as a compromise.",
-     "th": "เขียน 8 ครั้งเป็นการประนีประนอม"
+     "en": "\"You must cancel the trip.\"",
+     "th": "\"ต้องยกเลิกทริปนะ\""
     },
     {
-     "en": "Say kindly that you can only write what is clinically needed, and that you will update the report straight away if she needs more.",
-     "th": "บอกอย่างสุภาพว่าเขียนได้เฉพาะสิ่งที่จำเป็นทางคลินิกจริง และถ้าต้องรักษาเพิ่มจะอัปเดตรายงานให้ทันที"
+     "en": "Tell her honestly where the ankle is, and give her the safer options: an easier route or shorter days, tape or a brace, poles, and what to do if it swells.",
+     "th": "บอกตามจริงว่าข้อเท้าตอนนี้อยู่ตรงไหน แล้วให้ทางเลือกที่ปลอดภัยกว่า เช่น เส้นทางง่ายขึ้นหรือเดินวันละสั้นลง เทปหรือ Brace ไม้เท้า และถ้าบวมต้องทำยังไง"
     },
     {
-     "en": "Pass it to reception to deal with.",
-     "th": "ส่งต่อให้ RC จัดการ"
+     "en": "Say nothing until she asks.",
+     "th": "ไม่ต้องพูดอะไรจนกว่าคนไข้จะถาม"
     }
    ],
    "answer": 2,
    "why": {
-    "en": "A report is a clinical document with your name on it; writing more than she needs is dishonest whatever the amount, and it puts you and the clinic at risk. Say no kindly, explain what you can do, and keep the door open. Reception cannot change a clinical report.",
-    "th": "รายงานทางคลินิกเป็นเอกสารที่มีชื่อเรากำกับ การเขียนเกินความจำเป็นไม่ซื่อตรงไม่ว่าจะเกินกี่ครั้ง และทำให้ทั้งเราและคลินิกเสี่ยง ปฏิเสธอย่างสุภาพ อธิบายว่าเราทำอะไรให้ได้ แล้วเปิดประตูไว้ ส่วน RC ไม่มีสิทธิ์แก้รายงานทางคลินิก"
+    "en": "Honest numbers and practical options let her decide for herself. \"You'll be fine\" is a promise you cannot make, and \"you must cancel\" ignores what she can still do safely.",
+    "th": "ตัวเลขที่ตรงไปตรงมาและทางเลือกที่ทำได้จริงทำให้คนไข้ตัดสินใจเองได้ \"ไปได้เลย\" คือการรับปากในสิ่งที่เรารับปากไม่ได้ ส่วน \"ต้องยกเลิก\" ก็มองข้ามสิ่งที่คนไข้ยังทำได้อย่างปลอดภัย"
    }
   }
  ]

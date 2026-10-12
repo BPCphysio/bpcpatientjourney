@@ -1,0 +1,214 @@
+{
+ "id": "v2-call-4",
+ "kind": "call",
+ "title": {
+  "en": "After moving house",
+  "th": "ยกของย้ายบ้านแล้วปวดหลัง"
+ },
+ "steps": [
+  {
+   "t": "chat",
+   "label": {
+    "en": "Booking chat on LINE",
+    "th": "แชตจองคิวใน LINE"
+   },
+   "meta": {
+    "en": "Khun Ton, 41 · Sathorn · first visit tomorrow 17:00",
+    "th": "คุณต้น อายุ 41 · สาขาสาทร · มาครั้งแรก พรุ่งนี้ 17:00"
+   },
+   "msgs": [
+    {
+     "from": "pt",
+     "name": {
+      "en": "Khun Ton",
+      "th": "คุณต้น"
+     },
+     "text": {
+      "en": "Hi, I'd like to book please. I've had lower back pain for 5 days, since I moved house and lifted a lot of boxes.",
+      "th": "สวัสดีครับ อยากจองคิวครับ ปวดหลังล่างมา 5 วันแล้ว ตั้งแต่ย้ายบ้าน ยกกล่องเยอะมาก"
+     }
+    },
+    {
+     "from": "pt",
+     "name": {
+      "en": "Khun Ton",
+      "th": "คุณต้น"
+     },
+     "text": {
+      "en": "It's hard to bend forward, even putting my socks on hurts. Do I need an X-ray first?",
+      "th": "ก้มไม่ค่อยได้ครับ ใส่ถุงเท้ายังเจ็บเลย ต้องไปเอกซเรย์ก่อนไหมครับ"
+     }
+    },
+    {
+     "from": "rc",
+     "name": {
+      "en": "BPC reception",
+      "th": "BPC (แอดมิน)"
+     },
+     "text": {
+      "en": "Hello Khun Ton, thank you for contacting Bangkok Physiotherapy Center 🙏 You don't need an X-ray to come in; your physiotherapist will examine you and advise. We have tomorrow 17:00 at Sathorn.",
+      "th": "สวัสดีค่ะคุณต้น ขอบคุณที่ติดต่อ Bangkok Physiotherapy Center นะคะ 🙏 มาได้เลยค่ะ ไม่ต้องเอกซเรย์ก่อน นักกายภาพบำบัดจะตรวจและแนะนำให้ค่ะ พรุ่งนี้มีคิว 17:00 ที่สาขาสาทรค่ะ"
+     }
+    },
+    {
+     "from": "pt",
+     "name": {
+      "en": "Khun Ton",
+      "th": "คุณต้น"
+     },
+     "text": {
+      "en": "Great, thanks.",
+      "th": "โอเคครับ ขอบคุณครับ"
+     }
+    }
+   ]
+  },
+  {
+   "t": "note",
+   "label": {
+    "en": "Reception's summary in your schedule",
+    "th": "สรุปที่ RC ใส่ไว้ในตาราง"
+   },
+   "body": {
+    "en": "Low back pain 5 days after moving house. Asked about an X-ray.",
+    "th": "ปวดหลังล่าง 5 วัน หลังย้ายบ้าน ถามเรื่องเอกซเรย์"
+   }
+  },
+  {
+   "t": "q",
+   "q": "q0",
+   "type": "mc",
+   "stage": {
+    "en": "Before you call",
+    "th": "ก่อนโทร"
+   },
+   "prompt": {
+    "en": "What do you plan before you call him?",
+    "th": "ก่อนโทรหาคุณต้น คุณวางแผนอะไรไว้"
+   },
+   "options": [
+    {
+     "en": "Recap what he wrote (5 days, since moving boxes, bending hurts), plan a few quick safety questions (pain or numbness down the leg, any trouble with the bladder), and be ready to answer his X-ray question.",
+     "th": "รีแคปสิ่งที่คนไข้เขียนมา (5 วัน หลังยกกล่อง ก้มแล้วเจ็บ) เตรียมคำถามเช็กความปลอดภัยสั้นๆ (ปวดหรือชาร้าวลงขาไหม การขับถ่ายปกติไหม) และเตรียมตอบเรื่องเอกซเรย์"
+    },
+    {
+     "en": "Ask him to tell the whole story again from the start, so nothing is missed.",
+     "th": "ให้คนไข้เล่าเรื่องทั้งหมดใหม่ตั้งแต่ต้น จะได้ไม่ตกหล่น"
+    },
+    {
+     "en": "Tell him to get an X-ray before he comes, to be safe.",
+     "th": "บอกให้ไปเอกซเรย์ก่อนมา เพื่อความชัวร์"
+    },
+    {
+     "en": "Just confirm the time; a back strain is simple.",
+     "th": "แค่คอนเฟิร์มเวลาพอ ปวดหลังธรรมดา"
+    }
+   ],
+   "answer": 0,
+   "why": {
+    "en": "Recap so he does not repeat himself, check the few things that would make this more than a strain, and answer the question he asked. Most back pain after lifting does not need an X-ray; the examination tells you whether he does. Even a \"simple\" back needs the call: it is where trust starts.",
+    "th": "รีแคปให้คนไข้ไม่ต้องเล่าซ้ำ เช็กไม่กี่อย่างที่จะบอกว่าไม่ใช่แค่กล้ามเนื้ออักเสบ และตอบคำถามที่คนไข้ถามมา ปวดหลังหลังยกของส่วนใหญ่ไม่ต้องเอกซเรย์ การตรวจร่างกายจะบอกเองว่าจำเป็นไหม ถึงจะเป็นเคสปวดหลัง \"ธรรมดา\" ก็ต้องโทร เพราะ Trust เริ่มจากสายนี้"
+   }
+  },
+  {
+   "t": "q",
+   "q": "q1",
+   "type": "long",
+   "stage": {
+    "en": "The call",
+    "th": "โทรหาคนไข้"
+   },
+   "prompt": {
+    "en": "Write how you open the call, then the three most important questions you will ask. The whole call should take 2–3 minutes.",
+    "th": "เขียนประโยคเปิดสายของคุณ แล้วตามด้วยคำถาม 3 ข้อที่สำคัญที่สุดที่จะถาม ทั้งสายไม่ควรเกิน 2–3 นาที"
+   },
+   "model": {
+    "en": "Open: \"Hello Khun Ton, this is [your name], the physiotherapist looking after you tomorrow at 17:00 at Sathorn. I've read your message: lower back pain for 5 days since the move, and bending is hard. Is that right?\"\n\n1. Does the pain go down either leg, or any numbness or tingling? Any change with the bladder or bowels?\n2. What is hardest day to day: sitting, driving, getting up in the morning?\n3. What does he need to be able to do again, and soon?",
+    "th": "เปิดสาย: \"สวัสดีครับคุณต้น [ชื่อคุณ] นะครับ เป็นนักกายภาพบำบัดที่จะดูแลคุณต้นพรุ่งนี้ 17:00 ที่สาขาสาทรครับ อ่านข้อความแล้วนะครับ ปวดหลังล่างมา 5 วันตั้งแต่ย้ายบ้าน ก้มแล้วเจ็บ ถูกไหมครับ\"\n\n1. มีปวดร้าวลงขา ชา หรือเสียวลงขาบ้างไหม การขับถ่ายปกติไหม\n2. ชีวิตประจำวันตอนนี้อะไรลำบากสุด นั่ง ขับรถ หรือตอนลุกจากเตียงตอนเช้า\n3. อยากกลับไปทำอะไรได้ และต้องได้เร็วแค่ไหน"
+   },
+   "points": [
+    {
+     "en": "Recaps and confirms instead of asking him to start again.",
+     "th": "รีแคปและคอนเฟิร์ม ไม่ให้คนไข้เล่าใหม่"
+    },
+    {
+     "en": "Checks the safety questions: leg symptoms, bladder and bowel.",
+     "th": "เช็กความปลอดภัย อาการลงขา การขับถ่าย"
+    },
+    {
+     "en": "Finds what is hardest day to day and what he wants back.",
+     "th": "หาว่าชีวิตประจำวันอะไรลำบากสุด และอยากกลับไปทำอะไร"
+    }
+   ]
+  },
+  {
+   "t": "q",
+   "q": "q2",
+   "type": "long",
+   "stage": {
+    "en": "Why those three",
+    "th": "ทำไมต้อง 3 ข้อนี้"
+   },
+   "prompt": {
+    "en": "Why those three? For each one, say what the answer would change about how you prepare for tomorrow.",
+    "th": "ทำไมถึงเลือก 3 ข้อนี้ บอกทีละข้อว่าคำตอบที่ได้จะเปลี่ยนการเตรียมตัวสำหรับพรุ่งนี้ยังไง"
+   },
+   "points": [
+    {
+     "en": "Safety: decides whether tomorrow goes ahead as planned or he needs a doctor first, and answers the X-ray question.",
+     "th": "ความปลอดภัย: ตัดสินว่าพรุ่งนี้ทำตามแผนได้ไหม หรือต้องพบแพทย์ก่อน และตอบเรื่องเอกซเรย์ได้"
+    },
+    {
+     "en": "Daily life: tells you which movements to test and what to teach him first.",
+     "th": "ชีวิตประจำวัน: รู้ว่าจะตรวจท่าไหน และสอนอะไรก่อน"
+    },
+    {
+     "en": "His goal: what you measure and build the plan around.",
+     "th": "เป้าหมาย: สิ่งที่จะวัดผลและวางแผนรอบๆ"
+    }
+   ]
+  },
+  {
+   "t": "reveal",
+   "label": {
+    "en": "What the call found",
+    "th": "สิ่งที่ได้จากการโทร"
+   },
+   "body": {
+    "en": "The pain is across the lower back, a little more on the right. Nothing down the legs, no numbness, bladder and bowels normal.\n\nMornings are the worst: it takes him ten minutes to get out of bed. He drives an hour each way to work and gets stiff in the car. He has been taking ibuprofen and resting on the sofa.\n\nWhat he wants most is to pick up his three-year-old daughter again without being scared his back will go.",
+    "th": "ปวดตรงหลังล่างแนวขวาง ข้างขวามากกว่านิดหน่อย ไม่ร้าวลงขา ไม่ชา การขับถ่ายปกติ\n\nตอนเช้าแย่ที่สุด กว่าจะลุกจากเตียงได้ใช้เวลา 10 นาที ขับรถไปทำงานไปกลับวันละ 2 ชั่วโมง นั่งนานแล้วตึง ช่วงนี้กินยาแก้อักเสบแล้วนอนพักบนโซฟา\n\nสิ่งที่อยากได้ที่สุดคือกลับไปอุ้มลูกสาว 3 ขวบได้อีก โดยไม่ต้องกลัวว่าหลังจะเจ็บ"
+   }
+  },
+  {
+   "t": "q",
+   "q": "q3",
+   "type": "image",
+   "stage": {
+    "en": "The picture on the screen",
+    "th": "รูปที่จะเปิดให้คนไข้ดู"
+   },
+   "prompt": {
+    "en": "Add the picture (or pictures) you will have ready on the iPad when the patient walks in, and say why you chose it.",
+    "th": "ใส่รูป (หรือหลายรูป) ที่จะเตรียมเปิดไว้ใน iPad ตอนคนไข้เดินเข้ามา แล้วบอกว่าทำไมถึงเลือกรูปนี้"
+   },
+   "model": {
+    "en": "A simple picture of how a back strain heals over days to weeks, next to a picture of lifting a small child by bending the hips and knees. It answers the X-ray worry (this is a strain, it heals), and shows him the way back to picking up his daughter.",
+    "th": "รูปง่ายๆ ว่ากล้ามเนื้อหลังที่บาดเจ็บฟื้นตัวยังไงในไม่กี่วันถึงไม่กี่สัปดาห์ คู่กับรูปการอุ้มเด็กเล็กแบบย่อสะโพกและเข่า ตอบเรื่องที่กังวลเรื่องเอกซเรย์ (เป็นการบาดเจ็บที่หายได้) และให้เห็นทางกลับไปอุ้มลูกได้"
+   },
+   "points": [
+    {
+     "en": "About him: his back, or lifting his daughter.",
+     "th": "เกี่ยวกับคนไข้ หลังของเขา หรือการอุ้มลูก"
+    },
+    {
+     "en": "Simple and reassuring.",
+     "th": "ง่ายและทำให้คนไข้สบายใจ"
+    },
+    {
+     "en": "The reason links to his goal.",
+     "th": "เหตุผลเชื่อมกับเป้าหมายของคนไข้"
+    }
+   ]
+  }
+ ]
+}

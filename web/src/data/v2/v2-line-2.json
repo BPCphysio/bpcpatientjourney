@@ -139,31 +139,31 @@
     "th": "คุณจะทำยังไง"
    },
    "prompt": {
-    "en": "Your manager suggests offering her 20% off to bring her back. What do you do?",
-    "th": "หัวหน้าแนะนำให้เสนอส่วนลด 20% เพื่อดึงคนไข้กลับมา คุณจะทำยังไง"
+    "en": "She decides to do the exercises at home for now. What is the best way to keep helping her?",
+    "th": "คุณจอยตัดสินใจทำท่าบริหารที่บ้านไปก่อน วิธีไหนช่วยเขาต่อได้ดีที่สุด"
    },
    "options": [
     {
-     "en": "Send the discount straight away; it removes her reason not to come.",
-     "th": "ส่งส่วนลดไปเลย จะได้ไม่มีเหตุผลที่ไม่มา"
+     "en": "Stop messaging her; she has made her choice.",
+     "th": "ไม่ต้องทักไปอีก คนไข้ตัดสินใจแล้ว"
     },
     {
-     "en": "Offer a plan that fits her budget first: fewer visits spaced out, a strong home programme, LINE check-ins. Talk to your manager about the discount separately.",
-     "th": "เสนอแผนที่เข้ากับงบก่อน มาห่างขึ้น ท่าบริหารที่บ้านแน่นๆ เช็กกันทาง LINE ส่วนเรื่องส่วนลดไปคุยกับหัวหน้าแยกต่างหาก"
+     "en": "Send her the next exercises with short videos, and offer to check in on LINE in two or three weeks to see how the arm is moving.",
+     "th": "ส่งท่าบริหารขั้นต่อไปพร้อมคลิปสั้นๆ และเสนอว่าอีก 2–3 อาทิตย์จะทักมาถามว่ายกแขนได้แค่ไหนแล้ว"
     },
     {
-     "en": "Tell her a frozen shoulder gets worse without treatment, so she should come weekly.",
-     "th": "บอกว่าไหล่ติดถ้าไม่รักษาจะแย่ลง ควรมาทุกอาทิตย์"
+     "en": "Add her to the clinic's weekly promotion messages.",
+     "th": "เพิ่มคนไข้เข้ากลุ่มส่งโปรโมชันรายสัปดาห์ของคลินิก"
     },
     {
-     "en": "Don't reply. She has made her choice.",
-     "th": "ไม่ต้องตอบ คนไข้ตัดสินใจแล้ว"
+     "en": "Tell her the shoulder will get worse unless she comes in.",
+     "th": "บอกว่าถ้าไม่มารักษาไหล่จะแย่ลง"
     }
    ],
    "answer": 1,
    "why": {
-    "en": "She told you the truth about money; answer with a plan that respects it. A discount answers the price but not the value, and it turns a care conversation into a sales one. Scaring her is not honest: a frozen shoulder usually recovers, slowly. The discount is a clinic decision to raise with your manager, not something to lead with.",
-    "th": "คนไข้บอกเราตรงๆ เรื่องเงิน ก็ตอบด้วยแผนที่เคารพเรื่องนั้น ส่วนลดตอบเรื่องราคา แต่ไม่ได้ตอบเรื่องคุณค่า และเปลี่ยนบทสนทนาเรื่องการดูแลให้กลายเป็นการขาย การขู่ให้กลัวก็ไม่ซื่อตรง เพราะไหล่ติดส่วนใหญ่หายได้ แค่ใช้เวลา ส่วนเรื่องส่วนลดเป็นการตัดสินใจของคลินิก ให้คุยกับหัวหน้า ไม่ใช่เอามาเปิดเรื่อง"
+    "en": "Respect her choice and keep caring: the right exercises at the right time are what a frozen shoulder needs, and a check-in keeps the door open without pressure. Promotions are sales, and scaring her is not honest.",
+    "th": "เคารพการตัดสินใจของคนไข้ และดูแลต่อ ไหล่ติดต้องการท่าบริหารที่ถูกในเวลาที่ถูก การทักถามเป็นระยะช่วยเปิดประตูไว้โดยไม่กดดัน ส่วนโปรโมชันคือการขาย และการขู่ให้กลัวก็ไม่ซื่อตรง"
    }
   }
  ]

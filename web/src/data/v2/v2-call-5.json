@@ -1,0 +1,214 @@
+{
+ "id": "v2-call-5",
+ "kind": "call",
+ "title": {
+  "en": "Shoulder at the gym",
+  "th": "เจ็บไหล่จากยิม"
+ },
+ "steps": [
+  {
+   "t": "chat",
+   "label": {
+    "en": "Booking chat on LINE",
+    "th": "แชตจองคิวใน LINE"
+   },
+   "meta": {
+    "en": "Khun Fon, 27 · Sukhumvit · first visit tomorrow 19:00",
+    "th": "คุณฝน อายุ 27 · สาขาสุขุมวิท · มาครั้งแรก พรุ่งนี้ 19:00"
+   },
+   "msgs": [
+    {
+     "from": "pt",
+     "name": {
+      "en": "Khun Fon",
+      "th": "คุณฝน"
+     },
+     "text": {
+      "en": "Hi! My right shoulder hurts when I lift my arm up high, for about 3 weeks. I think it started at the gym.",
+      "th": "สวัสดีค่ะ เจ็บไหล่ขวาเวลายกแขนสูงๆ มาประมาณ 3 อาทิตย์แล้ว น่าจะเป็นจากเล่นยิมค่ะ"
+     }
+    },
+    {
+     "from": "pt",
+     "name": {
+      "en": "Khun Fon",
+      "th": "คุณฝน"
+     },
+     "text": {
+      "en": "Washing my hair hurts too 😩 Do I have to stop going to the gym?",
+      "th": "สระผมก็เจ็บ 😩 ต้องหยุดเล่นยิมไหมคะ"
+     }
+    },
+    {
+     "from": "rc",
+     "name": {
+      "en": "BPC reception",
+      "th": "BPC (แอดมิน)"
+     },
+     "text": {
+      "en": "Hello Khun Fon 🙏 Your physiotherapist will check it and give you a plan for training. Tomorrow 19:00 at Sukhumvit is available, after work.",
+      "th": "สวัสดีค่ะคุณฝน 🙏 นักกายภาพบำบัดจะตรวจแล้ววางแผนเรื่องการเล่นยิมให้นะคะ พรุ่งนี้ 19:00 ที่สาขาสุขุมวิทว่างค่ะ เลิกงานมาได้พอดี"
+     }
+    },
+    {
+     "from": "pt",
+     "name": {
+      "en": "Khun Fon",
+      "th": "คุณฝน"
+     },
+     "text": {
+      "en": "Perfect, book me in please!",
+      "th": "ได้เลยค่ะ จองเลยค่ะ!"
+     }
+    }
+   ]
+  },
+  {
+   "t": "note",
+   "label": {
+    "en": "Reception's summary in your schedule",
+    "th": "สรุปที่ RC ใส่ไว้ในตาราง"
+   },
+   "body": {
+    "en": "Right shoulder pain lifting the arm, 3 weeks, from the gym.",
+    "th": "เจ็บไหล่ขวาเวลายกแขน 3 อาทิตย์ จากการเล่นยิม"
+   }
+  },
+  {
+   "t": "q",
+   "q": "q0",
+   "type": "mc",
+   "stage": {
+    "en": "Before you call",
+    "th": "ก่อนโทร"
+   },
+   "prompt": {
+    "en": "What do you plan before you call her?",
+    "th": "ก่อนโทรหาคุณฝน คุณวางแผนอะไรไว้"
+   },
+   "options": [
+    {
+     "en": "Tell her on the call to stop the gym completely until she comes in.",
+     "th": "บอกในสายเลยว่าให้หยุดเล่นยิมทั้งหมดจนกว่าจะมาตรวจ"
+    },
+    {
+     "en": "Recap \"right shoulder, lifting the arm up, 3 weeks, from the gym\", and plan to find out which exercise started it and what she does in a week of training.",
+     "th": "รีแคปว่า \"ไหล่ขวา เจ็บตอนยกแขนสูง 3 อาทิตย์ จากยิม\" แล้ววางแผนถามว่าเริ่มเจ็บจากท่าไหน และหนึ่งอาทิตย์ซ้อมอะไรบ้าง"
+    },
+    {
+     "en": "Ask her to send a video of her workout instead of calling.",
+     "th": "ขอให้ส่งคลิปตอนเล่นยิมมาแทนการโทร"
+    },
+    {
+     "en": "Prepare a frozen shoulder programme from the summary.",
+     "th": "เตรียมโปรแกรมไหล่ติดจากสรุปไว้เลย"
+    }
+   ],
+   "answer": 1,
+   "why": {
+    "en": "A recap shows you read her message. What she trains, how often and what changed is what tomorrow is built on, and it lets you answer her real question (do I have to stop?) properly tomorrow instead of guessing on the phone. Stopping everything is rarely the answer for a gym shoulder, and a 27-year-old with pain lifting the arm is not a frozen shoulder picture.",
+    "th": "การรีแคปแสดงว่าเราอ่านข้อความเขาแล้ว ส่วนเล่นอะไร บ่อยแค่ไหน ช่วงนี้เปลี่ยนอะไร คือสิ่งที่เซสชันพรุ่งนี้ต้องใช้ และทำให้ตอบคำถามจริงของคนไข้ (ต้องหยุดไหม) ได้ถูกต้องพรุ่งนี้ ไม่ใช่เดาทางโทรศัพท์ การให้หยุดทุกอย่างแทบไม่ใช่คำตอบสำหรับไหล่เจ็บจากยิม และอายุ 27 เจ็บตอนยกแขนก็ไม่ใช่ภาพของไหล่ติด"
+   }
+  },
+  {
+   "t": "q",
+   "q": "q1",
+   "type": "long",
+   "stage": {
+    "en": "The call",
+    "th": "โทรหาคนไข้"
+   },
+   "prompt": {
+    "en": "Write how you open the call, then the three most important questions you will ask. The whole call should take 2–3 minutes.",
+    "th": "เขียนประโยคเปิดสายของคุณ แล้วตามด้วยคำถาม 3 ข้อที่สำคัญที่สุดที่จะถาม ทั้งสายไม่ควรเกิน 2–3 นาที"
+   },
+   "model": {
+    "en": "Open: \"Hi Khun Fon, this is [your name], the physiotherapist seeing you tomorrow at 19:00 at Sukhumvit. I've read your message: right shoulder hurts lifting your arm up, for about 3 weeks, probably from the gym. Is that right?\"\n\n1. Which exercise started it, and did anything change in her training (weight, new programme)?\n2. Does it wake her at night, and is there any weakness, clicking or tingling?\n3. What does she want to keep doing: how often she trains, any goal coming up?",
+    "th": "เปิดสาย: \"สวัสดีค่ะคุณฝน [ชื่อคุณ] นะคะ เป็นนักกายภาพบำบัดที่จะดูแลคุณฝนพรุ่งนี้ 19:00 ที่สุขุมวิทค่ะ อ่านข้อความแล้วนะคะ เจ็บไหล่ขวาตอนยกแขนสูงมาประมาณ 3 อาทิตย์ น่าจะจากยิม ถูกไหมคะ\"\n\n1. เริ่มเจ็บจากท่าไหน ช่วงนั้นมีเปลี่ยนอะไรไหม (เพิ่มน้ำหนัก เปลี่ยนโปรแกรม)\n2. ตอนกลางคืนเจ็บจนตื่นไหม มีแรงลด มีเสียงคลิก หรือชาบ้างไหม\n3. อยากเล่นยิมต่อแบบไหน อาทิตย์ละกี่วัน มีเป้าหมายอะไรรออยู่ไหม"
+   },
+   "points": [
+    {
+     "en": "Recaps and confirms instead of re-asking.",
+     "th": "รีแคปและคอนเฟิร์ม ไม่ถามซ้ำ"
+    },
+    {
+     "en": "Finds the exercise and the change in training that started it.",
+     "th": "หาท่าที่ทำให้เจ็บ และสิ่งที่เปลี่ยนในการซ้อม"
+    },
+    {
+     "en": "Checks severity (night pain, weakness) and what she wants to keep doing.",
+     "th": "เช็ก Severity (ปวดกลางคืน แรงลด) และสิ่งที่อยากทำต่อ"
+    }
+   ]
+  },
+  {
+   "t": "q",
+   "q": "q2",
+   "type": "long",
+   "stage": {
+    "en": "Why those three",
+    "th": "ทำไมต้อง 3 ข้อนี้"
+   },
+   "prompt": {
+    "en": "Why those three? For each one, say what the answer would change about how you prepare for tomorrow.",
+    "th": "ทำไมถึงเลือก 3 ข้อนี้ บอกทีละข้อว่าคำตอบที่ได้จะเปลี่ยนการเตรียมตัวสำหรับพรุ่งนี้ยังไง"
+   },
+   "points": [
+    {
+     "en": "The exercise and the change: tells you what to test and what to change in her training.",
+     "th": "ท่าและสิ่งที่เปลี่ยน: รู้ว่าจะตรวจอะไร และต้องปรับการซ้อมตรงไหน"
+    },
+    {
+     "en": "Severity: decides how gently to start and what to look out for.",
+     "th": "Severity: ตัดสินว่าจะเริ่มเบาแค่ไหน และต้องระวังอะไร"
+    },
+    {
+     "en": "Her goal: lets you answer \"do I have to stop?\" with a plan she can follow.",
+     "th": "เป้าหมาย: ตอบคำถาม \"ต้องหยุดไหม\" ด้วยแผนที่คนไข้ทำตามได้"
+    }
+   ]
+  },
+  {
+   "t": "reveal",
+   "label": {
+    "en": "What the call found",
+    "th": "สิ่งที่ได้จากการโทร"
+   },
+   "body": {
+    "en": "It started a few days after she put more weight on the shoulder press. The pain is at the front and side of the shoulder, when the arm is about halfway up. Lying on that side at night wakes her sometimes. No weakness, no clicking, no tingling.\n\nShe trains four times a week and loves it; it is how she deals with work stress. She is scared a physiotherapist will tell her to stop.",
+    "th": "เริ่มเจ็บหลังเพิ่มน้ำหนักท่า Shoulder press ไปไม่กี่วัน เจ็บด้านหน้าและด้านข้างไหล่ ตอนยกแขนขึ้นได้ประมาณครึ่งทาง ตอนกลางคืนนอนทับข้างนั้นแล้วตื่นบ้าง ไม่มีแรงลด ไม่มีเสียงคลิก ไม่ชา\n\nเล่นยิมอาทิตย์ละ 4 วัน และชอบมาก เป็นวิธีคลายเครียดจากงาน กลัวว่านักกายภาพบำบัดจะบอกให้หยุดเล่น"
+   }
+  },
+  {
+   "t": "q",
+   "q": "q3",
+   "type": "image",
+   "stage": {
+    "en": "The picture on the screen",
+    "th": "รูปที่จะเปิดให้คนไข้ดู"
+   },
+   "prompt": {
+    "en": "Add the picture (or pictures) you will have ready on the iPad when the patient walks in, and say why you chose it.",
+    "th": "ใส่รูป (หรือหลายรูป) ที่จะเตรียมเปิดไว้ใน iPad ตอนคนไข้เดินเข้ามา แล้วบอกว่าทำไมถึงเลือกรูปนี้"
+   },
+   "model": {
+    "en": "A simple picture of the shoulder tendon getting pinched when the arm is halfway up, next to her training week with the shoulder press swapped for something she can do now. It explains the pain and shows her she can keep training, which is her biggest worry.",
+    "th": "รูปง่ายๆ ของเส้นเอ็นไหล่ที่ถูกเบียดตอนยกแขนขึ้นได้ครึ่งทาง คู่กับตารางซ้อมของเขาที่เปลี่ยนท่า Shoulder press เป็นท่าที่ทำได้ตอนนี้ อธิบายว่าทำไมเจ็บ และให้เห็นว่ายังเล่นยิมต่อได้ ซึ่งเป็นเรื่องที่กังวลที่สุด"
+   },
+   "points": [
+    {
+     "en": "About her: the painful movement or her training.",
+     "th": "เกี่ยวกับคนไข้ ท่าที่เจ็บ หรือการซ้อมของเขา"
+    },
+    {
+     "en": "Simple enough to explain in a minute.",
+     "th": "ง่ายพอที่จะอธิบายในหนึ่งนาที"
+    },
+    {
+     "en": "Answers her worry: she can keep training with changes.",
+     "th": "ตอบเรื่องที่กังวล ยังซ้อมต่อได้โดยปรับบางอย่าง"
+    }
+   ]
+  }
+ ]
+}
