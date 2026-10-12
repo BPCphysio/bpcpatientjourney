@@ -15,7 +15,7 @@
 const { waitUntil } = require('@vercel/functions');
 const { sql, ready, keyOk, isMedia } = require('./_db.js');
 const C = require('./_clinic.js');
-const { readStored } = require('./_claude.js');
+const { readStored, calibrate } = require('./_claude.js');
 const V2 = require('./_v2.js');
 
 const ok = (res, o) => res.status(200).json(Object.assign({ ok: true }, o));
@@ -155,6 +155,14 @@ async function post(req, res) {
     } catch (e) {
       return no(res, /credit balance|usage limit|spend limit/i.test(String(e && e.message)) ? 'credit' : 'claude: ' + String(e && e.message || e).slice(0, 160));
     }
+  }
+
+  // Testing the marker against the seniors (see calibrate in _claude.js).
+  if (body.action === 'calibrate') {
+    if (!keyOk(body.key)) return no(res, 'bad key');
+    if (!process.env.ANTHROPIC_API_KEY) return no(res, 'not configured');
+    try { return ok(res, await calibrate(body)); }
+    catch (e) { return no(res, /credit balance|usage limit|spend limit/i.test(String(e && e.message)) ? 'credit' : 'claude: ' + String(e && e.message || e).slice(0, 160)); }
   }
 
   if (body.action === 'delete') {
