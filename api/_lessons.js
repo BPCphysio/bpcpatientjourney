@@ -47,6 +47,18 @@ const SEED = {
   ].join('\n') }
 };
 
+// Version 2 asks some questions word for word as version 1 did (the three
+// questions for the call, why those three, the picture for the iPad). Until
+// seniors have commented on a version 2 question themselves, it borrows what
+// they taught on its version 1 twin. Questions with no twin (the LINE
+// messages, the differentials, the first words in the room) start with only
+// the case's own key points.
+const TWIN = {
+  'v2:call:q1': 'v1:q1', 'v2:call:q2': 'v1:q2', 'v2:call:q3': 'v1:q3',
+  'v2:journey:q1': 'v1:q1', 'v2:journey:q2': 'v1:q3'
+};
+const OWN_NEEDED = 3;   // commented marks of its own before a question stops borrowing
+
 const clip = (s, n) => String(s == null ? '' : s).slice(0, n);
 const scored = m => m && m.score !== undefined && m.score !== null && m.score !== '';
 const fresh = (c, m) => String(c || '').trim() && m && m.commentBy !== 'claude';
@@ -105,8 +117,14 @@ async function writeSummary(fam, rows, client, model) {
 // opts.client/model: needed only to write a missing or stale summary.
 async function standardsFor(caseId, qk, opts) {
   opts = opts || {};
-  const fam = familyOf(caseId, qk);
-  const rows = await marksIn(fam, opts.skip);
+  const own = familyOf(caseId, qk);
+  let fam = own;
+  let rows = await marksIn(fam, opts.skip);
+  let borrowed = false;
+  if (TWIN[own] && rows.filter(r => fresh(r.m.comment, r.m)).length < OWN_NEEDED) {
+    fam = TWIN[own]; borrowed = true;
+    rows = await marksIn(fam, opts.skip);
+  }
   const stats = statsText(rows);
   const nComments = rows.filter(r => fresh(r.m.comment, r.m)).length;
   let summary = null, version = 0;
@@ -126,8 +144,9 @@ async function standardsFor(caseId, qk, opts) {
       }
     } else if (kept) { summary = kept.text; version = kept.n; }
   }
-  const text = [stats, summary ? `What their comments reward and take marks off for:\n${summary}` : ''].filter(Boolean).join('\n\n');
-  return { text, version: rows.length + '/' + version };
+  const lead = borrowed ? 'No senior has marked this version 2 question yet. The standard below comes from the same question in version 1, which seniors have marked; apply it to this case.' : '';
+  const text = [lead, stats, summary ? `What their comments reward and take marks off for:\n${summary}` : ''].filter(Boolean).join('\n\n');
+  return { text, version: (borrowed ? 'twin:' : '') + rows.length + '/' + version };
 }
 
 module.exports = { familyOf, standardsFor, marksIn };
