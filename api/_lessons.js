@@ -149,4 +149,11 @@ async function standardsFor(caseId, qk, opts) {
   return { text, version: (borrowed ? 'twin:' : '') + rows.length + '/' + version };
 }
 
-module.exports = { familyOf, standardsFor, marksIn };
+// The version 1 question a version 2 question is the twin of, as its question
+// key ('q1'..'q3'), or null.
+function twinKey(caseId, qk) {
+  const t = TWIN[familyOf(caseId, qk)];
+  return t ? t.split(':').pop() : null;
+}
+
+module.exports = { familyOf, standardsFor, marksIn, twinKey, OWN_NEEDED };

@@ -50,7 +50,7 @@ function caseBlock(q, examples, standards) {
   const pts = qq.points.map((p, i) => `${i + 1}. ${clip(p.en, 200)}${p.th ? '  |  ' + clip(p.th, 200) : ''}`).join('\n');
   const same = examples.filter(x => x.same), other = examples.filter(x => !x.same);
   const ex = (x, i) => [
-    `Example ${i + 1}${x.same ? '' : ` (another case: ${clip(x.caseTitle, 80)})`} — senior's score ${x.score}/5` +
+    `Example ${i + 1}${x.same ? '' : ` (${x.twin ? 'the same question in a version 1 case' : 'another case'}: ${clip(x.caseTitle, 80)})`} — senior's score ${x.score}/5` +
       (x.auto != null ? ` (an earlier automatic marker had suggested ${Math.round(Number(x.auto) / 20)}/5)` : ''),
     `Answer: """${clip(x.answer, 1500)}"""`,
     x.comment ? `Senior's comment: ${clip(x.comment, 800)}` : 'Senior left no comment.'
@@ -71,14 +71,15 @@ function caseBlock(q, examples, standards) {
 // Answers seniors have marked, newest first. A comment saved exactly as
 // Claude drafted it is not a senior's words and is left out.
 async function examplesFor(id, caseId, qk) {
-  const rows = await sql()`
-    SELECT id, scenario_id, rec->>'scenarioTitle' AS title, rec->'answers'->>(${qk + ':text'}::text) AS text,
-           marks->(${qk}::text) AS m
+  const rowsOf = k => sql()`
+    SELECT id, scenario_id, rec->>'scenarioTitle' AS title, rec->'answers'->>(${k + ':text'}::text) AS text,
+           marks->(${k}::text) AS m
     FROM responses
-    WHERE id <> ${id} AND marks ? (${qk}::text) AND COALESCE(rec->'answers'->>(${qk + ':text'}::text), '') <> ''
+    WHERE id <> ${id} AND marks ? (${k}::text) AND COALESCE(rec->'answers'->>(${k + ':text'}::text), '') <> ''
     ORDER BY marked_at DESC NULLS LAST LIMIT 400`;
-  const one = (r, same) => ({
-    same, caseTitle: r.title || '', answer: clip(r.text, 1500), score: Number(r.m.score),
+  const rows = await rowsOf(qk);
+  const one = (r, same, twin) => ({
+    same, twin: !!twin, caseTitle: r.title || '', answer: clip(r.text, 1500), score: Number(r.m.score),
     comment: r.m.commentBy === 'claude' ? '' : clip(r.m.comment, 800),
     auto: r.m.auto != null && r.m.autoBy !== 'claude' ? r.m.auto : null
   });
@@ -89,6 +90,19 @@ async function examplesFor(id, caseId, qk) {
   const family = x => V2.isV2(x) ? V2.kindOf(x) : 'v1';
   const other = ok.filter(r => r.scenario_id !== caseId && family(r.scenario_id) === family(caseId) && String(r.m.comment || '').trim() && r.m.commentBy !== 'claude')
     .slice(0, 6).map(r => one(r, false));
+  // A version 2 question that is worded like a version 1 one learns from the
+  // seniors' marked version 1 answers while it has too few of its own. They
+  // are picked across the score range so the marker sees weak and strong.
+  const tk = Lessons.twinKey(caseId, qk);
+  if (tk && other.length < 6) {
+    const pool = (await rowsOf(tk)).filter(r => scored(r.m) && !V2.isV2(r.scenario_id) && String(r.m.comment || '').trim() && r.m.commentBy !== 'claude');
+    const bands = {};
+    pool.forEach(r => { (bands[Math.round(Number(r.m.score))] = bands[Math.round(Number(r.m.score))] || []).push(r); });
+    const order = Object.keys(bands).sort((a, b) => b - a), picked = [];
+    for (let i = 0; picked.length < 6 - other.length && order.some(s => bands[s][i]); i++)
+      order.forEach(s => { if (bands[s][i] && picked.length < 6 - other.length) picked.push(bands[s][i]); });
+    other.push(...picked.map(r => one(r, false, true)));
+  }
   return same.concat(other);
 }
 
@@ -275,4 +289,4 @@ function summarise(res) {
   };
 }
 
-module.exports = { readStored, calibrate, Anthropic };
+module.exports = { readStored, calibrate, examplesFor, Anthropic };
